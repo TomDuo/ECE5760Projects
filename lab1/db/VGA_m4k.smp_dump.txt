@@ -1,0 +1,16 @@
+
+State Machine - |DE2_TOP|state
+Name state.done state.new_screen state.update state.draw2 state.draw1 state.draw state.test4 state.test3 state.test2 state.test1 state.init2 state.init1 state.init 
+state.init 0 0 0 0 0 0 0 0 0 0 0 0 0 
+state.init1 0 0 0 0 0 0 0 0 0 0 0 1 1 
+state.init2 0 0 0 0 0 0 0 0 0 0 1 0 1 
+state.test1 0 0 0 0 0 0 0 0 0 1 0 0 1 
+state.test2 0 0 0 0 0 0 0 0 1 0 0 0 1 
+state.test3 0 0 0 0 0 0 0 1 0 0 0 0 1 
+state.test4 0 0 0 0 0 0 1 0 0 0 0 0 1 
+state.draw 0 0 0 0 0 1 0 0 0 0 0 0 1 
+state.draw1 0 0 0 0 1 0 0 0 0 0 0 0 1 
+state.draw2 0 0 0 1 0 0 0 0 0 0 0 0 1 
+state.update 0 0 1 0 0 0 0 0 0 0 0 0 1 
+state.new_screen 0 1 0 0 0 0 0 0 0 0 0 0 1 
+state.done 1 0 0 0 0 0 0 0 0 0 0 0 1 

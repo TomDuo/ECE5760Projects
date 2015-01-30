@@ -290,6 +290,7 @@ reg [3:0] state;	//state machine
 reg [9:0] x_cursor;
 reg [8:0] y_cursor;
 reg [2:0] pattern;
+reg [30:0] rand;
 
 ////////////////////////////////////
 /*From megaWizard:
@@ -334,7 +335,8 @@ assign  mVGA_B = {10{disp_bit}} ;
 // DLA state machine
 assign reset = ~KEY[0];
 assign scroll = ~KEY[1];
-assign LEDR[3:0] = state;
+assign LEDR[8:0] = y_cursor;
+assign low_bit = rand[27] ^ rand[30];
 
 //state names
 parameter init = 4'd0, 
@@ -386,6 +388,7 @@ begin
 		data_reg <= 1'b0;						//write all zeros (black)
 		x_cursor <= 1;
 		y_cursor <= 1;
+		rand <= 31'h55555555; //random bit is rand[30]
 		state <= init;	//first state in regular state machine 
 	end
 	
@@ -405,10 +408,27 @@ begin
 			init: //write a single dot in the middle of the screen
 			begin
 				we <= 1'b0 ;
-				addr_reg <= {10'd320,9'd0} ;	//(x,y)							
-				//write a white dot in the middle of the screen
-				data_reg <= 1'b1 ;
-				state <= init1 ;
+				
+				if (SW[17])
+				begin
+				   we <= 1'b1;
+					addr_reg <= {x_cursor, 9'b0};
+					x_cursor <= x_cursor + 10'b1;
+					data_reg <= rand[30];
+					rand <= {rand[29:0], low_bit} ;
+					
+					if (x_cursor < 640)
+						state <= init;
+					else
+						state <= init1;
+				end
+				else
+				begin
+					addr_reg <= {10'd320,9'd0} ;	//(x,y)							
+					//write a white dot in the middle of the screen
+					data_reg <= 1'b1 ;
+					state <= init1 ;
+				end
 			end			
 			
 			init1: //delay enable 'we' to account for registering addr,data
@@ -416,6 +436,7 @@ begin
 				we <= 1'b1;								
 				//write a white dot to the top center of the screen
 				data_reg <= 1'b1 ;
+				x_cursor <= 10'd1;
 				state <= init2 ;
 			end	 
 			
@@ -527,8 +548,11 @@ begin
 	else
 	begin
 	end
+	
+	
 end // always @ (posedge VGA_CTRL_CLK)
 
 endmodule //top module
+
 
 ////////// end of file //////////////////////////

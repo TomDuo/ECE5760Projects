@@ -314,6 +314,9 @@ wire state_bit ; // current data from m4k to state machine
 reg we ; // write enable for a
 reg [18:0] addr_reg ; // for a
 reg data_reg ; // for a
+reg rand_top;
+reg rand_side;
+reg next;
 
 vga_buffer display(
 	.address_a (addr_reg) , 
@@ -388,8 +391,18 @@ begin
 		data_reg <= 1'b0;						//write all zeros (black)
 		x_cursor <= 1;
 		y_cursor <= 1;
-		rand <= 31'h55555555; //random bit is rand[30]
+		if (SW[15:8]==8'b0)
+		begin
+			rand <= 31'h55555555;
+		end
+		else
+		begin
+			rand <= {SW[15:8],SW[15:8],SW[15:8],SW[15:9]}; //random bit is rand[30]
+		end
 		state <= init;	//first state in regular state machine 
+		
+		rand_top <= SW[17];
+		rand_side <= SW[16];
 	end
 	
 	else if (scroll)
@@ -403,13 +416,10 @@ begin
 	else if (KEY[3])
 	begin
 		case(state)
-			
 			// next three states write the inital dot
 			init: //write a single dot in the middle of the screen
 			begin
-				we <= 1'b0 ;
-				
-				if (SW[17])
+				if (rand_top)
 				begin
 				   we <= 1'b1;
 					addr_reg <= {x_cursor, 9'b0};
@@ -424,6 +434,7 @@ begin
 				end
 				else
 				begin
+					we <= 1'b0 ;
 					addr_reg <= {10'd320,9'd0} ;	//(x,y)							
 					//write a white dot in the middle of the screen
 					data_reg <= 1'b1 ;

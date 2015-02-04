@@ -346,7 +346,7 @@ GND                          : E19       : gnd    :                   :         
 GND*                         : E20       :        :                   :         : 4         :                
 GND_PLL2                     : E21       : gnd    :                   :         :           :                
 GND*                         : E22       :        :                   :         : 5         :                
-GND*                         : E23       :        :                   :         : 5         :                
+IRDA_TXD                     : E23       : output : 3.3-V LVTTL       :         : 5         : N              
 GND*                         : E24       :        :                   :         : 5         :                
 GPIO_0[3]                    : E25       : bidir  : 3.3-V LVTTL       :         : 5         : Y              
 GPIO_0[2]                    : E26       : bidir  : 3.3-V LVTTL       :         : 5         : Y              
@@ -417,7 +417,7 @@ VGA_R[7]                     : H12       : output : 3.3-V LVTTL       :         
 GND                          : H13       : gnd    :                   :         :           :                
 GND                          : H14       : gnd    :                   :         :           :                
 GND*                         : H15       :        :                   :         : 4         :                
-IRDA_TXD                     : H16       : output : 3.3-V LVTTL       :         : 4         : N              
+GND*                         : H16       :        :                   :         : 4         :                
 GND*                         : H17       :        :                   :         : 4         :                
 VCCIO4                       : H18       : power  :                   : 3.3V    : 4         :                
 GPIO_0[22]                   : H19       : bidir  : 3.3-V LVTTL       :         : 5         : Y              

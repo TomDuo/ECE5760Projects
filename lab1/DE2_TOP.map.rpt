@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DE2_TOP
-Wed Feb 04 00:45:00 2015
+Wed Feb 04 01:24:54 2015
 Quartus II 64-Bit Version 11.0 Build 157 04/27/2011 SJ Full Version
 
 
@@ -53,7 +53,7 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                   ;
 +------------------------------------+-------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Feb 04 00:45:00 2015     ;
+; Analysis & Synthesis Status        ; Successful - Wed Feb 04 01:24:54 2015     ;
 ; Quartus II 64-Bit Version          ; 11.0 Build 157 04/27/2011 SJ Full Version ;
 ; Revision Name                      ; DE2_TOP                                   ;
 ; Top-level Entity Name              ; DE2_TOP                                   ;
@@ -219,13 +219,13 @@ The IP Core highlighted in red is outdated. Regenerate the outdated IP with the 
 +----------------+-------------+-------------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------+
-; Dependent File Changes for Partition Top                                                                                             ;
-+-----------+-----------------------+-------------------+----------+--------------------------------+----------------------------------+
-; Hierarchy ; File Name             ; Relative Location ; Change   ; Old                            ; New                              ;
-+-----------+-----------------------+-------------------+----------+--------------------------------+----------------------------------+
-; |         ; VGA_640x480_m4k_DLA.v ; Project Directory ; Checksum ; 50138cffafb47d355e32886086a810 ; bc8dbc7c962cfb3b535467fcb08dc34f ;
-+-----------+-----------------------+-------------------+----------+--------------------------------+----------------------------------+
++---------------------------------------------------------------------------------------------------------------------------------------+
+; Dependent File Changes for Partition Top                                                                                              ;
++-----------+-----------------------+-------------------+----------+---------------------------------+----------------------------------+
+; Hierarchy ; File Name             ; Relative Location ; Change   ; Old                             ; New                              ;
++-----------+-----------------------+-------------------+----------+---------------------------------+----------------------------------+
+; |         ; VGA_640x480_m4k_DLA.v ; Project Directory ; Checksum ; 76f8cbf9af23dfeda26a9a7822d6663 ; d431f18d7d5eb7ac81b81c4c13f88f48 ;
++-----------+-----------------------+-------------------+----------+---------------------------------+----------------------------------+
 
 
 +---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -233,18 +233,18 @@ The IP Core highlighted in red is outdated. Regenerate the outdated IP with the 
 +-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                            ; Library Name ;
 +-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------+--------------+
-; |DE2_TOP                                  ; 666 (185)         ; 165 (88)     ; 310000      ; 0            ; 0       ; 0         ; 159  ; 0            ; |DE2_TOP                                                                                                       ; work         ;
+; |DE2_TOP                                  ; 674 (195)         ; 165 (88)     ; 310000      ; 0            ; 0       ; 0         ; 159  ; 0            ; |DE2_TOP                                                                                                       ; work         ;
 ;    |Reset_Delay:r0|                       ; 28 (28)           ; 21 (21)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|Reset_Delay:r0                                                                                        ; work         ;
 ;    |VGA_Audio_PLL:p1|                     ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|VGA_Audio_PLL:p1                                                                                      ; work         ;
 ;       |altpll:altpll_component|           ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|VGA_Audio_PLL:p1|altpll:altpll_component                                                              ; work         ;
 ;    |VGA_Controller:u1|                    ; 64 (64)           ; 42 (42)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|VGA_Controller:u1                                                                                     ; work         ;
-;    |vga_buffer:display|                   ; 389 (0)           ; 14 (0)       ; 310000      ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|vga_buffer:display                                                                                    ; work         ;
-;       |altsyncram:altsyncram_component|   ; 389 (0)           ; 14 (0)       ; 310000      ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|vga_buffer:display|altsyncram:altsyncram_component                                                    ; work         ;
-;          |altsyncram_m352:auto_generated| ; 389 (0)           ; 14 (14)      ; 310000      ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|vga_buffer:display|altsyncram:altsyncram_component|altsyncram_m352:auto_generated                     ; work         ;
+;    |vga_buffer:display|                   ; 387 (0)           ; 14 (0)       ; 310000      ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|vga_buffer:display                                                                                    ; work         ;
+;       |altsyncram:altsyncram_component|   ; 387 (0)           ; 14 (0)       ; 310000      ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|vga_buffer:display|altsyncram:altsyncram_component                                                    ; work         ;
+;          |altsyncram_m352:auto_generated| ; 387 (0)           ; 14 (14)      ; 310000      ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|vga_buffer:display|altsyncram:altsyncram_component|altsyncram_m352:auto_generated                     ; work         ;
 ;             |decode_2qa:decode2|          ; 87 (87)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|vga_buffer:display|altsyncram:altsyncram_component|altsyncram_m352:auto_generated|decode_2qa:decode2  ; work         ;
 ;             |decode_2qa:decode_a|         ; 91 (91)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|vga_buffer:display|altsyncram:altsyncram_component|altsyncram_m352:auto_generated|decode_2qa:decode_a ; work         ;
 ;             |decode_2qa:decode_b|         ; 86 (86)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|vga_buffer:display|altsyncram:altsyncram_component|altsyncram_m352:auto_generated|decode_2qa:decode_b ; work         ;
-;             |mux_bkb:mux4|                ; 62 (62)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|vga_buffer:display|altsyncram:altsyncram_component|altsyncram_m352:auto_generated|mux_bkb:mux4        ; work         ;
+;             |mux_bkb:mux4|                ; 60 (60)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|vga_buffer:display|altsyncram:altsyncram_component|altsyncram_m352:auto_generated|mux_bkb:mux4        ; work         ;
 ;             |mux_bkb:mux5|                ; 63 (63)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|vga_buffer:display|altsyncram:altsyncram_component|altsyncram_m352:auto_generated|mux_bkb:mux5        ; work         ;
 +-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
@@ -295,10 +295,10 @@ Encoding Type:  One-Hot
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered            ; Example Multiplexer Output ;
 +--------------------+-----------+---------------+----------------------+------------------------+-----------------------+----------------------------+
 ; 5:1                ; 9 bits    ; 27 LEs        ; 9 LEs                ; 18 LEs                 ; |DE2_TOP|y_cursor[6]  ;                            ;
-; 6:1                ; 31 bits   ; 124 LEs       ; 31 LEs               ; 93 LEs                 ; |DE2_TOP|rand[27]     ;                            ;
-; 9:1                ; 10 bits   ; 60 LEs        ; 10 LEs               ; 50 LEs                 ; |DE2_TOP|x_cursor[2]  ;                            ;
-; 10:1               ; 8 bits    ; 48 LEs        ; 24 LEs               ; 24 LEs                 ; |DE2_TOP|addr_reg[8]  ;                            ;
-; 10:1               ; 10 bits   ; 60 LEs        ; 30 LEs               ; 30 LEs                 ; |DE2_TOP|addr_reg[14] ;                            ;
+; 9:1                ; 10 bits   ; 60 LEs        ; 10 LEs               ; 50 LEs                 ; |DE2_TOP|x_cursor[8]  ;                            ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 24 LEs               ; 24 LEs                 ; |DE2_TOP|addr_reg[0]  ;                            ;
+; 10:1               ; 10 bits   ; 60 LEs        ; 30 LEs               ; 30 LEs                 ; |DE2_TOP|addr_reg[10] ;                            ;
+; 10:1               ; 31 bits   ; 186 LEs       ; 31 LEs               ; 155 LEs                ; |DE2_TOP|rand[6]      ;                            ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; |DE2_TOP|state        ;                            ;
 ; 4:1                ; 10 bits   ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; |DE2_TOP|state        ;                            ;
 +--------------------+-----------+---------------+----------------------+------------------------+-----------------------+----------------------------+
@@ -813,7 +813,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; db/decode_2qa.tdf                             ; Project Directory  ; work    ; 3037803883edf1756b7a3fdacbd20b5  ;
 ; db/mux_bkb.tdf                                ; Project Directory  ; work    ; 4351cc81a8cafd697fab8fbfb7baf9d  ;
 ; Reset_Delay.v                                 ; Project Directory  ; work    ; 8a3bd6661f98bcfb1d60d320e162e4f6 ;
-; VGA_640x480_m4k_DLA.v                         ; Project Directory  ; work    ; bc8dbc7c962cfb3b535467fcb08dc34f ;
+; VGA_640x480_m4k_DLA.v                         ; Project Directory  ; work    ; d431f18d7d5eb7ac81b81c4c13f88f48 ;
 ; VGA_Audio_PLL.v                               ; Project Directory  ; work    ; 22fefa45db07a636ebe1114b8a0db1c  ;
 ; vga_buffer.v                                  ; Project Directory  ; work    ; 8c96d0e648d474a31471c47bacaf1a50 ;
 ; VGA_Controller/VGA_Controller.v               ; Project Directory  ; work    ; 11823a7fa98347f3cf67a5d45e2d232  ;
@@ -865,7 +865,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 11.0 Build 157 04/27/2011 SJ Full Version
-    Info: Processing started: Wed Feb 04 00:44:53 2015
+    Info: Processing started: Wed Feb 04 01:24:47 2015
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off VGA_m4k -c DE2_TOP
 Info: Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info: Found 1 design units, including 1 entities, in source file vga_buffer.v
@@ -1193,17 +1193,17 @@ Info: 5 registers lost all their fanouts during netlist optimizations. The first
     Info: Register "state~4" lost all its fanouts during netlist optimizations.
     Info: Register "state~5" lost all its fanouts during netlist optimizations.
     Info: Register "state.done" lost all its fanouts during netlist optimizations.
-Info: Implemented 1346 device resources after synthesis - the final resource count might be different
+Info: Implemented 1354 device resources after synthesis - the final resource count might be different
     Info: Implemented 48 input pins
     Info: Implemented 218 output pins
     Info: Implemented 318 bidirectional pins
-    Info: Implemented 685 logic cells
+    Info: Implemented 693 logic cells
     Info: Implemented 76 RAM segments
     Info: Implemented 1 PLLs
 Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 202 warnings
-    Info: Peak virtual memory: 375 megabytes
-    Info: Processing ended: Wed Feb 04 00:45:00 2015
-    Info: Elapsed time: 00:00:07
+    Info: Peak virtual memory: 376 megabytes
+    Info: Processing ended: Wed Feb 04 01:24:55 2015
+    Info: Elapsed time: 00:00:08
     Info: Total CPU time (on all processors): 00:00:07
 
 

@@ -427,7 +427,7 @@ begin
 					data_reg <= rand[30];
 					rand <= {rand[29:0], low_bit} ;
 					
-					if (x_cursor < 640)
+					if (x_cursor < 10'd638)
 						state <= init;
 					else
 						state <= init1;
@@ -475,7 +475,15 @@ begin
 			test2: 
 			begin				
 				we <= 1'b0; //no memory write 
-				pattern[2] <= state_bit;	//record left neighbor
+				if (x_cursor == 10'd1)
+				begin
+					pattern[2] <= rand[30];
+					rand <= {rand[29:0], low_bit};
+				end
+				else
+				begin
+					pattern[2] <= state_bit;	//record left neighbor
+				end
 				//read middle neighbor 
 				addr_reg <= {x_cursor, y_cursor-9'd1};
 				state <= test3;	
@@ -484,7 +492,15 @@ begin
 			test3:  
 			begin
 				we <= 1'b0; //no memory write 
-				pattern[0] <= state_bit; //record right neighbor
+				if (x_cursor == 10'd638)
+				begin
+					pattern[0] <= rand[30];
+					rand <= {rand[29:0], low_bit};
+				end
+				else
+				begin
+					pattern[0] <= state_bit; //record right neighbor
+				end
 				state <= test4;
 			end
 			
@@ -529,7 +545,7 @@ begin
 			begin
 				we <= 1'b0; //no mem write
 				//increment x until end of line
-				if (x_cursor < 10'd640)
+				if (x_cursor < 10'd638)
 					x_cursor <= x_cursor + 10'd1;
 				else 
 				begin
@@ -565,5 +581,8 @@ end // always @ (posedge VGA_CTRL_CLK)
 
 endmodule //top module
 
+//TODO: scrolling
+//			side randomness
+//			do shifting instead of throwing shit out(opt)
 
 ////////// end of file //////////////////////////

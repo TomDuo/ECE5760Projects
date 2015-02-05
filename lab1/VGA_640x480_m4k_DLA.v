@@ -389,8 +389,8 @@ begin
 		addr_reg <= {Coord_X[9:0],Coord_Y[8:0]} ;	// [17:0]
 		we <= 1'b1;								//write some memory
 		data_reg <= 1'b0;						//write all zeros (black)
-		x_cursor <= 1;
-		y_cursor <= 1;
+		x_cursor <= 10'd1;
+		y_cursor <= 9'd1;
 		if (SW[15:8]==8'b0)
 		begin
 			rand <= 31'h55555555;
@@ -477,29 +477,47 @@ begin
 				we <= 1'b0; //no memory write 
 				if (x_cursor == 10'd1)
 				begin
-					pattern[2] <= rand[30];
-					rand <= {rand[29:0], low_bit};
+					if (rand_side)
+					begin
+						pattern[2] <= rand[30];
+						rand <= {rand[29:0], low_bit};
+					end
+					else
+					begin
+						pattern[2] <= 1'b0;
+						rand <= rand;
+					end
 				end
 				else
 				begin
 					pattern[2] <= state_bit;	//record left neighbor
+					rand <= rand;
 				end
-				//read middle neighbor 
+				//read middle neighbor
 				addr_reg <= {x_cursor, y_cursor-9'd1};
-				state <= test3;	
+				state <= test3;
 			end
 			
 			test3:  
 			begin
 				we <= 1'b0; //no memory write 
-				if (x_cursor == 10'd638)
+				if (x_cursor >= 10'd600)
 				begin
-					pattern[0] <= rand[30];
-					rand <= {rand[29:0], low_bit};
+					if (rand_side)
+					begin
+						pattern[0] <= rand[30];
+						rand <= {rand[29:0], low_bit};
+					end
+					else
+					begin
+						pattern[0] <= 1'b0;
+						rand <= rand;
+					end
 				end
 				else
 				begin
 					pattern[0] <= state_bit; //record right neighbor
+					rand <= rand;
 				end
 				state <= test4;
 			end
@@ -584,5 +602,6 @@ endmodule //top module
 //TODO: scrolling
 //			side randomness
 //			do shifting instead of throwing shit out(opt)
+//			fix jittering(opt)
 
 ////////// end of file //////////////////////////

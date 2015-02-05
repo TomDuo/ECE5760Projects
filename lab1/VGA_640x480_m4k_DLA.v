@@ -336,9 +336,9 @@ vga_buffer display(
 //assign  mVGA_G = {10{disp_bit}} ;
 //assign  mVGA_B = {10{disp_bit}} ;
 
-assign  mVGA_R = disp_bit ? {Coord_Y,1'b1} : 10'b1111111111 - {Coord_Y, 1'b1} ;
-assign  mVGA_G = disp_bit ? {Coord_X[9:5],5'b11111} : {Coord_X[9:5],5'b00000} ;
-assign  mVGA_B = disp_bit ? 10'b1111111111 - {Coord_Y, 1'b1} : {Coord_Y,1'b1} ;
+assign  mVGA_R = disp_bit ? {Coord_Y,1'b1} : (10'b1111111111 - {Coord_Y, 1'b1}>>1);
+assign  mVGA_G = disp_bit ? 10'b1111111111 : 10'b0111111111 ;
+assign  mVGA_B = disp_bit ? 10'b1111111111 - {Coord_Y, 1'b1} : ({Coord_Y,1'b1}>>1);
 
 // DLA state machine
 assign reset = ~KEY[0];

@@ -1,5 +1,5 @@
 Flow report for DE2_TOP
-Thu Feb 05 14:05:27 2015
+Thu Feb 05 14:15:01 2015
 Quartus II 64-Bit Version 11.0 Build 157 04/27/2011 SJ Full Version
 
 
@@ -38,7 +38,7 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------+
 ; Flow Summary                                                                   ;
 +------------------------------------+-------------------------------------------+
-; Flow Status                        ; Successful - Thu Feb 05 14:05:27 2015     ;
+; Flow Status                        ; Successful - Thu Feb 05 14:15:00 2015     ;
 ; Quartus II 64-Bit Version          ; 11.0 Build 157 04/27/2011 SJ Full Version ;
 ; Revision Name                      ; DE2_TOP                                   ;
 ; Top-level Entity Name              ; DE2_TOP                                   ;
@@ -47,8 +47,8 @@ applicable agreement for further details.
 ; Timing Models                      ; Final                                     ;
 ; Total logic elements               ; 763 / 33,216 ( 2 % )                      ;
 ;     Total combinational functions  ; 758 / 33,216 ( 2 % )                      ;
-;     Dedicated logic registers      ; 202 / 33,216 ( 1 % )                      ;
-; Total registers                    ; 202                                       ;
+;     Dedicated logic registers      ; 200 / 33,216 ( 1 % )                      ;
+; Total registers                    ; 200                                       ;
 ; Total pins                         ; 425 / 475 ( 89 % )                        ;
 ; Total virtual pins                 ; 0                                         ;
 ; Total memory bits                  ; 310,000 / 483,840 ( 64 % )                ;
@@ -685,7 +685,24 @@ applicable agreement for further details.
 ; Fitter                    ; 00:00:11     ; 1.7                     ; 530 MB              ; 00:00:13                           ;
 ; Assembler                 ; 00:00:03     ; 1.0                     ; 381 MB              ; 00:00:02                           ;
 ; TimeQuest Timing Analyzer ; 00:00:03     ; 2.7                     ; 400 MB              ; 00:00:04                           ;
-; Total                     ; 00:49:10     ; --                      ; --                  ; 00:51:57                           ;
+; Analysis & Synthesis      ; 00:00:07     ; 1.0                     ; 376 MB              ; 00:00:07                           ;
+; Partition Merge           ; 00:00:01     ; 1.0                     ; 353 MB              ; 00:00:01                           ;
+; Fitter                    ; 00:00:11     ; 2.8                     ; 530 MB              ; 00:00:14                           ;
+; Assembler                 ; 00:00:03     ; 1.0                     ; 381 MB              ; 00:00:02                           ;
+; TimeQuest Timing Analyzer ; 00:00:04     ; 1.0                     ; 399 MB              ; 00:00:04                           ;
+; Analysis & Synthesis      ; 00:00:02     ; 1.0                     ; 328 MB              ; 00:00:01                           ;
+; Analysis & Synthesis      ; 00:00:00     ; 1.0                     ; 328 MB              ; 00:00:01                           ;
+; Analysis & Synthesis      ; 00:00:07     ; 1.0                     ; 375 MB              ; 00:00:07                           ;
+; Partition Merge           ; 00:00:01     ; 1.0                     ; 353 MB              ; 00:00:01                           ;
+; Fitter                    ; 00:00:12     ; 2.1                     ; 530 MB              ; 00:00:14                           ;
+; Assembler                 ; 00:00:03     ; 1.0                     ; 381 MB              ; 00:00:02                           ;
+; TimeQuest Timing Analyzer ; 00:00:04     ; 1.0                     ; 400 MB              ; 00:00:04                           ;
+; Analysis & Synthesis      ; 00:00:08     ; 1.0                     ; 376 MB              ; 00:00:07                           ;
+; Partition Merge           ; 00:00:01     ; 1.0                     ; 353 MB              ; 00:00:01                           ;
+; Fitter                    ; 00:00:11     ; 1.6                     ; 530 MB              ; 00:00:13                           ;
+; Assembler                 ; 00:00:02     ; 1.0                     ; 381 MB              ; 00:00:02                           ;
+; TimeQuest Timing Analyzer ; 00:00:03     ; 2.7                     ; 400 MB              ; 00:00:04                           ;
+; Total                     ; 00:50:30     ; --                      ; --                  ; 00:53:22                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -1280,6 +1297,23 @@ applicable agreement for further details.
 ; Fitter                    ; PH238-15         ; Windows 7 ; 6.1        ; x86_64         ;
 ; Assembler                 ; PH238-15         ; Windows 7 ; 6.1        ; x86_64         ;
 ; TimeQuest Timing Analyzer ; PH238-15         ; Windows 7 ; 6.1        ; x86_64         ;
+; Analysis & Synthesis      ; PH238-15         ; Windows 7 ; 6.1        ; x86_64         ;
+; Partition Merge           ; PH238-15         ; Windows 7 ; 6.1        ; x86_64         ;
+; Fitter                    ; PH238-15         ; Windows 7 ; 6.1        ; x86_64         ;
+; Assembler                 ; PH238-15         ; Windows 7 ; 6.1        ; x86_64         ;
+; TimeQuest Timing Analyzer ; PH238-15         ; Windows 7 ; 6.1        ; x86_64         ;
+; Analysis & Synthesis      ; PH238-15         ; Windows 7 ; 6.1        ; x86_64         ;
+; Partition Merge           ; PH238-15         ; Windows 7 ; 6.1        ; x86_64         ;
+; Fitter                    ; PH238-15         ; Windows 7 ; 6.1        ; x86_64         ;
+; Assembler                 ; PH238-15         ; Windows 7 ; 6.1        ; x86_64         ;
+; TimeQuest Timing Analyzer ; PH238-15         ; Windows 7 ; 6.1        ; x86_64         ;
+; Analysis & Synthesis      ; PH238-15         ; Windows 7 ; 6.1        ; x86_64         ;
+; Partition Merge           ; PH238-15         ; Windows 7 ; 6.1        ; x86_64         ;
+; Fitter                    ; PH238-15         ; Windows 7 ; 6.1        ; x86_64         ;
+; Assembler                 ; PH238-15         ; Windows 7 ; 6.1        ; x86_64         ;
+; TimeQuest Timing Analyzer ; PH238-15         ; Windows 7 ; 6.1        ; x86_64         ;
+; Analysis & Synthesis      ; PH238-15         ; Windows 7 ; 6.1        ; x86_64         ;
+; Analysis & Synthesis      ; PH238-15         ; Windows 7 ; 6.1        ; x86_64         ;
 ; Analysis & Synthesis      ; PH238-15         ; Windows 7 ; 6.1        ; x86_64         ;
 ; Partition Merge           ; PH238-15         ; Windows 7 ; 6.1        ; x86_64         ;
 ; Fitter                    ; PH238-15         ; Windows 7 ; 6.1        ; x86_64         ;
@@ -1911,6 +1945,23 @@ quartus_cdb --read_settings_files=off --write_settings_files=off VGA_m4k -c DE2_
 quartus_fit --read_settings_files=off --write_settings_files=off VGA_m4k -c DE2_TOP
 quartus_asm --read_settings_files=off --write_settings_files=off VGA_m4k -c DE2_TOP
 quartus_sta VGA_m4k -c DE2_TOP
+quartus_map --read_settings_files=on --write_settings_files=off VGA_m4k -c DE2_TOP
+quartus_cdb --read_settings_files=off --write_settings_files=off VGA_m4k -c DE2_TOP --merge=on
+quartus_fit --read_settings_files=off --write_settings_files=off VGA_m4k -c DE2_TOP
+quartus_asm --read_settings_files=off --write_settings_files=off VGA_m4k -c DE2_TOP
+quartus_sta VGA_m4k -c DE2_TOP
+quartus_map --read_settings_files=on --write_settings_files=off VGA_m4k -c DE2_TOP
+quartus_cdb --read_settings_files=off --write_settings_files=off VGA_m4k -c DE2_TOP --merge=on
+quartus_fit --read_settings_files=off --write_settings_files=off VGA_m4k -c DE2_TOP
+quartus_asm --read_settings_files=off --write_settings_files=off VGA_m4k -c DE2_TOP
+quartus_sta VGA_m4k -c DE2_TOP
+quartus_map --read_settings_files=on --write_settings_files=off VGA_m4k -c DE2_TOP
+quartus_cdb --read_settings_files=off --write_settings_files=off VGA_m4k -c DE2_TOP --merge=on
+quartus_fit --read_settings_files=off --write_settings_files=off VGA_m4k -c DE2_TOP
+quartus_asm --read_settings_files=off --write_settings_files=off VGA_m4k -c DE2_TOP
+quartus_sta VGA_m4k -c DE2_TOP
+quartus_map --read_settings_files=on --write_settings_files=off VGA_m4k -c DE2_TOP
+quartus_map --read_settings_files=on --write_settings_files=off VGA_m4k -c DE2_TOP
 quartus_map --read_settings_files=on --write_settings_files=off VGA_m4k -c DE2_TOP
 quartus_cdb --read_settings_files=off --write_settings_files=off VGA_m4k -c DE2_TOP --merge=on
 quartus_fit --read_settings_files=off --write_settings_files=off VGA_m4k -c DE2_TOP

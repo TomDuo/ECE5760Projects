@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DE2_TOP
-Wed Feb 04 20:33:16 2015
+Wed Feb 04 21:01:06 2015
 Quartus II 64-Bit Version 11.0 Build 157 04/27/2011 SJ Full Version
 
 
@@ -53,7 +53,7 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                   ;
 +------------------------------------+-------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Feb 04 20:33:16 2015     ;
+; Analysis & Synthesis Status        ; Successful - Wed Feb 04 21:01:06 2015     ;
 ; Quartus II 64-Bit Version          ; 11.0 Build 157 04/27/2011 SJ Full Version ;
 ; Revision Name                      ; DE2_TOP                                   ;
 ; Top-level Entity Name              ; DE2_TOP                                   ;
@@ -174,12 +174,12 @@ applicable agreement for further details.
 +----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------+
 ; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                   ;
 +----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------+
+; VGA_Controller/VGA_Param.h       ; yes             ; User File                    ; C:/Users/Lab User/Desktop/ECE5760Projects/lab1/VGA_Controller/VGA_Param.h      ;
 ; vga_buffer.v                     ; yes             ; User Wizard-Generated File   ; C:/Users/Lab User/Desktop/ECE5760Projects/lab1/vga_buffer.v                    ;
 ; VGA_Controller/VGA_Controller.v  ; yes             ; User Verilog HDL File        ; C:/Users/Lab User/Desktop/ECE5760Projects/lab1/VGA_Controller/VGA_Controller.v ;
 ; Reset_Delay.v                    ; yes             ; User Verilog HDL File        ; C:/Users/Lab User/Desktop/ECE5760Projects/lab1/Reset_Delay.v                   ;
 ; VGA_Audio_PLL.v                  ; yes             ; User Wizard-Generated File   ; C:/Users/Lab User/Desktop/ECE5760Projects/lab1/VGA_Audio_PLL.v                 ;
 ; VGA_640x480_m4k_DLA.v            ; yes             ; User Verilog HDL File        ; C:/Users/Lab User/Desktop/ECE5760Projects/lab1/VGA_640x480_m4k_DLA.v           ;
-; vga_controller/vga_param.h       ; yes             ; Auto-Found Unspecified File  ; C:/Users/Lab User/Desktop/ECE5760Projects/lab1/vga_controller/vga_param.h      ;
 ; altpll.tdf                       ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/altpll.tdf                      ;
 ; aglobal110.inc                   ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/aglobal110.inc                  ;
 ; stratix_pll.inc                  ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/stratix_pll.inc                 ;
@@ -219,13 +219,13 @@ The IP Core highlighted in red is outdated. Regenerate the outdated IP with the 
 +----------------+-------------+-------------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------+
-; Dependent File Changes for Partition Top                                                                                             ;
-+-----------+-----------------------+-------------------+----------+--------------------------------+----------------------------------+
-; Hierarchy ; File Name             ; Relative Location ; Change   ; Old                            ; New                              ;
-+-----------+-----------------------+-------------------+----------+--------------------------------+----------------------------------+
-; |         ; VGA_640x480_m4k_DLA.v ; Project Directory ; Checksum ; 846569d86ea4db720517d3e08a2d22 ; 2abbc14b4632353260dc947d1f99e787 ;
-+-----------+-----------------------+-------------------+----------+--------------------------------+----------------------------------+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Dependent File Changes for Partition Top                                                                                            ;
++-----------+-----------------------+-------------------+----------+---------------------------------+--------------------------------+
+; Hierarchy ; File Name             ; Relative Location ; Change   ; Old                             ; New                            ;
++-----------+-----------------------+-------------------+----------+---------------------------------+--------------------------------+
+; |         ; VGA_640x480_m4k_DLA.v ; Project Directory ; Checksum ; 3a538a23b213d8b83b1925a2212b1d7 ; d3157b958841e8315932135f672dd6 ;
++-----------+-----------------------+-------------------+----------+---------------------------------+--------------------------------+
 
 
 +---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -233,7 +233,7 @@ The IP Core highlighted in red is outdated. Regenerate the outdated IP with the 
 +-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                            ; Library Name ;
 +-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------+--------------+
-; |DE2_TOP                                  ; 677 (197)         ; 166 (89)     ; 310000      ; 0            ; 0       ; 0         ; 159  ; 0            ; |DE2_TOP                                                                                                       ; work         ;
+; |DE2_TOP                                  ; 678 (198)         ; 166 (89)     ; 310000      ; 0            ; 0       ; 0         ; 159  ; 0            ; |DE2_TOP                                                                                                       ; work         ;
 ;    |Reset_Delay:r0|                       ; 28 (28)           ; 21 (21)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|Reset_Delay:r0                                                                                        ; work         ;
 ;    |VGA_Audio_PLL:p1|                     ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|VGA_Audio_PLL:p1                                                                                      ; work         ;
 ;       |altpll:altpll_component|           ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|VGA_Audio_PLL:p1|altpll:altpll_component                                                              ; work         ;
@@ -813,11 +813,11 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; db/decode_2qa.tdf                             ; Project Directory  ; work    ; 3037803883edf1756b7a3fdacbd20b5  ;
 ; db/mux_bkb.tdf                                ; Project Directory  ; work    ; 4351cc81a8cafd697fab8fbfb7baf9d  ;
 ; Reset_Delay.v                                 ; Project Directory  ; work    ; 8a3bd6661f98bcfb1d60d320e162e4f6 ;
-; VGA_640x480_m4k_DLA.v                         ; Project Directory  ; work    ; 2abbc14b4632353260dc947d1f99e787 ;
+; VGA_640x480_m4k_DLA.v                         ; Project Directory  ; work    ; d3157b958841e8315932135f672dd6   ;
 ; VGA_Audio_PLL.v                               ; Project Directory  ; work    ; 22fefa45db07a636ebe1114b8a0db1c  ;
 ; vga_buffer.v                                  ; Project Directory  ; work    ; 8c96d0e648d474a31471c47bacaf1a50 ;
 ; VGA_Controller/VGA_Controller.v               ; Project Directory  ; work    ; 11823a7fa98347f3cf67a5d45e2d232  ;
-; vga_controller/vga_param.h                    ; Project Directory  ; work    ; 7e7188d320f1f9613edfea680b6ea56  ;
+; VGA_Controller/VGA_Param.h                    ; Project Directory  ; work    ; 7e7188d320f1f9613edfea680b6ea56  ;
 +-----------------------------------------------+--------------------+---------+----------------------------------+
 
 
@@ -865,7 +865,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 11.0 Build 157 04/27/2011 SJ Full Version
-    Info: Processing started: Wed Feb 04 20:33:08 2015
+    Info: Processing started: Wed Feb 04 21:00:58 2015
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off VGA_m4k -c DE2_TOP
 Info: Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info: Found 1 design units, including 1 entities, in source file vga_buffer.v
@@ -1192,17 +1192,17 @@ Info: 5 registers lost all their fanouts during netlist optimizations. The first
     Info: Register "state~4" lost all its fanouts during netlist optimizations.
     Info: Register "state~5" lost all its fanouts during netlist optimizations.
     Info: Register "state.done" lost all its fanouts during netlist optimizations.
-Info: Implemented 1358 device resources after synthesis - the final resource count might be different
+Info: Implemented 1359 device resources after synthesis - the final resource count might be different
     Info: Implemented 48 input pins
     Info: Implemented 218 output pins
     Info: Implemented 318 bidirectional pins
-    Info: Implemented 697 logic cells
+    Info: Implemented 698 logic cells
     Info: Implemented 76 RAM segments
     Info: Implemented 1 PLLs
 Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 201 warnings
     Info: Peak virtual memory: 381 megabytes
-    Info: Processing ended: Wed Feb 04 20:33:16 2015
+    Info: Processing ended: Wed Feb 04 21:01:06 2015
     Info: Elapsed time: 00:00:08
-    Info: Total CPU time (on all processors): 00:00:07
+    Info: Total CPU time (on all processors): 00:00:08
 
 

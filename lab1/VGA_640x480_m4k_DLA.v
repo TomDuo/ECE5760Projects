@@ -435,7 +435,7 @@ begin
 				else
 				begin
 					we <= 1'b0 ;
-					addr_reg <= {10'd320,9'd0} ;	//(x,y)							
+					addr_reg <= {10'd301,9'd0} ;	//(x,y)							
 					//write a white dot in the middle of the screen
 					data_reg <= 1'b1 ;
 					state <= init1 ;
@@ -501,7 +501,7 @@ begin
 			test3:  
 			begin
 				we <= 1'b0; //no memory write 
-				if (x_cursor >= 10'd600)
+				if (x_cursor >= 10'd602)
 				begin
 					if (rand_side)
 					begin
@@ -563,7 +563,7 @@ begin
 			begin
 				we <= 1'b0; //no mem write
 				//increment x until end of line
-				if (x_cursor < 10'd638)
+				if (x_cursor < 10'd602)
 					x_cursor <= x_cursor + 10'd1;
 				else 
 				begin

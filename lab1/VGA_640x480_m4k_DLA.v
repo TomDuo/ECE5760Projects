@@ -317,6 +317,7 @@ reg data_reg ; // for a
 reg rand_top;
 reg rand_side;
 reg next;
+reg [7:0] switches;
 
 vga_buffer display(
 	.address_a (addr_reg) , 
@@ -335,9 +336,9 @@ vga_buffer display(
 //assign  mVGA_G = {10{disp_bit}} ;
 //assign  mVGA_B = {10{disp_bit}} ;
 
-assign  mVGA_R = disp_bit ? {Coord_Y[8:6],7'b0} : {10{disp_bit}} ;
-assign  mVGA_G = disp_bit ? {Coord_Y[5:3],7'b0} : {10{disp_bit}} ;
-assign  mVGA_B = disp_bit ? {Coord_Y[2:0],7'b0} : {10{disp_bit}} ;
+assign  mVGA_R = disp_bit ? {Coord_Y,1'b1} : 10'b1111111111 - {Coord_Y, 1'b1} ;
+assign  mVGA_G = disp_bit ? {Coord_X[9:5],5'b11111} : {Coord_X[9:5],5'b00000} ;
+assign  mVGA_B = disp_bit ? 10'b1111111111 - {Coord_Y, 1'b1} : {Coord_Y,1'b1} ;
 
 // DLA state machine
 assign reset = ~KEY[0];
@@ -411,6 +412,7 @@ begin
 		
 		rand_top <= SW[17];
 		rand_side <= SW[16];
+		switches <= SW[7:0];
 	end
 	
 	else if (scroll)
@@ -541,14 +543,14 @@ begin
 			begin
 				we <= 1'b0; //no memory write 
 				case (pattern)
-					3'b111: data_reg <= SW[7];
-					3'b110: data_reg <= SW[6];
-					3'b101: data_reg <= SW[5];
-					3'b100: data_reg <= SW[4];
-					3'b011: data_reg <= SW[3];
-					3'b010: data_reg <= SW[2];
-					3'b001: data_reg <= SW[1];
-					3'b000: data_reg <= SW[0];
+					3'b111: data_reg <= switches[7];
+					3'b110: data_reg <= switches[6];
+					3'b101: data_reg <= switches[5];
+					3'b100: data_reg <= switches[4];
+					3'b011: data_reg <= switches[3];
+					3'b010: data_reg <= switches[2];
+					3'b001: data_reg <= switches[1];
+					3'b000: data_reg <= switches[0];
 				endcase
 				
 				addr_reg <= {x_cursor, y_cursor};

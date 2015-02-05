@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DE2_TOP
-Wed Feb 04 21:59:52 2015
+Thu Feb 05 14:05:08 2015
 Quartus II 64-Bit Version 11.0 Build 157 04/27/2011 SJ Full Version
 
 
@@ -53,7 +53,7 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                   ;
 +------------------------------------+-------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Feb 04 21:59:52 2015     ;
+; Analysis & Synthesis Status        ; Successful - Thu Feb 05 14:05:08 2015     ;
 ; Quartus II 64-Bit Version          ; 11.0 Build 157 04/27/2011 SJ Full Version ;
 ; Revision Name                      ; DE2_TOP                                   ;
 ; Top-level Entity Name              ; DE2_TOP                                   ;
@@ -169,45 +169,45 @@ applicable agreement for further details.
 +----------------------------+-------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                             ;
-+----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                   ;
-+----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------+
-; VGA_Controller/VGA_Param.h       ; yes             ; User File                    ; C:/Users/Lab User/Desktop/ECE5760Projects/lab1/VGA_Controller/VGA_Param.h      ;
-; vga_buffer.v                     ; yes             ; User Wizard-Generated File   ; C:/Users/Lab User/Desktop/ECE5760Projects/lab1/vga_buffer.v                    ;
-; VGA_Controller/VGA_Controller.v  ; yes             ; User Verilog HDL File        ; C:/Users/Lab User/Desktop/ECE5760Projects/lab1/VGA_Controller/VGA_Controller.v ;
-; Reset_Delay.v                    ; yes             ; User Verilog HDL File        ; C:/Users/Lab User/Desktop/ECE5760Projects/lab1/Reset_Delay.v                   ;
-; VGA_Audio_PLL.v                  ; yes             ; User Wizard-Generated File   ; C:/Users/Lab User/Desktop/ECE5760Projects/lab1/VGA_Audio_PLL.v                 ;
-; VGA_640x480_m4k_DLA.v            ; yes             ; User Verilog HDL File        ; C:/Users/Lab User/Desktop/ECE5760Projects/lab1/VGA_640x480_m4k_DLA.v           ;
-; altpll.tdf                       ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/altpll.tdf                      ;
-; aglobal110.inc                   ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/aglobal110.inc                  ;
-; stratix_pll.inc                  ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/stratix_pll.inc                 ;
-; stratixii_pll.inc                ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/stratixii_pll.inc               ;
-; cycloneii_pll.inc                ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/cycloneii_pll.inc               ;
-; altsyncram.tdf                   ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/altsyncram.tdf                  ;
-; stratix_ram_block.inc            ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/stratix_ram_block.inc           ;
-; lpm_mux.inc                      ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/lpm_mux.inc                     ;
-; lpm_decode.inc                   ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/lpm_decode.inc                  ;
-; a_rdenreg.inc                    ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/a_rdenreg.inc                   ;
-; altrom.inc                       ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/altrom.inc                      ;
-; altram.inc                       ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/altram.inc                      ;
-; altdpram.inc                     ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/altdpram.inc                    ;
-; db/altsyncram_m352.tdf           ; yes             ; Auto-Generated Megafunction  ; C:/Users/Lab User/Desktop/ECE5760Projects/lab1/db/altsyncram_m352.tdf          ;
-; db/decode_2qa.tdf                ; yes             ; Auto-Generated Megafunction  ; C:/Users/Lab User/Desktop/ECE5760Projects/lab1/db/decode_2qa.tdf               ;
-; db/mux_bkb.tdf                   ; yes             ; Auto-Generated Megafunction  ; C:/Users/Lab User/Desktop/ECE5760Projects/lab1/db/mux_bkb.tdf                  ;
-+----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                      ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------------------------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                            ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------------------------+
+; VGA_Controller/VGA_Param.h       ; yes             ; User File                    ; C:/Users/Lab User/Documents/GitHub/ECE5760Projects/lab1/VGA_Controller/VGA_Param.h      ;
+; vga_buffer.v                     ; yes             ; User Wizard-Generated File   ; C:/Users/Lab User/Documents/GitHub/ECE5760Projects/lab1/vga_buffer.v                    ;
+; VGA_Controller/VGA_Controller.v  ; yes             ; User Verilog HDL File        ; C:/Users/Lab User/Documents/GitHub/ECE5760Projects/lab1/VGA_Controller/VGA_Controller.v ;
+; Reset_Delay.v                    ; yes             ; User Verilog HDL File        ; C:/Users/Lab User/Documents/GitHub/ECE5760Projects/lab1/Reset_Delay.v                   ;
+; VGA_Audio_PLL.v                  ; yes             ; User Wizard-Generated File   ; C:/Users/Lab User/Documents/GitHub/ECE5760Projects/lab1/VGA_Audio_PLL.v                 ;
+; VGA_640x480_m4k_DLA.v            ; yes             ; User Verilog HDL File        ; C:/Users/Lab User/Documents/GitHub/ECE5760Projects/lab1/VGA_640x480_m4k_DLA.v           ;
+; altpll.tdf                       ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/altpll.tdf                               ;
+; aglobal110.inc                   ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/aglobal110.inc                           ;
+; stratix_pll.inc                  ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/stratix_pll.inc                          ;
+; stratixii_pll.inc                ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/stratixii_pll.inc                        ;
+; cycloneii_pll.inc                ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/cycloneii_pll.inc                        ;
+; altsyncram.tdf                   ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/altsyncram.tdf                           ;
+; stratix_ram_block.inc            ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/stratix_ram_block.inc                    ;
+; lpm_mux.inc                      ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/lpm_mux.inc                              ;
+; lpm_decode.inc                   ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/lpm_decode.inc                           ;
+; a_rdenreg.inc                    ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/a_rdenreg.inc                            ;
+; altrom.inc                       ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/altrom.inc                               ;
+; altram.inc                       ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/altram.inc                               ;
+; altdpram.inc                     ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/altdpram.inc                             ;
+; db/altsyncram_m352.tdf           ; yes             ; Auto-Generated Megafunction  ; C:/Users/Lab User/Documents/GitHub/ECE5760Projects/lab1/db/altsyncram_m352.tdf          ;
+; db/decode_2qa.tdf                ; yes             ; Auto-Generated Megafunction  ; C:/Users/Lab User/Documents/GitHub/ECE5760Projects/lab1/db/decode_2qa.tdf               ;
+; db/mux_bkb.tdf                   ; yes             ; Auto-Generated Megafunction  ; C:/Users/Lab User/Documents/GitHub/ECE5760Projects/lab1/db/mux_bkb.tdf                  ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------------------------+
 
 
 The IP Core highlighted in red is outdated. Regenerate the outdated IP with the current version of the Quartus II software and the MegaWizard interface.
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis IP Cores Summary                                                                                                                        ;
-+--------+--------------+---------+--------------+--------------+-----------------------------+----------------------------------------------------------------+
-; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance             ; IP Include File                                                ;
-+--------+--------------+---------+--------------+--------------+-----------------------------+----------------------------------------------------------------+
-; Altera ; ALTPLL       ; N/A     ; N/A          ; N/A          ; |DE2_TOP|VGA_Audio_PLL:p1   ; C:/Users/Lab User/Desktop/ECE5760Projects/lab1/VGA_Audio_PLL.v ;
-; Altera ; RAM: 2-PORT  ; 8.0     ; N/A          ; N/A          ; |DE2_TOP|vga_buffer:display ; C:/Users/Lab User/Desktop/ECE5760Projects/lab1/vga_buffer.v    ;
-+--------+--------------+---------+--------------+--------------+-----------------------------+----------------------------------------------------------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis IP Cores Summary                                                                                                                                 ;
++--------+--------------+---------+--------------+--------------+-----------------------------+-------------------------------------------------------------------------+
+; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance             ; IP Include File                                                         ;
++--------+--------------+---------+--------------+--------------+-----------------------------+-------------------------------------------------------------------------+
+; Altera ; ALTPLL       ; N/A     ; N/A          ; N/A          ; |DE2_TOP|VGA_Audio_PLL:p1   ; C:/Users/Lab User/Documents/GitHub/ECE5760Projects/lab1/VGA_Audio_PLL.v ;
+; Altera ; RAM: 2-PORT  ; 8.0     ; N/A          ; N/A          ; |DE2_TOP|vga_buffer:display ; C:/Users/Lab User/Documents/GitHub/ECE5760Projects/lab1/vga_buffer.v    ;
++--------+--------------+---------+--------------+--------------+-----------------------------+-------------------------------------------------------------------------+
 
 
 +--------------------------------------------------------+
@@ -219,13 +219,13 @@ The IP Core highlighted in red is outdated. Regenerate the outdated IP with the 
 +----------------+-------------+-------------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------+
-; Dependent File Changes for Partition Top                                                                                             ;
-+-----------+-----------------------+-------------------+----------+---------------------------------+---------------------------------+
-; Hierarchy ; File Name             ; Relative Location ; Change   ; Old                             ; New                             ;
-+-----------+-----------------------+-------------------+----------+---------------------------------+---------------------------------+
-; |         ; VGA_640x480_m4k_DLA.v ; Project Directory ; Checksum ; 89cc5dc1431f6750be748ebcee8c717 ; 572adf7cfb7440ad3fdc7bae484cef7 ;
-+-----------+-----------------------+-------------------+----------+---------------------------------+---------------------------------+
++------------------------------------------------------------------------------------------------------------------------------------+
+; Dependent File Changes for Partition Top                                                                                           ;
++-----------+-----------------------+-------------------+----------+--------------------------------+--------------------------------+
+; Hierarchy ; File Name             ; Relative Location ; Change   ; Old                            ; New                            ;
++-----------+-----------------------+-------------------+----------+--------------------------------+--------------------------------+
+; |         ; VGA_640x480_m4k_DLA.v ; Project Directory ; Checksum ; 2a8624168c9b8b611397cb4a4f2db7 ; 9ca0c95c369cba79ca6f88ecafe0d3 ;
++-----------+-----------------------+-------------------+----------+--------------------------------+--------------------------------+
 
 
 +---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -233,11 +233,11 @@ The IP Core highlighted in red is outdated. Regenerate the outdated IP with the 
 +-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                            ; Library Name ;
 +-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------+--------------+
-; |DE2_TOP                                  ; 734 (249)         ; 178 (93)     ; 310000      ; 0            ; 0       ; 0         ; 159  ; 0            ; |DE2_TOP                                                                                                       ; work         ;
+; |DE2_TOP                                  ; 760 (249)         ; 202 (101)    ; 310000      ; 0            ; 0       ; 0         ; 159  ; 0            ; |DE2_TOP                                                                                                       ; work         ;
 ;    |Reset_Delay:r0|                       ; 28 (28)           ; 21 (21)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|Reset_Delay:r0                                                                                        ; work         ;
 ;    |VGA_Audio_PLL:p1|                     ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|VGA_Audio_PLL:p1                                                                                      ; work         ;
 ;       |altpll:altpll_component|           ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|VGA_Audio_PLL:p1|altpll:altpll_component                                                              ; work         ;
-;    |VGA_Controller:u1|                    ; 70 (70)           ; 50 (50)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|VGA_Controller:u1                                                                                     ; work         ;
+;    |VGA_Controller:u1|                    ; 96 (96)           ; 66 (66)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|VGA_Controller:u1                                                                                     ; work         ;
 ;    |vga_buffer:display|                   ; 387 (0)           ; 14 (0)       ; 310000      ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|vga_buffer:display                                                                                    ; work         ;
 ;       |altsyncram:altsyncram_component|   ; 387 (0)           ; 14 (0)       ; 310000      ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|vga_buffer:display|altsyncram:altsyncram_component                                                    ; work         ;
 ;          |altsyncram_m352:auto_generated| ; 387 (0)           ; 14 (14)      ; 310000      ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|vga_buffer:display|altsyncram:altsyncram_component|altsyncram_m352:auto_generated                     ; work         ;
@@ -275,21 +275,19 @@ Encoding Type:  One-Hot
 +------------------------+------------------------+------------------------+-----------------------+-----------------------+------------+--------------+-------------+-------------+------------+-------------+-------------+-------------+-------------+-------------+-------------+------------+
 
 
-+---------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                              ;
-+----------------------------------------+----------------------------------------+
-; Register name                          ; Reason for Removal                     ;
-+----------------------------------------+----------------------------------------+
-; VGA_Controller:u1|Cur_Color_R[0..6]    ; Stuck at GND due to stuck port data_in ;
-; VGA_Controller:u1|Cur_Color_G[0..6]    ; Stuck at GND due to stuck port data_in ;
-; VGA_Controller:u1|Cur_Color_B[0..6]    ; Stuck at GND due to stuck port data_in ;
-; state~2                                ; Lost fanout                            ;
-; state~3                                ; Lost fanout                            ;
-; state~4                                ; Lost fanout                            ;
-; state~5                                ; Lost fanout                            ;
-; state~6                                ; Lost fanout                            ;
-; Total Number of Removed Registers = 26 ;                                        ;
-+----------------------------------------+----------------------------------------+
++---------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                    ;
++----------------------------------------+----------------------------------------------+
+; Register name                          ; Reason for Removal                           ;
++----------------------------------------+----------------------------------------------+
+; VGA_Controller:u1|Cur_Color_G[0..4]    ; Merged with VGA_Controller:u1|Cur_Color_R[0] ;
+; state~2                                ; Lost fanout                                  ;
+; state~3                                ; Lost fanout                                  ;
+; state~4                                ; Lost fanout                                  ;
+; state~5                                ; Lost fanout                                  ;
+; state~6                                ; Lost fanout                                  ;
+; Total Number of Removed Registers = 10 ;                                              ;
++----------------------------------------+----------------------------------------------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -297,11 +295,11 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+-----------------------+----------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered            ; Example Multiplexer Output ;
 +--------------------+-----------+---------------+----------------------+------------------------+-----------------------+----------------------------+
-; 7:1                ; 9 bits    ; 36 LEs        ; 9 LEs                ; 27 LEs                 ; |DE2_TOP|y_cursor[7]  ;                            ;
-; 11:1               ; 10 bits   ; 70 LEs        ; 40 LEs               ; 30 LEs                 ; |DE2_TOP|addr_reg[10] ;                            ;
-; 10:1               ; 31 bits   ; 186 LEs       ; 31 LEs               ; 155 LEs                ; |DE2_TOP|rand[23]     ;                            ;
-; 11:1               ; 10 bits   ; 70 LEs        ; 10 LEs               ; 60 LEs                 ; |DE2_TOP|x_cursor[2]  ;                            ;
-; 12:1               ; 8 bits    ; 64 LEs        ; 24 LEs               ; 40 LEs                 ; |DE2_TOP|addr_reg[0]  ;                            ;
+; 7:1                ; 9 bits    ; 36 LEs        ; 9 LEs                ; 27 LEs                 ; |DE2_TOP|y_cursor[6]  ;                            ;
+; 11:1               ; 10 bits   ; 70 LEs        ; 40 LEs               ; 30 LEs                 ; |DE2_TOP|addr_reg[18] ;                            ;
+; 10:1               ; 31 bits   ; 186 LEs       ; 31 LEs               ; 155 LEs                ; |DE2_TOP|rand[29]     ;                            ;
+; 11:1               ; 10 bits   ; 70 LEs        ; 10 LEs               ; 60 LEs                 ; |DE2_TOP|x_cursor[1]  ;                            ;
+; 12:1               ; 8 bits    ; 64 LEs        ; 24 LEs               ; 40 LEs                 ; |DE2_TOP|addr_reg[8]  ;                            ;
 ; 4:1                ; 12 bits   ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; |DE2_TOP|state        ;                            ;
 +--------------------+-----------+---------------+----------------------+------------------------+-----------------------+----------------------------+
 
@@ -819,7 +817,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; db/decode_2qa.tdf                             ; Project Directory  ; work    ; 3037803883edf1756b7a3fdacbd20b5  ;
 ; db/mux_bkb.tdf                                ; Project Directory  ; work    ; 4351cc81a8cafd697fab8fbfb7baf9d  ;
 ; Reset_Delay.v                                 ; Project Directory  ; work    ; 8a3bd6661f98bcfb1d60d320e162e4f6 ;
-; VGA_640x480_m4k_DLA.v                         ; Project Directory  ; work    ; 572adf7cfb7440ad3fdc7bae484cef7  ;
+; VGA_640x480_m4k_DLA.v                         ; Project Directory  ; work    ; 9ca0c95c369cba79ca6f88ecafe0d3   ;
 ; VGA_Audio_PLL.v                               ; Project Directory  ; work    ; 22fefa45db07a636ebe1114b8a0db1c  ;
 ; vga_buffer.v                                  ; Project Directory  ; work    ; 8c96d0e648d474a31471c47bacaf1a50 ;
 ; VGA_Controller/VGA_Controller.v               ; Project Directory  ; work    ; 11823a7fa98347f3cf67a5d45e2d232  ;
@@ -847,9 +845,6 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; oAddress             ; Output ; Warning  ; Output or bidir port (20 bits) is wider than the port expression (19 bits) it drives; bit(s) "oAddress[19..19]" have no fanouts              ;
 ; oAddress             ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                          ;
 ; oCoord_Y[9]          ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                          ;
-; iRed[6..0]           ; Input  ; Info     ; Stuck at GND                                                                                                                                 ;
-; iGreen[6..0]         ; Input  ; Info     ; Stuck at GND                                                                                                                                 ;
-; iBlue[6..0]          ; Input  ; Info     ; Stuck at GND                                                                                                                                 ;
 ; iCursor_X            ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
 ; iCursor_Y            ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
 ; iCursor_R            ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
@@ -874,7 +869,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 11.0 Build 157 04/27/2011 SJ Full Version
-    Info: Processing started: Wed Feb 04 21:59:45 2015
+    Info: Processing started: Thu Feb 05 14:05:01 2015
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off VGA_m4k -c DE2_TOP
 Info: Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info: Found 1 design units, including 1 entities, in source file vga_buffer.v
@@ -888,9 +883,11 @@ Info: Found 1 design units, including 1 entities, in source file vga_audio_pll.v
 Warning (10463): Verilog HDL Declaration warning at VGA_640x480_m4k_DLA.v(293): "rand" is SystemVerilog-2005 keyword
 Info: Found 1 design units, including 1 entities, in source file vga_640x480_m4k_dla.v
     Info: Found entity 1: DE2_TOP
-Warning (10236): Verilog HDL Implicit Net warning at VGA_640x480_m4k_DLA.v(346): created implicit net for "low_bit"
+Warning (10236): Verilog HDL Implicit Net warning at VGA_640x480_m4k_DLA.v(347): created implicit net for "low_bit"
 Info: Elaborating entity "DE2_TOP" for the top level hierarchy
-Warning (10230): Verilog HDL assignment warning at VGA_640x480_m4k_DLA.v(617): truncated value with size 10 to match size of target (9)
+Warning (10230): Verilog HDL assignment warning at VGA_640x480_m4k_DLA.v(339): truncated value with size 11 to match size of target (10)
+Warning (10230): Verilog HDL assignment warning at VGA_640x480_m4k_DLA.v(341): truncated value with size 11 to match size of target (10)
+Warning (10230): Verilog HDL assignment warning at VGA_640x480_m4k_DLA.v(619): truncated value with size 10 to match size of target (9)
 Warning (10034): Output port "LEDG" at VGA_640x480_m4k_DLA.v(33) has no driver
 Warning (10034): Output port "LEDR[17..5]" at VGA_640x480_m4k_DLA.v(34) has no driver
 Warning (10034): Output port "I2C_SCLK" at VGA_640x480_m4k_DLA.v(98) has no driver
@@ -1192,27 +1189,6 @@ Warning: Output pins are stuck at VCC or GND
     Warning (13410): Pin "I2C_SCLK" is stuck at GND
     Warning (13410): Pin "TDO" is stuck at GND
     Warning (13410): Pin "VGA_SYNC" is stuck at GND
-    Warning (13410): Pin "VGA_R[0]" is stuck at GND
-    Warning (13410): Pin "VGA_R[1]" is stuck at GND
-    Warning (13410): Pin "VGA_R[2]" is stuck at GND
-    Warning (13410): Pin "VGA_R[3]" is stuck at GND
-    Warning (13410): Pin "VGA_R[4]" is stuck at GND
-    Warning (13410): Pin "VGA_R[5]" is stuck at GND
-    Warning (13410): Pin "VGA_R[6]" is stuck at GND
-    Warning (13410): Pin "VGA_G[0]" is stuck at GND
-    Warning (13410): Pin "VGA_G[1]" is stuck at GND
-    Warning (13410): Pin "VGA_G[2]" is stuck at GND
-    Warning (13410): Pin "VGA_G[3]" is stuck at GND
-    Warning (13410): Pin "VGA_G[4]" is stuck at GND
-    Warning (13410): Pin "VGA_G[5]" is stuck at GND
-    Warning (13410): Pin "VGA_G[6]" is stuck at GND
-    Warning (13410): Pin "VGA_B[0]" is stuck at GND
-    Warning (13410): Pin "VGA_B[1]" is stuck at GND
-    Warning (13410): Pin "VGA_B[2]" is stuck at GND
-    Warning (13410): Pin "VGA_B[3]" is stuck at GND
-    Warning (13410): Pin "VGA_B[4]" is stuck at GND
-    Warning (13410): Pin "VGA_B[5]" is stuck at GND
-    Warning (13410): Pin "VGA_B[6]" is stuck at GND
     Warning (13410): Pin "ENET_CMD" is stuck at GND
     Warning (13410): Pin "ENET_CS_N" is stuck at VCC
     Warning (13410): Pin "ENET_WR_N" is stuck at VCC
@@ -1227,17 +1203,17 @@ Info: 5 registers lost all their fanouts during netlist optimizations. The first
     Info: Register "state~4" lost all its fanouts during netlist optimizations.
     Info: Register "state~5" lost all its fanouts during netlist optimizations.
     Info: Register "state~6" lost all its fanouts during netlist optimizations.
-Info: Implemented 1414 device resources after synthesis - the final resource count might be different
+Info: Implemented 1463 device resources after synthesis - the final resource count might be different
     Info: Implemented 48 input pins
     Info: Implemented 218 output pins
     Info: Implemented 318 bidirectional pins
-    Info: Implemented 753 logic cells
+    Info: Implemented 802 logic cells
     Info: Implemented 76 RAM segments
     Info: Implemented 1 PLLs
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 227 warnings
-    Info: Peak virtual memory: 380 megabytes
-    Info: Processing ended: Wed Feb 04 21:59:52 2015
-    Info: Elapsed time: 00:00:07
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 208 warnings
+    Info: Peak virtual memory: 376 megabytes
+    Info: Processing ended: Thu Feb 05 14:05:09 2015
+    Info: Elapsed time: 00:00:08
     Info: Total CPU time (on all processors): 00:00:07
 
 

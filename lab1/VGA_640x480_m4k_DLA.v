@@ -286,7 +286,7 @@ wire [9:0]  Coord_X, Coord_Y;	//display coods
 //DLA state machine variables
 wire reset;
 wire scroll;
-reg [3:0] state;	//state machine
+reg [4:0] state;	//state machine
 reg [9:0] x_cursor;
 reg [8:0] y_cursor;
 reg [2:0] pattern;
@@ -338,24 +338,28 @@ assign  mVGA_B = {10{disp_bit}} ;
 // DLA state machine
 assign reset = ~KEY[0];
 assign scroll = ~KEY[1];
-assign LEDR[8:0] = y_cursor;
+assign LEDR[4:0] = state;
 assign low_bit = rand[27] ^ rand[30];
 
 //state names
-parameter init = 4'd0, 
-			 init1 = 4'd1,
-			 init2 = 4'd2,
-			 test = 4'd3,
-			 test1 = 4'd4,
-			 test2 = 4'd5,
-			 test3 = 4'd6,
-			 test4 = 4'd7,
-			 draw = 4'd8,
-			 draw1 = 4'd9,
-			 draw2 = 4'd10,
-			 update = 4'd11,
-			 new_screen = 4'd12,
-			 done = 4'd13;
+parameter init = 5'd0, 
+			 init1 = 5'd1,
+			 init2 = 5'd2,
+			 test = 5'd3,
+			 test1 = 5'd4,
+			 test2 = 5'd5,
+			 test3 = 5'd6,
+			 test4 = 5'd7,
+			 draw = 5'd8,
+			 draw1 = 5'd9,
+			 draw2 = 5'd10,
+			 update = 5'd11,
+			 new_screen = 5'd12,
+			 done = 5'd13,
+			 new_screen_init = 5'd14,
+			 new_screen_read = 5'd15,
+			 new_screen_read1 = 5'd16,
+			 new_screen_write = 5'd17;
 			 
 always @ (negedge VGA_CTRL_CLK)
 begin
@@ -408,7 +412,7 @@ begin
 	else if (scroll)
 	begin
 	   we <= 1'b0;
-		state <= new_screen;
+		state <= new_screen_init;
 		addr_reg <= {10'd0, 9'd479};
 	end
 	
@@ -577,11 +581,43 @@ begin
 					state <= done;
 			end
 			
-			new_screen: //generate a new one
+			new_screen_init:
 			begin
 				we <= 1'b0;
-				state <= new_screen;
 				addr_reg <= {10'd0, 9'd479};
+				state <= new_screen_read;
+			end
+			
+			new_screen_read:
+			begin
+				we <= 1'b0;
+				state <= new_screen_read1;
+			end
+			
+			new_screen_read1:
+			begin
+				we <= 1'b1;
+				addr_reg <= {addr_reg[18:9], 9'd0};
+				data_reg <= state_bit;
+				//state <= new_screen_read1;
+				state <= new_screen_write;
+			end
+			
+			new_screen_write: //generate a new one
+			begin
+				we <= 1'b0;
+				
+				if (addr_reg[18:9] >= 10'd602)
+				begin
+					x_cursor <= 10'd1;
+					y_cursor <= 10'd1;
+					state <= init2;
+				end
+				else
+				begin
+					addr_reg <= {addr_reg[18:9] + 10'd1, 9'd479};
+					state <= new_screen_read;
+				end
 			end
 			
 			done:

@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DE2_TOP
-Wed Feb 04 21:01:06 2015
+Wed Feb 04 21:50:19 2015
 Quartus II 64-Bit Version 11.0 Build 157 04/27/2011 SJ Full Version
 
 
@@ -53,7 +53,7 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                   ;
 +------------------------------------+-------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Feb 04 21:01:06 2015     ;
+; Analysis & Synthesis Status        ; Successful - Wed Feb 04 21:50:19 2015     ;
 ; Quartus II 64-Bit Version          ; 11.0 Build 157 04/27/2011 SJ Full Version ;
 ; Revision Name                      ; DE2_TOP                                   ;
 ; Top-level Entity Name              ; DE2_TOP                                   ;
@@ -219,13 +219,13 @@ The IP Core highlighted in red is outdated. Regenerate the outdated IP with the 
 +----------------+-------------+-------------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------+
-; Dependent File Changes for Partition Top                                                                                            ;
-+-----------+-----------------------+-------------------+----------+---------------------------------+--------------------------------+
-; Hierarchy ; File Name             ; Relative Location ; Change   ; Old                             ; New                            ;
-+-----------+-----------------------+-------------------+----------+---------------------------------+--------------------------------+
-; |         ; VGA_640x480_m4k_DLA.v ; Project Directory ; Checksum ; 3a538a23b213d8b83b1925a2212b1d7 ; d3157b958841e8315932135f672dd6 ;
-+-----------+-----------------------+-------------------+----------+---------------------------------+--------------------------------+
++---------------------------------------------------------------------------------------------------------------------------------------+
+; Dependent File Changes for Partition Top                                                                                              ;
++-----------+-----------------------+-------------------+----------+---------------------------------+----------------------------------+
+; Hierarchy ; File Name             ; Relative Location ; Change   ; Old                             ; New                              ;
++-----------+-----------------------+-------------------+----------+---------------------------------+----------------------------------+
+; |         ; VGA_640x480_m4k_DLA.v ; Project Directory ; Checksum ; ba7ba74e95c8c5d3e7b69ad40c47433 ; 7e53b6fe1f3fb0d37ca61da9ef7a8e9c ;
++-----------+-----------------------+-------------------+----------+---------------------------------+----------------------------------+
 
 
 +---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -233,43 +233,46 @@ The IP Core highlighted in red is outdated. Regenerate the outdated IP with the 
 +-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                            ; Library Name ;
 +-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------+--------------+
-; |DE2_TOP                                  ; 678 (198)         ; 166 (89)     ; 310000      ; 0            ; 0       ; 0         ; 159  ; 0            ; |DE2_TOP                                                                                                       ; work         ;
+; |DE2_TOP                                  ; 718 (240)         ; 170 (93)     ; 310000      ; 0            ; 0       ; 0         ; 159  ; 0            ; |DE2_TOP                                                                                                       ; work         ;
 ;    |Reset_Delay:r0|                       ; 28 (28)           ; 21 (21)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|Reset_Delay:r0                                                                                        ; work         ;
 ;    |VGA_Audio_PLL:p1|                     ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|VGA_Audio_PLL:p1                                                                                      ; work         ;
 ;       |altpll:altpll_component|           ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|VGA_Audio_PLL:p1|altpll:altpll_component                                                              ; work         ;
-;    |VGA_Controller:u1|                    ; 64 (64)           ; 42 (42)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|VGA_Controller:u1                                                                                     ; work         ;
-;    |vga_buffer:display|                   ; 388 (0)           ; 14 (0)       ; 310000      ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|vga_buffer:display                                                                                    ; work         ;
-;       |altsyncram:altsyncram_component|   ; 388 (0)           ; 14 (0)       ; 310000      ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|vga_buffer:display|altsyncram:altsyncram_component                                                    ; work         ;
-;          |altsyncram_m352:auto_generated| ; 388 (0)           ; 14 (14)      ; 310000      ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|vga_buffer:display|altsyncram:altsyncram_component|altsyncram_m352:auto_generated                     ; work         ;
-;             |decode_2qa:decode2|          ; 87 (87)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|vga_buffer:display|altsyncram:altsyncram_component|altsyncram_m352:auto_generated|decode_2qa:decode2  ; work         ;
-;             |decode_2qa:decode_a|         ; 91 (91)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|vga_buffer:display|altsyncram:altsyncram_component|altsyncram_m352:auto_generated|decode_2qa:decode_a ; work         ;
+;    |VGA_Controller:u1|                    ; 63 (63)           ; 42 (42)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|VGA_Controller:u1                                                                                     ; work         ;
+;    |vga_buffer:display|                   ; 387 (0)           ; 14 (0)       ; 310000      ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|vga_buffer:display                                                                                    ; work         ;
+;       |altsyncram:altsyncram_component|   ; 387 (0)           ; 14 (0)       ; 310000      ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|vga_buffer:display|altsyncram:altsyncram_component                                                    ; work         ;
+;          |altsyncram_m352:auto_generated| ; 387 (0)           ; 14 (14)      ; 310000      ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|vga_buffer:display|altsyncram:altsyncram_component|altsyncram_m352:auto_generated                     ; work         ;
+;             |decode_2qa:decode2|          ; 88 (88)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|vga_buffer:display|altsyncram:altsyncram_component|altsyncram_m352:auto_generated|decode_2qa:decode2  ; work         ;
+;             |decode_2qa:decode_a|         ; 90 (90)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|vga_buffer:display|altsyncram:altsyncram_component|altsyncram_m352:auto_generated|decode_2qa:decode_a ; work         ;
 ;             |decode_2qa:decode_b|         ; 86 (86)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|vga_buffer:display|altsyncram:altsyncram_component|altsyncram_m352:auto_generated|decode_2qa:decode_b ; work         ;
-;             |mux_bkb:mux4|                ; 61 (61)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|vga_buffer:display|altsyncram:altsyncram_component|altsyncram_m352:auto_generated|mux_bkb:mux4        ; work         ;
-;             |mux_bkb:mux5|                ; 63 (63)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|vga_buffer:display|altsyncram:altsyncram_component|altsyncram_m352:auto_generated|mux_bkb:mux5        ; work         ;
+;             |mux_bkb:mux4|                ; 62 (62)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|vga_buffer:display|altsyncram:altsyncram_component|altsyncram_m352:auto_generated|mux_bkb:mux4        ; work         ;
+;             |mux_bkb:mux5|                ; 61 (61)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|vga_buffer:display|altsyncram:altsyncram_component|altsyncram_m352:auto_generated|mux_bkb:mux5        ; work         ;
 +-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
 Encoding Type:  One-Hot
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; State Machine - |DE2_TOP|state                                                                                                                                                                            ;
-+------------------+------------+------------------+--------------+-------------+-------------+------------+-------------+-------------+-------------+-------------+-------------+-------------+------------+
-; Name             ; state.done ; state.new_screen ; state.update ; state.draw2 ; state.draw1 ; state.draw ; state.test4 ; state.test3 ; state.test2 ; state.test1 ; state.init2 ; state.init1 ; state.init ;
-+------------------+------------+------------------+--------------+-------------+-------------+------------+-------------+-------------+-------------+-------------+-------------+-------------+------------+
-; state.init       ; 0          ; 0                ; 0            ; 0           ; 0           ; 0          ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0          ;
-; state.init1      ; 0          ; 0                ; 0            ; 0           ; 0           ; 0          ; 0           ; 0           ; 0           ; 0           ; 0           ; 1           ; 1          ;
-; state.init2      ; 0          ; 0                ; 0            ; 0           ; 0           ; 0          ; 0           ; 0           ; 0           ; 0           ; 1           ; 0           ; 1          ;
-; state.test1      ; 0          ; 0                ; 0            ; 0           ; 0           ; 0          ; 0           ; 0           ; 0           ; 1           ; 0           ; 0           ; 1          ;
-; state.test2      ; 0          ; 0                ; 0            ; 0           ; 0           ; 0          ; 0           ; 0           ; 1           ; 0           ; 0           ; 0           ; 1          ;
-; state.test3      ; 0          ; 0                ; 0            ; 0           ; 0           ; 0          ; 0           ; 1           ; 0           ; 0           ; 0           ; 0           ; 1          ;
-; state.test4      ; 0          ; 0                ; 0            ; 0           ; 0           ; 0          ; 1           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1          ;
-; state.draw       ; 0          ; 0                ; 0            ; 0           ; 0           ; 1          ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1          ;
-; state.draw1      ; 0          ; 0                ; 0            ; 0           ; 1           ; 0          ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1          ;
-; state.draw2      ; 0          ; 0                ; 0            ; 1           ; 0           ; 0          ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1          ;
-; state.update     ; 0          ; 0                ; 1            ; 0           ; 0           ; 0          ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1          ;
-; state.new_screen ; 0          ; 1                ; 0            ; 0           ; 0           ; 0          ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1          ;
-; state.done       ; 1          ; 0                ; 0            ; 0           ; 0           ; 0          ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1          ;
-+------------------+------------+------------------+--------------+-------------+-------------+------------+-------------+-------------+-------------+-------------+-------------+-------------+------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |DE2_TOP|state                                                                                                                                                                                                                                                                 ;
++------------------------+------------------------+------------------------+-----------------------+-----------------------+------------+--------------+-------------+-------------+------------+-------------+-------------+-------------+-------------+-------------+-------------+------------+
+; Name                   ; state.new_screen_write ; state.new_screen_read1 ; state.new_screen_read ; state.new_screen_init ; state.done ; state.update ; state.draw2 ; state.draw1 ; state.draw ; state.test4 ; state.test3 ; state.test2 ; state.test1 ; state.init2 ; state.init1 ; state.init ;
++------------------------+------------------------+------------------------+-----------------------+-----------------------+------------+--------------+-------------+-------------+------------+-------------+-------------+-------------+-------------+-------------+-------------+------------+
+; state.init             ; 0                      ; 0                      ; 0                     ; 0                     ; 0          ; 0            ; 0           ; 0           ; 0          ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0          ;
+; state.init1            ; 0                      ; 0                      ; 0                     ; 0                     ; 0          ; 0            ; 0           ; 0           ; 0          ; 0           ; 0           ; 0           ; 0           ; 0           ; 1           ; 1          ;
+; state.init2            ; 0                      ; 0                      ; 0                     ; 0                     ; 0          ; 0            ; 0           ; 0           ; 0          ; 0           ; 0           ; 0           ; 0           ; 1           ; 0           ; 1          ;
+; state.test1            ; 0                      ; 0                      ; 0                     ; 0                     ; 0          ; 0            ; 0           ; 0           ; 0          ; 0           ; 0           ; 0           ; 1           ; 0           ; 0           ; 1          ;
+; state.test2            ; 0                      ; 0                      ; 0                     ; 0                     ; 0          ; 0            ; 0           ; 0           ; 0          ; 0           ; 0           ; 1           ; 0           ; 0           ; 0           ; 1          ;
+; state.test3            ; 0                      ; 0                      ; 0                     ; 0                     ; 0          ; 0            ; 0           ; 0           ; 0          ; 0           ; 1           ; 0           ; 0           ; 0           ; 0           ; 1          ;
+; state.test4            ; 0                      ; 0                      ; 0                     ; 0                     ; 0          ; 0            ; 0           ; 0           ; 0          ; 1           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1          ;
+; state.draw             ; 0                      ; 0                      ; 0                     ; 0                     ; 0          ; 0            ; 0           ; 0           ; 1          ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1          ;
+; state.draw1            ; 0                      ; 0                      ; 0                     ; 0                     ; 0          ; 0            ; 0           ; 1           ; 0          ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1          ;
+; state.draw2            ; 0                      ; 0                      ; 0                     ; 0                     ; 0          ; 0            ; 1           ; 0           ; 0          ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1          ;
+; state.update           ; 0                      ; 0                      ; 0                     ; 0                     ; 0          ; 1            ; 0           ; 0           ; 0          ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1          ;
+; state.done             ; 0                      ; 0                      ; 0                     ; 0                     ; 1          ; 0            ; 0           ; 0           ; 0          ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1          ;
+; state.new_screen_init  ; 0                      ; 0                      ; 0                     ; 1                     ; 0          ; 0            ; 0           ; 0           ; 0          ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1          ;
+; state.new_screen_read  ; 0                      ; 0                      ; 1                     ; 0                     ; 0          ; 0            ; 0           ; 0           ; 0          ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1          ;
+; state.new_screen_read1 ; 0                      ; 1                      ; 0                     ; 0                     ; 0          ; 0            ; 0           ; 0           ; 0          ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1          ;
+; state.new_screen_write ; 1                      ; 0                      ; 0                     ; 0                     ; 0          ; 0            ; 0           ; 0           ; 0          ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1          ;
++------------------------+------------------------+------------------------+-----------------------+-----------------------+------------+--------------+-------------+-------------+------------+-------------+-------------+-------------+-------------+-------------+-------------+------------+
 
 
 +---------------------------------------------------------------------------------------+
@@ -284,7 +287,7 @@ Encoding Type:  One-Hot
 ; state~3                                ; Lost fanout                                  ;
 ; state~4                                ; Lost fanout                                  ;
 ; state~5                                ; Lost fanout                                  ;
-; state.done                             ; Lost fanout                                  ;
+; state~6                                ; Lost fanout                                  ;
 ; Total Number of Removed Registers = 34 ;                                              ;
 +----------------------------------------+----------------------------------------------+
 
@@ -294,13 +297,12 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+----------------------+----------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered           ; Example Multiplexer Output ;
 +--------------------+-----------+---------------+----------------------+------------------------+----------------------+----------------------------+
-; 5:1                ; 9 bits    ; 27 LEs        ; 9 LEs                ; 18 LEs                 ; |DE2_TOP|y_cursor[6] ;                            ;
-; 9:1                ; 10 bits   ; 60 LEs        ; 10 LEs               ; 50 LEs                 ; |DE2_TOP|x_cursor[8] ;                            ;
-; 10:1               ; 8 bits    ; 48 LEs        ; 24 LEs               ; 24 LEs                 ; |DE2_TOP|addr_reg[8] ;                            ;
-; 10:1               ; 10 bits   ; 60 LEs        ; 30 LEs               ; 30 LEs                 ; |DE2_TOP|addr_reg[9] ;                            ;
-; 10:1               ; 31 bits   ; 186 LEs       ; 31 LEs               ; 155 LEs                ; |DE2_TOP|rand[5]     ;                            ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; |DE2_TOP|state       ;                            ;
-; 4:1                ; 10 bits   ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; |DE2_TOP|state       ;                            ;
+; 7:1                ; 9 bits    ; 36 LEs        ; 9 LEs                ; 27 LEs                 ; |DE2_TOP|y_cursor[5] ;                            ;
+; 11:1               ; 10 bits   ; 70 LEs        ; 40 LEs               ; 30 LEs                 ; |DE2_TOP|addr_reg[9] ;                            ;
+; 10:1               ; 31 bits   ; 186 LEs       ; 31 LEs               ; 155 LEs                ; |DE2_TOP|rand[19]    ;                            ;
+; 11:1               ; 10 bits   ; 70 LEs        ; 10 LEs               ; 60 LEs                 ; |DE2_TOP|x_cursor[6] ;                            ;
+; 12:1               ; 8 bits    ; 64 LEs        ; 24 LEs               ; 40 LEs                 ; |DE2_TOP|addr_reg[2] ;                            ;
+; 4:1                ; 12 bits   ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; |DE2_TOP|state       ;                            ;
 +--------------------+-----------+---------------+----------------------+------------------------+----------------------+----------------------------+
 
 
@@ -315,24 +317,28 @@ Encoding Type:  One-Hot
 
 +-------------------------------------------------------------------------+
 ; Parameter Settings for User Entity Instance: Top-level Entity: |DE2_TOP ;
-+----------------+-------+------------------------------------------------+
-; Parameter Name ; Value ; Type                                           ;
-+----------------+-------+------------------------------------------------+
-; init           ; 0000  ; Unsigned Binary                                ;
-; init1          ; 0001  ; Unsigned Binary                                ;
-; init2          ; 0010  ; Unsigned Binary                                ;
-; test           ; 0011  ; Unsigned Binary                                ;
-; test1          ; 0100  ; Unsigned Binary                                ;
-; test2          ; 0101  ; Unsigned Binary                                ;
-; test3          ; 0110  ; Unsigned Binary                                ;
-; test4          ; 0111  ; Unsigned Binary                                ;
-; draw           ; 1000  ; Unsigned Binary                                ;
-; draw1          ; 1001  ; Unsigned Binary                                ;
-; draw2          ; 1010  ; Unsigned Binary                                ;
-; update         ; 1011  ; Unsigned Binary                                ;
-; new_screen     ; 1100  ; Unsigned Binary                                ;
-; done           ; 1101  ; Unsigned Binary                                ;
-+----------------+-------+------------------------------------------------+
++------------------+-------+----------------------------------------------+
+; Parameter Name   ; Value ; Type                                         ;
++------------------+-------+----------------------------------------------+
+; init             ; 00000 ; Unsigned Binary                              ;
+; init1            ; 00001 ; Unsigned Binary                              ;
+; init2            ; 00010 ; Unsigned Binary                              ;
+; test             ; 00011 ; Unsigned Binary                              ;
+; test1            ; 00100 ; Unsigned Binary                              ;
+; test2            ; 00101 ; Unsigned Binary                              ;
+; test3            ; 00110 ; Unsigned Binary                              ;
+; test4            ; 00111 ; Unsigned Binary                              ;
+; draw             ; 01000 ; Unsigned Binary                              ;
+; draw1            ; 01001 ; Unsigned Binary                              ;
+; draw2            ; 01010 ; Unsigned Binary                              ;
+; update           ; 01011 ; Unsigned Binary                              ;
+; new_screen       ; 01100 ; Unsigned Binary                              ;
+; done             ; 01101 ; Unsigned Binary                              ;
+; new_screen_init  ; 01110 ; Unsigned Binary                              ;
+; new_screen_read  ; 01111 ; Unsigned Binary                              ;
+; new_screen_read1 ; 10000 ; Unsigned Binary                              ;
+; new_screen_write ; 10001 ; Unsigned Binary                              ;
++------------------+-------+----------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -813,7 +819,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; db/decode_2qa.tdf                             ; Project Directory  ; work    ; 3037803883edf1756b7a3fdacbd20b5  ;
 ; db/mux_bkb.tdf                                ; Project Directory  ; work    ; 4351cc81a8cafd697fab8fbfb7baf9d  ;
 ; Reset_Delay.v                                 ; Project Directory  ; work    ; 8a3bd6661f98bcfb1d60d320e162e4f6 ;
-; VGA_640x480_m4k_DLA.v                         ; Project Directory  ; work    ; d3157b958841e8315932135f672dd6   ;
+; VGA_640x480_m4k_DLA.v                         ; Project Directory  ; work    ; 7e53b6fe1f3fb0d37ca61da9ef7a8e9c ;
 ; VGA_Audio_PLL.v                               ; Project Directory  ; work    ; 22fefa45db07a636ebe1114b8a0db1c  ;
 ; vga_buffer.v                                  ; Project Directory  ; work    ; 8c96d0e648d474a31471c47bacaf1a50 ;
 ; VGA_Controller/VGA_Controller.v               ; Project Directory  ; work    ; 11823a7fa98347f3cf67a5d45e2d232  ;
@@ -865,7 +871,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 11.0 Build 157 04/27/2011 SJ Full Version
-    Info: Processing started: Wed Feb 04 21:00:58 2015
+    Info: Processing started: Wed Feb 04 21:50:12 2015
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off VGA_m4k -c DE2_TOP
 Info: Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info: Found 1 design units, including 1 entities, in source file vga_buffer.v
@@ -881,8 +887,9 @@ Info: Found 1 design units, including 1 entities, in source file vga_640x480_m4k
     Info: Found entity 1: DE2_TOP
 Warning (10236): Verilog HDL Implicit Net warning at VGA_640x480_m4k_DLA.v(342): created implicit net for "low_bit"
 Info: Elaborating entity "DE2_TOP" for the top level hierarchy
+Warning (10230): Verilog HDL assignment warning at VGA_640x480_m4k_DLA.v(613): truncated value with size 10 to match size of target (9)
 Warning (10034): Output port "LEDG" at VGA_640x480_m4k_DLA.v(33) has no driver
-Warning (10034): Output port "LEDR[17..9]" at VGA_640x480_m4k_DLA.v(34) has no driver
+Warning (10034): Output port "LEDR[17..5]" at VGA_640x480_m4k_DLA.v(34) has no driver
 Warning (10034): Output port "I2C_SCLK" at VGA_640x480_m4k_DLA.v(98) has no driver
 Warning (10034): Output port "AUD_DACDAT" at VGA_640x480_m4k_DLA.v(129) has no driver
 Warning (10665): Bidirectional port "AUD_DACLRCK" at VGA_640x480_m4k_DLA.v(128) has a one-way connection to bidirectional port "AUD_ADCLRCK"
@@ -1077,6 +1084,10 @@ Warning: Output pins are stuck at VCC or GND
     Warning (13410): Pin "LEDG[6]" is stuck at GND
     Warning (13410): Pin "LEDG[7]" is stuck at GND
     Warning (13410): Pin "LEDG[8]" is stuck at GND
+    Warning (13410): Pin "LEDR[5]" is stuck at GND
+    Warning (13410): Pin "LEDR[6]" is stuck at GND
+    Warning (13410): Pin "LEDR[7]" is stuck at GND
+    Warning (13410): Pin "LEDR[8]" is stuck at GND
     Warning (13410): Pin "LEDR[9]" is stuck at GND
     Warning (13410): Pin "LEDR[10]" is stuck at GND
     Warning (13410): Pin "LEDR[11]" is stuck at GND
@@ -1191,17 +1202,17 @@ Info: 5 registers lost all their fanouts during netlist optimizations. The first
     Info: Register "state~3" lost all its fanouts during netlist optimizations.
     Info: Register "state~4" lost all its fanouts during netlist optimizations.
     Info: Register "state~5" lost all its fanouts during netlist optimizations.
-    Info: Register "state.done" lost all its fanouts during netlist optimizations.
-Info: Implemented 1359 device resources after synthesis - the final resource count might be different
+    Info: Register "state~6" lost all its fanouts during netlist optimizations.
+Info: Implemented 1399 device resources after synthesis - the final resource count might be different
     Info: Implemented 48 input pins
     Info: Implemented 218 output pins
     Info: Implemented 318 bidirectional pins
-    Info: Implemented 698 logic cells
+    Info: Implemented 738 logic cells
     Info: Implemented 76 RAM segments
     Info: Implemented 1 PLLs
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 201 warnings
-    Info: Peak virtual memory: 381 megabytes
-    Info: Processing ended: Wed Feb 04 21:01:06 2015
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 206 warnings
+    Info: Peak virtual memory: 382 megabytes
+    Info: Processing ended: Wed Feb 04 21:50:20 2015
     Info: Elapsed time: 00:00:08
     Info: Total CPU time (on all processors): 00:00:08
 

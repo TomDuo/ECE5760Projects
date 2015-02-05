@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DE2_TOP
-Wed Feb 04 21:50:19 2015
+Wed Feb 04 21:59:52 2015
 Quartus II 64-Bit Version 11.0 Build 157 04/27/2011 SJ Full Version
 
 
@@ -53,7 +53,7 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                   ;
 +------------------------------------+-------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Feb 04 21:50:19 2015     ;
+; Analysis & Synthesis Status        ; Successful - Wed Feb 04 21:59:52 2015     ;
 ; Quartus II 64-Bit Version          ; 11.0 Build 157 04/27/2011 SJ Full Version ;
 ; Revision Name                      ; DE2_TOP                                   ;
 ; Top-level Entity Name              ; DE2_TOP                                   ;
@@ -219,13 +219,13 @@ The IP Core highlighted in red is outdated. Regenerate the outdated IP with the 
 +----------------+-------------+-------------------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------+
-; Dependent File Changes for Partition Top                                                                                              ;
-+-----------+-----------------------+-------------------+----------+---------------------------------+----------------------------------+
-; Hierarchy ; File Name             ; Relative Location ; Change   ; Old                             ; New                              ;
-+-----------+-----------------------+-------------------+----------+---------------------------------+----------------------------------+
-; |         ; VGA_640x480_m4k_DLA.v ; Project Directory ; Checksum ; ba7ba74e95c8c5d3e7b69ad40c47433 ; 7e53b6fe1f3fb0d37ca61da9ef7a8e9c ;
-+-----------+-----------------------+-------------------+----------+---------------------------------+----------------------------------+
++--------------------------------------------------------------------------------------------------------------------------------------+
+; Dependent File Changes for Partition Top                                                                                             ;
++-----------+-----------------------+-------------------+----------+---------------------------------+---------------------------------+
+; Hierarchy ; File Name             ; Relative Location ; Change   ; Old                             ; New                             ;
++-----------+-----------------------+-------------------+----------+---------------------------------+---------------------------------+
+; |         ; VGA_640x480_m4k_DLA.v ; Project Directory ; Checksum ; 89cc5dc1431f6750be748ebcee8c717 ; 572adf7cfb7440ad3fdc7bae484cef7 ;
++-----------+-----------------------+-------------------+----------+---------------------------------+---------------------------------+
 
 
 +---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -233,19 +233,19 @@ The IP Core highlighted in red is outdated. Regenerate the outdated IP with the 
 +-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                            ; Library Name ;
 +-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------+--------------+
-; |DE2_TOP                                  ; 718 (240)         ; 170 (93)     ; 310000      ; 0            ; 0       ; 0         ; 159  ; 0            ; |DE2_TOP                                                                                                       ; work         ;
+; |DE2_TOP                                  ; 734 (249)         ; 178 (93)     ; 310000      ; 0            ; 0       ; 0         ; 159  ; 0            ; |DE2_TOP                                                                                                       ; work         ;
 ;    |Reset_Delay:r0|                       ; 28 (28)           ; 21 (21)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|Reset_Delay:r0                                                                                        ; work         ;
 ;    |VGA_Audio_PLL:p1|                     ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|VGA_Audio_PLL:p1                                                                                      ; work         ;
 ;       |altpll:altpll_component|           ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|VGA_Audio_PLL:p1|altpll:altpll_component                                                              ; work         ;
-;    |VGA_Controller:u1|                    ; 63 (63)           ; 42 (42)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|VGA_Controller:u1                                                                                     ; work         ;
+;    |VGA_Controller:u1|                    ; 70 (70)           ; 50 (50)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|VGA_Controller:u1                                                                                     ; work         ;
 ;    |vga_buffer:display|                   ; 387 (0)           ; 14 (0)       ; 310000      ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|vga_buffer:display                                                                                    ; work         ;
 ;       |altsyncram:altsyncram_component|   ; 387 (0)           ; 14 (0)       ; 310000      ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|vga_buffer:display|altsyncram:altsyncram_component                                                    ; work         ;
 ;          |altsyncram_m352:auto_generated| ; 387 (0)           ; 14 (14)      ; 310000      ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|vga_buffer:display|altsyncram:altsyncram_component|altsyncram_m352:auto_generated                     ; work         ;
 ;             |decode_2qa:decode2|          ; 88 (88)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|vga_buffer:display|altsyncram:altsyncram_component|altsyncram_m352:auto_generated|decode_2qa:decode2  ; work         ;
 ;             |decode_2qa:decode_a|         ; 90 (90)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|vga_buffer:display|altsyncram:altsyncram_component|altsyncram_m352:auto_generated|decode_2qa:decode_a ; work         ;
 ;             |decode_2qa:decode_b|         ; 86 (86)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|vga_buffer:display|altsyncram:altsyncram_component|altsyncram_m352:auto_generated|decode_2qa:decode_b ; work         ;
-;             |mux_bkb:mux4|                ; 62 (62)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|vga_buffer:display|altsyncram:altsyncram_component|altsyncram_m352:auto_generated|mux_bkb:mux4        ; work         ;
-;             |mux_bkb:mux5|                ; 61 (61)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|vga_buffer:display|altsyncram:altsyncram_component|altsyncram_m352:auto_generated|mux_bkb:mux5        ; work         ;
+;             |mux_bkb:mux4|                ; 63 (63)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|vga_buffer:display|altsyncram:altsyncram_component|altsyncram_m352:auto_generated|mux_bkb:mux4        ; work         ;
+;             |mux_bkb:mux5|                ; 60 (60)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_TOP|vga_buffer:display|altsyncram:altsyncram_component|altsyncram_m352:auto_generated|mux_bkb:mux5        ; work         ;
 +-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -275,35 +275,35 @@ Encoding Type:  One-Hot
 +------------------------+------------------------+------------------------+-----------------------+-----------------------+------------+--------------+-------------+-------------+------------+-------------+-------------+-------------+-------------+-------------+-------------+------------+
 
 
-+---------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                    ;
-+----------------------------------------+----------------------------------------------+
-; Register name                          ; Reason for Removal                           ;
-+----------------------------------------+----------------------------------------------+
-; VGA_Controller:u1|Cur_Color_R[0..8]    ; Merged with VGA_Controller:u1|Cur_Color_R[9] ;
-; VGA_Controller:u1|Cur_Color_G[0..9]    ; Merged with VGA_Controller:u1|Cur_Color_R[9] ;
-; VGA_Controller:u1|Cur_Color_B[0..9]    ; Merged with VGA_Controller:u1|Cur_Color_R[9] ;
-; state~2                                ; Lost fanout                                  ;
-; state~3                                ; Lost fanout                                  ;
-; state~4                                ; Lost fanout                                  ;
-; state~5                                ; Lost fanout                                  ;
-; state~6                                ; Lost fanout                                  ;
-; Total Number of Removed Registers = 34 ;                                              ;
-+----------------------------------------+----------------------------------------------+
++---------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                              ;
++----------------------------------------+----------------------------------------+
+; Register name                          ; Reason for Removal                     ;
++----------------------------------------+----------------------------------------+
+; VGA_Controller:u1|Cur_Color_R[0..6]    ; Stuck at GND due to stuck port data_in ;
+; VGA_Controller:u1|Cur_Color_G[0..6]    ; Stuck at GND due to stuck port data_in ;
+; VGA_Controller:u1|Cur_Color_B[0..6]    ; Stuck at GND due to stuck port data_in ;
+; state~2                                ; Lost fanout                            ;
+; state~3                                ; Lost fanout                            ;
+; state~4                                ; Lost fanout                            ;
+; state~5                                ; Lost fanout                            ;
+; state~6                                ; Lost fanout                            ;
+; Total Number of Removed Registers = 26 ;                                        ;
++----------------------------------------+----------------------------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                     ;
-+--------------------+-----------+---------------+----------------------+------------------------+----------------------+----------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered           ; Example Multiplexer Output ;
-+--------------------+-----------+---------------+----------------------+------------------------+----------------------+----------------------------+
-; 7:1                ; 9 bits    ; 36 LEs        ; 9 LEs                ; 27 LEs                 ; |DE2_TOP|y_cursor[5] ;                            ;
-; 11:1               ; 10 bits   ; 70 LEs        ; 40 LEs               ; 30 LEs                 ; |DE2_TOP|addr_reg[9] ;                            ;
-; 10:1               ; 31 bits   ; 186 LEs       ; 31 LEs               ; 155 LEs                ; |DE2_TOP|rand[19]    ;                            ;
-; 11:1               ; 10 bits   ; 70 LEs        ; 10 LEs               ; 60 LEs                 ; |DE2_TOP|x_cursor[6] ;                            ;
-; 12:1               ; 8 bits    ; 64 LEs        ; 24 LEs               ; 40 LEs                 ; |DE2_TOP|addr_reg[2] ;                            ;
-; 4:1                ; 12 bits   ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; |DE2_TOP|state       ;                            ;
-+--------------------+-----------+---------------+----------------------+------------------------+----------------------+----------------------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                      ;
++--------------------+-----------+---------------+----------------------+------------------------+-----------------------+----------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered            ; Example Multiplexer Output ;
++--------------------+-----------+---------------+----------------------+------------------------+-----------------------+----------------------------+
+; 7:1                ; 9 bits    ; 36 LEs        ; 9 LEs                ; 27 LEs                 ; |DE2_TOP|y_cursor[7]  ;                            ;
+; 11:1               ; 10 bits   ; 70 LEs        ; 40 LEs               ; 30 LEs                 ; |DE2_TOP|addr_reg[10] ;                            ;
+; 10:1               ; 31 bits   ; 186 LEs       ; 31 LEs               ; 155 LEs                ; |DE2_TOP|rand[23]     ;                            ;
+; 11:1               ; 10 bits   ; 70 LEs        ; 10 LEs               ; 60 LEs                 ; |DE2_TOP|x_cursor[2]  ;                            ;
+; 12:1               ; 8 bits    ; 64 LEs        ; 24 LEs               ; 40 LEs                 ; |DE2_TOP|addr_reg[0]  ;                            ;
+; 4:1                ; 12 bits   ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; |DE2_TOP|state        ;                            ;
++--------------------+-----------+---------------+----------------------+------------------------+-----------------------+----------------------------+
 
 
 +----------------------------------------------------------------------------------------------------------+
@@ -819,7 +819,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; db/decode_2qa.tdf                             ; Project Directory  ; work    ; 3037803883edf1756b7a3fdacbd20b5  ;
 ; db/mux_bkb.tdf                                ; Project Directory  ; work    ; 4351cc81a8cafd697fab8fbfb7baf9d  ;
 ; Reset_Delay.v                                 ; Project Directory  ; work    ; 8a3bd6661f98bcfb1d60d320e162e4f6 ;
-; VGA_640x480_m4k_DLA.v                         ; Project Directory  ; work    ; 7e53b6fe1f3fb0d37ca61da9ef7a8e9c ;
+; VGA_640x480_m4k_DLA.v                         ; Project Directory  ; work    ; 572adf7cfb7440ad3fdc7bae484cef7  ;
 ; VGA_Audio_PLL.v                               ; Project Directory  ; work    ; 22fefa45db07a636ebe1114b8a0db1c  ;
 ; vga_buffer.v                                  ; Project Directory  ; work    ; 8c96d0e648d474a31471c47bacaf1a50 ;
 ; VGA_Controller/VGA_Controller.v               ; Project Directory  ; work    ; 11823a7fa98347f3cf67a5d45e2d232  ;
@@ -847,6 +847,9 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; oAddress             ; Output ; Warning  ; Output or bidir port (20 bits) is wider than the port expression (19 bits) it drives; bit(s) "oAddress[19..19]" have no fanouts              ;
 ; oAddress             ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                          ;
 ; oCoord_Y[9]          ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                          ;
+; iRed[6..0]           ; Input  ; Info     ; Stuck at GND                                                                                                                                 ;
+; iGreen[6..0]         ; Input  ; Info     ; Stuck at GND                                                                                                                                 ;
+; iBlue[6..0]          ; Input  ; Info     ; Stuck at GND                                                                                                                                 ;
 ; iCursor_X            ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
 ; iCursor_Y            ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
 ; iCursor_R            ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
@@ -871,7 +874,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 11.0 Build 157 04/27/2011 SJ Full Version
-    Info: Processing started: Wed Feb 04 21:50:12 2015
+    Info: Processing started: Wed Feb 04 21:59:45 2015
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off VGA_m4k -c DE2_TOP
 Info: Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info: Found 1 design units, including 1 entities, in source file vga_buffer.v
@@ -885,9 +888,9 @@ Info: Found 1 design units, including 1 entities, in source file vga_audio_pll.v
 Warning (10463): Verilog HDL Declaration warning at VGA_640x480_m4k_DLA.v(293): "rand" is SystemVerilog-2005 keyword
 Info: Found 1 design units, including 1 entities, in source file vga_640x480_m4k_dla.v
     Info: Found entity 1: DE2_TOP
-Warning (10236): Verilog HDL Implicit Net warning at VGA_640x480_m4k_DLA.v(342): created implicit net for "low_bit"
+Warning (10236): Verilog HDL Implicit Net warning at VGA_640x480_m4k_DLA.v(346): created implicit net for "low_bit"
 Info: Elaborating entity "DE2_TOP" for the top level hierarchy
-Warning (10230): Verilog HDL assignment warning at VGA_640x480_m4k_DLA.v(613): truncated value with size 10 to match size of target (9)
+Warning (10230): Verilog HDL assignment warning at VGA_640x480_m4k_DLA.v(617): truncated value with size 10 to match size of target (9)
 Warning (10034): Output port "LEDG" at VGA_640x480_m4k_DLA.v(33) has no driver
 Warning (10034): Output port "LEDR[17..5]" at VGA_640x480_m4k_DLA.v(34) has no driver
 Warning (10034): Output port "I2C_SCLK" at VGA_640x480_m4k_DLA.v(98) has no driver
@@ -1189,6 +1192,27 @@ Warning: Output pins are stuck at VCC or GND
     Warning (13410): Pin "I2C_SCLK" is stuck at GND
     Warning (13410): Pin "TDO" is stuck at GND
     Warning (13410): Pin "VGA_SYNC" is stuck at GND
+    Warning (13410): Pin "VGA_R[0]" is stuck at GND
+    Warning (13410): Pin "VGA_R[1]" is stuck at GND
+    Warning (13410): Pin "VGA_R[2]" is stuck at GND
+    Warning (13410): Pin "VGA_R[3]" is stuck at GND
+    Warning (13410): Pin "VGA_R[4]" is stuck at GND
+    Warning (13410): Pin "VGA_R[5]" is stuck at GND
+    Warning (13410): Pin "VGA_R[6]" is stuck at GND
+    Warning (13410): Pin "VGA_G[0]" is stuck at GND
+    Warning (13410): Pin "VGA_G[1]" is stuck at GND
+    Warning (13410): Pin "VGA_G[2]" is stuck at GND
+    Warning (13410): Pin "VGA_G[3]" is stuck at GND
+    Warning (13410): Pin "VGA_G[4]" is stuck at GND
+    Warning (13410): Pin "VGA_G[5]" is stuck at GND
+    Warning (13410): Pin "VGA_G[6]" is stuck at GND
+    Warning (13410): Pin "VGA_B[0]" is stuck at GND
+    Warning (13410): Pin "VGA_B[1]" is stuck at GND
+    Warning (13410): Pin "VGA_B[2]" is stuck at GND
+    Warning (13410): Pin "VGA_B[3]" is stuck at GND
+    Warning (13410): Pin "VGA_B[4]" is stuck at GND
+    Warning (13410): Pin "VGA_B[5]" is stuck at GND
+    Warning (13410): Pin "VGA_B[6]" is stuck at GND
     Warning (13410): Pin "ENET_CMD" is stuck at GND
     Warning (13410): Pin "ENET_CS_N" is stuck at VCC
     Warning (13410): Pin "ENET_WR_N" is stuck at VCC
@@ -1203,17 +1227,17 @@ Info: 5 registers lost all their fanouts during netlist optimizations. The first
     Info: Register "state~4" lost all its fanouts during netlist optimizations.
     Info: Register "state~5" lost all its fanouts during netlist optimizations.
     Info: Register "state~6" lost all its fanouts during netlist optimizations.
-Info: Implemented 1399 device resources after synthesis - the final resource count might be different
+Info: Implemented 1414 device resources after synthesis - the final resource count might be different
     Info: Implemented 48 input pins
     Info: Implemented 218 output pins
     Info: Implemented 318 bidirectional pins
-    Info: Implemented 738 logic cells
+    Info: Implemented 753 logic cells
     Info: Implemented 76 RAM segments
     Info: Implemented 1 PLLs
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 206 warnings
-    Info: Peak virtual memory: 382 megabytes
-    Info: Processing ended: Wed Feb 04 21:50:20 2015
-    Info: Elapsed time: 00:00:08
-    Info: Total CPU time (on all processors): 00:00:08
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 227 warnings
+    Info: Peak virtual memory: 380 megabytes
+    Info: Processing ended: Wed Feb 04 21:59:52 2015
+    Info: Elapsed time: 00:00:07
+    Info: Total CPU time (on all processors): 00:00:07
 
 

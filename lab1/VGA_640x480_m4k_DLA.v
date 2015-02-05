@@ -331,9 +331,13 @@ vga_buffer display(
 	.q_b (mem_bit) ); // data used to update VGA
 
 // make the color white
-assign  mVGA_R = {10{disp_bit}} ;
-assign  mVGA_G = {10{disp_bit}} ;
-assign  mVGA_B = {10{disp_bit}} ;
+//assign  mVGA_R = {10{disp_bit}} ;
+//assign  mVGA_G = {10{disp_bit}} ;
+//assign  mVGA_B = {10{disp_bit}} ;
+
+assign  mVGA_R = disp_bit ? {Coord_Y[8:6],7'b0} : {10{disp_bit}} ;
+assign  mVGA_G = disp_bit ? {Coord_Y[5:3],7'b0} : {10{disp_bit}} ;
+assign  mVGA_B = disp_bit ? {Coord_Y[2:0],7'b0} : {10{disp_bit}} ;
 
 // DLA state machine
 assign reset = ~KEY[0];

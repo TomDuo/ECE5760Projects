@@ -1,0 +1,8 @@
+
+**** Build of configuration Nios II for project nios2processor_app ****
+
+make all 
+Info: Building ../nios2processor_bsp/
+make --no-print-directory -C ../nios2processor_bsp/
+[BSP build complete]
+[nios2processor_app build complete]

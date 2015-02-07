@@ -1,0 +1,20 @@
+#include <stdio.h>
+#include "system.h"
+
+
+int
+main(void) {
+	FILE* fp;
+	fp = fopen ("/dev/lcd_0", "w");
+	if (fp == NULL)
+	{
+		fprintf(stderr, "open failed\n");
+		return 0;
+	}
+
+	fprintf(fp, "This is LCD demo\n");
+	fprintf(fp, "Altera HAL usage");
+	fclose (fp);
+	//while (1);
+	return 0;
+}

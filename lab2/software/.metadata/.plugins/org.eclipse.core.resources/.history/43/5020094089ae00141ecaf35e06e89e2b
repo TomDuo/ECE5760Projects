@@ -1,0 +1,14 @@
+/*
+ * main.c
+ *
+ *  Created on: Feb 6, 2015
+ *      Author: Lab User
+ */
+
+#include <stdio.h>
+
+int main()
+{
+	printf("hello world!");
+	return 0;
+}

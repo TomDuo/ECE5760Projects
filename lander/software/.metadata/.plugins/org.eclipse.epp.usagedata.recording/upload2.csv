@@ -1,0 +1,301 @@
+what,kind,bundleId,bundleVersion,description,time
+started,bundle,org.eclipse.equinox.registry,3.5.0.v20100503,"org.eclipse.equinox.registry",1423681836293
+started,bundle,org.eclipse.equinox.security,1.0.200.v20100503,"org.eclipse.equinox.security",1423681836293
+started,bundle,org.eclipse.equinox.simpleconfigurator.manipulator,2.0.0.v20100503,"org.eclipse.equinox.simpleconfigurator.manipulator",1423681836294
+started,bundle,org.eclipse.equinox.util,1.0.200.v20100503,"org.eclipse.equinox.util",1423681836294
+started,bundle,org.eclipse.help,3.5.0.v20100524,"org.eclipse.help",1423681836294
+started,bundle,org.eclipse.jface,3.6.1.M20100825-0800,"org.eclipse.jface",1423681836294
+started,bundle,org.eclipse.jsch.core,1.1.200.I20100505-1245,"org.eclipse.jsch.core",1423681836294
+started,bundle,org.eclipse.ltk.core.refactoring,3.5.100.v20100526-0800,"org.eclipse.ltk.core.refactoring",1423681836295
+started,bundle,org.eclipse.ltk.ui.refactoring,3.5.0.v20100526-0800,"org.eclipse.ltk.ui.refactoring",1423681836295
+started,bundle,org.eclipse.mylyn.commons.net,3.4.1.v20100625-2100-e3x,"org.eclipse.mylyn.commons.net",1423681836295
+started,bundle,org.eclipse.mylyn.monitor.ui,3.4.0.v20100608-0100-e3x,"org.eclipse.mylyn.monitor.ui",1423681836295
+started,bundle,org.eclipse.search,3.6.0.v20100520-0800,"org.eclipse.search",1423681836295
+started,bundle,org.eclipse.team.core,3.5.100.R36x_v20100825-0800,"org.eclipse.team.core",1423681836295
+started,bundle,org.eclipse.team.cvs.core,3.3.300.I20100526-0800,"org.eclipse.team.cvs.core",1423681836295
+started,bundle,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui",1423681836295
+started,bundle,org.eclipse.ui.editors,3.6.1.r361_v20100825-0800,"org.eclipse.ui.editors",1423681836295
+started,bundle,org.eclipse.ui.forms,3.5.2.r36_v20100702,"org.eclipse.ui.forms",1423681836295
+started,bundle,org.eclipse.ui.ide,3.6.1.M20100825-0800,"org.eclipse.ui.ide",1423681836295
+started,bundle,org.eclipse.ui.navigator,3.5.0.I20100601-0800,"org.eclipse.ui.navigator",1423681836295
+started,bundle,org.eclipse.ui.navigator.resources,3.4.201.M20100707-0800,"org.eclipse.ui.navigator.resources",1423681836295
+started,bundle,org.eclipse.ui.net,1.2.100.I20100505-1245,"org.eclipse.ui.net",1423681836295
+started,bundle,org.eclipse.ui.views,3.5.0.I20100527-0800,"org.eclipse.ui.views",1423681836295
+started,bundle,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"org.eclipse.ui.workbench",1423681836295
+started,bundle,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.workbench.texteditor",1423681836295
+started,bundle,org.eclipse.update.configurator,3.3.100.v20100512,"org.eclipse.update.configurator",1423681836296
+started,bundle,com.altera.sbtgui.project,11.0.0.157,"com.altera.sbtgui.project",1423681836296
+os,sysinfo,,,"win32",1423681836299
+arch,sysinfo,,,"x86",1423681836299
+ws,sysinfo,,,"win32",1423681836299
+locale,sysinfo,,,"en_US",1423681836299
+processors,sysinfo,,,"4",1423681836299
+java.runtime.name,sysinfo,,,"Java(TM) SE Runtime Environment",1423681836299
+java.runtime.version,sysinfo,,,"1.6.0_23-b05",1423681836299
+java.specification.name,sysinfo,,,"Java Platform API Specification",1423681836299
+java.specification.vendor,sysinfo,,,"Sun Microsystems Inc.",1423681836299
+java.specification.version,sysinfo,,,"1.6",1423681836299
+java.vendor,sysinfo,,,"Sun Microsystems Inc.",1423681836299
+java.version,sysinfo,,,"1.6.0_23",1423681836299
+java.vm.info,sysinfo,,,"mixed mode",1423681836299
+java.vm.name,sysinfo,,,"Java HotSpot(TM) Client VM",1423681836299
+java.vm.specification.name,sysinfo,,,"Java Virtual Machine Specification",1423681836299
+java.vm.specification.vendor,sysinfo,,,"Sun Microsystems Inc.",1423681836299
+java.vm.specification.version,sysinfo,,,"1.0",1423681836299
+java.vm.vendor,sysinfo,,,"Sun Microsystems Inc.",1423681836299
+java.vm.version,sysinfo,,,"19.0-b09",1423681836299
+started,bundle,org.eclipse.mylyn.commons.ui,3.4.0.v20100608-0100-e3x,"org.eclipse.mylyn.commons.ui",1423681836337
+started,bundle,org.eclipse.team.ui,3.5.101.R36x_v20100825-0800,"org.eclipse.team.ui",1423681836387
+started,bundle,org.eclipse.ui.console,3.5.0.v20100526,"org.eclipse.ui.console",1423681836441
+started,bundle,org.eclipse.mylyn.bugzilla.core,3.4.2.v20100902-0100-e3x,"org.eclipse.mylyn.bugzilla.core",1423681836483
+started,bundle,org.eclipse.team.cvs.ui,3.3.301.R36x_v20100825-0800,"org.eclipse.team.cvs.ui",1423681836568
+started,bundle,org.eclipse.mylyn.bugzilla.ui,3.4.2.v20100909-0100-e3x,"org.eclipse.mylyn.bugzilla.ui",1423681836585
+started,bundle,org.eclipse.mylyn.context.core,3.4.1.v20100909-0100-e3x,"org.eclipse.mylyn.context.core",1423681837007
+started,bundle,org.eclipse.mylyn.context.ui,3.4.1.v20100909-0100-e3x,"org.eclipse.mylyn.context.ui",1423681837014
+started,bundle,org.eclipse.mylyn.tasks.ui,3.4.2.v20100902-0100-e3x,"org.eclipse.mylyn.tasks.ui",1423681837151
+started,bundle,org.eclipse.mylyn.team.ui,3.4.2.v20100909-0100-e3x,"org.eclipse.mylyn.team.ui",1423681837154
+started,bundle,org.eclipse.update.scheduler,3.2.300.v20100512,"org.eclipse.update.scheduler",1423681837156
+started,bundle,org.eclipse.update.core,3.2.402.R36x_v20100629,"org.eclipse.update.core",1423681837210
+started,bundle,com.altera.sbtgui.integration,11.0.0.157,"com.altera.sbtgui.integration",1423681838791
+started,bundle,com.altera.systemconsole,11.0.0.157,"com.altera.systemconsole",1423681838795
+started,bundle,com.altera.utilities,11.0.0.157,"com.altera.utilities",1423681838943
+started,bundle,com.altera.sbtgui.launch,11.0.0.157,"com.altera.sbtgui.launch",1423681839698
+activated,view,org.eclipse.ui.navigator.resources,3.4.201.M20100707-0800,"org.eclipse.ui.navigator.ProjectExplorer",1423681841211
+started,bundle,com.altera.sbtgui.core,11.0.0.157,"com.altera.sbtgui.core",1423681842126
+started,bundle,org.eclipse.compare,3.5.100.I20100526-0800,"org.eclipse.compare",1423681842508
+opened,view,org.eclipse.ui.console,3.5.0.v20100526,"org.eclipse.ui.console.ConsoleView",1423681845536
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423681845553
+started,bundle,org.eclipse.cdt.dsf.gdb.ui,2.1.0.201009141542,"org.eclipse.cdt.dsf.gdb.ui",1423681845626
+started,bundle,org.eclipse.debug.ui,3.6.1.v20100901_r361,"org.eclipse.debug.ui",1423681845754
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423681847003
+activated,editor,org.eclipse.cdt.ui,5.2.1.201009141542,"org.eclipse.cdt.ui.editor.CEditor",1423681858957
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423681861489
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423681870269
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423681870857
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423681871882
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423681879345
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423681881046
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423681881213
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.file.refresh",1423681884630
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.paste",1423681887432
+activated,view,org.eclipse.ui.console,3.5.0.v20100526,"org.eclipse.ui.console.ConsoleView",1423681916398
+activated,view,org.eclipse.ui.navigator.resources,3.4.201.M20100707-0800,"org.eclipse.ui.navigator.ProjectExplorer",1423681919258
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423681921396
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423681938609
+activated,editor,org.eclipse.cdt.ui,5.2.1.201009141542,"org.eclipse.cdt.ui.editor.CEditor",1423681942946
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.file.saveAll",1423681967415
+started,bundle,org.eclipse.cdt.debug.core,7.0.0.201009141542,"org.eclipse.cdt.debug.core",1423681970248
+started,bundle,org.eclipse.cdt.debug.ui,7.0.0.201009141542,"org.eclipse.cdt.debug.ui",1423681970286
+executed,command,org.eclipse.ui.ide,3.6.1.M20100825-0800,"org.eclipse.ui.project.buildProject",1423681973623
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423681973904
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423681977174
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.file.saveAll",1423681984650
+executed,command,org.eclipse.ui.ide,3.6.1.M20100825-0800,"org.eclipse.ui.project.buildProject",1423681986983
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423681987280
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423681990301
+started,bundle,org.eclipse.cdt.launch,6.1.0.201009141542,"org.eclipse.cdt.launch",1423681994437
+started,bundle,org.eclipse.cdt.dsf,2.1.0.201009141542,"org.eclipse.cdt.dsf",1423681996427
+started,bundle,org.eclipse.cdt.dsf.gdb,3.0.0.201009141542,"org.eclipse.cdt.dsf.gdb",1423681996427
+error,log,,,"The system console model is invalid. Cannot launch.",1423682002336
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682002376
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682007286
+started,bundle,com.altera.debug.cdi.gdb.plugin,11.0.0.157,"com.altera.debug.cdi.gdb.plugin",1423682025114
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682025329
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682025372
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682025394
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682046227
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682053505
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682059642
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682064626
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682081857
+error,log,,,"No Byte Stream Services found for Nios II Console View",1423682084807
+started,bundle,org.eclipse.cdt.debug.mi.ui,6.1.0.201009141542,"org.eclipse.cdt.debug.mi.ui",1423682084938
+started,bundle,org.eclipse.cdt.debug.mi.core,7.0.1.201009141542,"org.eclipse.cdt.debug.mi.core",1423682084998
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.file.saveAll",1423682107285
+error,log,,,"No Byte Stream Services found for Nios II Console View",1423682121049
+opened,view,org.eclipse.ui.ide,3.6.1.M20100825-0800,"org.eclipse.ui.views.TaskList",1423682147779
+activated,view,org.eclipse.ui.ide,3.6.1.M20100825-0800,"org.eclipse.ui.views.TaskList",1423682147847
+activated,view,org.eclipse.ui.console,3.5.0.v20100526,"org.eclipse.ui.console.ConsoleView",1423682148685
+activated,editor,org.eclipse.cdt.ui,5.2.1.201009141542,"org.eclipse.cdt.ui.editor.CEditor",1423682152424
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.undo",1423682160955
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.undo",1423682161648
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.undo",1423682161976
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.undo",1423682162193
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.undo",1423682162499
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.undo",1423682162967
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.undo",1423682163516
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.undo",1423682164225
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.undo",1423682164499
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.undo",1423682164850
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.undo",1423682165588
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.redo",1423682166801
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.file.saveAll",1423682168792
+executed,command,org.eclipse.ui.ide,3.6.1.M20100825-0800,"org.eclipse.ui.project.buildProject",1423682173064
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682173377
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682176572
+error,log,,,"No Byte Stream Services found for Nios II Console View",1423682181929
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.file.saveAll",1423682206827
+executed,command,org.eclipse.ui.ide,3.6.1.M20100825-0800,"org.eclipse.ui.project.buildProject",1423682209215
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682209520
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682212801
+error,log,,,"No Byte Stream Services found for Nios II Console View",1423682222280
+executed,command,org.eclipse.ui.ide,3.6.1.M20100825-0800,"org.eclipse.ui.project.buildProject",1423682352047
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682352383
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682353944
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682357993
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682360964
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.file.save",1423682362673
+executed,command,org.eclipse.ui.ide,3.6.1.M20100825-0800,"org.eclipse.ui.project.buildProject",1423682365240
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682365525
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682368422
+error,log,,,"No Byte Stream Services found for Nios II Console View",1423682373016
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.file.saveAll",1423682400929
+executed,command,org.eclipse.ui.ide,3.6.1.M20100825-0800,"org.eclipse.ui.project.buildProject",1423682403880
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682404204
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682407096
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682408880
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682411845
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682411872
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682413789
+error,log,,,"No Byte Stream Services found for Nios II Console View",1423682417718
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.file.save",1423682449694
+executed,command,org.eclipse.ui.ide,3.6.1.M20100825-0800,"org.eclipse.ui.project.buildProject",1423682451719
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682452020
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682455039
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682458162
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682460228
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682460240
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682462123
+error,log,,,"No Byte Stream Services found for Nios II Console View",1423682466047
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682505833
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682667052
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.file.saveAll",1423682701670
+executed,command,org.eclipse.ui.ide,3.6.1.M20100825-0800,"org.eclipse.ui.project.buildProject",1423682705319
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682705638
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682708791
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682712051
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682713556
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682713579
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682715376
+error,log,,,"No Byte Stream Services found for Nios II Console View",1423682719220
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.file.saveAll",1423682770213
+executed,command,org.eclipse.ui.ide,3.6.1.M20100825-0800,"org.eclipse.ui.project.buildProject",1423682774271
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682774590
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682777374
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682784319
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682785469
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682785490
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682787266
+error,log,,,"No Byte Stream Services found for Nios II Console View",1423682791128
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.file.saveAll",1423682824714
+executed,command,org.eclipse.ui.ide,3.6.1.M20100825-0800,"org.eclipse.ui.project.buildProject",1423682829927
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682830234
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682833216
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682839098
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682841157
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682841171
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682843045
+error,log,,,"No Byte Stream Services found for Nios II Console View",1423682847047
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.file.saveAll",1423682976834
+executed,command,org.eclipse.ui.ide,3.6.1.M20100825-0800,"org.eclipse.ui.project.buildProject",1423682985727
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682986042
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682989102
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682990721
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682991804
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682991828
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423682993781
+error,log,,,"No Byte Stream Services found for Nios II Console View",1423682997730
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683016081
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683174811
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.undo",1423683204412
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.undo",1423683205158
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.file.saveAll",1423683212277
+executed,command,org.eclipse.ui.ide,3.6.1.M20100825-0800,"org.eclipse.ui.project.buildProject",1423683221888
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683222242
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683225234
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683229237
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683230327
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683230348
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683232390
+error,log,,,"No Byte Stream Services found for Nios II Console View",1423683236521
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.file.saveAll",1423683268136
+executed,command,org.eclipse.ui.ide,3.6.1.M20100825-0800,"org.eclipse.ui.project.buildProject",1423683271760
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683272123
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683274959
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683279283
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683280561
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683280586
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683282468
+error,log,,,"No Byte Stream Services found for Nios II Console View",1423683286435
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.file.saveAll",1423683336666
+executed,command,org.eclipse.ui.ide,3.6.1.M20100825-0800,"org.eclipse.ui.project.buildAll",1423683343208
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683343559
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683348254
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683352357
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683353496
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683353519
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683355400
+error,log,,,"No Byte Stream Services found for Nios II Console View",1423683359633
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.file.saveAll",1423683379387
+executed,command,org.eclipse.ui.ide,3.6.1.M20100825-0800,"org.eclipse.ui.project.buildProject",1423683389808
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683390135
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683393337
+error,log,,,"No Byte Stream Services found for Nios II Console View",1423683405859
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.file.save",1423683448554
+executed,command,org.eclipse.ui.ide,3.6.1.M20100825-0800,"org.eclipse.ui.project.buildProject",1423683457063
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683457412
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683460219
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683465066
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683466441
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683466467
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683468500
+error,log,,,"No Byte Stream Services found for Nios II Console View",1423683472613
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.file.save",1423683490554
+executed,command,org.eclipse.ui.ide,3.6.1.M20100825-0800,"org.eclipse.ui.project.buildProject",1423683500616
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683500984
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683503837
+executed,command,org.eclipse.ui.ide,3.6.1.M20100825-0800,"org.eclipse.ui.project.buildProject",1423683763944
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683764275
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683765849
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683768886
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683770281
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683770309
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683772247
+error,log,,,"No Byte Stream Services found for Nios II Console View",1423683776242
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.file.saveAll",1423683794632
+executed,command,org.eclipse.ui.ide,3.6.1.M20100825-0800,"org.eclipse.ui.project.buildProject",1423683796848
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683797190
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683800242
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683804135
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683805407
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683805435
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683807273
+error,log,,,"No Byte Stream Services found for Nios II Console View",1423683811272
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.file.save",1423683826956
+executed,command,org.eclipse.ui.ide,3.6.1.M20100825-0800,"org.eclipse.ui.project.buildProject",1423683829111
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683829449
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683832343
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683837991
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683840291
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683840312
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423683842278
+error,log,,,"No Byte Stream Services found for Nios II Console View",1423683846227
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423684151463
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423684184431
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.file.saveAll",1423684200565
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.file.saveAll",1423684217427
+executed,command,org.eclipse.ui.ide,3.6.1.M20100825-0800,"org.eclipse.ui.project.buildProject",1423684223840
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423684224201
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423684227322
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423684229467
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423684230688
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423684230719
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423684232637
+error,log,,,"No Byte Stream Services found for Nios II Console View",1423684236702
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.file.saveAll",1423684295246
+executed,command,org.eclipse.ui.ide,3.6.1.M20100825-0800,"org.eclipse.ui.project.buildProject",1423684298368
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423684298706
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423684301779
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423684303691
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423684304785
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1423684304806

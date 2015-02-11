@@ -1,0 +1,69 @@
+void VGA_box (int, int, int, int, short);
+void draw_surface(int x1, int y1, int x2, int y2);
+void draw_surface_inner(int x1, int y1, int x2, int y2);
+void clear_screen();
+
+/********************************************************************************
+ * This program demonstrates use of pixel buffer. It Draws a blue box on the
+ * VGA display
+********************************************************************************/
+int main(void)
+{
+
+	/* draw a blue box approx in the middle of the screen */
+ 	clear_screen();
+ 	draw_surface(0, 400, 640, 400);
+	return 0;
+}
+
+void draw_surface(int x1, int y1, int x2, int y2)
+{
+	draw_surface_inner(x1, y1, x2, y2);
+	draw_surface_inner(x1, y1, x2, y2);
+}
+
+void draw_surface_inner(int x1, int y1, int x2, int y2)
+{
+	int x;
+	volatile short* buf = (short*)0;
+
+	for (x = x1; x < x2; ++x)
+	{
+		buf[(y1 << 10) + x] = 0xffff;
+	}
+}
+
+void clear_screen()
+{
+	VGA_box(0,0,640,480, 0x0000);
+}
+/****************************************************************************************
+ * Draw a filled rectangle on the VGA monitor
+****************************************************************************************/
+void VGA_box(int x1, int y1, int x2, int y2, short pixel_color)
+{
+	int offset, row, col;
+	/* Declare volatile pointer to pixel buffer (volatile means that IO load
+	   and store instructions will be used to access these pointer locations,
+	   instead of regular memory loads and stores) */
+  	volatile short * pixel_buffer = (short *) 0x00000000;	// VGA pixel buffer address
+
+	/* assume that the box coordinates are valid */
+	for (row = y1; row < y2; ++row)
+	{
+		for(col = x1; col < x2; ++col)
+		{
+			offset = (row << 10) + col;
+			*(pixel_buffer + offset) = pixel_color;	// compute halfword address, set pixel
+		}
+	}
+
+	for (row = y1; row < y2; ++row)
+	{
+		for(col = x1; col < x2; ++col)
+		{
+			offset = (row << 10) + col;
+			*(pixel_buffer + offset) = pixel_color;	// compute halfword address, set pixel
+		}
+	}
+}

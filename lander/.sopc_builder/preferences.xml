@@ -16,8 +16,9 @@
    <clockname preferredWidth="269" />
    <clocksource preferredWidth="268" />
    <frequency preferredWidth="250" />
+   <pipeline visible="0" preferredWidth="58" />
   </columns>
  </clocktable>
- <window width="1280" height="984" x="0" y="0" />
+ <window width="1280" height="984" x="-196" y="192" />
  <library expandedCategories="Project,Library/University Program,Library" />
 </preferences>

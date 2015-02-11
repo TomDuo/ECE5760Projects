@@ -1,0 +1,8 @@
+
+**** Build of configuration Nios II for project basic_shit_app ****
+
+make all 
+Info: Building ../basic_shit_bsp/
+make --no-print-directory -C ../basic_shit_bsp/
+[BSP build complete]
+[basic_shit_app build complete]

@@ -1,0 +1,82 @@
+!SESSION 2015-02-10 21:15:42.956 -----------------------------------------------
+eclipse.buildId=M20100909-0800
+java.version=1.6.0_23
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-02-10 21:21:07.559
+!MESSAGE Indexed 'basic_shit_app' (1 sources, 55 headers) in 1.18 sec: 2,022 declarations; 1,947 references; 0 unresolved inclusions; 2 syntax errors; 6 unresolved names (0.15%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-02-10 21:21:32.191
+!MESSAGE Indexed 'basic_shit_bsp' (79 sources, 119 headers) in 1.14 sec: 4,045 declarations; 5,649 references; 0 unresolved inclusions; 21 syntax errors; 10 unresolved names (0.10%)
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-10 21:22:43.603
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-10 21:22:46.551
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/ECE5760Projects/lander/software/basic_shit_app/basic_shit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-10 21:27:08.547
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-10 21:27:11.327
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/ECE5760Projects/lander/software/basic_shit_app/basic_shit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-10 21:34:22.315
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-10 21:34:25.287
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/ECE5760Projects/lander/software/basic_shit_app/basic_shit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-10 21:45:05.846
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-10 21:45:08.826
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/ECE5760Projects/lander/software/basic_shit_app/basic_shit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-10 21:45:51.733
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-10 21:45:54.715
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/ECE5760Projects/lander/software/basic_shit_app/basic_shit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-10 21:46:53.272
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-10 21:46:56.173
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/ECE5760Projects/lander/software/basic_shit_app/basic_shit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-10 21:47:34.585
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-10 21:47:37.687
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/ECE5760Projects/lander/software/basic_shit_app/basic_shit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-10 21:52:45.204
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-10 21:52:48.114
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/ECE5760Projects/lander/software/basic_shit_app/basic_shit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-10 22:22:49.632
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-10 22:22:52.599
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/ECE5760Projects/lander/software/basic_shit_app/basic_shit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-10 22:27:00.232
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-10 22:27:03.358
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/ECE5760Projects/lander/software/basic_shit_app/basic_shit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-10 22:28:17.675
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-10 22:28:20.017
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-10 22:28:22.985
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/ECE5760Projects/lander/software/basic_shit_app/basic_shit_app.elf]

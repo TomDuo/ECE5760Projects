@@ -1,0 +1,81 @@
+Altera SOPC Builder Version 11.00 Build 157
+Copyright (c) 1999-2009 Altera Corporation.  All rights reserved.
+
+
+No .sopc_builder configuration file(!)
+# 2015.02.11 01:23:36 (*) mk_custom_sdk starting
+# 2015.02.11 01:23:36 (*) Reading project C:/ECE5760Projects/lander/unnamed.ptf.
+
+# 2015.02.11 01:23:36 (*) Finding all CPUs
+# 2015.02.11 01:23:36 (*) Finding all available components
+
+# 2015.02.11 01:23:36 (*) Reading C:/ECE5760Projects/lander/.sopc_builder/install.ptf
+
+# 2015.02.11 01:23:36 (*) Found 63 components
+
+# 2015.02.11 01:23:37 (*) Finding all peripherals
+
+# 2015.02.11 01:23:37 (*) Finding software components
+
+# 2015.02.11 01:23:37 (*) (Legacy SDK Generation Skipped)
+# 2015.02.11 01:23:37 (*) (All TCL Script Generation Skipped)
+# 2015.02.11 01:23:37 (*) (No Libraries Built)
+# 2015.02.11 01:23:37 (*) (Contents Generation Skipped)
+# 2015.02.11 01:23:37 (*) mk_custom_sdk finishing
+
+# 2015.02.11 01:23:37 (*) Starting generation for system: unnamed.
+
+.
+.
+.
+
+# 2015.02.11 01:23:38 (*) Running Generator Program for cpu
+
+# 2015.02.11 01:23:39 (*) Starting Nios II generation
+# 2015.02.11 01:23:39 (*)   Checking for plaintext license.
+# 2015.02.11 01:23:39 (*)   Plaintext license not found.
+# 2015.02.11 01:23:39 (*)   Checking for encrypted license (non-evaluation).
+# 2015.02.11 01:23:40 (*)   Encrypted license found.  SOF will not be time-limited.
+# 2015.02.11 01:23:40 (*)   Getting CPU configuration settings
+# 2015.02.11 01:23:40 (*)   Elaborating CPU configuration settings
+# 2015.02.11 01:23:40 (*)   Creating all objects for CPU
+
+# 2015.02.11 01:23:40 (*)     Testbench
+# 2015.02.11 01:23:40 (*)     Instruction decoding
+# 2015.02.11 01:23:40 (*)       Instruction fields
+# 2015.02.11 01:23:40 (*)       Instruction decodes
+# 2015.02.11 01:23:41 (*)       Signals for RTL simulation waveforms
+# 2015.02.11 01:23:41 (*)       Instruction controls
+# 2015.02.11 01:23:41 (*)     Pipeline frontend
+# 2015.02.11 01:23:41 (*)     Pipeline backend
+# 2015.02.11 01:23:45 (*)   Generating HDL from CPU objects
+# 2015.02.11 01:23:47 (*)   Creating encrypted HDL
+
+# 2015.02.11 01:23:49 (*) Done Nios II generation
+
+# 2015.02.11 01:23:49 (*) Running Generator Program for onchip_ram
+
+# 2015.02.11 01:23:52 (*) Running Generator Program for unnamed_clock_0
+
+
+# 2015.02.11 01:23:53 (*) Making arbitration and system (top) modules.
+
+# 2015.02.11 01:23:57 (*) Generating Quartus symbol for top level: unnamed
+
+# 2015.02.11 01:23:57 (*) Generating Symbol C:/ECE5760Projects/lander/unnamed.bsf
+
+# 2015.02.11 01:23:57 (*) Creating command-line system-generation script: C:/ECE5760Projects/lander/unnamed_generation_script
+
+# 2015.02.11 01:23:57 (*) Running setup for HDL simulator: modelsim
+
+
+# 2015.02.11 01:23:57 (*) Completed generation for system: unnamed.
+# 2015.02.11 01:23:57 (*) THE FOLLOWING SYSTEM ITEMS HAVE BEEN GENERATED:
+  SOPC Builder database : C:/ECE5760Projects/lander/unnamed.ptf 
+  System HDL Model : C:/ECE5760Projects/lander/unnamed.v 
+  System Generation Script : C:/ECE5760Projects/lander/unnamed_generation_script 
+
+# 2015.02.11 01:23:57 (*) SUCCESS: SYSTEM GENERATION COMPLETED.
+
+
+Press 'Exit' to exit.

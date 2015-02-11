@@ -1,0 +1,934 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>Report</title>
+  <style type="text/css">
+body { font-family:arial ;}
+a { text-decoration:underline ; color:#003000 ;}
+a:hover { text-decoration:underline ; color:0030f0 ;}
+td { padding : 5px ;}
+table.topTitle { width:100% ;}
+table.topTitle td.l { text-align:left ; font-weight: bold ; font-size:30px ;}
+table.topTitle td.r { text-align:right ; font-weight: bold ; font-size:16px ;}
+table.blueBar { width : 100% ; border-spacing : 0px ;}
+table.blueBar td { background:#0036ff ; font-size:12px ; color : white ; text-align : left ; font-weight : bold ;}
+table.blueBar td.l { text-align : left ;}
+table.blueBar td.r { text-align : right ;}
+table.items { width:100% ; border-collapse:collapse ;}
+table.items td.label { font-weight:bold ; font-size:16px ; vertical-align:top ;}
+table.items td.mono { font-family:courier ; font-size:12px ; white-space:pre ;}
+div.label { font-weight:bold ; font-size:16px ; vertical-align:top ; text-align:center ;}
+table.grid { border-collapse:collapse ;}
+table.grid td { border:1px solid #bbb ; font-size:12px ;}
+body { font-family:arial ;}
+table.x { font-family:courier ; border-collapse:collapse ; padding:2px ;}
+table.x td { border:1px solid #bbb ;}
+td.tableTitle { font-weight:bold ; text-align:center ;}
+table.grid { border-collapse:collapse ;}
+table.grid td { border:1px solid #bbb ;}
+table.grid td.tableTitle { font-weight:bold ; text-align:center ;}
+table.mmap { border-collapse:collapse ; text-size:11px ; border:1px solid #d8d8d8 ;}
+table.mmap td { border-color:#d8d8d8 ; border-width:1px ; border-style:solid ;}
+table.mmap td.empty { border-style:none ; background-color:#f0f0f0 ;}
+table.mmap td.slavemodule { text-align:left ; font-size:11px ; border-style:solid solid none solid ;}
+table.mmap td.slavem { text-align:right ; font-size:9px ; font-style:italic ; border-style:none solid none solid ;}
+table.mmap td.slaveb { text-align:right ; font-size:9px ; font-style:italic ; border-style:none solid solid solid ;}
+table.mmap td.mastermodule { text-align:center ; font-size:11px ; border-style:solid solid none solid ;}
+table.mmap td.masterlr { text-align:center ; font-size:9px ; font-style:italic ; border-style:none solid solid solid ;}
+table.mmap td.masterl { text-align:center ; font-size:9px ; font-style:italic ; border-style:none none solid solid ;}
+table.mmap td.masterm { text-align:center ; font-size:9px ; font-style:italic ; border-style:none none solid none ;}
+table.mmap td.masterr { text-align:center ; font-size:9px ; font-style:italic ; border-style:none solid solid none ;}
+table.mmap td.addr { font-family:courier ; font-size:9px ; text-align:right ;}
+table.connectionboxes { border-collapse:separate ; border-spacing:0px ; font-family:arial ;}
+table.connectionboxes td.from { border-bottom:1px solid black ; font-size:9px ; font-style:italic ; vertical-align:bottom ; text-align:left ;}
+table.connectionboxes td.to { font-size:9px ; font-style:italic ; vertical-align:top ; text-align:right ;}
+table.connectionboxes td.lefthandwire { border-bottom:1px solid black ; font-size:9px ; font-style:italic ; vertical-align:bottom ; text-align:right ;}
+table.connectionboxes td.righthandwire { border-bottom:1px solid black ; font-size:9px ; font-style:italic ; vertical-align:bottom ; text-align:left ;}
+table.connectionboxes td.righthandlabel { font-size:11px ; vertical-align:bottom ; text-align:left ;}
+table.connectionboxes td.neighbor { padding:3px ; border:1px solid black ; font-size: 11px ; background:#e8e8e8 ; vertical-align:center ; text-align:center ;}
+table.connectionboxes td.main { padding:8px ; border:1px solid black ; font-size: 14px ; font-weight:bold ; background:#ffffff ; vertical-align:center ; text-align:center ;}
+.parametersbox { border:1px solid #d0d0d0 ; display:inline-block ; max-height:160px ; overflow:auto ; width:360px ; font-size:10px ;}
+.flowbox { display:inline-block ;}
+.parametersbox table { font-size:10px ;}
+td.parametername { font-style:italic ;}
+td.parametervalue { font-weight:bold ;}
+div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; border-top:1px solid #707070 ; border-bottom:1px solid #707070 ; padding:20px ; margin:20px ; width:auto ;}</style>
+ </head>
+ <body>
+  <table class="topTitle">
+   <tr>
+    <td class="l">basic_shit</td>
+    <td class="r">basic_shit
+     <br/>1.0
+     <br/>
+    </td>
+   </tr>
+  </table>
+  <table class="blueBar">
+   <tr>
+    <td class="l">2015.02.11.00:40:20</td>
+    <td class="r">Generation Report</td>
+   </tr>
+  </table>
+  <table class="items">
+   <tr>
+    <td class="label">Output Directory</td>
+    <td class="mono">C:/ECE5760Projects/lander/</td>
+   </tr>
+   <tr>
+    <td class="label">Files</td>
+    <td class="mono">C:/ECE5760Projects/lander/basic_shit/synthesis/basic_shit.v (415978 bytes VERILOG)
+     <br/>
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/basic_shit_cpu.ocp (856 bytes OTHER)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/basic_shit_cpu.sdc (3861 bytes SDC)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/basic_shit_cpu.v (439400 bytes VERILOG_ENCRYPT)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/basic_shit_cpu_bht_ram.mif (2392 bytes MIF)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/basic_shit_cpu_dc_tag_ram.mif (856 bytes MIF)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/basic_shit_cpu_ic_tag_ram.mif (1753 bytes MIF)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/basic_shit_cpu_jtag_debug_module_sysclk.v (7079 bytes VERILOG)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/basic_shit_cpu_jtag_debug_module_tck.v (8389 bytes VERILOG)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/basic_shit_cpu_jtag_debug_module_wrapper.v (10271 bytes VERILOG)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/basic_shit_cpu_mult_cell.v (6281 bytes VERILOG)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/basic_shit_cpu_ociram_default_contents.mif (5878 bytes MIF)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/basic_shit_cpu_oci_test_bench.v (1482 bytes VERILOG)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/basic_shit_cpu_rf_ram_a.mif (600 bytes MIF)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/basic_shit_cpu_rf_ram_b.mif (600 bytes MIF)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/basic_shit_cpu_test_bench.v (31569 bytes VERILOG)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/basic_shit_memory.hex (1627530 bytes HEX)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/basic_shit_memory.v (3929 bytes VERILOG)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/basic_shit_lcd_0.v (2291 bytes VERILOG)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/basic_shit_jtag_uart.v (24031 bytes VERILOG)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/basic_shit_jtag_uart_input_mutex.dat (3 bytes OTHER)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/basic_shit_jtag_uart_input_stream.dat (10 bytes OTHER)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/basic_shit_jtag_uart_output_stream.dat (0 bytes OTHER)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/basic_shit_pixel_buffer_dma.v (14021 bytes VERILOG)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/basic_shit_pixel_buffer_sram.v (7147 bytes VERILOG)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/basic_shit_dual_clock_fifo.v (7875 bytes VERILOG)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/basic_shit_vga_controller.v (10183 bytes VERILOG)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/basic_shit_altpll_0.v (11062 bytes VERILOG)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/altera_merlin_master_translator.sv (16415 bytes SYSTEM_VERILOG)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/altera_merlin_slave_translator.sv (15976 bytes SYSTEM_VERILOG)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/altera_merlin_master_agent.sv (8662 bytes SYSTEM_VERILOG)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/altera_merlin_slave_agent.sv (17560 bytes SYSTEM_VERILOG)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/altera_merlin_burst_uncompressor.sv (10392 bytes SYSTEM_VERILOG)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/altera_avalon_sc_fifo.v (32198 bytes VERILOG)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/basic_shit_addr_router.sv (5996 bytes SYSTEM_VERILOG)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/basic_shit_id_router.sv (5822 bytes SYSTEM_VERILOG)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/basic_shit_addr_router_001.sv (6364 bytes SYSTEM_VERILOG)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/basic_shit_addr_router_002.sv (7709 bytes SYSTEM_VERILOG)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/basic_shit_addr_router_003.sv (5999 bytes SYSTEM_VERILOG)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/basic_shit_id_router_001.sv (5915 bytes SYSTEM_VERILOG)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/basic_shit_id_router_003.sv (5834 bytes SYSTEM_VERILOG)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/basic_shit_id_router_005.sv (5915 bytes SYSTEM_VERILOG)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/altera_merlin_traffic_limiter.sv (13743 bytes SYSTEM_VERILOG)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/altera_avalon_st_pipeline_base.v (4716 bytes VERILOG)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/altera_merlin_burst_adapter.sv (36989 bytes SYSTEM_VERILOG)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/altera_reset_controller.v (3592 bytes VERILOG)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/altera_reset_synchronizer.v (3564 bytes VERILOG)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/altera_reset_controller.sdc (1179 bytes SDC)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/basic_shit_cmd_xbar_demux.sv (3475 bytes SYSTEM_VERILOG)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/basic_shit_cmd_xbar_demux_001.sv (4121 bytes SYSTEM_VERILOG)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/basic_shit_cmd_xbar_demux_002.sv (7296 bytes SYSTEM_VERILOG)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/basic_shit_cmd_xbar_demux_003.sv (3486 bytes SYSTEM_VERILOG)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/altera_merlin_arbitrator.sv (9448 bytes SYSTEM_VERILOG)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/basic_shit_cmd_xbar_mux_001.sv (11025 bytes SYSTEM_VERILOG)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/basic_shit_rsp_xbar_demux_001.sv (4115 bytes SYSTEM_VERILOG)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/basic_shit_rsp_xbar_demux_003.sv (3483 bytes SYSTEM_VERILOG)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/basic_shit_rsp_xbar_mux_001.sv (12220 bytes SYSTEM_VERILOG)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/basic_shit_rsp_xbar_mux_002.sv (16460 bytes SYSTEM_VERILOG)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/altera_merlin_width_adapter.sv (36187 bytes SYSTEM_VERILOG)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/altera_avalon_st_handshake_clock_crosser.v (7493 bytes VERILOG)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/altera_avalon_st_clock_crosser.v (4900 bytes VERILOG)
+     <br/>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/basic_shit_irq_mapper.sv (1741 bytes SYSTEM_VERILOG)
+     <br/>
+    </td>
+   </tr>
+   <tr>
+    <td class="label">Instantiations</td>
+    <td class="mono">
+     <table class="grid">
+      <tr>
+       <td><b>basic_shit</b>
+        <br/>basic_shit v1.0</td>
+       <td><b>basic_shit_cpu</b> as cpu
+        <br/><b>basic_shit_memory</b> as memory
+        <br/><b>basic_shit_lcd_0</b> as lcd_0
+        <br/><b>basic_shit_jtag_uart</b> as jtag_uart
+        <br/><b>basic_shit_pixel_buffer_dma</b> as pixel_buffer_dma
+        <br/><b>basic_shit_pixel_buffer_sram</b> as pixel_buffer_sram
+        <br/><b>basic_shit_dual_clock_fifo</b> as dual_clock_fifo
+        <br/><b>basic_shit_vga_controller</b> as vga_controller
+        <br/><b>basic_shit_altpll_0</b> as altpll_0
+        <br/><b>altera_merlin_master_translator</b> as cpu_instruction_master_translator, cpu_data_master_translator, pixel_buffer_dma_avalon_pixel_dma_master_translator
+        <br/><b>altera_merlin_slave_translator</b> as cpu_jtag_debug_module_translator, memory_s1_translator, lcd_0_control_slave_translator, jtag_uart_avalon_jtag_slave_translator, pixel_buffer_sram_avalon_sram_slave_translator, pixel_buffer_dma_avalon_control_slave_translator, altpll_0_pll_slave_translator
+        <br/><b>altera_merlin_master_agent</b> as pixel_buffer_dma_avalon_pixel_dma_master_agent, cpu_instruction_master_translator_avalon_universal_master_0_agent, cpu_data_master_translator_avalon_universal_master_0_agent, pixel_buffer_dma_avalon_pixel_dma_master_translator_avalon_universal_master_0_agent
+        <br/><b>altera_merlin_slave_agent</b> as pixel_buffer_dma_avalon_pixel_dma_master_translator_avalon_anti_master_0_agent, cpu_jtag_debug_module_translator_avalon_universal_slave_0_agent, memory_s1_translator_avalon_universal_slave_0_agent, lcd_0_control_slave_translator_avalon_universal_slave_0_agent, jtag_uart_avalon_jtag_slave_translator_avalon_universal_slave_0_agent, pixel_buffer_sram_avalon_sram_slave_translator_avalon_universal_slave_0_agent, pixel_buffer_dma_avalon_control_slave_translator_avalon_universal_slave_0_agent, altpll_0_pll_slave_translator_avalon_universal_slave_0_agent
+        <br/><b>altera_avalon_sc_fifo</b> as pixel_buffer_dma_avalon_pixel_dma_master_translator_avalon_anti_master_0_agent_rsp_fifo, cpu_jtag_debug_module_translator_avalon_universal_slave_0_agent_rsp_fifo, memory_s1_translator_avalon_universal_slave_0_agent_rsp_fifo, lcd_0_control_slave_translator_avalon_universal_slave_0_agent_rsp_fifo, jtag_uart_avalon_jtag_slave_translator_avalon_universal_slave_0_agent_rsp_fifo, pixel_buffer_sram_avalon_sram_slave_translator_avalon_universal_slave_0_agent_rsp_fifo, pixel_buffer_dma_avalon_control_slave_translator_avalon_universal_slave_0_agent_rsp_fifo, altpll_0_pll_slave_translator_avalon_universal_slave_0_agent_rsp_fifo, altpll_0_pll_slave_translator_avalon_universal_slave_0_agent_rdata_fifo
+        <br/><b>basic_shit_addr_router</b> as addr_router
+        <br/><b>basic_shit_id_router</b> as id_router
+        <br/><b>basic_shit_addr_router_001</b> as addr_router_001
+        <br/><b>basic_shit_addr_router_002</b> as addr_router_002
+        <br/><b>basic_shit_addr_router_003</b> as addr_router_003
+        <br/><b>basic_shit_id_router_001</b> as id_router_001, id_router_002
+        <br/><b>basic_shit_id_router_003</b> as id_router_003, id_router_004, id_router_006, id_router_007
+        <br/><b>basic_shit_id_router_005</b> as id_router_005
+        <br/><b>altera_merlin_traffic_limiter</b> as limiter, limiter_001, limiter_002
+        <br/><b>altera_merlin_burst_adapter</b> as burst_adapter
+        <br/><b>altera_reset_controller</b> as rst_controller, rst_controller_001, rst_controller_002
+        <br/><b>basic_shit_cmd_xbar_demux</b> as cmd_xbar_demux, rsp_xbar_demux
+        <br/><b>basic_shit_cmd_xbar_demux_001</b> as cmd_xbar_demux_001
+        <br/><b>basic_shit_cmd_xbar_demux_002</b> as cmd_xbar_demux_002
+        <br/><b>basic_shit_cmd_xbar_demux_003</b> as cmd_xbar_demux_003
+        <br/><b>basic_shit_cmd_xbar_mux_001</b> as cmd_xbar_mux_001, cmd_xbar_mux_002, cmd_xbar_mux_005
+        <br/><b>basic_shit_rsp_xbar_demux_001</b> as rsp_xbar_demux_001, rsp_xbar_demux_002, rsp_xbar_demux_005
+        <br/><b>basic_shit_rsp_xbar_demux_003</b> as rsp_xbar_demux_003, rsp_xbar_demux_004, rsp_xbar_demux_006, rsp_xbar_demux_007
+        <br/><b>basic_shit_rsp_xbar_mux_001</b> as rsp_xbar_mux_001
+        <br/><b>basic_shit_rsp_xbar_mux_002</b> as rsp_xbar_mux_002
+        <br/><b>altera_merlin_width_adapter</b> as width_adapter, width_adapter_001
+        <br/><b>altera_avalon_st_handshake_clock_crosser</b> as crosser, crosser_001
+        <br/><b>basic_shit_irq_mapper</b> as irq_mapper
+        <br/>
+       </td>
+      </tr>
+      <tr>
+       <td><b>basic_shit_cpu</b>
+        <br/>altera_nios2_qsys v11.0</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>basic_shit_memory</b>
+        <br/>altera_avalon_onchip_memory2 v11.0</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>basic_shit_lcd_0</b>
+        <br/>altera_avalon_lcd_16207 v11.0</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>basic_shit_jtag_uart</b>
+        <br/>altera_avalon_jtag_uart v11.0</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>basic_shit_pixel_buffer_dma</b>
+        <br/>altera_up_avalon_video_pixel_buffer_dma v11.0</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>basic_shit_pixel_buffer_sram</b>
+        <br/>altera_up_avalon_sram v11.0</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>basic_shit_dual_clock_fifo</b>
+        <br/>altera_up_avalon_video_dual_clock_buffer v11.0</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>basic_shit_vga_controller</b>
+        <br/>altera_up_avalon_video_vga_controller v11.0</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>basic_shit_altpll_0</b>
+        <br/>altpll v11.0</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>altera_merlin_master_translator</b>
+        <br/>altera_merlin_master_translator v11.0</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>altera_merlin_slave_translator</b>
+        <br/>altera_merlin_slave_translator v11.0</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>altera_merlin_master_agent</b>
+        <br/>altera_merlin_master_agent v11.0</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>altera_merlin_slave_agent</b>
+        <br/>altera_merlin_slave_agent v11.0</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>altera_avalon_sc_fifo</b>
+        <br/>altera_avalon_sc_fifo v11.0</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>basic_shit_addr_router</b>
+        <br/>altera_merlin_router v11.0</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>basic_shit_id_router</b>
+        <br/>altera_merlin_router v11.0</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>basic_shit_addr_router_001</b>
+        <br/>altera_merlin_router v11.0</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>basic_shit_addr_router_002</b>
+        <br/>altera_merlin_router v11.0</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>basic_shit_addr_router_003</b>
+        <br/>altera_merlin_router v11.0</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>basic_shit_id_router_001</b>
+        <br/>altera_merlin_router v11.0</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>basic_shit_id_router_003</b>
+        <br/>altera_merlin_router v11.0</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>basic_shit_id_router_005</b>
+        <br/>altera_merlin_router v11.0</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>altera_merlin_traffic_limiter</b>
+        <br/>altera_merlin_traffic_limiter v11.0</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>altera_merlin_burst_adapter</b>
+        <br/>altera_merlin_burst_adapter v11.0</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>altera_reset_controller</b>
+        <br/>altera_reset_controller v11.0</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>basic_shit_cmd_xbar_demux</b>
+        <br/>altera_merlin_demultiplexer v11.0</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>basic_shit_cmd_xbar_demux_001</b>
+        <br/>altera_merlin_demultiplexer v11.0</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>basic_shit_cmd_xbar_demux_002</b>
+        <br/>altera_merlin_demultiplexer v11.0</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>basic_shit_cmd_xbar_demux_003</b>
+        <br/>altera_merlin_demultiplexer v11.0</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>basic_shit_cmd_xbar_mux_001</b>
+        <br/>altera_merlin_multiplexer v11.0</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>basic_shit_rsp_xbar_demux_001</b>
+        <br/>altera_merlin_demultiplexer v11.0</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>basic_shit_rsp_xbar_demux_003</b>
+        <br/>altera_merlin_demultiplexer v11.0</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>basic_shit_rsp_xbar_mux_001</b>
+        <br/>altera_merlin_multiplexer v11.0</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>basic_shit_rsp_xbar_mux_002</b>
+        <br/>altera_merlin_multiplexer v11.0</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>altera_merlin_width_adapter</b>
+        <br/>altera_merlin_width_adapter v11.0</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>altera_avalon_st_handshake_clock_crosser</b>
+        <br/>altera_avalon_st_handshake_clock_crosser v11.0</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>basic_shit_irq_mapper</b>
+        <br/>altera_irq_mapper v11.0</td>
+       <td></td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <div style="width:100% ;  height:10px"> </div>
+  <div class="label">Generation Messages</div>
+  <div style="white-space:pre ; font-family:courier">2015.02.10.22:55:17 [Debug] basic_shit.altera_nios2_qsys: When a generate simulation callback is defined a synthesis generation callback should also be defined
+2015.02.11.00:39:23 [Debug] basic_shit.cpu: Timing: VAL:1/0.033s ELA:1/0.006s
+2015.02.11.00:39:23 [Info] basic_shit.memory: Memory will be initialized from memory.hex
+2015.02.11.00:39:23 [Debug] basic_shit.pixel_buffer_dma: Timing: ELA:1/0.000s
+2015.02.11.00:39:23 [Error] basic_shit.pixel_buffer_dma.avalon_pixel_dma_master: arbiterlock is not supported.  See <b>lock</b>
+2015.02.11.00:39:23 [Debug] basic_shit.pixel_buffer_sram: Timing: ELA:1/0.002s
+2015.02.11.00:39:23 [Debug] basic_shit.dual_clock_fifo: Timing: ELA:1/0.000s
+2015.02.11.00:39:23 [Info] basic_shit.vga_controller: Video Output Stream: Format: 640 x 480 with Color: 10 (bits) x 3 (planes)
+2015.02.11.00:39:23 [Debug] basic_shit.vga_controller: Timing: VAL:1/0.001s ELA:1/0.000s
+2015.02.11.00:39:23 [Debug] basic_shit.altpll_0: Timing: VAL:1/0.019s ELA:1/0.003s
+2015.02.11.00:39:23 [Warning] basic_shit.altpll_0: <b>altpll_0.areset_conduit</b> must be exported, or connected to a matching conduit.
+2015.02.11.00:39:23 [Warning] basic_shit.altpll_0: <b>altpll_0.locked_conduit</b> must be exported, or connected to a matching conduit.
+2015.02.11.00:39:23 [Warning] basic_shit.altpll_0: <b>altpll_0.phasedone_conduit</b> must be exported, or connected to a matching conduit.
+2015.02.11.00:39:23 [Info] basic_shit: Generating <b>basic_shit</b> "<b>basic_shit</b>" for QUARTUS_SYNTH
+2015.02.11.00:39:23 [Debug] basic_shit: queue size: 0 starting:basic_shit "basic_shit"
+2015.02.11.00:39:23 [Debug] Transform: PipelineBridgeSwap
+2015.02.11.00:39:23 [Info] pipeline_bridge_swap_transform: After transform: <b>10</b> modules, <b>38</b> connections
+2015.02.11.00:39:23 [Debug] Transform: ClockCrossingBridgeSwap
+2015.02.11.00:39:24 [Debug] Transform: QsysBetaIPSwap
+2015.02.11.00:39:24 [Debug] Transform: CustomInstructionTransform
+2015.02.11.00:39:24 [Info] No custom instruction connections, skipping transform 
+2015.02.11.00:39:24 [Debug] Transform: TristateConduitUpgradeTransform
+2015.02.11.00:39:24 [Debug] Transform: TranslatorTransform
+2015.02.11.00:39:24 [Progress] min: 0
+2015.02.11.00:39:24 [Progress] max: 1
+2015.02.11.00:39:24 [Progress] current: 1
+2015.02.11.00:39:24 [Progress] min: 0
+2015.02.11.00:39:24 [Progress] max: 1
+2015.02.11.00:39:24 [Progress] current: 1
+2015.02.11.00:39:24 [Progress] min: 0
+2015.02.11.00:39:24 [Progress] max: 1
+2015.02.11.00:39:24 [Progress] current: 1
+2015.02.11.00:39:24 [Warning] Translator pixel_buffer_dma_avalon_pixel_dma_master_translator failed to match interface pixel_buffer_dma.avalon_pixel_dma_master
+2015.02.11.00:39:24 [Progress] min: 0
+2015.02.11.00:39:24 [Progress] max: 1
+2015.02.11.00:39:24 [Progress] current: 1
+2015.02.11.00:39:24 [Progress] min: 0
+2015.02.11.00:39:24 [Progress] max: 1
+2015.02.11.00:39:24 [Progress] current: 1
+2015.02.11.00:39:24 [Progress] min: 0
+2015.02.11.00:39:24 [Progress] max: 1
+2015.02.11.00:39:24 [Progress] current: 1
+2015.02.11.00:39:24 [Progress] min: 0
+2015.02.11.00:39:24 [Progress] max: 1
+2015.02.11.00:39:24 [Progress] current: 1
+2015.02.11.00:39:24 [Progress] min: 0
+2015.02.11.00:39:24 [Progress] max: 1
+2015.02.11.00:39:24 [Progress] current: 1
+2015.02.11.00:39:24 [Progress] min: 0
+2015.02.11.00:39:24 [Progress] max: 1
+2015.02.11.00:39:24 [Progress] current: 1
+2015.02.11.00:39:24 [Progress] min: 0
+2015.02.11.00:39:24 [Progress] max: 1
+2015.02.11.00:39:24 [Progress] current: 1
+2015.02.11.00:39:24 [Info] merlin_translator_transform: After transform: <b>20</b> modules, <b>77</b> connections
+2015.02.11.00:39:24 [Debug] Transform: DomainTransform
+2015.02.11.00:39:24 [Debug] Transform merlin_domain_transform not run on matched interfaces cpu.instruction_master and cpu_instruction_master_translator.avalon_anti_master_0
+2015.02.11.00:39:24 [Debug] Transform merlin_domain_transform not run on matched interfaces cpu.data_master and cpu_data_master_translator.avalon_anti_master_0
+2015.02.11.00:39:24 [Progress] min: 0
+2015.02.11.00:39:24 [Progress] max: 1
+2015.02.11.00:39:24 [Progress] current: 1
+2015.02.11.00:39:24 [Progress] min: 0
+2015.02.11.00:39:24 [Progress] max: 1
+2015.02.11.00:39:24 [Progress] current: 1
+2015.02.11.00:39:24 [Progress] min: 0
+2015.02.11.00:39:24 [Progress] max: 1
+2015.02.11.00:39:24 [Progress] current: 1
+2015.02.11.00:39:24 [Progress] min: 0
+2015.02.11.00:39:24 [Progress] max: 1
+2015.02.11.00:39:24 [Progress] current: 1
+2015.02.11.00:39:24 [Progress] min: 0
+2015.02.11.00:39:24 [Progress] max: 1
+2015.02.11.00:39:24 [Progress] current: 1
+2015.02.11.00:39:24 [Progress] min: 0
+2015.02.11.00:39:24 [Progress] max: 1
+2015.02.11.00:39:24 [Progress] current: 1
+2015.02.11.00:39:24 [Progress] min: 0
+2015.02.11.00:39:24 [Progress] max: 1
+2015.02.11.00:39:24 [Progress] current: 1
+2015.02.11.00:39:24 [Progress] min: 0
+2015.02.11.00:39:24 [Progress] max: 1
+2015.02.11.00:39:24 [Progress] current: 1
+2015.02.11.00:39:24 [Progress] min: 0
+2015.02.11.00:39:24 [Progress] max: 1
+2015.02.11.00:39:24 [Progress] current: 1
+2015.02.11.00:39:24 [Progress] min: 0
+2015.02.11.00:39:24 [Progress] max: 1
+2015.02.11.00:39:24 [Progress] current: 1
+2015.02.11.00:39:24 [Progress] min: 0
+2015.02.11.00:39:24 [Progress] max: 1
+2015.02.11.00:39:24 [Progress] current: 1
+2015.02.11.00:39:24 [Progress] min: 0
+2015.02.11.00:39:24 [Progress] max: 1
+2015.02.11.00:39:24 [Progress] current: 1
+2015.02.11.00:39:24 [Progress] min: 0
+2015.02.11.00:39:24 [Progress] max: 1
+2015.02.11.00:39:24 [Progress] current: 1
+2015.02.11.00:39:24 [Progress] min: 0
+2015.02.11.00:39:24 [Progress] max: 1
+2015.02.11.00:39:24 [Progress] current: 1
+2015.02.11.00:39:24 [Progress] min: 0
+2015.02.11.00:39:24 [Progress] max: 1
+2015.02.11.00:39:24 [Progress] current: 1
+2015.02.11.00:39:24 [Progress] min: 0
+2015.02.11.00:39:24 [Progress] max: 1
+2015.02.11.00:39:24 [Progress] current: 1
+2015.02.11.00:39:24 [Progress] min: 0
+2015.02.11.00:39:24 [Progress] max: 1
+2015.02.11.00:39:24 [Progress] current: 1
+2015.02.11.00:39:24 [Progress] min: 0
+2015.02.11.00:39:24 [Progress] max: 1
+2015.02.11.00:39:24 [Progress] current: 1
+2015.02.11.00:39:24 [Progress] min: 0
+2015.02.11.00:39:24 [Progress] max: 1
+2015.02.11.00:39:24 [Progress] current: 1
+2015.02.11.00:39:24 [Progress] min: 0
+2015.02.11.00:39:24 [Progress] max: 1
+2015.02.11.00:39:24 [Progress] current: 1
+2015.02.11.00:39:24 [Progress] min: 0
+2015.02.11.00:39:24 [Progress] max: 1
+2015.02.11.00:39:24 [Progress] current: 1
+2015.02.11.00:39:24 [Debug] Transform merlin_domain_transform not run on matched interfaces cpu_jtag_debug_module_translator.avalon_anti_slave_0 and cpu.jtag_debug_module
+2015.02.11.00:39:24 [Debug] Transform merlin_domain_transform not run on matched interfaces memory_s1_translator.avalon_anti_slave_0 and memory.s1
+2015.02.11.00:39:24 [Debug] Transform merlin_domain_transform not run on matched interfaces lcd_0_control_slave_translator.avalon_anti_slave_0 and lcd_0.control_slave
+2015.02.11.00:39:24 [Debug] Transform merlin_domain_transform not run on matched interfaces jtag_uart_avalon_jtag_slave_translator.avalon_anti_slave_0 and jtag_uart.avalon_jtag_slave
+2015.02.11.00:39:24 [Debug] Transform merlin_domain_transform not run on matched interfaces pixel_buffer_sram_avalon_sram_slave_translator.avalon_anti_slave_0 and pixel_buffer_sram.avalon_sram_slave
+2015.02.11.00:39:24 [Debug] Transform merlin_domain_transform not run on matched interfaces pixel_buffer_dma_avalon_control_slave_translator.avalon_anti_slave_0 and pixel_buffer_dma.avalon_control_slave
+2015.02.11.00:39:24 [Debug] Transform merlin_domain_transform not run on matched interfaces altpll_0_pll_slave_translator.avalon_anti_slave_0 and altpll_0.pll_slave
+2015.02.11.00:39:24 [Info] merlin_domain_transform: After transform: <b>43</b> modules, <b>222</b> connections
+2015.02.11.00:39:24 [Debug] Transform: RouterTransform
+2015.02.11.00:39:25 [Progress] min: 0
+2015.02.11.00:39:25 [Progress] max: 1
+2015.02.11.00:39:25 [Progress] current: 1
+2015.02.11.00:39:25 [Progress] min: 0
+2015.02.11.00:39:25 [Progress] max: 1
+2015.02.11.00:39:25 [Progress] current: 1
+2015.02.11.00:39:25 [Progress] min: 0
+2015.02.11.00:39:25 [Progress] max: 1
+2015.02.11.00:39:25 [Progress] current: 1
+2015.02.11.00:39:25 [Progress] min: 0
+2015.02.11.00:39:25 [Progress] max: 1
+2015.02.11.00:39:25 [Progress] current: 1
+2015.02.11.00:39:25 [Progress] min: 0
+2015.02.11.00:39:25 [Progress] max: 1
+2015.02.11.00:39:25 [Progress] current: 1
+2015.02.11.00:39:25 [Progress] min: 0
+2015.02.11.00:39:25 [Progress] max: 1
+2015.02.11.00:39:25 [Progress] current: 1
+2015.02.11.00:39:25 [Progress] min: 0
+2015.02.11.00:39:25 [Progress] max: 1
+2015.02.11.00:39:25 [Progress] current: 1
+2015.02.11.00:39:25 [Progress] min: 0
+2015.02.11.00:39:25 [Progress] max: 1
+2015.02.11.00:39:25 [Progress] current: 1
+2015.02.11.00:39:25 [Progress] min: 0
+2015.02.11.00:39:25 [Progress] max: 1
+2015.02.11.00:39:25 [Progress] current: 1
+2015.02.11.00:39:25 [Progress] min: 0
+2015.02.11.00:39:25 [Progress] max: 1
+2015.02.11.00:39:25 [Progress] current: 1
+2015.02.11.00:39:25 [Progress] min: 0
+2015.02.11.00:39:25 [Progress] max: 1
+2015.02.11.00:39:25 [Progress] current: 1
+2015.02.11.00:39:25 [Progress] min: 0
+2015.02.11.00:39:25 [Progress] max: 1
+2015.02.11.00:39:25 [Progress] current: 1
+2015.02.11.00:39:25 [Info] merlin_router_transform: After transform: <b>55</b> modules, <b>269</b> connections
+2015.02.11.00:39:25 [Debug] Transform: TrafficLimiterTransform
+2015.02.11.00:39:25 [Progress] min: 0
+2015.02.11.00:39:25 [Progress] max: 1
+2015.02.11.00:39:25 [Progress] current: 1
+2015.02.11.00:39:25 [Progress] min: 0
+2015.02.11.00:39:25 [Progress] max: 1
+2015.02.11.00:39:25 [Progress] current: 1
+2015.02.11.00:39:25 [Progress] min: 0
+2015.02.11.00:39:25 [Progress] max: 1
+2015.02.11.00:39:25 [Progress] current: 1
+2015.02.11.00:39:25 [Info] merlin_traffic_limiter_transform: After transform: <b>58</b> modules, <b>284</b> connections
+2015.02.11.00:39:25 [Debug] Transform: BurstTransform
+2015.02.11.00:39:26 [Progress] min: 0
+2015.02.11.00:39:26 [Progress] max: 1
+2015.02.11.00:39:26 [Progress] current: 1
+2015.02.11.00:39:26 [Info] merlin_burst_transform: After transform: <b>59</b> modules, <b>288</b> connections
+2015.02.11.00:39:26 [Debug] Transform: ResetAdaptation
+2015.02.11.00:39:26 [Progress] min: 0
+2015.02.11.00:39:26 [Progress] max: 1
+2015.02.11.00:39:26 [Progress] current: 1
+2015.02.11.00:39:26 [Progress] min: 0
+2015.02.11.00:39:26 [Progress] max: 1
+2015.02.11.00:39:26 [Progress] current: 1
+2015.02.11.00:39:26 [Progress] min: 0
+2015.02.11.00:39:26 [Progress] max: 1
+2015.02.11.00:39:26 [Progress] current: 1
+2015.02.11.00:39:26 [Info] reset_adaptation_transform: After transform: <b>62</b> modules, <b>236</b> connections
+2015.02.11.00:39:26 [Debug] Transform: NetworkToSwitchTransform
+2015.02.11.00:39:26 [Progress] min: 0
+2015.02.11.00:39:26 [Progress] max: 1
+2015.02.11.00:39:26 [Progress] current: 1
+2015.02.11.00:39:26 [Progress] min: 0
+2015.02.11.00:39:26 [Progress] max: 1
+2015.02.11.00:39:26 [Progress] current: 1
+2015.02.11.00:39:26 [Progress] min: 0
+2015.02.11.00:39:26 [Progress] max: 1
+2015.02.11.00:39:26 [Progress] current: 1
+2015.02.11.00:39:26 [Progress] min: 0
+2015.02.11.00:39:26 [Progress] max: 1
+2015.02.11.00:39:26 [Progress] current: 1
+2015.02.11.00:39:26 [Progress] min: 0
+2015.02.11.00:39:26 [Progress] max: 1
+2015.02.11.00:39:26 [Progress] current: 1
+2015.02.11.00:39:26 [Progress] min: 0
+2015.02.11.00:39:26 [Progress] max: 1
+2015.02.11.00:39:26 [Progress] current: 1
+2015.02.11.00:39:26 [Progress] min: 0
+2015.02.11.00:39:26 [Progress] max: 1
+2015.02.11.00:39:26 [Progress] current: 1
+2015.02.11.00:39:26 [Progress] min: 0
+2015.02.11.00:39:26 [Progress] max: 1
+2015.02.11.00:39:26 [Progress] current: 1
+2015.02.11.00:39:26 [Progress] min: 0
+2015.02.11.00:39:26 [Progress] max: 1
+2015.02.11.00:39:26 [Progress] current: 1
+2015.02.11.00:39:26 [Progress] min: 0
+2015.02.11.00:39:26 [Progress] max: 1
+2015.02.11.00:39:26 [Progress] current: 1
+2015.02.11.00:39:26 [Progress] min: 0
+2015.02.11.00:39:26 [Progress] max: 1
+2015.02.11.00:39:26 [Progress] current: 1
+2015.02.11.00:39:26 [Progress] min: 0
+2015.02.11.00:39:26 [Progress] max: 1
+2015.02.11.00:39:26 [Progress] current: 1
+2015.02.11.00:39:26 [Progress] min: 0
+2015.02.11.00:39:26 [Progress] max: 1
+2015.02.11.00:39:26 [Progress] current: 1
+2015.02.11.00:39:26 [Progress] min: 0
+2015.02.11.00:39:26 [Progress] max: 1
+2015.02.11.00:39:26 [Progress] current: 1
+2015.02.11.00:39:26 [Progress] min: 0
+2015.02.11.00:39:26 [Progress] max: 1
+2015.02.11.00:39:26 [Progress] current: 1
+2015.02.11.00:39:26 [Progress] min: 0
+2015.02.11.00:39:26 [Progress] max: 1
+2015.02.11.00:39:26 [Progress] current: 1
+2015.02.11.00:39:26 [Progress] min: 0
+2015.02.11.00:39:26 [Progress] max: 1
+2015.02.11.00:39:26 [Progress] current: 1
+2015.02.11.00:39:26 [Progress] min: 0
+2015.02.11.00:39:26 [Progress] max: 1
+2015.02.11.00:39:26 [Progress] current: 1
+2015.02.11.00:39:26 [Progress] min: 0
+2015.02.11.00:39:26 [Progress] max: 1
+2015.02.11.00:39:26 [Progress] current: 1
+2015.02.11.00:39:26 [Progress] min: 0
+2015.02.11.00:39:26 [Progress] max: 1
+2015.02.11.00:39:26 [Progress] current: 1
+2015.02.11.00:39:26 [Progress] min: 0
+2015.02.11.00:39:26 [Progress] max: 1
+2015.02.11.00:39:26 [Progress] current: 1
+2015.02.11.00:39:26 [Progress] min: 0
+2015.02.11.00:39:26 [Progress] max: 1
+2015.02.11.00:39:26 [Progress] current: 1
+2015.02.11.00:39:26 [Progress] min: 0
+2015.02.11.00:39:26 [Progress] max: 1
+2015.02.11.00:39:26 [Progress] current: 1
+2015.02.11.00:39:26 [Progress] min: 0
+2015.02.11.00:39:26 [Progress] max: 1
+2015.02.11.00:39:26 [Progress] current: 1
+2015.02.11.00:39:26 [Info] merlin_network_to_switch_transform: After transform: <b>84</b> modules, <b>282</b> connections
+2015.02.11.00:39:26 [Debug] Transform: WidthTransform
+2015.02.11.00:39:26 [Progress] min: 0
+2015.02.11.00:39:26 [Progress] max: 1
+2015.02.11.00:39:26 [Progress] current: 1
+2015.02.11.00:39:27 [Progress] min: 0
+2015.02.11.00:39:27 [Progress] max: 1
+2015.02.11.00:39:27 [Progress] current: 1
+2015.02.11.00:39:27 [Info] merlin_width_transform: After transform: <b>86</b> modules, <b>288</b> connections
+2015.02.11.00:39:27 [Debug] Transform: RouterTableTransform
+2015.02.11.00:39:27 [Debug] Transform: ClockCrossingTransform
+2015.02.11.00:39:27 [Info] Inserting clock-crossing logic between cmd_xbar_demux_002.src6 and cmd_xbar_mux_007.sink0
+2015.02.11.00:39:27 [Progress] min: 0
+2015.02.11.00:39:27 [Progress] max: 1
+2015.02.11.00:39:27 [Progress] current: 1
+2015.02.11.00:39:27 [Info] Inserting clock-crossing logic between rsp_xbar_demux_007.src0 and rsp_xbar_mux_002.sink6
+2015.02.11.00:39:27 [Progress] min: 0
+2015.02.11.00:39:27 [Progress] max: 1
+2015.02.11.00:39:27 [Progress] current: 1
+2015.02.11.00:39:27 [Info] com_altera_sopcmodel_transforms_avalon_ClockCrossingTransform: After transform: <b>88</b> modules, <b>298</b> connections
+2015.02.11.00:39:27 [Debug] Transform: PipelineTransform
+2015.02.11.00:39:28 [Debug] Transform: TrafficLimiterUpdateTransform
+2015.02.11.00:39:28 [Info] limiter_update_transform: After transform: <b>88</b> modules, <b>301</b> connections
+2015.02.11.00:39:28 [Debug] Transform: InterruptMapperTransform
+2015.02.11.00:39:28 [Progress] min: 0
+2015.02.11.00:39:28 [Progress] max: 1
+2015.02.11.00:39:28 [Progress] current: 1
+2015.02.11.00:39:28 [Info] merlin_interrupt_mapper_transform: After transform: <b>89</b> modules, <b>304</b> connections
+2015.02.11.00:39:28 [Debug] Transform: InterruptSyncTransform
+2015.02.11.00:39:29 [Debug] Transform: InterruptFanoutTransform
+2015.02.11.00:39:29 [Warning] system: "No matching role found for jtag_uart:avalon_jtag_slave:dataavailable (dataavailable)"
+2015.02.11.00:39:29 [Warning] system: "No matching role found for jtag_uart:avalon_jtag_slave:readyfordata (readyfordata)"
+2015.02.11.00:39:29 [Warning] system: "No matching role found for pixel_buffer_dma:avalon_pixel_dma_master:master_arbiterlock (arbiterlock)"
+2015.02.11.00:39:29 [Warning] system: "No matching role found for pixel_buffer_dma_avalon_pixel_dma_master_agent:av:av_burstcount (burstcount)"
+2015.02.11.00:39:29 [Warning] system: "No matching role found for pixel_buffer_dma_avalon_pixel_dma_master_agent:av:av_writedata (writedata)"
+2015.02.11.00:39:29 [Warning] system: "No matching role found for pixel_buffer_dma_avalon_pixel_dma_master_agent:av:av_lock (lock)"
+2015.02.11.00:39:29 [Warning] system: "No matching role found for pixel_buffer_dma_avalon_pixel_dma_master_agent:av:av_write (write)"
+2015.02.11.00:39:29 [Warning] system: "No matching role found for pixel_buffer_dma_avalon_pixel_dma_master_agent:av:av_debugaccess (debugaccess)"
+2015.02.11.00:39:29 [Warning] system: "No matching role found for pixel_buffer_dma_avalon_pixel_dma_master_agent:av:av_byteenable (byteenable)"
+2015.02.11.00:39:29 [Warning] system: "No matching role found for pixel_buffer_dma_avalon_pixel_dma_master_translator_avalon_anti_master_0_agent:m0:m0_burstcount (burstcount)"
+2015.02.11.00:39:29 [Warning] system: "No matching role found for pixel_buffer_dma_avalon_pixel_dma_master_translator_avalon_anti_master_0_agent:m0:m0_writedata (writedata)"
+2015.02.11.00:39:29 [Warning] system: "No matching role found for pixel_buffer_dma_avalon_pixel_dma_master_translator_avalon_anti_master_0_agent:m0:m0_write (write)"
+2015.02.11.00:39:29 [Warning] system: "No matching role found for pixel_buffer_dma_avalon_pixel_dma_master_translator_avalon_anti_master_0_agent:m0:m0_lock (lock)"
+2015.02.11.00:39:29 [Warning] system: "No matching role found for pixel_buffer_dma_avalon_pixel_dma_master_translator_avalon_anti_master_0_agent:m0:m0_debugaccess (debugaccess)"
+2015.02.11.00:39:29 [Warning] system: "No matching role found for pixel_buffer_dma_avalon_pixel_dma_master_translator_avalon_anti_master_0_agent:m0:m0_byteenable (byteenable)"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_nios2_qsys</b> "<b>submodules/basic_shit_cpu</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_avalon_onchip_memory2</b> "<b>submodules/basic_shit_memory</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_avalon_lcd_16207</b> "<b>submodules/basic_shit_lcd_0</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_avalon_jtag_uart</b> "<b>submodules/basic_shit_jtag_uart</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_up_avalon_video_pixel_buffer_dma</b> "<b>submodules/basic_shit_pixel_buffer_dma</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_up_avalon_sram</b> "<b>submodules/basic_shit_pixel_buffer_sram</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_up_avalon_video_dual_clock_buffer</b> "<b>submodules/basic_shit_dual_clock_fifo</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_up_avalon_video_vga_controller</b> "<b>submodules/basic_shit_vga_controller</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altpll</b> "<b>submodules/basic_shit_altpll_0</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_master_translator</b> "<b>submodules/altera_merlin_master_translator</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_master_translator</b> "<b>submodules/altera_merlin_master_translator</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_master_translator</b> "<b>submodules/altera_merlin_master_translator</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_slave_translator</b> "<b>submodules/altera_merlin_slave_translator</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_slave_translator</b> "<b>submodules/altera_merlin_slave_translator</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_slave_translator</b> "<b>submodules/altera_merlin_slave_translator</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_slave_translator</b> "<b>submodules/altera_merlin_slave_translator</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_slave_translator</b> "<b>submodules/altera_merlin_slave_translator</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_slave_translator</b> "<b>submodules/altera_merlin_slave_translator</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_slave_translator</b> "<b>submodules/altera_merlin_slave_translator</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_master_agent</b> "<b>submodules/altera_merlin_master_agent</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_slave_agent</b> "<b>submodules/altera_merlin_slave_agent</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_avalon_sc_fifo</b> "<b>submodules/altera_avalon_sc_fifo</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_master_agent</b> "<b>submodules/altera_merlin_master_agent</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_master_agent</b> "<b>submodules/altera_merlin_master_agent</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_master_agent</b> "<b>submodules/altera_merlin_master_agent</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_slave_agent</b> "<b>submodules/altera_merlin_slave_agent</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_avalon_sc_fifo</b> "<b>submodules/altera_avalon_sc_fifo</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_slave_agent</b> "<b>submodules/altera_merlin_slave_agent</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_avalon_sc_fifo</b> "<b>submodules/altera_avalon_sc_fifo</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_slave_agent</b> "<b>submodules/altera_merlin_slave_agent</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_avalon_sc_fifo</b> "<b>submodules/altera_avalon_sc_fifo</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_slave_agent</b> "<b>submodules/altera_merlin_slave_agent</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_avalon_sc_fifo</b> "<b>submodules/altera_avalon_sc_fifo</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_slave_agent</b> "<b>submodules/altera_merlin_slave_agent</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_avalon_sc_fifo</b> "<b>submodules/altera_avalon_sc_fifo</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_slave_agent</b> "<b>submodules/altera_merlin_slave_agent</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_avalon_sc_fifo</b> "<b>submodules/altera_avalon_sc_fifo</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_slave_agent</b> "<b>submodules/altera_merlin_slave_agent</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_avalon_sc_fifo</b> "<b>submodules/altera_avalon_sc_fifo</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_avalon_sc_fifo</b> "<b>submodules/altera_avalon_sc_fifo</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_router</b> "<b>submodules/basic_shit_addr_router</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_router</b> "<b>submodules/basic_shit_id_router</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_router</b> "<b>submodules/basic_shit_addr_router_001</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_router</b> "<b>submodules/basic_shit_addr_router_002</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_router</b> "<b>submodules/basic_shit_addr_router_003</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_router</b> "<b>submodules/basic_shit_id_router_001</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_router</b> "<b>submodules/basic_shit_id_router_001</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_router</b> "<b>submodules/basic_shit_id_router_003</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_router</b> "<b>submodules/basic_shit_id_router_003</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_router</b> "<b>submodules/basic_shit_id_router_005</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_router</b> "<b>submodules/basic_shit_id_router_003</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_router</b> "<b>submodules/basic_shit_id_router_003</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_traffic_limiter</b> "<b>submodules/altera_merlin_traffic_limiter</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_traffic_limiter</b> "<b>submodules/altera_merlin_traffic_limiter</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_traffic_limiter</b> "<b>submodules/altera_merlin_traffic_limiter</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_burst_adapter</b> "<b>submodules/altera_merlin_burst_adapter</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_reset_controller</b> "<b>submodules/altera_reset_controller</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_reset_controller</b> "<b>submodules/altera_reset_controller</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_reset_controller</b> "<b>submodules/altera_reset_controller</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_demultiplexer</b> "<b>submodules/basic_shit_cmd_xbar_demux</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_demultiplexer</b> "<b>submodules/basic_shit_cmd_xbar_demux</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_demultiplexer</b> "<b>submodules/basic_shit_cmd_xbar_demux_001</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_demultiplexer</b> "<b>submodules/basic_shit_cmd_xbar_demux_002</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_demultiplexer</b> "<b>submodules/basic_shit_cmd_xbar_demux_003</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_multiplexer</b> "<b>submodules/basic_shit_cmd_xbar_mux_001</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_multiplexer</b> "<b>submodules/basic_shit_cmd_xbar_mux_001</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_multiplexer</b> "<b>submodules/basic_shit_cmd_xbar_mux_001</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_demultiplexer</b> "<b>submodules/basic_shit_rsp_xbar_demux_001</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_demultiplexer</b> "<b>submodules/basic_shit_rsp_xbar_demux_001</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_demultiplexer</b> "<b>submodules/basic_shit_rsp_xbar_demux_003</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_demultiplexer</b> "<b>submodules/basic_shit_rsp_xbar_demux_003</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_demultiplexer</b> "<b>submodules/basic_shit_rsp_xbar_demux_001</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_demultiplexer</b> "<b>submodules/basic_shit_rsp_xbar_demux_003</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_demultiplexer</b> "<b>submodules/basic_shit_rsp_xbar_demux_003</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_multiplexer</b> "<b>submodules/basic_shit_rsp_xbar_mux_001</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_multiplexer</b> "<b>submodules/basic_shit_rsp_xbar_mux_002</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_width_adapter</b> "<b>submodules/altera_merlin_width_adapter</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_merlin_width_adapter</b> "<b>submodules/altera_merlin_width_adapter</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_avalon_st_handshake_clock_crosser</b> "<b>submodules/altera_avalon_st_handshake_clock_crosser</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_avalon_st_handshake_clock_crosser</b> "<b>submodules/altera_avalon_st_handshake_clock_crosser</b>"
+2015.02.11.00:39:29 [Debug] basic_shit: "<b>basic_shit</b>" reuses <b>altera_irq_mapper</b> "<b>submodules/basic_shit_irq_mapper</b>"
+2015.02.11.00:39:30 [Debug] basic_shit: queue size: 80 starting:altera_nios2_qsys "submodules/basic_shit_cpu"
+2015.02.11.00:39:30 [Info] cpu: Starting RTL generation for module 'basic_shit_cpu'
+2015.02.11.00:39:30 [Info] cpu:   Generation command is [exec C:/altera/11.0/quartus/../ip/altera/nios2_ip/altera_nios2/eperl.exe -I C:/altera/11.0/quartus/common/ip/altera/common/perl/5.8.3 -I C:/altera/11.0/quartus/sopc_builder/bin/europa -I C:/altera/11.0/quartus/sopc_builder/bin/perl_lib -I C:/altera/11.0/quartus/sopc_builder/bin -I C:/altera/11.0/quartus/../ip/altera/nios2_ip/altera_nios2/cpu_lib -I C:/altera/11.0/quartus/../ip/altera/nios2_ip/altera_nios2/nios_lib -I C:/altera/11.0/quartus/../ip/altera/nios2_ip/altera_nios2 -I C:/altera/11.0/quartus/../ip/altera/nios2_ip/altera_nios2 -- C:/altera/11.0/quartus/../ip/altera/nios2_ip/altera_nios2/generate_rtl.epl --name=basic_shit_cpu --dir=C:/Users/LABUSE~1/AppData/Local/Temp/alt6477_7973851092328413316.dir/0001_cpu_gen/ --quartus_dir=C:/altera/11.0/quartus --verilog --config=C:/Users/LABUSE~1/AppData/Local/Temp/alt6477_7973851092328413316.dir/0001_cpu_gen//basic_shit_cpu_processor_configuration.pl  --do_build_sim=0    --bogus  ]
+2015.02.11.00:39:40 [Info] cpu: # 2015.02.11 00:39:30 (*) Starting Nios II generation
+2015.02.11.00:39:40 [Info] cpu: # 2015.02.11 00:39:30 (*)   Checking for encrypted license (non-evaluation).
+2015.02.11.00:39:40 [Info] cpu: # 2015.02.11 00:39:31 (*)   Encrypted license found.  SOF will not be time-limited.
+2015.02.11.00:39:40 [Info] cpu: # 2015.02.11 00:39:31 (*)   Elaborating CPU configuration settings
+2015.02.11.00:39:40 [Info] cpu: # 2015.02.11 00:39:31 (*)   Creating all objects for CPU
+2015.02.11.00:39:40 [Info] cpu: # 2015.02.11 00:39:31 (*)     Testbench
+2015.02.11.00:39:40 [Info] cpu: # 2015.02.11 00:39:31 (*)     Instruction decoding
+2015.02.11.00:39:40 [Info] cpu: # 2015.02.11 00:39:31 (*)       Instruction fields
+2015.02.11.00:39:40 [Info] cpu: # 2015.02.11 00:39:31 (*)       Instruction decodes
+2015.02.11.00:39:40 [Info] cpu: # 2015.02.11 00:39:32 (*)       Signals for RTL simulation waveforms
+2015.02.11.00:39:40 [Info] cpu: # 2015.02.11 00:39:32 (*)       Instruction controls
+2015.02.11.00:39:40 [Info] cpu: # 2015.02.11 00:39:32 (*)     Pipeline frontend
+2015.02.11.00:39:40 [Info] cpu: # 2015.02.11 00:39:32 (*)     Pipeline backend
+2015.02.11.00:39:40 [Info] cpu: # 2015.02.11 00:39:35 (*)   Generating RTL from CPU objects
+2015.02.11.00:39:40 [Info] cpu: # 2015.02.11 00:39:38 (*)   Creating encrypted RTL
+2015.02.11.00:39:40 [Info] cpu: # 2015.02.11 00:39:40 (*) Done Nios II generation
+2015.02.11.00:39:40 [Info] cpu: Done RTL generation for module 'basic_shit_cpu'
+2015.02.11.00:39:40 [Info] cpu: "<b>basic_shit</b>" instantiated <b>altera_nios2_qsys</b> "<b>cpu</b>"
+2015.02.11.00:39:40 [Debug] basic_shit: queue size: 79 starting:altera_avalon_onchip_memory2 "submodules/basic_shit_memory"
+2015.02.11.00:39:40 [Info] Starting classic module elaboration.
+2015.02.11.00:39:42 [Progress] "c:/altera/11.0/quartus/bin/jre/bin/java.exe" -Xmx512M -classpath "c:/altera/11.0/quartus/sopc_builder/bin/sopc_builder.jar;c:/altera/11.0/quartus/sopc_builder/bin/PinAssigner.jar;c:/altera/11.0/quartus/sopc_builder/bin/sopc_wizard.jar;c:/altera/11.0/quartus/sopc_builder/bin/jptf.jar" sopc_builder.sopc_builder  -d"c:/altera/11.0/quartus/sopc_builder" -notalkback=1 -projectnameyysystem.qpf -projectpathC:/Users/LABUSE~1/AppData/Local/Temp/alt6477_7973851092328413316.dir/0002_sopclgen  --no_splash --refresh C:/Users/LABUSE~1/AppData/Local/Temp/alt6477_7973851092328413316.dir/0002_sopclgen/yysystem.v --quartus_dir="c:/altera/11.0/quartus" --sopc_perl="c:/altera/11.0/quartus/bin/perl" --sopc_lib_path="++c:/altera/11.0/quartus/../ip/altera/sopc_builder_ip+c:/altera/11.0/quartus/../ip/altera/nios2_ip"
+2015.02.11.00:39:44 [Info] Finished elaborating classic module.
+2015.02.11.00:39:44 [Progress] Executing: C:/altera/11.0/quartus//sopc_builder/bin/sopc_builder --classic --generate C:/Users/LABUSE~1/AppData/Local/Temp/alt6477_7973851092328413316.dir/0002_sopclgen/yysystem.ptf
+2015.02.11.00:39:44 [Info] Running sopc_builder...
+2015.02.11.00:39:46 [Progress] "c:/altera/11.0/quartus/bin/jre/bin/java.exe" -Xmx512M -classpath "c:/altera/11.0/quartus/sopc_builder/bin/sopc_builder.jar;c:/altera/11.0/quartus/sopc_builder/bin/PinAssigner.jar;c:/altera/11.0/quartus/sopc_builder/bin/sopc_wizard.jar;c:/altera/11.0/quartus/sopc_builder/bin/jptf.jar" sopc_builder.sopc_builder  -d"c:/altera/11.0/quartus/sopc_builder" -notalkback=1 -projectnameyysystem.qpf -projectpathC:/Users/LABUSE~1/AppData/Local/Temp/alt6477_7973851092328413316.dir/0002_sopclgen  --generate C:/Users/LABUSE~1/AppData/Local/Temp/alt6477_7973851092328413316.dir/0002_sopclgen/yysystem.v --quartus_dir="c:/altera/11.0/quartus" --sopc_perl="c:/altera/11.0/quartus/bin/perl" --sopc_lib_path="++c:/altera/11.0/quartus/../ip/altera/sopc_builder_ip+c:/altera/11.0/quartus/../ip/altera/nios2_ip"
+2015.02.11.00:39:48 [Progress] No .sopc_builder configuration file(!)
+2015.02.11.00:39:48 [Progress] .
+2015.02.11.00:39:51 [Progress] # 2015.02.11 00:39:51 (*) Success: sopc_builder finished.
+2015.02.11.00:39:51 [Info] memory: "<b>basic_shit</b>" instantiated <b>altera_avalon_onchip_memory2</b> "<b>memory</b>"
+2015.02.11.00:39:51 [Debug] basic_shit: queue size: 78 starting:altera_avalon_lcd_16207 "submodules/basic_shit_lcd_0"
+2015.02.11.00:39:51 [Info] Starting classic module elaboration.
+2015.02.11.00:39:54 [Progress] "c:/altera/11.0/quartus/bin/jre/bin/java.exe" -Xmx512M -classpath "c:/altera/11.0/quartus/sopc_builder/bin/sopc_builder.jar;c:/altera/11.0/quartus/sopc_builder/bin/PinAssigner.jar;c:/altera/11.0/quartus/sopc_builder/bin/sopc_wizard.jar;c:/altera/11.0/quartus/sopc_builder/bin/jptf.jar" sopc_builder.sopc_builder  -d"c:/altera/11.0/quartus/sopc_builder" -notalkback=1 -projectnameyysystem.qpf -projectpathC:/Users/LABUSE~1/AppData/Local/Temp/alt6477_7973851092328413316.dir/0003_sopclgen  --no_splash --refresh C:/Users/LABUSE~1/AppData/Local/Temp/alt6477_7973851092328413316.dir/0003_sopclgen/yysystem.v --quartus_dir="c:/altera/11.0/quartus" --sopc_perl="c:/altera/11.0/quartus/bin/perl" --sopc_lib_path="++c:/altera/11.0/quartus/../ip/altera/sopc_builder_ip+c:/altera/11.0/quartus/../ip/altera/nios2_ip"
+2015.02.11.00:39:55 [Info] Finished elaborating classic module.
+2015.02.11.00:39:55 [Progress] Executing: C:/altera/11.0/quartus//sopc_builder/bin/sopc_builder --classic --generate C:/Users/LABUSE~1/AppData/Local/Temp/alt6477_7973851092328413316.dir/0003_sopclgen/yysystem.ptf
+2015.02.11.00:39:55 [Info] Running sopc_builder...
+2015.02.11.00:39:57 [Progress] "c:/altera/11.0/quartus/bin/jre/bin/java.exe" -Xmx512M -classpath "c:/altera/11.0/quartus/sopc_builder/bin/sopc_builder.jar;c:/altera/11.0/quartus/sopc_builder/bin/PinAssigner.jar;c:/altera/11.0/quartus/sopc_builder/bin/sopc_wizard.jar;c:/altera/11.0/quartus/sopc_builder/bin/jptf.jar" sopc_builder.sopc_builder  -d"c:/altera/11.0/quartus/sopc_builder" -notalkback=1 -projectnameyysystem.qpf -projectpathC:/Users/LABUSE~1/AppData/Local/Temp/alt6477_7973851092328413316.dir/0003_sopclgen  --generate C:/Users/LABUSE~1/AppData/Local/Temp/alt6477_7973851092328413316.dir/0003_sopclgen/yysystem.v --quartus_dir="c:/altera/11.0/quartus" --sopc_perl="c:/altera/11.0/quartus/bin/perl" --sopc_lib_path="++c:/altera/11.0/quartus/../ip/altera/sopc_builder_ip+c:/altera/11.0/quartus/../ip/altera/nios2_ip"
+2015.02.11.00:39:59 [Progress] No .sopc_builder configuration file(!)
+2015.02.11.00:39:59 [Progress] .
+2015.02.11.00:40:00 [Progress] # 2015.02.11 00:40:00 (*) Success: sopc_builder finished.
+2015.02.11.00:40:01 [Info] lcd_0: "<b>basic_shit</b>" instantiated <b>altera_avalon_lcd_16207</b> "<b>lcd_0</b>"
+2015.02.11.00:40:01 [Debug] basic_shit: queue size: 77 starting:altera_avalon_jtag_uart "submodules/basic_shit_jtag_uart"
+2015.02.11.00:40:01 [Info] Starting classic module elaboration.
+2015.02.11.00:40:03 [Progress] "c:/altera/11.0/quartus/bin/jre/bin/java.exe" -Xmx512M -classpath "c:/altera/11.0/quartus/sopc_builder/bin/sopc_builder.jar;c:/altera/11.0/quartus/sopc_builder/bin/PinAssigner.jar;c:/altera/11.0/quartus/sopc_builder/bin/sopc_wizard.jar;c:/altera/11.0/quartus/sopc_builder/bin/jptf.jar" sopc_builder.sopc_builder  -d"c:/altera/11.0/quartus/sopc_builder" -notalkback=1 -projectnameyysystem.qpf -projectpathC:/Users/LABUSE~1/AppData/Local/Temp/alt6477_7973851092328413316.dir/0004_sopclgen  --no_splash --refresh C:/Users/LABUSE~1/AppData/Local/Temp/alt6477_7973851092328413316.dir/0004_sopclgen/yysystem.v --quartus_dir="c:/altera/11.0/quartus" --sopc_perl="c:/altera/11.0/quartus/bin/perl" --sopc_lib_path="++c:/altera/11.0/quartus/../ip/altera/sopc_builder_ip+c:/altera/11.0/quartus/../ip/altera/nios2_ip"
+2015.02.11.00:40:04 [Info] Finished elaborating classic module.
+2015.02.11.00:40:04 [Progress] Executing: C:/altera/11.0/quartus//sopc_builder/bin/sopc_builder --classic --generate C:/Users/LABUSE~1/AppData/Local/Temp/alt6477_7973851092328413316.dir/0004_sopclgen/yysystem.ptf
+2015.02.11.00:40:04 [Info] Running sopc_builder...
+2015.02.11.00:40:06 [Progress] "c:/altera/11.0/quartus/bin/jre/bin/java.exe" -Xmx512M -classpath "c:/altera/11.0/quartus/sopc_builder/bin/sopc_builder.jar;c:/altera/11.0/quartus/sopc_builder/bin/PinAssigner.jar;c:/altera/11.0/quartus/sopc_builder/bin/sopc_wizard.jar;c:/altera/11.0/quartus/sopc_builder/bin/jptf.jar" sopc_builder.sopc_builder  -d"c:/altera/11.0/quartus/sopc_builder" -notalkback=1 -projectnameyysystem.qpf -projectpathC:/Users/LABUSE~1/AppData/Local/Temp/alt6477_7973851092328413316.dir/0004_sopclgen  --generate C:/Users/LABUSE~1/AppData/Local/Temp/alt6477_7973851092328413316.dir/0004_sopclgen/yysystem.v --quartus_dir="c:/altera/11.0/quartus" --sopc_perl="c:/altera/11.0/quartus/bin/perl" --sopc_lib_path="++c:/altera/11.0/quartus/../ip/altera/sopc_builder_ip+c:/altera/11.0/quartus/../ip/altera/nios2_ip"
+2015.02.11.00:40:08 [Progress] No .sopc_builder configuration file(!)
+2015.02.11.00:40:08 [Progress] .
+2015.02.11.00:40:09 [Progress] # 2015.02.11 00:40:09 (*) Success: sopc_builder finished.
+2015.02.11.00:40:10 [Info] jtag_uart: "<b>basic_shit</b>" instantiated <b>altera_avalon_jtag_uart</b> "<b>jtag_uart</b>"
+2015.02.11.00:40:10 [Debug] basic_shit: queue size: 76 starting:altera_up_avalon_video_pixel_buffer_dma "submodules/basic_shit_pixel_buffer_dma"
+2015.02.11.00:40:10 [Info] pixel_buffer_dma: Starting Generation of VGA Pixel Buffer
+2015.02.11.00:40:10 [Debug] set ALTERA_HW_TCL_KEEP_TEMP_FILES=1 to retain temp files
+2015.02.11.00:40:10 [Debug] Command: C:/altera/11.0/quartus/bin/quartus_map.exe not_a_project --generate_hdl_interface=C:/Users/LABUSE~1/AppData/Local/Temp/alt6477_7973851092328413316.dir/0005_sopcgen/basic_shit_pixel_buffer_dma.v --source=C:/Users/LABUSE~1/AppData/Local/Temp/alt6477_7973851092328413316.dir/0005_sopcgen/basic_shit_pixel_buffer_dma.v --set=HDL_INTERFACE_OUTPUT_PATH=C:/Users/LABUSE~1/AppData/Local/Temp/alt6477_7973851092328413316.dir/0006_sopcqmap/
+2015.02.11.00:40:11 [Debug] Command took 1.293s
+2015.02.11.00:40:11 [Debug] set ALTERA_HW_TCL_KEEP_TEMP_FILES=1 to retain temp files
+2015.02.11.00:40:11 [Debug] Command: C:/altera/11.0/quartus/bin/quartus_map.exe "not_a_project" "--generate_hdl_interface=C:\\Users\\LABUSE~1\\AppData\\Local\\Temp\\alt6477_7973851092328413316.dir\\0005_sopcgen\\basic_shit_pixel_buffer_dma.v" "--source=C:/Users/LABUSE~1/AppData/Local/Temp/alt6477_7973851092328413316.dir/0005_sopcgen/basic_shit_pixel_buffer_dma.v" "--set=HDL_INTERFACE_OUTPUT_PATH=C:/Users/LABUSE~1/AppData/Local/Temp/alt6477_7973851092328413316.dir/0007_sopcqmap/" "--set=HDL_INTERFACE_INSTANCE_NAME=inst" "--set=HDL_INTERFACE_INSTANCE_ENTITY=basic_shit_pixel_buffer_dma"
+2015.02.11.00:40:12 [Debug] Command took 1.193s
+2015.02.11.00:40:12 [Info] pixel_buffer_dma: "<b>basic_shit</b>" instantiated <b>altera_up_avalon_video_pixel_buffer_dma</b> "<b>pixel_buffer_dma</b>"
+2015.02.11.00:40:12 [Debug] basic_shit: queue size: 75 starting:altera_up_avalon_sram "submodules/basic_shit_pixel_buffer_sram"
+2015.02.11.00:40:12 [Info] pixel_buffer_sram: Starting Generation of SRAM or SSRAM Controller
+2015.02.11.00:40:12 [Debug] set ALTERA_HW_TCL_KEEP_TEMP_FILES=1 to retain temp files
+2015.02.11.00:40:12 [Debug] Command: C:/altera/11.0/quartus/bin/quartus_map.exe not_a_project --generate_hdl_interface=C:/Users/LABUSE~1/AppData/Local/Temp/alt6477_7973851092328413316.dir/0008_sopcgen/basic_shit_pixel_buffer_sram.v --source=C:/Users/LABUSE~1/AppData/Local/Temp/alt6477_7973851092328413316.dir/0008_sopcgen/basic_shit_pixel_buffer_sram.v --set=HDL_INTERFACE_OUTPUT_PATH=C:/Users/LABUSE~1/AppData/Local/Temp/alt6477_7973851092328413316.dir/0009_sopcqmap/
+2015.02.11.00:40:13 [Debug] Command took 1.152s
+2015.02.11.00:40:13 [Info] pixel_buffer_sram: "<b>basic_shit</b>" instantiated <b>altera_up_avalon_sram</b> "<b>pixel_buffer_sram</b>"
+2015.02.11.00:40:13 [Debug] basic_shit: queue size: 74 starting:altera_up_avalon_video_dual_clock_buffer "submodules/basic_shit_dual_clock_fifo"
+2015.02.11.00:40:13 [Info] dual_clock_fifo: Starting Generation of the Dual Clock Buffer
+2015.02.11.00:40:13 [Debug] set ALTERA_HW_TCL_KEEP_TEMP_FILES=1 to retain temp files
+2015.02.11.00:40:13 [Debug] Command: C:/altera/11.0/quartus/bin/quartus_map.exe not_a_project --generate_hdl_interface=C:/Users/LABUSE~1/AppData/Local/Temp/alt6477_7973851092328413316.dir/0010_sopcgen/basic_shit_dual_clock_fifo.v --source=C:/Users/LABUSE~1/AppData/Local/Temp/alt6477_7973851092328413316.dir/0010_sopcgen/basic_shit_dual_clock_fifo.v --set=HDL_INTERFACE_OUTPUT_PATH=C:/Users/LABUSE~1/AppData/Local/Temp/alt6477_7973851092328413316.dir/0011_sopcqmap/
+2015.02.11.00:40:15 [Debug] Command took 1.161s
+2015.02.11.00:40:15 [Debug] set ALTERA_HW_TCL_KEEP_TEMP_FILES=1 to retain temp files
+2015.02.11.00:40:15 [Debug] Command: C:/altera/11.0/quartus/bin/quartus_map.exe "not_a_project" "--generate_hdl_interface=C:\\Users\\LABUSE~1\\AppData\\Local\\Temp\\alt6477_7973851092328413316.dir\\0010_sopcgen\\basic_shit_dual_clock_fifo.v" "--source=C:/Users/LABUSE~1/AppData/Local/Temp/alt6477_7973851092328413316.dir/0010_sopcgen/basic_shit_dual_clock_fifo.v" "--set=HDL_INTERFACE_OUTPUT_PATH=C:/Users/LABUSE~1/AppData/Local/Temp/alt6477_7973851092328413316.dir/0012_sopcqmap/" "--set=HDL_INTERFACE_INSTANCE_NAME=inst" "--set=HDL_INTERFACE_INSTANCE_ENTITY=basic_shit_dual_clock_fifo"
+2015.02.11.00:40:16 [Debug] Command took 1.182s
+2015.02.11.00:40:16 [Info] dual_clock_fifo: "<b>basic_shit</b>" instantiated <b>altera_up_avalon_video_dual_clock_buffer</b> "<b>dual_clock_fifo</b>"
+2015.02.11.00:40:16 [Debug] basic_shit: queue size: 73 starting:altera_up_avalon_video_vga_controller "submodules/basic_shit_vga_controller"
+2015.02.11.00:40:16 [Info] vga_controller: Starting Generation of VGA Controller
+2015.02.11.00:40:16 [Debug] set ALTERA_HW_TCL_KEEP_TEMP_FILES=1 to retain temp files
+2015.02.11.00:40:16 [Debug] Command: C:/altera/11.0/quartus/bin/quartus_map.exe not_a_project --generate_hdl_interface=C:/Users/LABUSE~1/AppData/Local/Temp/alt6477_7973851092328413316.dir/0013_sopcgen/basic_shit_vga_controller.v --source=C:/Users/LABUSE~1/AppData/Local/Temp/alt6477_7973851092328413316.dir/0013_sopcgen/basic_shit_vga_controller.v --set=HDL_INTERFACE_OUTPUT_PATH=C:/Users/LABUSE~1/AppData/Local/Temp/alt6477_7973851092328413316.dir/0014_sopcqmap/
+2015.02.11.00:40:17 [Debug] Command took 1.141s
+2015.02.11.00:40:17 [Debug] set ALTERA_HW_TCL_KEEP_TEMP_FILES=1 to retain temp files
+2015.02.11.00:40:17 [Debug] Command: C:/altera/11.0/quartus/bin/quartus_map.exe "not_a_project" "--generate_hdl_interface=C:\\Users\\LABUSE~1\\AppData\\Local\\Temp\\alt6477_7973851092328413316.dir\\0013_sopcgen\\basic_shit_vga_controller.v" "--source=C:/Users/LABUSE~1/AppData/Local/Temp/alt6477_7973851092328413316.dir/0013_sopcgen/basic_shit_vga_controller.v" "--set=HDL_INTERFACE_OUTPUT_PATH=C:/Users/LABUSE~1/AppData/Local/Temp/alt6477_7973851092328413316.dir/0015_sopcqmap/" "--set=HDL_INTERFACE_INSTANCE_NAME=inst" "--set=HDL_INTERFACE_INSTANCE_ENTITY=basic_shit_vga_controller"
+2015.02.11.00:40:18 [Debug] Command took 1.172s
+2015.02.11.00:40:18 [Info] vga_controller: "<b>basic_shit</b>" instantiated <b>altera_up_avalon_video_vga_controller</b> "<b>vga_controller</b>"
+2015.02.11.00:40:18 [Debug] basic_shit: queue size: 72 starting:altpll "submodules/basic_shit_altpll_0"
+2015.02.11.00:40:18 [Debug] set ALTERA_HW_TCL_KEEP_TEMP_FILES=1 to retain temp files
+2015.02.11.00:40:18 [Debug] Command: C:/altera/11.0/quartus/bin/quartus_map.exe not_a_project --generate_hdl_interface=C:/Users/LABUSE~1/AppData/Local/Temp/alt6477_7973851092328413316.dir/0016_sopcgen/basic_shit_altpll_0.v --source=C:/Users/LABUSE~1/AppData/Local/Temp/alt6477_7973851092328413316.dir/0016_sopcgen/basic_shit_altpll_0.v --set=HDL_INTERFACE_OUTPUT_PATH=C:/Users/LABUSE~1/AppData/Local/Temp/alt6477_7973851092328413316.dir/0017_sopcqmap/
+2015.02.11.00:40:19 [Debug] Command took 1.192s
+2015.02.11.00:40:19 [Info] altpll_0: "<b>basic_shit</b>" instantiated <b>altpll</b> "<b>altpll_0</b>"
+2015.02.11.00:40:19 [Debug] basic_shit: queue size: 71 starting:altera_merlin_master_translator "submodules/altera_merlin_master_translator"
+2015.02.11.00:40:19 [Info] cpu_instruction_master_translator: "<b>basic_shit</b>" instantiated <b>altera_merlin_master_translator</b> "<b>cpu_instruction_master_translator</b>"
+2015.02.11.00:40:19 [Debug] basic_shit: queue size: 68 starting:altera_merlin_slave_translator "submodules/altera_merlin_slave_translator"
+2015.02.11.00:40:19 [Info] cpu_jtag_debug_module_translator: "<b>basic_shit</b>" instantiated <b>altera_merlin_slave_translator</b> "<b>cpu_jtag_debug_module_translator</b>"
+2015.02.11.00:40:19 [Debug] basic_shit: queue size: 61 starting:altera_merlin_master_agent "submodules/altera_merlin_master_agent"
+2015.02.11.00:40:19 [Info] pixel_buffer_dma_avalon_pixel_dma_master_agent: "<b>basic_shit</b>" instantiated <b>altera_merlin_master_agent</b> "<b>pixel_buffer_dma_avalon_pixel_dma_master_agent</b>"
+2015.02.11.00:40:19 [Debug] basic_shit: queue size: 60 starting:altera_merlin_slave_agent "submodules/altera_merlin_slave_agent"
+2015.02.11.00:40:19 [Info] pixel_buffer_dma_avalon_pixel_dma_master_translator_avalon_anti_master_0_agent: "<b>basic_shit</b>" instantiated <b>altera_merlin_slave_agent</b> "<b>pixel_buffer_dma_avalon_pixel_dma_master_translator_avalon_anti_master_0_agent</b>"
+2015.02.11.00:40:19 [Debug] basic_shit: queue size: 59 starting:altera_avalon_sc_fifo "submodules/altera_avalon_sc_fifo"
+2015.02.11.00:40:19 [Info] pixel_buffer_dma_avalon_pixel_dma_master_translator_avalon_anti_master_0_agent_rsp_fifo: "<b>basic_shit</b>" instantiated <b>altera_avalon_sc_fifo</b> "<b>pixel_buffer_dma_avalon_pixel_dma_master_translator_avalon_anti_master_0_agent_rsp_fifo</b>"
+2015.02.11.00:40:19 [Debug] basic_shit: queue size: 40 starting:altera_merlin_router "submodules/basic_shit_addr_router"
+2015.02.11.00:40:19 [Info] addr_router: "<b>basic_shit</b>" instantiated <b>altera_merlin_router</b> "<b>addr_router</b>"
+2015.02.11.00:40:19 [Debug] basic_shit: queue size: 39 starting:altera_merlin_router "submodules/basic_shit_id_router"
+2015.02.11.00:40:19 [Info] id_router: "<b>basic_shit</b>" instantiated <b>altera_merlin_router</b> "<b>id_router</b>"
+2015.02.11.00:40:19 [Debug] basic_shit: queue size: 38 starting:altera_merlin_router "submodules/basic_shit_addr_router_001"
+2015.02.11.00:40:20 [Info] addr_router_001: "<b>basic_shit</b>" instantiated <b>altera_merlin_router</b> "<b>addr_router_001</b>"
+2015.02.11.00:40:20 [Debug] basic_shit: queue size: 37 starting:altera_merlin_router "submodules/basic_shit_addr_router_002"
+2015.02.11.00:40:20 [Info] addr_router_002: "<b>basic_shit</b>" instantiated <b>altera_merlin_router</b> "<b>addr_router_002</b>"
+2015.02.11.00:40:20 [Debug] basic_shit: queue size: 36 starting:altera_merlin_router "submodules/basic_shit_addr_router_003"
+2015.02.11.00:40:20 [Info] addr_router_003: "<b>basic_shit</b>" instantiated <b>altera_merlin_router</b> "<b>addr_router_003</b>"
+2015.02.11.00:40:20 [Debug] basic_shit: queue size: 35 starting:altera_merlin_router "submodules/basic_shit_id_router_001"
+2015.02.11.00:40:20 [Info] id_router_001: "<b>basic_shit</b>" instantiated <b>altera_merlin_router</b> "<b>id_router_001</b>"
+2015.02.11.00:40:20 [Debug] basic_shit: queue size: 33 starting:altera_merlin_router "submodules/basic_shit_id_router_003"
+2015.02.11.00:40:20 [Info] id_router_003: "<b>basic_shit</b>" instantiated <b>altera_merlin_router</b> "<b>id_router_003</b>"
+2015.02.11.00:40:20 [Debug] basic_shit: queue size: 31 starting:altera_merlin_router "submodules/basic_shit_id_router_005"
+2015.02.11.00:40:20 [Info] id_router_005: "<b>basic_shit</b>" instantiated <b>altera_merlin_router</b> "<b>id_router_005</b>"
+2015.02.11.00:40:20 [Debug] basic_shit: queue size: 28 starting:altera_merlin_traffic_limiter "submodules/altera_merlin_traffic_limiter"
+2015.02.11.00:40:20 [Info] limiter: "<b>basic_shit</b>" instantiated <b>altera_merlin_traffic_limiter</b> "<b>limiter</b>"
+2015.02.11.00:40:20 [Debug] basic_shit: queue size: 25 starting:altera_merlin_burst_adapter "submodules/altera_merlin_burst_adapter"
+2015.02.11.00:40:20 [Info] burst_adapter: "<b>basic_shit</b>" instantiated <b>altera_merlin_burst_adapter</b> "<b>burst_adapter</b>"
+2015.02.11.00:40:20 [Debug] basic_shit: queue size: 24 starting:altera_reset_controller "submodules/altera_reset_controller"
+2015.02.11.00:40:20 [Info] rst_controller: "<b>basic_shit</b>" instantiated <b>altera_reset_controller</b> "<b>rst_controller</b>"
+2015.02.11.00:40:20 [Debug] basic_shit: queue size: 21 starting:altera_merlin_demultiplexer "submodules/basic_shit_cmd_xbar_demux"
+2015.02.11.00:40:20 [Info] cmd_xbar_demux: "<b>basic_shit</b>" instantiated <b>altera_merlin_demultiplexer</b> "<b>cmd_xbar_demux</b>"
+2015.02.11.00:40:20 [Debug] basic_shit: queue size: 19 starting:altera_merlin_demultiplexer "submodules/basic_shit_cmd_xbar_demux_001"
+2015.02.11.00:40:20 [Info] cmd_xbar_demux_001: "<b>basic_shit</b>" instantiated <b>altera_merlin_demultiplexer</b> "<b>cmd_xbar_demux_001</b>"
+2015.02.11.00:40:20 [Debug] basic_shit: queue size: 18 starting:altera_merlin_demultiplexer "submodules/basic_shit_cmd_xbar_demux_002"
+2015.02.11.00:40:20 [Info] cmd_xbar_demux_002: "<b>basic_shit</b>" instantiated <b>altera_merlin_demultiplexer</b> "<b>cmd_xbar_demux_002</b>"
+2015.02.11.00:40:20 [Debug] basic_shit: queue size: 17 starting:altera_merlin_demultiplexer "submodules/basic_shit_cmd_xbar_demux_003"
+2015.02.11.00:40:20 [Info] cmd_xbar_demux_003: "<b>basic_shit</b>" instantiated <b>altera_merlin_demultiplexer</b> "<b>cmd_xbar_demux_003</b>"
+2015.02.11.00:40:20 [Debug] basic_shit: queue size: 16 starting:altera_merlin_multiplexer "submodules/basic_shit_cmd_xbar_mux_001"
+2015.02.11.00:40:20 [Info] cmd_xbar_mux_001: "<b>basic_shit</b>" instantiated <b>altera_merlin_multiplexer</b> "<b>cmd_xbar_mux_001</b>"
+2015.02.11.00:40:20 [Debug] basic_shit: queue size: 13 starting:altera_merlin_demultiplexer "submodules/basic_shit_rsp_xbar_demux_001"
+2015.02.11.00:40:20 [Info] rsp_xbar_demux_001: "<b>basic_shit</b>" instantiated <b>altera_merlin_demultiplexer</b> "<b>rsp_xbar_demux_001</b>"
+2015.02.11.00:40:20 [Debug] basic_shit: queue size: 11 starting:altera_merlin_demultiplexer "submodules/basic_shit_rsp_xbar_demux_003"
+2015.02.11.00:40:20 [Info] rsp_xbar_demux_003: "<b>basic_shit</b>" instantiated <b>altera_merlin_demultiplexer</b> "<b>rsp_xbar_demux_003</b>"
+2015.02.11.00:40:20 [Debug] basic_shit: queue size: 6 starting:altera_merlin_multiplexer "submodules/basic_shit_rsp_xbar_mux_001"
+2015.02.11.00:40:20 [Info] rsp_xbar_mux_001: "<b>basic_shit</b>" instantiated <b>altera_merlin_multiplexer</b> "<b>rsp_xbar_mux_001</b>"
+2015.02.11.00:40:20 [Info] Reusing file <b>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/altera_merlin_arbitrator.sv</b>
+2015.02.11.00:40:20 [Debug] basic_shit: queue size: 5 starting:altera_merlin_multiplexer "submodules/basic_shit_rsp_xbar_mux_002"
+2015.02.11.00:40:20 [Info] rsp_xbar_mux_002: "<b>basic_shit</b>" instantiated <b>altera_merlin_multiplexer</b> "<b>rsp_xbar_mux_002</b>"
+2015.02.11.00:40:20 [Info] Reusing file <b>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/altera_merlin_arbitrator.sv</b>
+2015.02.11.00:40:20 [Debug] basic_shit: queue size: 4 starting:altera_merlin_width_adapter "submodules/altera_merlin_width_adapter"
+2015.02.11.00:40:20 [Info] width_adapter: "<b>basic_shit</b>" instantiated <b>altera_merlin_width_adapter</b> "<b>width_adapter</b>"
+2015.02.11.00:40:20 [Info] Reusing file <b>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/altera_merlin_burst_uncompressor.sv</b>
+2015.02.11.00:40:20 [Debug] basic_shit: queue size: 2 starting:altera_avalon_st_handshake_clock_crosser "submodules/altera_avalon_st_handshake_clock_crosser"
+2015.02.11.00:40:20 [Info] crosser: "<b>basic_shit</b>" instantiated <b>altera_avalon_st_handshake_clock_crosser</b> "<b>crosser</b>"
+2015.02.11.00:40:20 [Info] Reusing file <b>C:/ECE5760Projects/lander/basic_shit/synthesis/submodules/altera_avalon_st_pipeline_base.v</b>
+2015.02.11.00:40:20 [Debug] basic_shit: queue size: 0 starting:altera_irq_mapper "submodules/basic_shit_irq_mapper"
+2015.02.11.00:40:20 [Info] irq_mapper: "<b>basic_shit</b>" instantiated <b>altera_irq_mapper</b> "<b>irq_mapper</b>"
+2015.02.11.00:40:20 [Info] basic_shit: Done <b>basic_shit</b>" with 38 modules, 124 files, 3797030 bytes
+</div>
+  <div style="width:100% ; background:#eee ; height:10px"> </div>
+ </body>
+</html>

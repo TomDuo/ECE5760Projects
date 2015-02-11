@@ -1,0 +1,24 @@
+# clk_0
+# clocks_0
+set_global_assignment -name TCL_FILE [file join $::quartus(ip_rootpath) University_Program/altera_up_avalon_clocks/altera_up_avalon_clocks_hw.tcl]
+set_global_assignment -name VERILOG_FILE [file join $::quartus(qip_path) clocks_0.v]
+# cpu
+set_global_assignment -name SDC_FILE [file join $::quartus(qip_path) cpu.sdc]
+set_global_assignment -name SOURCE_FILE [file join $::quartus(qip_path) cpu.ocp]
+# null
+set_global_assignment -name SDC_FILE [file join $::quartus(ip_rootpath) altera/sopc_builder_ip/altera_avalon_clock_adapter/altera_avalon_clock_adapter.sdc]
+# onchip_ram
+# pixel_buffer
+set_global_assignment -name TCL_FILE [file join $::quartus(ip_rootpath) University_Program/Memory/altera_up_avalon_sram/altera_up_avalon_sram_hw.tcl]
+set_global_assignment -name VERILOG_FILE [file join $::quartus(qip_path) pixel_buffer.v]
+# dual_clock_fifo
+set_global_assignment -name TCL_FILE [file join $::quartus(ip_rootpath) University_Program/Audio_Video/Video/altera_up_avalon_video_dual_clock_buffer/altera_up_avalon_video_dual_clock_buffer_hw.tcl]
+set_global_assignment -name VERILOG_FILE [file join $::quartus(qip_path) dual_clock_fifo.v]
+# video_pixel_buffer_dma_0
+set_global_assignment -name TCL_FILE [file join $::quartus(ip_rootpath) University_Program/Audio_Video/Video/altera_up_avalon_video_pixel_buffer_dma/altera_up_avalon_video_pixel_buffer_dma_hw.tcl]
+set_global_assignment -name VERILOG_FILE [file join $::quartus(qip_path) video_pixel_buffer_dma_0.v]
+# video_vga_controller_0
+set_global_assignment -name TCL_FILE [file join $::quartus(ip_rootpath) University_Program/Audio_Video/Video/altera_up_avalon_video_vga_controller/altera_up_avalon_video_vga_controller_hw.tcl]
+set_global_assignment -name VERILOG_FILE [file join $::quartus(qip_path) video_vga_controller_0.v]
+set_global_assignment -name SOPC_BUILDER_SIGNATURE_ID 00000000000000E00000014B774E429D 
+ 

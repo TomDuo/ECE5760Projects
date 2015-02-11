@@ -1,0 +1,5 @@
+PLL_Name	the_whole_shit:the_whole_shit_inst|clocks_0:the_clocks_0|altpll:DE_Clock_Generator_System|altpll_6rb2:auto_generated|pll1
+PLLJITTER	30
+PLLSPEmax	84
+PLLSPEmin	-53
+

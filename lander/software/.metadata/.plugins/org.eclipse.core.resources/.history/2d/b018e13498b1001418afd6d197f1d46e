@@ -1,0 +1,15 @@
+/*
+ * main.c
+ *
+ *  Created on: Feb 10, 2015
+ *      Author: Lab User
+ */
+
+#include <stdio.h>
+
+int main(void)
+{
+	printf("Look at our SHIT!");
+	//for(;;);
+	return 0;
+}

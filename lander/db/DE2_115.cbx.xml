@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="DE2_115">
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE2_115|the_whole_shit:the_whole_shit_inst|dual_clock_fifo:the_dual_clock_fifo|dcfifo:Data_FIFO" CBX_FILE_NAME="dcfifo_3uj1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE2_115|the_whole_shit:the_whole_shit_inst|video_pixel_buffer_dma_0:the_video_pixel_buffer_dma_0|scfifo:Image_Buffer" CBX_FILE_NAME="scfifo_l4a1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE2_115|the_whole_shit:the_whole_shit_inst|cpu:the_cpu|cpu_bht_module:cpu_bht|altsyncram:the_altsyncram" CBX_FILE_NAME="altsyncram_bpf1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE2_115|the_whole_shit:the_whole_shit_inst|cpu:the_cpu|cpu_dc_data_module:cpu_dc_data|altsyncram:the_altsyncram" CBX_FILE_NAME="altsyncram_kdf1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE2_115|the_whole_shit:the_whole_shit_inst|cpu:the_cpu|cpu_dc_tag_module:cpu_dc_tag|altsyncram:the_altsyncram" CBX_FILE_NAME="altsyncram_1ef1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE2_115|the_whole_shit:the_whole_shit_inst|cpu:the_cpu|cpu_dc_victim_module:cpu_dc_victim|altsyncram:the_altsyncram" CBX_FILE_NAME="altsyncram_r3d1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE2_115|the_whole_shit:the_whole_shit_inst|cpu:the_cpu|cpu_nios2_oci:the_cpu_nios2_oci|cpu_nios2_oci_im:the_cpu_nios2_oci_im|cpu_traceram_lpm_dram_bdp_component_module:cpu_traceram_lpm_dram_bdp_component|altsyncram:the_altsyncram" CBX_FILE_NAME="altsyncram_0a02.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE2_115|the_whole_shit:the_whole_shit_inst|cpu:the_cpu|cpu_nios2_oci:the_cpu_nios2_oci|cpu_nios2_ocimem:the_cpu_nios2_ocimem|cpu_ociram_lpm_dram_bdp_component_module:cpu_ociram_lpm_dram_bdp_component|altsyncram:the_altsyncram" CBX_FILE_NAME="altsyncram_f572.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE2_115|the_whole_shit:the_whole_shit_inst|cpu:the_cpu|cpu_register_bank_a_module:cpu_register_bank_a|altsyncram:the_altsyncram" CBX_FILE_NAME="altsyncram_b7f1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE2_115|the_whole_shit:the_whole_shit_inst|cpu:the_cpu|cpu_mult_cell:the_cpu_mult_cell|altmult_add:the_altmult_add_part_1" CBX_FILE_NAME="mult_add_mgr2.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE2_115|the_whole_shit:the_whole_shit_inst|clocks_0:the_clocks_0|altpll:DE_Clock_Generator_System" CBX_FILE_NAME="altpll_6rb2.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE2_115|the_whole_shit:the_whole_shit_inst|cpu:the_cpu|cpu_ic_data_module:cpu_ic_data|altsyncram:the_altsyncram" CBX_FILE_NAME="altsyncram_cjd1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE2_115|the_whole_shit:the_whole_shit_inst|cpu:the_cpu|cpu_ic_tag_module:cpu_ic_tag|altsyncram:the_altsyncram" CBX_FILE_NAME="altsyncram_u5g1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE2_115|the_whole_shit:the_whole_shit_inst|cpu:the_cpu|cpu_mult_cell:the_cpu_mult_cell|altmult_add:the_altmult_add_part_2" CBX_FILE_NAME="mult_add_ogr2.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE2_115|the_whole_shit:the_whole_shit_inst|cpu:the_cpu|cpu_register_bank_b_module:cpu_register_bank_b|altsyncram:the_altsyncram" CBX_FILE_NAME="altsyncram_c7f1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE2_115|the_whole_shit:the_whole_shit_inst|cpu:the_cpu|lpm_add_sub:Add17" CBX_FILE_NAME="add_sub_qvi.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE2_115|the_whole_shit:the_whole_shit_inst|onchip_ram:the_onchip_ram|altsyncram:the_altsyncram" CBX_FILE_NAME="altsyncram_6rb1.tdf"/>
+	</PROJECT>
+</LOG_ROOT>

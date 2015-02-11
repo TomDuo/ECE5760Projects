@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Feb 10, 2015 10:22:35 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1423624955412</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Feb 11, 2015 2:10:55 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1423681855553</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\ECE5760Projects\lander\software\basic_shit_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\basic_shit.sopcinfo</SopcDesignFile>
@@ -851,21 +851,39 @@
                 <Group xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
         </Setting>
         <MemoryMap>
-                <slaveDescriptor>jtag_uart</slaveDescriptor>
-                <addressRange>0x00000000 - 0x00000007</addressRange>
-                <addressSpan>8</addressSpan>
-                <attributes>printable</attributes>
+                <slaveDescriptor>pixel_buffer_sram</slaveDescriptor>
+                <addressRange>0x00000000 - 0x001FFFFF</addressRange>
+                <addressSpan>2097152</addressSpan>
+                <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>memory</slaveDescriptor>
-                <addressRange>0x00080000 - 0x000CBAEF</addressRange>
+                <addressRange>0x00280000 - 0x002CBAEF</addressRange>
                 <addressSpan>310000</addressSpan>
                 <attributes>memory</attributes>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>lcd_0</slaveDescriptor>
-                <addressRange>0x00101000 - 0x0010100F</addressRange>
+                <addressRange>0x00301000 - 0x0030100F</addressRange>
                 <addressSpan>16</addressSpan>
+                <attributes>printable</attributes>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>pixel_buffer_dma</slaveDescriptor>
+                <addressRange>0x00301010 - 0x0030101F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>altpll_0</slaveDescriptor>
+                <addressRange>0x00301020 - 0x0030102F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>jtag_uart</slaveDescriptor>
+                <addressRange>0x00301030 - 0x00301037</addressRange>
+                <addressSpan>8</addressSpan>
                 <attributes>printable</attributes>
         </MemoryMap>
         <LinkerSection>

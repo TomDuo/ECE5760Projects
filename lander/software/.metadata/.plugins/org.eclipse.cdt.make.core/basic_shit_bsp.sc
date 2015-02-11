@@ -4,6 +4,12 @@
 <scannerInfo id="org.eclipse.cdt.make.core.discoveredScannerInfo">
 <instance id="preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.1976497029;preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.1976497029.;cdt.managedbuild.tool.gnu.cpp.compiler.cygwin.base.1409389835;cdt.managedbuild.tool.gnu.cpp.compiler.input.cygwin.809737796">
 <collector id="org.eclipse.cdt.make.core.PerProjectSICollector">
+<includePath path="C:\altera\11.0\quartus\bin\cygwin\lib\gcc\i686-pc-cygwin\3.4.4\include\c++"/>
+<includePath path="C:\altera\11.0\quartus\bin\cygwin\lib\gcc\i686-pc-cygwin\3.4.4\include\c++\i686-pc-cygwin"/>
+<includePath path="C:\altera\11.0\quartus\bin\cygwin\lib\gcc\i686-pc-cygwin\3.4.4\include\c++\backward"/>
+<includePath path="C:\altera\11.0\quartus\bin\cygwin\lib\gcc\i686-pc-cygwin\3.4.4\include"/>
+<includePath path="C:\altera\11.0\quartus\bin\cygwin\usr\include"/>
+<includePath path="C:\altera\11.0\quartus\bin\cygwin\usr\include\w32api"/>
 <includePath path="c:\altera\11.0\quartus\bin\cygwin\lib\gcc\i686-pc-cygwin\3.4.4\include\c++"/>
 <includePath path="c:\altera\11.0\quartus\bin\cygwin\lib\gcc\i686-pc-cygwin\3.4.4\include\c++\i686-pc-cygwin"/>
 <includePath path="c:\altera\11.0\quartus\bin\cygwin\lib\gcc\i686-pc-cygwin\3.4.4\include\c++\backward"/>
@@ -99,6 +105,9 @@
 </instance>
 <instance id="preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.1976497029;preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.1976497029.;cdt.managedbuild.tool.gnu.c.compiler.cygwin.base.233319152;cdt.managedbuild.tool.gnu.c.compiler.input.cygwin.1390533066">
 <collector id="org.eclipse.cdt.make.core.PerProjectSICollector">
+<includePath path="C:\altera\11.0\quartus\bin\cygwin\lib\gcc\i686-pc-cygwin\3.4.4\include"/>
+<includePath path="C:\altera\11.0\quartus\bin\cygwin\usr\include"/>
+<includePath path="C:\altera\11.0\quartus\bin\cygwin\usr\include\w32api"/>
 <includePath path="c:\altera\11.0\quartus\bin\cygwin\lib\gcc\i686-pc-cygwin\3.4.4\include"/>
 <includePath path="c:\altera\11.0\quartus\bin\cygwin\usr\include"/>
 <includePath path="c:\altera\11.0\quartus\bin\cygwin\usr\include\w32api"/>

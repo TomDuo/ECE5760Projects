@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu' in SOPC Builder design 'basic_shit'
  * SOPC Builder design path: ../../basic_shit.sopcinfo
  *
- * Generated: Tue Feb 10 21:25:18 EST 2015
+ * Generated: Wed Feb 11 14:11:00 EST 2015
  */
 
 /*
@@ -62,16 +62,16 @@
 
 #define ALT_CPU_ARCHITECTURE "altera_nios2_qsys"
 #define ALT_CPU_BIG_ENDIAN 0
-#define ALT_CPU_BREAK_ADDR 0x100820
+#define ALT_CPU_BREAK_ADDR 0x300820
 #define ALT_CPU_CPU_FREQ 50000000u
 #define ALT_CPU_CPU_ID_SIZE 1
 #define ALT_CPU_CPU_ID_VALUE 0x00000000
 #define ALT_CPU_CPU_IMPLEMENTATION "fast"
-#define ALT_CPU_DATA_ADDR_WIDTH 0x15
+#define ALT_CPU_DATA_ADDR_WIDTH 0x16
 #define ALT_CPU_DCACHE_LINE_SIZE 32
 #define ALT_CPU_DCACHE_LINE_SIZE_LOG2 5
 #define ALT_CPU_DCACHE_SIZE 2048
-#define ALT_CPU_EXCEPTION_ADDR 0x80020
+#define ALT_CPU_EXCEPTION_ADDR 0x280020
 #define ALT_CPU_FLUSHDA_SUPPORTED
 #define ALT_CPU_FREQ 50000000
 #define ALT_CPU_HARDWARE_DIVIDE_PRESENT 0
@@ -84,10 +84,10 @@
 #define ALT_CPU_ICACHE_LINE_SIZE_LOG2 5
 #define ALT_CPU_ICACHE_SIZE 4096
 #define ALT_CPU_INITDA_SUPPORTED
-#define ALT_CPU_INST_ADDR_WIDTH 0x15
+#define ALT_CPU_INST_ADDR_WIDTH 0x16
 #define ALT_CPU_NAME "cpu"
 #define ALT_CPU_NUM_OF_SHADOW_REG_SETS 0
-#define ALT_CPU_RESET_ADDR 0x80000
+#define ALT_CPU_RESET_ADDR 0x280000
 
 
 /*
@@ -96,16 +96,16 @@
  */
 
 #define NIOS2_BIG_ENDIAN 0
-#define NIOS2_BREAK_ADDR 0x100820
+#define NIOS2_BREAK_ADDR 0x300820
 #define NIOS2_CPU_FREQ 50000000u
 #define NIOS2_CPU_ID_SIZE 1
 #define NIOS2_CPU_ID_VALUE 0x00000000
 #define NIOS2_CPU_IMPLEMENTATION "fast"
-#define NIOS2_DATA_ADDR_WIDTH 0x15
+#define NIOS2_DATA_ADDR_WIDTH 0x16
 #define NIOS2_DCACHE_LINE_SIZE 32
 #define NIOS2_DCACHE_LINE_SIZE_LOG2 5
 #define NIOS2_DCACHE_SIZE 2048
-#define NIOS2_EXCEPTION_ADDR 0x80020
+#define NIOS2_EXCEPTION_ADDR 0x280020
 #define NIOS2_FLUSHDA_SUPPORTED
 #define NIOS2_HARDWARE_DIVIDE_PRESENT 0
 #define NIOS2_HARDWARE_MULTIPLY_PRESENT 1
@@ -117,9 +117,9 @@
 #define NIOS2_ICACHE_LINE_SIZE_LOG2 5
 #define NIOS2_ICACHE_SIZE 4096
 #define NIOS2_INITDA_SUPPORTED
-#define NIOS2_INST_ADDR_WIDTH 0x15
+#define NIOS2_INST_ADDR_WIDTH 0x16
 #define NIOS2_NUM_OF_SHADOW_REG_SETS 0
-#define NIOS2_RESET_ADDR 0x80000
+#define NIOS2_RESET_ADDR 0x280000
 
 
 /*
@@ -131,6 +131,9 @@
 #define __ALTERA_AVALON_LCD_16207
 #define __ALTERA_AVALON_ONCHIP_MEMORY2
 #define __ALTERA_NIOS2_QSYS
+#define __ALTERA_UP_AVALON_SRAM
+#define __ALTERA_UP_AVALON_VIDEO_PIXEL_BUFFER_DMA
+#define __ALTPLL
 
 
 /*
@@ -149,23 +152,37 @@
 #define ALT_NUM_INTERNAL_INTERRUPT_CONTROLLERS 1
 #define ALT_NUM_INTERRUPT_CONTROLLERS 1
 #define ALT_STDERR "/dev/jtag_uart"
-#define ALT_STDERR_BASE 0x0
+#define ALT_STDERR_BASE 0x301030
 #define ALT_STDERR_DEV jtag_uart
 #define ALT_STDERR_IS_JTAG_UART
 #define ALT_STDERR_PRESENT
 #define ALT_STDERR_TYPE "altera_avalon_jtag_uart"
 #define ALT_STDIN "/dev/jtag_uart"
-#define ALT_STDIN_BASE 0x0
+#define ALT_STDIN_BASE 0x301030
 #define ALT_STDIN_DEV jtag_uart
 #define ALT_STDIN_IS_JTAG_UART
 #define ALT_STDIN_PRESENT
 #define ALT_STDIN_TYPE "altera_avalon_jtag_uart"
 #define ALT_STDOUT "/dev/lcd_0"
-#define ALT_STDOUT_BASE 0x101000
+#define ALT_STDOUT_BASE 0x301000
 #define ALT_STDOUT_DEV lcd_0
 #define ALT_STDOUT_PRESENT
 #define ALT_STDOUT_TYPE "altera_avalon_lcd_16207"
 #define ALT_SYSTEM_NAME "basic_shit"
+
+
+/*
+ * altpll_0 configuration
+ *
+ */
+
+#define ALTPLL_0_BASE 0x301020
+#define ALTPLL_0_IRQ -1
+#define ALTPLL_0_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define ALTPLL_0_NAME "/dev/altpll_0"
+#define ALTPLL_0_SPAN 16
+#define ALTPLL_0_TYPE "altpll"
+#define ALT_MODULE_CLASS_altpll_0 altpll
 
 
 /*
@@ -184,7 +201,7 @@
  */
 
 #define ALT_MODULE_CLASS_jtag_uart altera_avalon_jtag_uart
-#define JTAG_UART_BASE 0x0
+#define JTAG_UART_BASE 0x301030
 #define JTAG_UART_IRQ 0
 #define JTAG_UART_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define JTAG_UART_NAME "/dev/jtag_uart"
@@ -202,7 +219,7 @@
  */
 
 #define ALT_MODULE_CLASS_lcd_0 altera_avalon_lcd_16207
-#define LCD_0_BASE 0x101000
+#define LCD_0_BASE 0x301000
 #define LCD_0_IRQ -1
 #define LCD_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define LCD_0_NAME "/dev/lcd_0"
@@ -218,7 +235,7 @@
 #define ALT_MODULE_CLASS_memory altera_avalon_onchip_memory2
 #define MEMORY_ALLOW_IN_SYSTEM_MEMORY_CONTENT_EDITOR 0
 #define MEMORY_ALLOW_MRAM_SIM_CONTENTS_ONLY_FILE 0
-#define MEMORY_BASE 0x80000
+#define MEMORY_BASE 0x280000
 #define MEMORY_CONTENTS_INFO ""
 #define MEMORY_DUAL_PORT 0
 #define MEMORY_GUI_RAM_BLOCK_TYPE "Automatic"
@@ -237,5 +254,33 @@
 #define MEMORY_SPAN 310000
 #define MEMORY_TYPE "altera_avalon_onchip_memory2"
 #define MEMORY_WRITABLE 1
+
+
+/*
+ * pixel_buffer_dma configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_pixel_buffer_dma altera_up_avalon_video_pixel_buffer_dma
+#define PIXEL_BUFFER_DMA_BASE 0x301010
+#define PIXEL_BUFFER_DMA_IRQ -1
+#define PIXEL_BUFFER_DMA_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define PIXEL_BUFFER_DMA_NAME "/dev/pixel_buffer_dma"
+#define PIXEL_BUFFER_DMA_SPAN 16
+#define PIXEL_BUFFER_DMA_TYPE "altera_up_avalon_video_pixel_buffer_dma"
+
+
+/*
+ * pixel_buffer_sram configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_pixel_buffer_sram altera_up_avalon_sram
+#define PIXEL_BUFFER_SRAM_BASE 0x0
+#define PIXEL_BUFFER_SRAM_IRQ -1
+#define PIXEL_BUFFER_SRAM_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define PIXEL_BUFFER_SRAM_NAME "/dev/pixel_buffer_sram"
+#define PIXEL_BUFFER_SRAM_SPAN 2097152
+#define PIXEL_BUFFER_SRAM_TYPE "altera_up_avalon_sram"
 
 #endif /* __SYSTEM_H_ */

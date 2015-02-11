@@ -97,18 +97,19 @@ the_whole_shit the_whole_shit_inst
 	.SRAM_OE_N_from_the_pixel_buffer           (SRAM_OE_N),
 	.SRAM_UB_N_from_the_pixel_buffer           (SRAM_UB_N),
 	.SRAM_WE_N_from_the_pixel_buffer           (SRAM_WE_N),
-	.VGA_BLANK_from_the_video_vga_controller_0 (VGA_BLANK_N),
-	.VGA_B_from_the_video_vga_controller_0     (VGA_B),
-	.VGA_CLK_from_the_video_vga_controller_0   (VGA_CLK),
-	.VGA_G_from_the_video_vga_controller_0     (VGA_G),
-	.VGA_HS_from_the_video_vga_controller_0    (VGA_HS),
-	.VGA_R_from_the_video_vga_controller_0     (VGA_R),
-	.VGA_SYNC_from_the_video_vga_controller_0  (VGA_SYNC_N),
-	.VGA_VS_from_the_video_vga_controller_0    (VGA_VS),
+	.VGA_BLANK_from_the_vga_controller (VGA_BLANK_N),
+	.VGA_B_from_the_vga_controller     (VGA_B),
+	.VGA_CLK_from_the_vga_controller   (VGA_CLK),
+	.VGA_G_from_the_vga_controller     (VGA_G),
+	.VGA_HS_from_the_vga_controller    (VGA_HS),
+	.VGA_R_from_the_vga_controller     (VGA_R),
+	.VGA_SYNC_from_the_vga_controller  (VGA_SYNC_N),
+	.VGA_VS_from_the_vga_controller    (VGA_VS),
 	.clk_0                                     (CLOCK_50),
 	.clocks_0_VGA_CLK_out                      (),
 	.clocks_0_sys_clk_out                      (),
 	.reset_n                                   (KEY[0])
  );
+
 
 endmodule

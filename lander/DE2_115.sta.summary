@@ -3,23 +3,23 @@ TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow 1200mV 85C Model Setup 'the_whole_shit_inst|the_clocks_0|DE_Clock_Generator_System|auto_generated|pll1|clk[0]'
-Slack : 6.436
+Slack : 6.342
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Setup 'CLOCK_50'
-Slack : 17.428
+Slack : 16.819
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Setup 'the_whole_shit_inst|the_clocks_0|DE_Clock_Generator_System|auto_generated|pll1|clk[2]'
-Slack : 33.247
+Slack : 33.620
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Setup 'altera_reserved_tck'
-Slack : 46.924
+Slack : 45.865
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Hold 'the_whole_shit_inst|the_clocks_0|DE_Clock_Generator_System|auto_generated|pll1|clk[0]'
-Slack : 0.331
+Slack : 0.333
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Hold 'CLOCK_50'
@@ -31,47 +31,47 @@ Slack : 0.403
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Hold 'the_whole_shit_inst|the_clocks_0|DE_Clock_Generator_System|auto_generated|pll1|clk[2]'
-Slack : 0.405
+Slack : 0.403
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Recovery 'the_whole_shit_inst|the_clocks_0|DE_Clock_Generator_System|auto_generated|pll1|clk[0]'
-Slack : 4.727
+Slack : 3.802
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Recovery 'the_whole_shit_inst|the_clocks_0|DE_Clock_Generator_System|auto_generated|pll1|clk[2]'
-Slack : 16.187
+Slack : 15.305
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Recovery 'CLOCK_50'
-Slack : 17.970
+Slack : 17.229
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Recovery 'altera_reserved_tck'
-Slack : 48.680
-TNS   : 0.000
-
-Type  : Slow 1200mV 85C Model Removal 'CLOCK_50'
-Slack : 0.769
+Slack : 48.735
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Removal 'altera_reserved_tck'
-Slack : 1.002
+Slack : 1.001
 TNS   : 0.000
 
-Type  : Slow 1200mV 85C Model Removal 'the_whole_shit_inst|the_clocks_0|DE_Clock_Generator_System|auto_generated|pll1|clk[2]'
-Slack : 2.999
+Type  : Slow 1200mV 85C Model Removal 'CLOCK_50'
+Slack : 1.028
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Removal 'the_whole_shit_inst|the_clocks_0|DE_Clock_Generator_System|auto_generated|pll1|clk[0]'
-Slack : 3.122
+Slack : 1.667
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Removal 'the_whole_shit_inst|the_clocks_0|DE_Clock_Generator_System|auto_generated|pll1|clk[2]'
+Slack : 3.856
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'the_whole_shit_inst|the_clocks_0|DE_Clock_Generator_System|auto_generated|pll1|clk[0]'
-Slack : 9.612
+Slack : 9.615
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'CLOCK_50'
-Slack : 9.682
+Slack : 9.681
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'CLOCK2_50'
@@ -83,83 +83,83 @@ Slack : 16.000
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'the_whole_shit_inst|the_clocks_0|DE_Clock_Generator_System|auto_generated|pll1|clk[2]'
-Slack : 19.708
+Slack : 19.709
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'altera_reserved_tck'
-Slack : 49.548
+Slack : 49.556
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Setup 'the_whole_shit_inst|the_clocks_0|DE_Clock_Generator_System|auto_generated|pll1|clk[0]'
-Slack : 6.671
+Slack : 6.641
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Setup 'CLOCK_50'
-Slack : 17.638
+Slack : 17.083
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Setup 'the_whole_shit_inst|the_clocks_0|DE_Clock_Generator_System|auto_generated|pll1|clk[2]'
-Slack : 33.876
+Slack : 34.221
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Setup 'altera_reserved_tck'
-Slack : 47.253
+Slack : 46.311
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Hold 'the_whole_shit_inst|the_clocks_0|DE_Clock_Generator_System|auto_generated|pll1|clk[0]'
-Slack : 0.336
-TNS   : 0.000
-
-Type  : Slow 1200mV 0C Model Hold 'CLOCK_50'
-Slack : 0.354
+Slack : 0.338
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Hold 'altera_reserved_tck'
 Slack : 0.354
 TNS   : 0.000
 
+Type  : Slow 1200mV 0C Model Hold 'CLOCK_50'
+Slack : 0.355
+TNS   : 0.000
+
 Type  : Slow 1200mV 0C Model Hold 'the_whole_shit_inst|the_clocks_0|DE_Clock_Generator_System|auto_generated|pll1|clk[2]'
-Slack : 0.357
+Slack : 0.355
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Recovery 'the_whole_shit_inst|the_clocks_0|DE_Clock_Generator_System|auto_generated|pll1|clk[0]'
-Slack : 5.216
+Slack : 4.316
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Recovery 'the_whole_shit_inst|the_clocks_0|DE_Clock_Generator_System|auto_generated|pll1|clk[2]'
-Slack : 16.463
+Slack : 15.660
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Recovery 'CLOCK_50'
-Slack : 17.952
+Slack : 17.306
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Recovery 'altera_reserved_tck'
-Slack : 48.907
-TNS   : 0.000
-
-Type  : Slow 1200mV 0C Model Removal 'CLOCK_50'
-Slack : 0.753
+Slack : 48.953
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Removal 'altera_reserved_tck'
-Slack : 0.905
+Slack : 0.906
 TNS   : 0.000
 
-Type  : Slow 1200mV 0C Model Removal 'the_whole_shit_inst|the_clocks_0|DE_Clock_Generator_System|auto_generated|pll1|clk[2]'
-Slack : 2.690
+Type  : Slow 1200mV 0C Model Removal 'CLOCK_50'
+Slack : 0.939
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Removal 'the_whole_shit_inst|the_clocks_0|DE_Clock_Generator_System|auto_generated|pll1|clk[0]'
-Slack : 2.799
+Slack : 1.488
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Removal 'the_whole_shit_inst|the_clocks_0|DE_Clock_Generator_System|auto_generated|pll1|clk[2]'
+Slack : 3.462
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'the_whole_shit_inst|the_clocks_0|DE_Clock_Generator_System|auto_generated|pll1|clk[0]'
-Slack : 9.634
+Slack : 9.632
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'
-Slack : 9.690
+Slack : 9.688
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'CLOCK2_50'
@@ -175,31 +175,31 @@ Slack : 19.708
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'altera_reserved_tck'
-Slack : 49.478
+Slack : 49.488
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Setup 'the_whole_shit_inst|the_clocks_0|DE_Clock_Generator_System|auto_generated|pll1|clk[0]'
-Slack : 8.214
+Slack : 8.143
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Setup 'CLOCK_50'
-Slack : 18.725
+Slack : 18.363
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Setup 'the_whole_shit_inst|the_clocks_0|DE_Clock_Generator_System|auto_generated|pll1|clk[2]'
-Slack : 36.943
+Slack : 37.104
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Setup 'altera_reserved_tck'
-Slack : 48.792
+Slack : 48.370
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'the_whole_shit_inst|the_clocks_0|DE_Clock_Generator_System|auto_generated|pll1|clk[0]'
-Slack : 0.134
+Slack : 0.125
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'altera_reserved_tck'
-Slack : 0.179
+Slack : 0.180
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'CLOCK_50'
@@ -207,39 +207,39 @@ Slack : 0.181
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'the_whole_shit_inst|the_clocks_0|DE_Clock_Generator_System|auto_generated|pll1|clk[2]'
-Slack : 0.184
+Slack : 0.182
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Recovery 'the_whole_shit_inst|the_clocks_0|DE_Clock_Generator_System|auto_generated|pll1|clk[0]'
-Slack : 7.208
+Slack : 6.638
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Recovery 'the_whole_shit_inst|the_clocks_0|DE_Clock_Generator_System|auto_generated|pll1|clk[2]'
-Slack : 17.989
+Slack : 17.473
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Recovery 'CLOCK_50'
-Slack : 18.992
+Slack : 18.478
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Recovery 'altera_reserved_tck'
-Slack : 49.700
+Slack : 49.739
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Removal 'CLOCK_50'
-Slack : 0.152
+Slack : 0.487
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Removal 'altera_reserved_tck'
-Slack : 0.489
-TNS   : 0.000
-
-Type  : Fast 1200mV 0C Model Removal 'the_whole_shit_inst|the_clocks_0|DE_Clock_Generator_System|auto_generated|pll1|clk[2]'
-Slack : 1.454
+Slack : 0.488
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Removal 'the_whole_shit_inst|the_clocks_0|DE_Clock_Generator_System|auto_generated|pll1|clk[0]'
-Slack : 1.531
+Slack : 0.790
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Removal 'the_whole_shit_inst|the_clocks_0|DE_Clock_Generator_System|auto_generated|pll1|clk[2]'
+Slack : 1.891
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'
@@ -259,7 +259,7 @@ Slack : 16.000
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'the_whole_shit_inst|the_clocks_0|DE_Clock_Generator_System|auto_generated|pll1|clk[2]'
-Slack : 19.756
+Slack : 19.755
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'altera_reserved_tck'

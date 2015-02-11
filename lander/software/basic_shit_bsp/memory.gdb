@@ -3,7 +3,7 @@
 # Machine generated for CPU 'cpu' in SOPC Builder design 'basic_shit'
 # SOPC Builder design path: ../../basic_shit.sopcinfo
 #
-# Generated: Tue Feb 10 18:34:53 EST 2015
+# Generated: Wed Feb 11 14:11:00 EST 2015
 
 # DO NOT MODIFY THIS FILE
 #
@@ -47,4 +47,4 @@
 # by allowing GDB to cache memory contents on the host.
 
 # memory
-memory 0x80000 0xcbaf0 cache
+memory 0x280000 0x2cbaf0 cache

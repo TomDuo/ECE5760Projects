@@ -4,6 +4,12 @@
 <scannerInfo id="org.eclipse.cdt.make.core.discoveredScannerInfo">
 <instance id="preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.673252082;preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.673252082.;cdt.managedbuild.tool.gnu.cpp.compiler.cygwin.base.1204011794;cdt.managedbuild.tool.gnu.cpp.compiler.input.cygwin.1302324215">
 <collector id="org.eclipse.cdt.make.core.PerProjectSICollector">
+<includePath path="C:\altera\11.0\quartus\bin\cygwin\lib\gcc\i686-pc-cygwin\3.4.4\include\c++"/>
+<includePath path="C:\altera\11.0\quartus\bin\cygwin\lib\gcc\i686-pc-cygwin\3.4.4\include\c++\i686-pc-cygwin"/>
+<includePath path="C:\altera\11.0\quartus\bin\cygwin\lib\gcc\i686-pc-cygwin\3.4.4\include\c++\backward"/>
+<includePath path="C:\altera\11.0\quartus\bin\cygwin\lib\gcc\i686-pc-cygwin\3.4.4\include"/>
+<includePath path="C:\altera\11.0\quartus\bin\cygwin\usr\include"/>
+<includePath path="C:\altera\11.0\quartus\bin\cygwin\usr\include\w32api"/>
 <includePath path="C:/ECE5760Projects/lander/software/basic_shit_bsp/HAL/inc"/>
 <includePath path="C:/ECE5760Projects/lander/software/basic_shit_bsp/"/>
 <includePath path="C:/ECE5760Projects/lander/software/basic_shit_bsp/drivers/inc"/>
@@ -106,6 +112,9 @@
 </instance>
 <instance id="preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.673252082;preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.673252082.;cdt.managedbuild.tool.gnu.c.compiler.cygwin.base.1748823824;cdt.managedbuild.tool.gnu.c.compiler.input.cygwin.721081101">
 <collector id="org.eclipse.cdt.make.core.PerProjectSICollector">
+<includePath path="C:\altera\11.0\quartus\bin\cygwin\lib\gcc\i686-pc-cygwin\3.4.4\include"/>
+<includePath path="C:\altera\11.0\quartus\bin\cygwin\usr\include"/>
+<includePath path="C:\altera\11.0\quartus\bin\cygwin\usr\include\w32api"/>
 <includePath path="C:/ECE5760Projects/lander/software/basic_shit_bsp/HAL/inc"/>
 <includePath path="C:/ECE5760Projects/lander/software/basic_shit_bsp/"/>
 <includePath path="C:/ECE5760Projects/lander/software/basic_shit_bsp/drivers/inc"/>

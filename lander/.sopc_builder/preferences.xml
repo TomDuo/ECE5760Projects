@@ -4,7 +4,7 @@
  <systemtable filter="Default">
   <columns>
    <opcodeName visible="0" />
-   <connections preferredWidth="95" />
+   <connections preferredWidth="111" />
    <irq preferredWidth="34" />
    <export visible="0" />
    <name preferredWidth="204" />
@@ -19,6 +19,7 @@
    <pipeline visible="0" preferredWidth="58" />
   </columns>
  </clocktable>
- <window width="1280" height="984" x="-196" y="192" />
- <library expandedCategories="Project,Library/University Program,Library" />
+ <window width="1280" height="984" x="0" y="0" />
+ <library
+   expandedCategories="Library/University Program,Library/University Program/Audio &amp; Video,Library,Library/University Program/Audio &amp; Video/Video,Project" />
 </preferences>

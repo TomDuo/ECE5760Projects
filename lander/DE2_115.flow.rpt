@@ -1,5 +1,5 @@
 Flow report for DE2_115
-Wed Feb 11 01:55:06 2015
+Wed Feb 11 14:09:36 2015
 Quartus II 64-Bit Version 11.0 Build 157 04/27/2011 SJ Full Version
 
 
@@ -38,20 +38,20 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------+
 ; Flow Summary                                                                   ;
 +------------------------------------+-------------------------------------------+
-; Flow Status                        ; Successful - Wed Feb 11 01:55:01 2015     ;
+; Flow Status                        ; Successful - Wed Feb 11 14:09:31 2015     ;
 ; Quartus II 64-Bit Version          ; 11.0 Build 157 04/27/2011 SJ Full Version ;
 ; Revision Name                      ; DE2_115                                   ;
 ; Top-level Entity Name              ; DE2_115                                   ;
 ; Family                             ; Cyclone IV E                              ;
 ; Device                             ; EP4CE115F29C7                             ;
 ; Timing Models                      ; Final                                     ;
-; Total logic elements               ; 3,714 / 114,480 ( 3 % )                   ;
-;     Total combinational functions  ; 3,336 / 114,480 ( 3 % )                   ;
-;     Dedicated logic registers      ; 2,147 / 114,480 ( 2 % )                   ;
-; Total registers                    ; 2147                                      ;
+; Total logic elements               ; 3,706 / 114,480 ( 3 % )                   ;
+;     Total combinational functions  ; 3,339 / 114,480 ( 3 % )                   ;
+;     Dedicated logic registers      ; 2,140 / 114,480 ( 2 % )                   ;
+; Total registers                    ; 2140                                      ;
 ; Total pins                         ; 168 / 529 ( 32 % )                        ;
 ; Total virtual pins                 ; 0                                         ;
-; Total memory bits                  ; 2,549,888 / 3,981,312 ( 64 % )            ;
+; Total memory bits                  ; 2,548,672 / 3,981,312 ( 64 % )            ;
 ; Embedded Multiplier 9-bit elements ; 4 / 532 ( 1 % )                           ;
 ; Total PLLs                         ; 1 / 4 ( 25 % )                            ;
 +------------------------------------+-------------------------------------------+
@@ -62,7 +62,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 02/11/2015 01:53:04 ;
+; Start date & time ; 02/11/2015 14:07:33 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; DE2_115             ;
 +-------------------+---------------------+
@@ -73,7 +73,7 @@ applicable agreement for further details.
 +-------------------------------------+---------------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                                 ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+---------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 132683363511499.142363758405340       ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 132683363430430.142368165303676       ; --            ; --          ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                    ; --            ; --          ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                     ; --            ; --          ; --         ;
 ; PARTITION_COLOR                     ; 16764057                              ; --            ; --          ; Top        ;
@@ -81,7 +81,7 @@ applicable agreement for further details.
 ; PARTITION_NETLIST_TYPE              ; SOURCE                                ; --            ; --          ; Top        ;
 ; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                   ; --            ; --          ; --         ;
 ; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW ; --            ; --          ; --         ;
-; SOPC_BUILDER_SIGNATURE_ID           ; 00000000000000E00000014B7755B54D      ; --            ; --          ; --         ;
+; SOPC_BUILDER_SIGNATURE_ID           ; 00000000000000E00000014B7A01B4BC      ; --            ; --          ; --         ;
 +-------------------------------------+---------------------------------------+---------------+-------------+------------+
 
 
@@ -90,11 +90,11 @@ applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:46     ; 1.0                     ; 528 MB              ; 00:00:43                           ;
-; Fitter                    ; 00:00:52     ; 2.2                     ; 800 MB              ; 00:01:03                           ;
-; Assembler                 ; 00:00:11     ; 1.0                     ; 616 MB              ; 00:00:09                           ;
-; TimeQuest Timing Analyzer ; 00:00:15     ; 1.1                     ; 527 MB              ; 00:00:18                           ;
-; Total                     ; 00:02:04     ; --                      ; --                  ; 00:02:13                           ;
+; Analysis & Synthesis      ; 00:00:38     ; 1.0                     ; 499 MB              ; 00:00:34                           ;
+; Fitter                    ; 00:00:57     ; 2.1                     ; 795 MB              ; 00:01:03                           ;
+; Assembler                 ; 00:00:11     ; 1.0                     ; 612 MB              ; 00:00:09                           ;
+; TimeQuest Timing Analyzer ; 00:00:19     ; 2.0                     ; 522 MB              ; 00:00:19                           ;
+; Total                     ; 00:02:05     ; --                      ; --                  ; 00:02:05                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -103,10 +103,10 @@ applicable agreement for further details.
 +---------------------------+------------------+-----------+------------+----------------+
 ; Module Name               ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
 +---------------------------+------------------+-----------+------------+----------------+
-; Analysis & Synthesis      ; PH238-02         ; Windows 7 ; 6.1        ; x86_64         ;
-; Fitter                    ; PH238-02         ; Windows 7 ; 6.1        ; x86_64         ;
-; Assembler                 ; PH238-02         ; Windows 7 ; 6.1        ; x86_64         ;
-; TimeQuest Timing Analyzer ; PH238-02         ; Windows 7 ; 6.1        ; x86_64         ;
+; Analysis & Synthesis      ; PH238-15         ; Windows 7 ; 6.1        ; x86_64         ;
+; Fitter                    ; PH238-15         ; Windows 7 ; 6.1        ; x86_64         ;
+; Assembler                 ; PH238-15         ; Windows 7 ; 6.1        ; x86_64         ;
+; TimeQuest Timing Analyzer ; PH238-15         ; Windows 7 ; 6.1        ; x86_64         ;
 +---------------------------+------------------+-----------+------------+----------------+
 
 

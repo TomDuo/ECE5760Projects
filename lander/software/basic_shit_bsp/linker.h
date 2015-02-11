@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu' in SOPC Builder design 'basic_shit'
  * SOPC Builder design path: ../../basic_shit.sopcinfo
  *
- * Generated: Tue Feb 10 18:34:53 EST 2015
+ * Generated: Wed Feb 11 14:11:00 EST 2015
  */
 
 /*
@@ -65,9 +65,9 @@
  *
  */
 
-#define MEMORY_REGION_BASE 0x80020
+#define MEMORY_REGION_BASE 0x280020
 #define MEMORY_REGION_SPAN 309968
-#define RESET_REGION_BASE 0x80000
+#define RESET_REGION_BASE 0x280000
 #define RESET_REGION_SPAN 32
 
 

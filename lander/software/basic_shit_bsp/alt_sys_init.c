@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu' in SOPC Builder design 'basic_shit'
  * SOPC Builder design path: ../../basic_shit.sopcinfo
  *
- * Generated: Tue Feb 10 18:50:35 EST 2015
+ * Generated: Wed Feb 11 14:11:00 EST 2015
  */
 
 /*
@@ -61,6 +61,7 @@
 #include "altera_nios2_qsys_irq.h"
 #include "altera_avalon_jtag_uart.h"
 #include "altera_avalon_lcd_16207.h"
+#include "altera_up_avalon_video_pixel_buffer_dma.h"
 
 /*
  * Allocate the device storage
@@ -69,6 +70,7 @@
 ALTERA_NIOS2_QSYS_IRQ_INSTANCE ( CPU, cpu);
 ALTERA_AVALON_JTAG_UART_INSTANCE ( JTAG_UART, jtag_uart);
 ALTERA_AVALON_LCD_16207_INSTANCE ( LCD_0, lcd_0);
+ALTERA_UP_AVALON_VIDEO_PIXEL_BUFFER_DMA_INSTANCE ( PIXEL_BUFFER_DMA, pixel_buffer_dma);
 
 /*
  * Initialize the interrupt controller devices
@@ -93,4 +95,5 @@ void alt_sys_init( void )
 {
     ALTERA_AVALON_JTAG_UART_INIT ( JTAG_UART, jtag_uart);
     ALTERA_AVALON_LCD_16207_INIT ( LCD_0, lcd_0);
+    ALTERA_UP_AVALON_VIDEO_PIXEL_BUFFER_DMA_INIT ( PIXEL_BUFFER_DMA, pixel_buffer_dma);
 }

@@ -17,8 +17,9 @@
       .VGA_SYNC_from_the_vga_controller     (VGA_SYNC_from_the_vga_controller),
       .VGA_VS_from_the_vga_controller       (VGA_VS_from_the_vga_controller),
       .clk_0                                (clk_0),
-      .clocks_0_VGA_CLK_out                 (clocks_0_VGA_CLK_out),
       .clocks_0_sys_clk_out                 (clocks_0_sys_clk_out),
+      .clocks_0_vga_clk                     (clocks_0_vga_clk),
+      .in_port_to_the_buttons               (in_port_to_the_buttons),
       .reset_n                              (reset_n)
     );
 

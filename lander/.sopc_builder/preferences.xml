@@ -13,13 +13,13 @@
  </systemtable>
  <clocktable>
   <columns>
-   <clockname preferredWidth="269" />
-   <clocksource preferredWidth="268" />
-   <frequency preferredWidth="250" />
+   <clockname preferredWidth="255" />
+   <clocksource preferredWidth="254" />
+   <frequency preferredWidth="238" />
    <pipeline visible="0" preferredWidth="58" />
   </columns>
  </clocktable>
  <window width="1280" height="984" x="0" y="0" />
  <library
-   expandedCategories="Library/University Program,Library/University Program/Audio &amp; Video,Library,Library/University Program/Audio &amp; Video/Video,Project" />
+   expandedCategories="Library/Interface Protocols,Library/Bridges and Adapters/Memory Mapped,Library,Library/Interface Protocols/Serial,Project,Library/Bridges and Adapters" />
 </preferences>

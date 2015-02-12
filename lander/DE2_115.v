@@ -108,7 +108,8 @@ the_whole_shit the_whole_shit_inst
 	.clk_0                                     (CLOCK_50),
 	.clocks_0_VGA_CLK_out                      (),
 	.clocks_0_sys_clk_out                      (),
-	.reset_n                                   (KEY[0])
+	.in_port_to_the_buttons							 (KEY),
+	.reset_n                                   (1'b1)
  );
 
 

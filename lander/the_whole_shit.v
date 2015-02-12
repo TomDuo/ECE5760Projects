@@ -23,6 +23,290 @@
 // altera message_level Level1 
 // altera message_off 10034 10035 10036 10037 10230 10240 10030 
 
+module buttons_s1_arbitrator (
+                               // inputs:
+                                buttons_s1_irq,
+                                buttons_s1_readdata,
+                                clk,
+                                cpu_data_master_address_to_slave,
+                                cpu_data_master_latency_counter,
+                                cpu_data_master_read,
+                                cpu_data_master_read_data_valid_pixel_buffer_avalon_sram_slave_shift_register,
+                                cpu_data_master_write,
+                                cpu_data_master_writedata,
+                                reset_n,
+
+                               // outputs:
+                                buttons_s1_address,
+                                buttons_s1_chipselect,
+                                buttons_s1_irq_from_sa,
+                                buttons_s1_readdata_from_sa,
+                                buttons_s1_reset_n,
+                                buttons_s1_write_n,
+                                buttons_s1_writedata,
+                                cpu_data_master_granted_buttons_s1,
+                                cpu_data_master_qualified_request_buttons_s1,
+                                cpu_data_master_read_data_valid_buttons_s1,
+                                cpu_data_master_requests_buttons_s1,
+                                d1_buttons_s1_end_xfer
+                             )
+;
+
+  output  [  1: 0] buttons_s1_address;
+  output           buttons_s1_chipselect;
+  output           buttons_s1_irq_from_sa;
+  output  [ 31: 0] buttons_s1_readdata_from_sa;
+  output           buttons_s1_reset_n;
+  output           buttons_s1_write_n;
+  output  [ 31: 0] buttons_s1_writedata;
+  output           cpu_data_master_granted_buttons_s1;
+  output           cpu_data_master_qualified_request_buttons_s1;
+  output           cpu_data_master_read_data_valid_buttons_s1;
+  output           cpu_data_master_requests_buttons_s1;
+  output           d1_buttons_s1_end_xfer;
+  input            buttons_s1_irq;
+  input   [ 31: 0] buttons_s1_readdata;
+  input            clk;
+  input   [ 21: 0] cpu_data_master_address_to_slave;
+  input            cpu_data_master_latency_counter;
+  input            cpu_data_master_read;
+  input            cpu_data_master_read_data_valid_pixel_buffer_avalon_sram_slave_shift_register;
+  input            cpu_data_master_write;
+  input   [ 31: 0] cpu_data_master_writedata;
+  input            reset_n;
+
+  wire    [  1: 0] buttons_s1_address;
+  wire             buttons_s1_allgrants;
+  wire             buttons_s1_allow_new_arb_cycle;
+  wire             buttons_s1_any_bursting_master_saved_grant;
+  wire             buttons_s1_any_continuerequest;
+  wire             buttons_s1_arb_counter_enable;
+  reg     [  2: 0] buttons_s1_arb_share_counter;
+  wire    [  2: 0] buttons_s1_arb_share_counter_next_value;
+  wire    [  2: 0] buttons_s1_arb_share_set_values;
+  wire             buttons_s1_beginbursttransfer_internal;
+  wire             buttons_s1_begins_xfer;
+  wire             buttons_s1_chipselect;
+  wire             buttons_s1_end_xfer;
+  wire             buttons_s1_firsttransfer;
+  wire             buttons_s1_grant_vector;
+  wire             buttons_s1_in_a_read_cycle;
+  wire             buttons_s1_in_a_write_cycle;
+  wire             buttons_s1_irq_from_sa;
+  wire             buttons_s1_master_qreq_vector;
+  wire             buttons_s1_non_bursting_master_requests;
+  wire    [ 31: 0] buttons_s1_readdata_from_sa;
+  reg              buttons_s1_reg_firsttransfer;
+  wire             buttons_s1_reset_n;
+  reg              buttons_s1_slavearbiterlockenable;
+  wire             buttons_s1_slavearbiterlockenable2;
+  wire             buttons_s1_unreg_firsttransfer;
+  wire             buttons_s1_waits_for_read;
+  wire             buttons_s1_waits_for_write;
+  wire             buttons_s1_write_n;
+  wire    [ 31: 0] buttons_s1_writedata;
+  wire             cpu_data_master_arbiterlock;
+  wire             cpu_data_master_arbiterlock2;
+  wire             cpu_data_master_continuerequest;
+  wire             cpu_data_master_granted_buttons_s1;
+  wire             cpu_data_master_qualified_request_buttons_s1;
+  wire             cpu_data_master_read_data_valid_buttons_s1;
+  wire             cpu_data_master_requests_buttons_s1;
+  wire             cpu_data_master_saved_grant_buttons_s1;
+  reg              d1_buttons_s1_end_xfer;
+  reg              d1_reasons_to_wait;
+  reg              enable_nonzero_assertions;
+  wire             end_xfer_arb_share_counter_term_buttons_s1;
+  wire             in_a_read_cycle;
+  wire             in_a_write_cycle;
+  wire    [ 21: 0] shifted_address_to_buttons_s1_from_cpu_data_master;
+  wire             wait_for_buttons_s1_counter;
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          d1_reasons_to_wait <= 0;
+      else 
+        d1_reasons_to_wait <= ~buttons_s1_end_xfer;
+    end
+
+
+  assign buttons_s1_begins_xfer = ~d1_reasons_to_wait & ((cpu_data_master_qualified_request_buttons_s1));
+  //assign buttons_s1_readdata_from_sa = buttons_s1_readdata so that symbol knows where to group signals which may go to master only, which is an e_assign
+  assign buttons_s1_readdata_from_sa = buttons_s1_readdata;
+
+  assign cpu_data_master_requests_buttons_s1 = ({cpu_data_master_address_to_slave[21 : 4] , 4'b0} == 22'h301010) & (cpu_data_master_read | cpu_data_master_write);
+  //buttons_s1_arb_share_counter set values, which is an e_mux
+  assign buttons_s1_arb_share_set_values = 1;
+
+  //buttons_s1_non_bursting_master_requests mux, which is an e_mux
+  assign buttons_s1_non_bursting_master_requests = cpu_data_master_requests_buttons_s1;
+
+  //buttons_s1_any_bursting_master_saved_grant mux, which is an e_mux
+  assign buttons_s1_any_bursting_master_saved_grant = 0;
+
+  //buttons_s1_arb_share_counter_next_value assignment, which is an e_assign
+  assign buttons_s1_arb_share_counter_next_value = buttons_s1_firsttransfer ? (buttons_s1_arb_share_set_values - 1) : |buttons_s1_arb_share_counter ? (buttons_s1_arb_share_counter - 1) : 0;
+
+  //buttons_s1_allgrants all slave grants, which is an e_mux
+  assign buttons_s1_allgrants = |buttons_s1_grant_vector;
+
+  //buttons_s1_end_xfer assignment, which is an e_assign
+  assign buttons_s1_end_xfer = ~(buttons_s1_waits_for_read | buttons_s1_waits_for_write);
+
+  //end_xfer_arb_share_counter_term_buttons_s1 arb share counter enable term, which is an e_assign
+  assign end_xfer_arb_share_counter_term_buttons_s1 = buttons_s1_end_xfer & (~buttons_s1_any_bursting_master_saved_grant | in_a_read_cycle | in_a_write_cycle);
+
+  //buttons_s1_arb_share_counter arbitration counter enable, which is an e_assign
+  assign buttons_s1_arb_counter_enable = (end_xfer_arb_share_counter_term_buttons_s1 & buttons_s1_allgrants) | (end_xfer_arb_share_counter_term_buttons_s1 & ~buttons_s1_non_bursting_master_requests);
+
+  //buttons_s1_arb_share_counter counter, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          buttons_s1_arb_share_counter <= 0;
+      else if (buttons_s1_arb_counter_enable)
+          buttons_s1_arb_share_counter <= buttons_s1_arb_share_counter_next_value;
+    end
+
+
+  //buttons_s1_slavearbiterlockenable slave enables arbiterlock, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          buttons_s1_slavearbiterlockenable <= 0;
+      else if ((|buttons_s1_master_qreq_vector & end_xfer_arb_share_counter_term_buttons_s1) | (end_xfer_arb_share_counter_term_buttons_s1 & ~buttons_s1_non_bursting_master_requests))
+          buttons_s1_slavearbiterlockenable <= |buttons_s1_arb_share_counter_next_value;
+    end
+
+
+  //cpu/data_master buttons/s1 arbiterlock, which is an e_assign
+  assign cpu_data_master_arbiterlock = buttons_s1_slavearbiterlockenable & cpu_data_master_continuerequest;
+
+  //buttons_s1_slavearbiterlockenable2 slave enables arbiterlock2, which is an e_assign
+  assign buttons_s1_slavearbiterlockenable2 = |buttons_s1_arb_share_counter_next_value;
+
+  //cpu/data_master buttons/s1 arbiterlock2, which is an e_assign
+  assign cpu_data_master_arbiterlock2 = buttons_s1_slavearbiterlockenable2 & cpu_data_master_continuerequest;
+
+  //buttons_s1_any_continuerequest at least one master continues requesting, which is an e_assign
+  assign buttons_s1_any_continuerequest = 1;
+
+  //cpu_data_master_continuerequest continued request, which is an e_assign
+  assign cpu_data_master_continuerequest = 1;
+
+  assign cpu_data_master_qualified_request_buttons_s1 = cpu_data_master_requests_buttons_s1 & ~((cpu_data_master_read & ((cpu_data_master_latency_counter != 0) | (|cpu_data_master_read_data_valid_pixel_buffer_avalon_sram_slave_shift_register))));
+  //local readdatavalid cpu_data_master_read_data_valid_buttons_s1, which is an e_mux
+  assign cpu_data_master_read_data_valid_buttons_s1 = cpu_data_master_granted_buttons_s1 & cpu_data_master_read & ~buttons_s1_waits_for_read;
+
+  //buttons_s1_writedata mux, which is an e_mux
+  assign buttons_s1_writedata = cpu_data_master_writedata;
+
+  //master is always granted when requested
+  assign cpu_data_master_granted_buttons_s1 = cpu_data_master_qualified_request_buttons_s1;
+
+  //cpu/data_master saved-grant buttons/s1, which is an e_assign
+  assign cpu_data_master_saved_grant_buttons_s1 = cpu_data_master_requests_buttons_s1;
+
+  //allow new arb cycle for buttons/s1, which is an e_assign
+  assign buttons_s1_allow_new_arb_cycle = 1;
+
+  //placeholder chosen master
+  assign buttons_s1_grant_vector = 1;
+
+  //placeholder vector of master qualified-requests
+  assign buttons_s1_master_qreq_vector = 1;
+
+  //buttons_s1_reset_n assignment, which is an e_assign
+  assign buttons_s1_reset_n = reset_n;
+
+  assign buttons_s1_chipselect = cpu_data_master_granted_buttons_s1;
+  //buttons_s1_firsttransfer first transaction, which is an e_assign
+  assign buttons_s1_firsttransfer = buttons_s1_begins_xfer ? buttons_s1_unreg_firsttransfer : buttons_s1_reg_firsttransfer;
+
+  //buttons_s1_unreg_firsttransfer first transaction, which is an e_assign
+  assign buttons_s1_unreg_firsttransfer = ~(buttons_s1_slavearbiterlockenable & buttons_s1_any_continuerequest);
+
+  //buttons_s1_reg_firsttransfer first transaction, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          buttons_s1_reg_firsttransfer <= 1'b1;
+      else if (buttons_s1_begins_xfer)
+          buttons_s1_reg_firsttransfer <= buttons_s1_unreg_firsttransfer;
+    end
+
+
+  //buttons_s1_beginbursttransfer_internal begin burst transfer, which is an e_assign
+  assign buttons_s1_beginbursttransfer_internal = buttons_s1_begins_xfer;
+
+  //~buttons_s1_write_n assignment, which is an e_mux
+  assign buttons_s1_write_n = ~(cpu_data_master_granted_buttons_s1 & cpu_data_master_write);
+
+  assign shifted_address_to_buttons_s1_from_cpu_data_master = cpu_data_master_address_to_slave;
+  //buttons_s1_address mux, which is an e_mux
+  assign buttons_s1_address = shifted_address_to_buttons_s1_from_cpu_data_master >> 2;
+
+  //d1_buttons_s1_end_xfer register, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          d1_buttons_s1_end_xfer <= 1;
+      else 
+        d1_buttons_s1_end_xfer <= buttons_s1_end_xfer;
+    end
+
+
+  //buttons_s1_waits_for_read in a cycle, which is an e_mux
+  assign buttons_s1_waits_for_read = buttons_s1_in_a_read_cycle & buttons_s1_begins_xfer;
+
+  //buttons_s1_in_a_read_cycle assignment, which is an e_assign
+  assign buttons_s1_in_a_read_cycle = cpu_data_master_granted_buttons_s1 & cpu_data_master_read;
+
+  //in_a_read_cycle assignment, which is an e_mux
+  assign in_a_read_cycle = buttons_s1_in_a_read_cycle;
+
+  //buttons_s1_waits_for_write in a cycle, which is an e_mux
+  assign buttons_s1_waits_for_write = buttons_s1_in_a_write_cycle & 0;
+
+  //buttons_s1_in_a_write_cycle assignment, which is an e_assign
+  assign buttons_s1_in_a_write_cycle = cpu_data_master_granted_buttons_s1 & cpu_data_master_write;
+
+  //in_a_write_cycle assignment, which is an e_mux
+  assign in_a_write_cycle = buttons_s1_in_a_write_cycle;
+
+  assign wait_for_buttons_s1_counter = 0;
+  //assign buttons_s1_irq_from_sa = buttons_s1_irq so that symbol knows where to group signals which may go to master only, which is an e_assign
+  assign buttons_s1_irq_from_sa = buttons_s1_irq;
+
+
+//synthesis translate_off
+//////////////// SIMULATION-ONLY CONTENTS
+  //buttons/s1 enable non-zero assertions, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          enable_nonzero_assertions <= 0;
+      else 
+        enable_nonzero_assertions <= 1'b1;
+    end
+
+
+
+//////////////// END SIMULATION-ONLY CONTENTS
+
+//synthesis translate_on
+
+endmodule
+
+
+// synthesis translate_off
+`timescale 1ns / 1ps
+// synthesis translate_on
+
+// turn off superfluous verilog processor warnings 
+// altera message_level Level1 
+// altera message_off 10034 10035 10036 10037 10230 10240 10030 
+
 module clocks_0_avalon_clocks_slave_arbitrator (
                                                  // inputs:
                                                   clk,
@@ -736,29 +1020,39 @@ endmodule
 
 module cpu_data_master_arbitrator (
                                     // inputs:
+                                     buttons_s1_irq_from_sa,
+                                     buttons_s1_readdata_from_sa,
                                      clk,
                                      cpu_data_master_address,
                                      cpu_data_master_byteenable,
                                      cpu_data_master_byteenable_pixel_buffer_avalon_sram_slave,
                                      cpu_data_master_byteenable_the_whole_shit_clock_0_in,
+                                     cpu_data_master_granted_buttons_s1,
                                      cpu_data_master_granted_cpu_jtag_debug_module,
+                                     cpu_data_master_granted_jtag_uart_0_avalon_jtag_slave,
                                      cpu_data_master_granted_onchip_ram_s1,
                                      cpu_data_master_granted_pixel_buffer_avalon_sram_slave,
                                      cpu_data_master_granted_pixel_buffer_dma_avalon_control_slave,
                                      cpu_data_master_granted_the_whole_shit_clock_0_in,
+                                     cpu_data_master_qualified_request_buttons_s1,
                                      cpu_data_master_qualified_request_cpu_jtag_debug_module,
+                                     cpu_data_master_qualified_request_jtag_uart_0_avalon_jtag_slave,
                                      cpu_data_master_qualified_request_onchip_ram_s1,
                                      cpu_data_master_qualified_request_pixel_buffer_avalon_sram_slave,
                                      cpu_data_master_qualified_request_pixel_buffer_dma_avalon_control_slave,
                                      cpu_data_master_qualified_request_the_whole_shit_clock_0_in,
                                      cpu_data_master_read,
+                                     cpu_data_master_read_data_valid_buttons_s1,
                                      cpu_data_master_read_data_valid_cpu_jtag_debug_module,
+                                     cpu_data_master_read_data_valid_jtag_uart_0_avalon_jtag_slave,
                                      cpu_data_master_read_data_valid_onchip_ram_s1,
                                      cpu_data_master_read_data_valid_pixel_buffer_avalon_sram_slave,
                                      cpu_data_master_read_data_valid_pixel_buffer_avalon_sram_slave_shift_register,
                                      cpu_data_master_read_data_valid_pixel_buffer_dma_avalon_control_slave,
                                      cpu_data_master_read_data_valid_the_whole_shit_clock_0_in,
+                                     cpu_data_master_requests_buttons_s1,
                                      cpu_data_master_requests_cpu_jtag_debug_module,
+                                     cpu_data_master_requests_jtag_uart_0_avalon_jtag_slave,
                                      cpu_data_master_requests_onchip_ram_s1,
                                      cpu_data_master_requests_pixel_buffer_avalon_sram_slave,
                                      cpu_data_master_requests_pixel_buffer_dma_avalon_control_slave,
@@ -766,11 +1060,16 @@ module cpu_data_master_arbitrator (
                                      cpu_data_master_write,
                                      cpu_data_master_writedata,
                                      cpu_jtag_debug_module_readdata_from_sa,
+                                     d1_buttons_s1_end_xfer,
                                      d1_cpu_jtag_debug_module_end_xfer,
+                                     d1_jtag_uart_0_avalon_jtag_slave_end_xfer,
                                      d1_onchip_ram_s1_end_xfer,
                                      d1_pixel_buffer_avalon_sram_slave_end_xfer,
                                      d1_pixel_buffer_dma_avalon_control_slave_end_xfer,
                                      d1_the_whole_shit_clock_0_in_end_xfer,
+                                     jtag_uart_0_avalon_jtag_slave_irq_from_sa,
+                                     jtag_uart_0_avalon_jtag_slave_readdata_from_sa,
+                                     jtag_uart_0_avalon_jtag_slave_waitrequest_from_sa,
                                      onchip_ram_s1_readdata_from_sa,
                                      pixel_buffer_avalon_sram_slave_readdata_from_sa,
                                      pixel_buffer_dma_avalon_control_slave_readdata_from_sa,
@@ -783,6 +1082,7 @@ module cpu_data_master_arbitrator (
                                      cpu_data_master_dbs_address,
                                      cpu_data_master_dbs_write_16,
                                      cpu_data_master_dbs_write_8,
+                                     cpu_data_master_irq,
                                      cpu_data_master_latency_counter,
                                      cpu_data_master_readdata,
                                      cpu_data_master_readdatavalid,
@@ -794,33 +1094,44 @@ module cpu_data_master_arbitrator (
   output  [  1: 0] cpu_data_master_dbs_address;
   output  [ 15: 0] cpu_data_master_dbs_write_16;
   output  [  7: 0] cpu_data_master_dbs_write_8;
+  output  [ 31: 0] cpu_data_master_irq;
   output           cpu_data_master_latency_counter;
   output  [ 31: 0] cpu_data_master_readdata;
   output           cpu_data_master_readdatavalid;
   output           cpu_data_master_waitrequest;
+  input            buttons_s1_irq_from_sa;
+  input   [ 31: 0] buttons_s1_readdata_from_sa;
   input            clk;
   input   [ 21: 0] cpu_data_master_address;
   input   [  3: 0] cpu_data_master_byteenable;
   input   [  1: 0] cpu_data_master_byteenable_pixel_buffer_avalon_sram_slave;
   input            cpu_data_master_byteenable_the_whole_shit_clock_0_in;
+  input            cpu_data_master_granted_buttons_s1;
   input            cpu_data_master_granted_cpu_jtag_debug_module;
+  input            cpu_data_master_granted_jtag_uart_0_avalon_jtag_slave;
   input            cpu_data_master_granted_onchip_ram_s1;
   input            cpu_data_master_granted_pixel_buffer_avalon_sram_slave;
   input            cpu_data_master_granted_pixel_buffer_dma_avalon_control_slave;
   input            cpu_data_master_granted_the_whole_shit_clock_0_in;
+  input            cpu_data_master_qualified_request_buttons_s1;
   input            cpu_data_master_qualified_request_cpu_jtag_debug_module;
+  input            cpu_data_master_qualified_request_jtag_uart_0_avalon_jtag_slave;
   input            cpu_data_master_qualified_request_onchip_ram_s1;
   input            cpu_data_master_qualified_request_pixel_buffer_avalon_sram_slave;
   input            cpu_data_master_qualified_request_pixel_buffer_dma_avalon_control_slave;
   input            cpu_data_master_qualified_request_the_whole_shit_clock_0_in;
   input            cpu_data_master_read;
+  input            cpu_data_master_read_data_valid_buttons_s1;
   input            cpu_data_master_read_data_valid_cpu_jtag_debug_module;
+  input            cpu_data_master_read_data_valid_jtag_uart_0_avalon_jtag_slave;
   input            cpu_data_master_read_data_valid_onchip_ram_s1;
   input            cpu_data_master_read_data_valid_pixel_buffer_avalon_sram_slave;
   input            cpu_data_master_read_data_valid_pixel_buffer_avalon_sram_slave_shift_register;
   input            cpu_data_master_read_data_valid_pixel_buffer_dma_avalon_control_slave;
   input            cpu_data_master_read_data_valid_the_whole_shit_clock_0_in;
+  input            cpu_data_master_requests_buttons_s1;
   input            cpu_data_master_requests_cpu_jtag_debug_module;
+  input            cpu_data_master_requests_jtag_uart_0_avalon_jtag_slave;
   input            cpu_data_master_requests_onchip_ram_s1;
   input            cpu_data_master_requests_pixel_buffer_avalon_sram_slave;
   input            cpu_data_master_requests_pixel_buffer_dma_avalon_control_slave;
@@ -828,11 +1139,16 @@ module cpu_data_master_arbitrator (
   input            cpu_data_master_write;
   input   [ 31: 0] cpu_data_master_writedata;
   input   [ 31: 0] cpu_jtag_debug_module_readdata_from_sa;
+  input            d1_buttons_s1_end_xfer;
   input            d1_cpu_jtag_debug_module_end_xfer;
+  input            d1_jtag_uart_0_avalon_jtag_slave_end_xfer;
   input            d1_onchip_ram_s1_end_xfer;
   input            d1_pixel_buffer_avalon_sram_slave_end_xfer;
   input            d1_pixel_buffer_dma_avalon_control_slave_end_xfer;
   input            d1_the_whole_shit_clock_0_in_end_xfer;
+  input            jtag_uart_0_avalon_jtag_slave_irq_from_sa;
+  input   [ 31: 0] jtag_uart_0_avalon_jtag_slave_readdata_from_sa;
+  input            jtag_uart_0_avalon_jtag_slave_waitrequest_from_sa;
   input   [ 31: 0] onchip_ram_s1_readdata_from_sa;
   input   [ 15: 0] pixel_buffer_avalon_sram_slave_readdata_from_sa;
   input   [ 31: 0] pixel_buffer_dma_avalon_control_slave_readdata_from_sa;
@@ -850,6 +1166,7 @@ module cpu_data_master_arbitrator (
   wire    [  1: 0] cpu_data_master_dbs_rdv_counter_inc;
   wire    [ 15: 0] cpu_data_master_dbs_write_16;
   wire    [  7: 0] cpu_data_master_dbs_write_8;
+  wire    [ 31: 0] cpu_data_master_irq;
   wire             cpu_data_master_is_granted_some_slave;
   reg              cpu_data_master_latency_counter;
   wire    [  1: 0] cpu_data_master_next_dbs_rdv_counter;
@@ -881,13 +1198,13 @@ module cpu_data_master_arbitrator (
   wire             r_0;
   wire             r_1;
   //r_0 master_run cascaded wait assignment, which is an e_assign
-  assign r_0 = 1 & (cpu_data_master_qualified_request_cpu_jtag_debug_module | ~cpu_data_master_requests_cpu_jtag_debug_module) & (cpu_data_master_granted_cpu_jtag_debug_module | ~cpu_data_master_qualified_request_cpu_jtag_debug_module) & ((~cpu_data_master_qualified_request_cpu_jtag_debug_module | ~cpu_data_master_read | (1 & ~d1_cpu_jtag_debug_module_end_xfer & cpu_data_master_read))) & ((~cpu_data_master_qualified_request_cpu_jtag_debug_module | ~cpu_data_master_write | (1 & cpu_data_master_write))) & 1 & (cpu_data_master_qualified_request_onchip_ram_s1 | ~cpu_data_master_requests_onchip_ram_s1) & (cpu_data_master_granted_onchip_ram_s1 | ~cpu_data_master_qualified_request_onchip_ram_s1) & ((~cpu_data_master_qualified_request_onchip_ram_s1 | ~(cpu_data_master_read | cpu_data_master_write) | (1 & (cpu_data_master_read | cpu_data_master_write)))) & ((~cpu_data_master_qualified_request_onchip_ram_s1 | ~(cpu_data_master_read | cpu_data_master_write) | (1 & (cpu_data_master_read | cpu_data_master_write)))) & 1 & (cpu_data_master_qualified_request_pixel_buffer_avalon_sram_slave | (cpu_data_master_write & !cpu_data_master_byteenable_pixel_buffer_avalon_sram_slave & cpu_data_master_dbs_address[1]) | ~cpu_data_master_requests_pixel_buffer_avalon_sram_slave) & (cpu_data_master_granted_pixel_buffer_avalon_sram_slave | ~cpu_data_master_qualified_request_pixel_buffer_avalon_sram_slave) & ((~cpu_data_master_qualified_request_pixel_buffer_avalon_sram_slave | ~cpu_data_master_read | (1 & (cpu_data_master_dbs_address[1]) & cpu_data_master_read))) & ((~cpu_data_master_qualified_request_pixel_buffer_avalon_sram_slave | ~cpu_data_master_write | (1 & (cpu_data_master_dbs_address[1]) & cpu_data_master_write))) & 1 & (cpu_data_master_qualified_request_pixel_buffer_dma_avalon_control_slave | ~cpu_data_master_requests_pixel_buffer_dma_avalon_control_slave) & ((~cpu_data_master_qualified_request_pixel_buffer_dma_avalon_control_slave | ~(cpu_data_master_read | cpu_data_master_write) | (1 & (cpu_data_master_read | cpu_data_master_write)))) & ((~cpu_data_master_qualified_request_pixel_buffer_dma_avalon_control_slave | ~(cpu_data_master_read | cpu_data_master_write) | (1 & (cpu_data_master_read | cpu_data_master_write)))) & 1;
+  assign r_0 = 1 & (cpu_data_master_qualified_request_buttons_s1 | ~cpu_data_master_requests_buttons_s1) & ((~cpu_data_master_qualified_request_buttons_s1 | ~cpu_data_master_read | (1 & ~d1_buttons_s1_end_xfer & cpu_data_master_read))) & ((~cpu_data_master_qualified_request_buttons_s1 | ~cpu_data_master_write | (1 & cpu_data_master_write))) & 1 & (cpu_data_master_qualified_request_cpu_jtag_debug_module | ~cpu_data_master_requests_cpu_jtag_debug_module) & (cpu_data_master_granted_cpu_jtag_debug_module | ~cpu_data_master_qualified_request_cpu_jtag_debug_module) & ((~cpu_data_master_qualified_request_cpu_jtag_debug_module | ~cpu_data_master_read | (1 & ~d1_cpu_jtag_debug_module_end_xfer & cpu_data_master_read))) & ((~cpu_data_master_qualified_request_cpu_jtag_debug_module | ~cpu_data_master_write | (1 & cpu_data_master_write))) & 1 & (cpu_data_master_qualified_request_jtag_uart_0_avalon_jtag_slave | ~cpu_data_master_requests_jtag_uart_0_avalon_jtag_slave) & ((~cpu_data_master_qualified_request_jtag_uart_0_avalon_jtag_slave | ~(cpu_data_master_read | cpu_data_master_write) | (1 & ~jtag_uart_0_avalon_jtag_slave_waitrequest_from_sa & (cpu_data_master_read | cpu_data_master_write)))) & ((~cpu_data_master_qualified_request_jtag_uart_0_avalon_jtag_slave | ~(cpu_data_master_read | cpu_data_master_write) | (1 & ~jtag_uart_0_avalon_jtag_slave_waitrequest_from_sa & (cpu_data_master_read | cpu_data_master_write)))) & 1 & (cpu_data_master_qualified_request_onchip_ram_s1 | ~cpu_data_master_requests_onchip_ram_s1) & (cpu_data_master_granted_onchip_ram_s1 | ~cpu_data_master_qualified_request_onchip_ram_s1) & ((~cpu_data_master_qualified_request_onchip_ram_s1 | ~(cpu_data_master_read | cpu_data_master_write) | (1 & (cpu_data_master_read | cpu_data_master_write)))) & ((~cpu_data_master_qualified_request_onchip_ram_s1 | ~(cpu_data_master_read | cpu_data_master_write) | (1 & (cpu_data_master_read | cpu_data_master_write)))) & 1 & (cpu_data_master_qualified_request_pixel_buffer_avalon_sram_slave | (cpu_data_master_write & !cpu_data_master_byteenable_pixel_buffer_avalon_sram_slave & cpu_data_master_dbs_address[1]) | ~cpu_data_master_requests_pixel_buffer_avalon_sram_slave);
 
   //cascaded wait assignment, which is an e_assign
   assign cpu_data_master_run = r_0 & r_1;
 
   //r_1 master_run cascaded wait assignment, which is an e_assign
-  assign r_1 = ((cpu_data_master_qualified_request_the_whole_shit_clock_0_in | ((cpu_data_master_write & !cpu_data_master_byteenable_the_whole_shit_clock_0_in & cpu_data_master_dbs_address[1] & cpu_data_master_dbs_address[0])) | ~cpu_data_master_requests_the_whole_shit_clock_0_in)) & ((~cpu_data_master_qualified_request_the_whole_shit_clock_0_in | ~cpu_data_master_read | (1 & ~the_whole_shit_clock_0_in_waitrequest_from_sa & (cpu_data_master_dbs_address[1] & cpu_data_master_dbs_address[0]) & cpu_data_master_read))) & ((~cpu_data_master_qualified_request_the_whole_shit_clock_0_in | ~cpu_data_master_write | (1 & ~the_whole_shit_clock_0_in_waitrequest_from_sa & (cpu_data_master_dbs_address[1] & cpu_data_master_dbs_address[0]) & cpu_data_master_write)));
+  assign r_1 = (cpu_data_master_granted_pixel_buffer_avalon_sram_slave | ~cpu_data_master_qualified_request_pixel_buffer_avalon_sram_slave) & ((~cpu_data_master_qualified_request_pixel_buffer_avalon_sram_slave | ~cpu_data_master_read | (1 & (cpu_data_master_dbs_address[1]) & cpu_data_master_read))) & ((~cpu_data_master_qualified_request_pixel_buffer_avalon_sram_slave | ~cpu_data_master_write | (1 & (cpu_data_master_dbs_address[1]) & cpu_data_master_write))) & 1 & (cpu_data_master_qualified_request_pixel_buffer_dma_avalon_control_slave | ~cpu_data_master_requests_pixel_buffer_dma_avalon_control_slave) & ((~cpu_data_master_qualified_request_pixel_buffer_dma_avalon_control_slave | ~(cpu_data_master_read | cpu_data_master_write) | (1 & (cpu_data_master_read | cpu_data_master_write)))) & ((~cpu_data_master_qualified_request_pixel_buffer_dma_avalon_control_slave | ~(cpu_data_master_read | cpu_data_master_write) | (1 & (cpu_data_master_read | cpu_data_master_write)))) & 1 & ((cpu_data_master_qualified_request_the_whole_shit_clock_0_in | ((cpu_data_master_write & !cpu_data_master_byteenable_the_whole_shit_clock_0_in & cpu_data_master_dbs_address[1] & cpu_data_master_dbs_address[0])) | ~cpu_data_master_requests_the_whole_shit_clock_0_in)) & ((~cpu_data_master_qualified_request_the_whole_shit_clock_0_in | ~cpu_data_master_read | (1 & ~the_whole_shit_clock_0_in_waitrequest_from_sa & (cpu_data_master_dbs_address[1] & cpu_data_master_dbs_address[0]) & cpu_data_master_read))) & ((~cpu_data_master_qualified_request_the_whole_shit_clock_0_in | ~cpu_data_master_write | (1 & ~the_whole_shit_clock_0_in_waitrequest_from_sa & (cpu_data_master_dbs_address[1] & cpu_data_master_dbs_address[0]) & cpu_data_master_write)));
 
   //optimize select-logic by passing only those address bits which matter.
   assign cpu_data_master_address_to_slave = cpu_data_master_address[21 : 0];
@@ -903,7 +1220,9 @@ module cpu_data_master_arbitrator (
 
 
   //some slave is getting selected, which is an e_mux
-  assign cpu_data_master_is_granted_some_slave = cpu_data_master_granted_cpu_jtag_debug_module |
+  assign cpu_data_master_is_granted_some_slave = cpu_data_master_granted_buttons_s1 |
+    cpu_data_master_granted_cpu_jtag_debug_module |
+    cpu_data_master_granted_jtag_uart_0_avalon_jtag_slave |
     cpu_data_master_granted_onchip_ram_s1 |
     cpu_data_master_granted_pixel_buffer_avalon_sram_slave |
     cpu_data_master_granted_pixel_buffer_dma_avalon_control_slave |
@@ -917,7 +1236,13 @@ module cpu_data_master_arbitrator (
   //latent slave read data valid which is not flushed, which is an e_mux
   assign cpu_data_master_readdatavalid = cpu_data_master_read_but_no_slave_selected |
     pre_flush_cpu_data_master_readdatavalid |
+    cpu_data_master_read_data_valid_buttons_s1 |
+    cpu_data_master_read_but_no_slave_selected |
+    pre_flush_cpu_data_master_readdatavalid |
     cpu_data_master_read_data_valid_cpu_jtag_debug_module |
+    cpu_data_master_read_but_no_slave_selected |
+    pre_flush_cpu_data_master_readdatavalid |
+    cpu_data_master_read_data_valid_jtag_uart_0_avalon_jtag_slave |
     cpu_data_master_read_but_no_slave_selected |
     pre_flush_cpu_data_master_readdatavalid |
     cpu_data_master_read_but_no_slave_selected |
@@ -929,7 +1254,9 @@ module cpu_data_master_arbitrator (
     (cpu_data_master_read_data_valid_the_whole_shit_clock_0_in & dbs_counter_overflow);
 
   //cpu/data_master readdata mux, which is an e_mux
-  assign cpu_data_master_readdata = ({32 {~(cpu_data_master_qualified_request_cpu_jtag_debug_module & cpu_data_master_read)}} | cpu_jtag_debug_module_readdata_from_sa) &
+  assign cpu_data_master_readdata = ({32 {~(cpu_data_master_qualified_request_buttons_s1 & cpu_data_master_read)}} | buttons_s1_readdata_from_sa) &
+    ({32 {~(cpu_data_master_qualified_request_cpu_jtag_debug_module & cpu_data_master_read)}} | cpu_jtag_debug_module_readdata_from_sa) &
+    ({32 {~(cpu_data_master_qualified_request_jtag_uart_0_avalon_jtag_slave & cpu_data_master_read)}} | jtag_uart_0_avalon_jtag_slave_readdata_from_sa) &
     ({32 {~cpu_data_master_read_data_valid_onchip_ram_s1}} | onchip_ram_s1_readdata_from_sa) &
     ({32 {~cpu_data_master_read_data_valid_pixel_buffer_avalon_sram_slave}} | {pixel_buffer_avalon_sram_slave_readdata_from_sa[15 : 0],
     dbs_latent_16_reg_segment_0}) &
@@ -960,6 +1287,40 @@ module cpu_data_master_arbitrator (
   //read latency load values, which is an e_mux
   assign latency_load_value = ({1 {cpu_data_master_requests_onchip_ram_s1}} & 1) |
     ({1 {cpu_data_master_requests_pixel_buffer_dma_avalon_control_slave}} & 1);
+
+  //irq assign, which is an e_assign
+  assign cpu_data_master_irq = {1'b0,
+    1'b0,
+    1'b0,
+    1'b0,
+    1'b0,
+    1'b0,
+    1'b0,
+    1'b0,
+    1'b0,
+    1'b0,
+    1'b0,
+    1'b0,
+    1'b0,
+    1'b0,
+    1'b0,
+    1'b0,
+    1'b0,
+    1'b0,
+    1'b0,
+    1'b0,
+    1'b0,
+    1'b0,
+    1'b0,
+    1'b0,
+    1'b0,
+    1'b0,
+    1'b0,
+    1'b0,
+    1'b0,
+    1'b0,
+    jtag_uart_0_avalon_jtag_slave_irq_from_sa,
+    buttons_s1_irq_from_sa};
 
   //pre dbs count enable, which is an e_mux
   assign pre_dbs_count_enable = (((~0) & cpu_data_master_requests_pixel_buffer_avalon_sram_slave & cpu_data_master_write & !cpu_data_master_byteenable_pixel_buffer_avalon_sram_slave)) |
@@ -1305,11 +1666,15 @@ module cpu_instruction_master_arbitrator (
   wire             pre_dbs_count_enable;
   wire             pre_flush_cpu_instruction_master_readdatavalid;
   wire             r_0;
+  wire             r_1;
   //r_0 master_run cascaded wait assignment, which is an e_assign
-  assign r_0 = 1 & (cpu_instruction_master_qualified_request_cpu_jtag_debug_module | ~cpu_instruction_master_requests_cpu_jtag_debug_module) & (cpu_instruction_master_granted_cpu_jtag_debug_module | ~cpu_instruction_master_qualified_request_cpu_jtag_debug_module) & ((~cpu_instruction_master_qualified_request_cpu_jtag_debug_module | ~cpu_instruction_master_read | (1 & ~d1_cpu_jtag_debug_module_end_xfer & cpu_instruction_master_read))) & 1 & (cpu_instruction_master_qualified_request_onchip_ram_s1 | ~cpu_instruction_master_requests_onchip_ram_s1) & (cpu_instruction_master_granted_onchip_ram_s1 | ~cpu_instruction_master_qualified_request_onchip_ram_s1) & ((~cpu_instruction_master_qualified_request_onchip_ram_s1 | ~(cpu_instruction_master_read) | (1 & (cpu_instruction_master_read)))) & 1 & (cpu_instruction_master_qualified_request_pixel_buffer_avalon_sram_slave | ~cpu_instruction_master_requests_pixel_buffer_avalon_sram_slave) & (cpu_instruction_master_granted_pixel_buffer_avalon_sram_slave | ~cpu_instruction_master_qualified_request_pixel_buffer_avalon_sram_slave) & ((~cpu_instruction_master_qualified_request_pixel_buffer_avalon_sram_slave | ~cpu_instruction_master_read | (1 & (cpu_instruction_master_dbs_address[1]) & cpu_instruction_master_read)));
+  assign r_0 = 1 & (cpu_instruction_master_qualified_request_cpu_jtag_debug_module | ~cpu_instruction_master_requests_cpu_jtag_debug_module) & (cpu_instruction_master_granted_cpu_jtag_debug_module | ~cpu_instruction_master_qualified_request_cpu_jtag_debug_module) & ((~cpu_instruction_master_qualified_request_cpu_jtag_debug_module | ~cpu_instruction_master_read | (1 & ~d1_cpu_jtag_debug_module_end_xfer & cpu_instruction_master_read))) & 1 & (cpu_instruction_master_qualified_request_onchip_ram_s1 | ~cpu_instruction_master_requests_onchip_ram_s1) & (cpu_instruction_master_granted_onchip_ram_s1 | ~cpu_instruction_master_qualified_request_onchip_ram_s1) & ((~cpu_instruction_master_qualified_request_onchip_ram_s1 | ~(cpu_instruction_master_read) | (1 & (cpu_instruction_master_read))));
 
   //cascaded wait assignment, which is an e_assign
-  assign cpu_instruction_master_run = r_0;
+  assign cpu_instruction_master_run = r_0 & r_1;
+
+  //r_1 master_run cascaded wait assignment, which is an e_assign
+  assign r_1 = 1 & (cpu_instruction_master_qualified_request_pixel_buffer_avalon_sram_slave | ~cpu_instruction_master_requests_pixel_buffer_avalon_sram_slave) & (cpu_instruction_master_granted_pixel_buffer_avalon_sram_slave | ~cpu_instruction_master_qualified_request_pixel_buffer_avalon_sram_slave) & ((~cpu_instruction_master_qualified_request_pixel_buffer_avalon_sram_slave | ~cpu_instruction_master_read | (1 & (cpu_instruction_master_dbs_address[1]) & cpu_instruction_master_read)));
 
   //optimize select-logic by passing only those address bits which matter.
   assign cpu_instruction_master_address_to_slave = cpu_instruction_master_address[21 : 0];
@@ -1593,6 +1958,320 @@ module dual_clock_fifo_avalon_dc_buffer_source_arbitrator (
   //mux dual_clock_fifo_avalon_dc_buffer_source_ready, which is an e_mux
   assign dual_clock_fifo_avalon_dc_buffer_source_ready = vga_controller_avalon_vga_sink_ready_from_sa;
 
+
+endmodule
+
+
+// synthesis translate_off
+`timescale 1ns / 1ps
+// synthesis translate_on
+
+// turn off superfluous verilog processor warnings 
+// altera message_level Level1 
+// altera message_off 10034 10035 10036 10037 10230 10240 10030 
+
+module jtag_uart_0_avalon_jtag_slave_arbitrator (
+                                                  // inputs:
+                                                   clk,
+                                                   cpu_data_master_address_to_slave,
+                                                   cpu_data_master_latency_counter,
+                                                   cpu_data_master_read,
+                                                   cpu_data_master_read_data_valid_pixel_buffer_avalon_sram_slave_shift_register,
+                                                   cpu_data_master_write,
+                                                   cpu_data_master_writedata,
+                                                   jtag_uart_0_avalon_jtag_slave_dataavailable,
+                                                   jtag_uart_0_avalon_jtag_slave_irq,
+                                                   jtag_uart_0_avalon_jtag_slave_readdata,
+                                                   jtag_uart_0_avalon_jtag_slave_readyfordata,
+                                                   jtag_uart_0_avalon_jtag_slave_waitrequest,
+                                                   reset_n,
+
+                                                  // outputs:
+                                                   cpu_data_master_granted_jtag_uart_0_avalon_jtag_slave,
+                                                   cpu_data_master_qualified_request_jtag_uart_0_avalon_jtag_slave,
+                                                   cpu_data_master_read_data_valid_jtag_uart_0_avalon_jtag_slave,
+                                                   cpu_data_master_requests_jtag_uart_0_avalon_jtag_slave,
+                                                   d1_jtag_uart_0_avalon_jtag_slave_end_xfer,
+                                                   jtag_uart_0_avalon_jtag_slave_address,
+                                                   jtag_uart_0_avalon_jtag_slave_chipselect,
+                                                   jtag_uart_0_avalon_jtag_slave_dataavailable_from_sa,
+                                                   jtag_uart_0_avalon_jtag_slave_irq_from_sa,
+                                                   jtag_uart_0_avalon_jtag_slave_read_n,
+                                                   jtag_uart_0_avalon_jtag_slave_readdata_from_sa,
+                                                   jtag_uart_0_avalon_jtag_slave_readyfordata_from_sa,
+                                                   jtag_uart_0_avalon_jtag_slave_reset_n,
+                                                   jtag_uart_0_avalon_jtag_slave_waitrequest_from_sa,
+                                                   jtag_uart_0_avalon_jtag_slave_write_n,
+                                                   jtag_uart_0_avalon_jtag_slave_writedata
+                                                )
+;
+
+  output           cpu_data_master_granted_jtag_uart_0_avalon_jtag_slave;
+  output           cpu_data_master_qualified_request_jtag_uart_0_avalon_jtag_slave;
+  output           cpu_data_master_read_data_valid_jtag_uart_0_avalon_jtag_slave;
+  output           cpu_data_master_requests_jtag_uart_0_avalon_jtag_slave;
+  output           d1_jtag_uart_0_avalon_jtag_slave_end_xfer;
+  output           jtag_uart_0_avalon_jtag_slave_address;
+  output           jtag_uart_0_avalon_jtag_slave_chipselect;
+  output           jtag_uart_0_avalon_jtag_slave_dataavailable_from_sa;
+  output           jtag_uart_0_avalon_jtag_slave_irq_from_sa;
+  output           jtag_uart_0_avalon_jtag_slave_read_n;
+  output  [ 31: 0] jtag_uart_0_avalon_jtag_slave_readdata_from_sa;
+  output           jtag_uart_0_avalon_jtag_slave_readyfordata_from_sa;
+  output           jtag_uart_0_avalon_jtag_slave_reset_n;
+  output           jtag_uart_0_avalon_jtag_slave_waitrequest_from_sa;
+  output           jtag_uart_0_avalon_jtag_slave_write_n;
+  output  [ 31: 0] jtag_uart_0_avalon_jtag_slave_writedata;
+  input            clk;
+  input   [ 21: 0] cpu_data_master_address_to_slave;
+  input            cpu_data_master_latency_counter;
+  input            cpu_data_master_read;
+  input            cpu_data_master_read_data_valid_pixel_buffer_avalon_sram_slave_shift_register;
+  input            cpu_data_master_write;
+  input   [ 31: 0] cpu_data_master_writedata;
+  input            jtag_uart_0_avalon_jtag_slave_dataavailable;
+  input            jtag_uart_0_avalon_jtag_slave_irq;
+  input   [ 31: 0] jtag_uart_0_avalon_jtag_slave_readdata;
+  input            jtag_uart_0_avalon_jtag_slave_readyfordata;
+  input            jtag_uart_0_avalon_jtag_slave_waitrequest;
+  input            reset_n;
+
+  wire             cpu_data_master_arbiterlock;
+  wire             cpu_data_master_arbiterlock2;
+  wire             cpu_data_master_continuerequest;
+  wire             cpu_data_master_granted_jtag_uart_0_avalon_jtag_slave;
+  wire             cpu_data_master_qualified_request_jtag_uart_0_avalon_jtag_slave;
+  wire             cpu_data_master_read_data_valid_jtag_uart_0_avalon_jtag_slave;
+  wire             cpu_data_master_requests_jtag_uart_0_avalon_jtag_slave;
+  wire             cpu_data_master_saved_grant_jtag_uart_0_avalon_jtag_slave;
+  reg              d1_jtag_uart_0_avalon_jtag_slave_end_xfer;
+  reg              d1_reasons_to_wait;
+  reg              enable_nonzero_assertions;
+  wire             end_xfer_arb_share_counter_term_jtag_uart_0_avalon_jtag_slave;
+  wire             in_a_read_cycle;
+  wire             in_a_write_cycle;
+  wire             jtag_uart_0_avalon_jtag_slave_address;
+  wire             jtag_uart_0_avalon_jtag_slave_allgrants;
+  wire             jtag_uart_0_avalon_jtag_slave_allow_new_arb_cycle;
+  wire             jtag_uart_0_avalon_jtag_slave_any_bursting_master_saved_grant;
+  wire             jtag_uart_0_avalon_jtag_slave_any_continuerequest;
+  wire             jtag_uart_0_avalon_jtag_slave_arb_counter_enable;
+  reg     [  2: 0] jtag_uart_0_avalon_jtag_slave_arb_share_counter;
+  wire    [  2: 0] jtag_uart_0_avalon_jtag_slave_arb_share_counter_next_value;
+  wire    [  2: 0] jtag_uart_0_avalon_jtag_slave_arb_share_set_values;
+  wire             jtag_uart_0_avalon_jtag_slave_beginbursttransfer_internal;
+  wire             jtag_uart_0_avalon_jtag_slave_begins_xfer;
+  wire             jtag_uart_0_avalon_jtag_slave_chipselect;
+  wire             jtag_uart_0_avalon_jtag_slave_dataavailable_from_sa;
+  wire             jtag_uart_0_avalon_jtag_slave_end_xfer;
+  wire             jtag_uart_0_avalon_jtag_slave_firsttransfer;
+  wire             jtag_uart_0_avalon_jtag_slave_grant_vector;
+  wire             jtag_uart_0_avalon_jtag_slave_in_a_read_cycle;
+  wire             jtag_uart_0_avalon_jtag_slave_in_a_write_cycle;
+  wire             jtag_uart_0_avalon_jtag_slave_irq_from_sa;
+  wire             jtag_uart_0_avalon_jtag_slave_master_qreq_vector;
+  wire             jtag_uart_0_avalon_jtag_slave_non_bursting_master_requests;
+  wire             jtag_uart_0_avalon_jtag_slave_read_n;
+  wire    [ 31: 0] jtag_uart_0_avalon_jtag_slave_readdata_from_sa;
+  wire             jtag_uart_0_avalon_jtag_slave_readyfordata_from_sa;
+  reg              jtag_uart_0_avalon_jtag_slave_reg_firsttransfer;
+  wire             jtag_uart_0_avalon_jtag_slave_reset_n;
+  reg              jtag_uart_0_avalon_jtag_slave_slavearbiterlockenable;
+  wire             jtag_uart_0_avalon_jtag_slave_slavearbiterlockenable2;
+  wire             jtag_uart_0_avalon_jtag_slave_unreg_firsttransfer;
+  wire             jtag_uart_0_avalon_jtag_slave_waitrequest_from_sa;
+  wire             jtag_uart_0_avalon_jtag_slave_waits_for_read;
+  wire             jtag_uart_0_avalon_jtag_slave_waits_for_write;
+  wire             jtag_uart_0_avalon_jtag_slave_write_n;
+  wire    [ 31: 0] jtag_uart_0_avalon_jtag_slave_writedata;
+  wire    [ 21: 0] shifted_address_to_jtag_uart_0_avalon_jtag_slave_from_cpu_data_master;
+  wire             wait_for_jtag_uart_0_avalon_jtag_slave_counter;
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          d1_reasons_to_wait <= 0;
+      else 
+        d1_reasons_to_wait <= ~jtag_uart_0_avalon_jtag_slave_end_xfer;
+    end
+
+
+  assign jtag_uart_0_avalon_jtag_slave_begins_xfer = ~d1_reasons_to_wait & ((cpu_data_master_qualified_request_jtag_uart_0_avalon_jtag_slave));
+  //assign jtag_uart_0_avalon_jtag_slave_readdata_from_sa = jtag_uart_0_avalon_jtag_slave_readdata so that symbol knows where to group signals which may go to master only, which is an e_assign
+  assign jtag_uart_0_avalon_jtag_slave_readdata_from_sa = jtag_uart_0_avalon_jtag_slave_readdata;
+
+  assign cpu_data_master_requests_jtag_uart_0_avalon_jtag_slave = ({cpu_data_master_address_to_slave[21 : 3] , 3'b0} == 22'h200000) & (cpu_data_master_read | cpu_data_master_write);
+  //assign jtag_uart_0_avalon_jtag_slave_dataavailable_from_sa = jtag_uart_0_avalon_jtag_slave_dataavailable so that symbol knows where to group signals which may go to master only, which is an e_assign
+  assign jtag_uart_0_avalon_jtag_slave_dataavailable_from_sa = jtag_uart_0_avalon_jtag_slave_dataavailable;
+
+  //assign jtag_uart_0_avalon_jtag_slave_readyfordata_from_sa = jtag_uart_0_avalon_jtag_slave_readyfordata so that symbol knows where to group signals which may go to master only, which is an e_assign
+  assign jtag_uart_0_avalon_jtag_slave_readyfordata_from_sa = jtag_uart_0_avalon_jtag_slave_readyfordata;
+
+  //assign jtag_uart_0_avalon_jtag_slave_waitrequest_from_sa = jtag_uart_0_avalon_jtag_slave_waitrequest so that symbol knows where to group signals which may go to master only, which is an e_assign
+  assign jtag_uart_0_avalon_jtag_slave_waitrequest_from_sa = jtag_uart_0_avalon_jtag_slave_waitrequest;
+
+  //jtag_uart_0_avalon_jtag_slave_arb_share_counter set values, which is an e_mux
+  assign jtag_uart_0_avalon_jtag_slave_arb_share_set_values = 1;
+
+  //jtag_uart_0_avalon_jtag_slave_non_bursting_master_requests mux, which is an e_mux
+  assign jtag_uart_0_avalon_jtag_slave_non_bursting_master_requests = cpu_data_master_requests_jtag_uart_0_avalon_jtag_slave;
+
+  //jtag_uart_0_avalon_jtag_slave_any_bursting_master_saved_grant mux, which is an e_mux
+  assign jtag_uart_0_avalon_jtag_slave_any_bursting_master_saved_grant = 0;
+
+  //jtag_uart_0_avalon_jtag_slave_arb_share_counter_next_value assignment, which is an e_assign
+  assign jtag_uart_0_avalon_jtag_slave_arb_share_counter_next_value = jtag_uart_0_avalon_jtag_slave_firsttransfer ? (jtag_uart_0_avalon_jtag_slave_arb_share_set_values - 1) : |jtag_uart_0_avalon_jtag_slave_arb_share_counter ? (jtag_uart_0_avalon_jtag_slave_arb_share_counter - 1) : 0;
+
+  //jtag_uart_0_avalon_jtag_slave_allgrants all slave grants, which is an e_mux
+  assign jtag_uart_0_avalon_jtag_slave_allgrants = |jtag_uart_0_avalon_jtag_slave_grant_vector;
+
+  //jtag_uart_0_avalon_jtag_slave_end_xfer assignment, which is an e_assign
+  assign jtag_uart_0_avalon_jtag_slave_end_xfer = ~(jtag_uart_0_avalon_jtag_slave_waits_for_read | jtag_uart_0_avalon_jtag_slave_waits_for_write);
+
+  //end_xfer_arb_share_counter_term_jtag_uart_0_avalon_jtag_slave arb share counter enable term, which is an e_assign
+  assign end_xfer_arb_share_counter_term_jtag_uart_0_avalon_jtag_slave = jtag_uart_0_avalon_jtag_slave_end_xfer & (~jtag_uart_0_avalon_jtag_slave_any_bursting_master_saved_grant | in_a_read_cycle | in_a_write_cycle);
+
+  //jtag_uart_0_avalon_jtag_slave_arb_share_counter arbitration counter enable, which is an e_assign
+  assign jtag_uart_0_avalon_jtag_slave_arb_counter_enable = (end_xfer_arb_share_counter_term_jtag_uart_0_avalon_jtag_slave & jtag_uart_0_avalon_jtag_slave_allgrants) | (end_xfer_arb_share_counter_term_jtag_uart_0_avalon_jtag_slave & ~jtag_uart_0_avalon_jtag_slave_non_bursting_master_requests);
+
+  //jtag_uart_0_avalon_jtag_slave_arb_share_counter counter, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          jtag_uart_0_avalon_jtag_slave_arb_share_counter <= 0;
+      else if (jtag_uart_0_avalon_jtag_slave_arb_counter_enable)
+          jtag_uart_0_avalon_jtag_slave_arb_share_counter <= jtag_uart_0_avalon_jtag_slave_arb_share_counter_next_value;
+    end
+
+
+  //jtag_uart_0_avalon_jtag_slave_slavearbiterlockenable slave enables arbiterlock, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          jtag_uart_0_avalon_jtag_slave_slavearbiterlockenable <= 0;
+      else if ((|jtag_uart_0_avalon_jtag_slave_master_qreq_vector & end_xfer_arb_share_counter_term_jtag_uart_0_avalon_jtag_slave) | (end_xfer_arb_share_counter_term_jtag_uart_0_avalon_jtag_slave & ~jtag_uart_0_avalon_jtag_slave_non_bursting_master_requests))
+          jtag_uart_0_avalon_jtag_slave_slavearbiterlockenable <= |jtag_uart_0_avalon_jtag_slave_arb_share_counter_next_value;
+    end
+
+
+  //cpu/data_master jtag_uart_0/avalon_jtag_slave arbiterlock, which is an e_assign
+  assign cpu_data_master_arbiterlock = jtag_uart_0_avalon_jtag_slave_slavearbiterlockenable & cpu_data_master_continuerequest;
+
+  //jtag_uart_0_avalon_jtag_slave_slavearbiterlockenable2 slave enables arbiterlock2, which is an e_assign
+  assign jtag_uart_0_avalon_jtag_slave_slavearbiterlockenable2 = |jtag_uart_0_avalon_jtag_slave_arb_share_counter_next_value;
+
+  //cpu/data_master jtag_uart_0/avalon_jtag_slave arbiterlock2, which is an e_assign
+  assign cpu_data_master_arbiterlock2 = jtag_uart_0_avalon_jtag_slave_slavearbiterlockenable2 & cpu_data_master_continuerequest;
+
+  //jtag_uart_0_avalon_jtag_slave_any_continuerequest at least one master continues requesting, which is an e_assign
+  assign jtag_uart_0_avalon_jtag_slave_any_continuerequest = 1;
+
+  //cpu_data_master_continuerequest continued request, which is an e_assign
+  assign cpu_data_master_continuerequest = 1;
+
+  assign cpu_data_master_qualified_request_jtag_uart_0_avalon_jtag_slave = cpu_data_master_requests_jtag_uart_0_avalon_jtag_slave & ~((cpu_data_master_read & ((cpu_data_master_latency_counter != 0) | (|cpu_data_master_read_data_valid_pixel_buffer_avalon_sram_slave_shift_register))));
+  //local readdatavalid cpu_data_master_read_data_valid_jtag_uart_0_avalon_jtag_slave, which is an e_mux
+  assign cpu_data_master_read_data_valid_jtag_uart_0_avalon_jtag_slave = cpu_data_master_granted_jtag_uart_0_avalon_jtag_slave & cpu_data_master_read & ~jtag_uart_0_avalon_jtag_slave_waits_for_read;
+
+  //jtag_uart_0_avalon_jtag_slave_writedata mux, which is an e_mux
+  assign jtag_uart_0_avalon_jtag_slave_writedata = cpu_data_master_writedata;
+
+  //master is always granted when requested
+  assign cpu_data_master_granted_jtag_uart_0_avalon_jtag_slave = cpu_data_master_qualified_request_jtag_uart_0_avalon_jtag_slave;
+
+  //cpu/data_master saved-grant jtag_uart_0/avalon_jtag_slave, which is an e_assign
+  assign cpu_data_master_saved_grant_jtag_uart_0_avalon_jtag_slave = cpu_data_master_requests_jtag_uart_0_avalon_jtag_slave;
+
+  //allow new arb cycle for jtag_uart_0/avalon_jtag_slave, which is an e_assign
+  assign jtag_uart_0_avalon_jtag_slave_allow_new_arb_cycle = 1;
+
+  //placeholder chosen master
+  assign jtag_uart_0_avalon_jtag_slave_grant_vector = 1;
+
+  //placeholder vector of master qualified-requests
+  assign jtag_uart_0_avalon_jtag_slave_master_qreq_vector = 1;
+
+  //jtag_uart_0_avalon_jtag_slave_reset_n assignment, which is an e_assign
+  assign jtag_uart_0_avalon_jtag_slave_reset_n = reset_n;
+
+  assign jtag_uart_0_avalon_jtag_slave_chipselect = cpu_data_master_granted_jtag_uart_0_avalon_jtag_slave;
+  //jtag_uart_0_avalon_jtag_slave_firsttransfer first transaction, which is an e_assign
+  assign jtag_uart_0_avalon_jtag_slave_firsttransfer = jtag_uart_0_avalon_jtag_slave_begins_xfer ? jtag_uart_0_avalon_jtag_slave_unreg_firsttransfer : jtag_uart_0_avalon_jtag_slave_reg_firsttransfer;
+
+  //jtag_uart_0_avalon_jtag_slave_unreg_firsttransfer first transaction, which is an e_assign
+  assign jtag_uart_0_avalon_jtag_slave_unreg_firsttransfer = ~(jtag_uart_0_avalon_jtag_slave_slavearbiterlockenable & jtag_uart_0_avalon_jtag_slave_any_continuerequest);
+
+  //jtag_uart_0_avalon_jtag_slave_reg_firsttransfer first transaction, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          jtag_uart_0_avalon_jtag_slave_reg_firsttransfer <= 1'b1;
+      else if (jtag_uart_0_avalon_jtag_slave_begins_xfer)
+          jtag_uart_0_avalon_jtag_slave_reg_firsttransfer <= jtag_uart_0_avalon_jtag_slave_unreg_firsttransfer;
+    end
+
+
+  //jtag_uart_0_avalon_jtag_slave_beginbursttransfer_internal begin burst transfer, which is an e_assign
+  assign jtag_uart_0_avalon_jtag_slave_beginbursttransfer_internal = jtag_uart_0_avalon_jtag_slave_begins_xfer;
+
+  //~jtag_uart_0_avalon_jtag_slave_read_n assignment, which is an e_mux
+  assign jtag_uart_0_avalon_jtag_slave_read_n = ~(cpu_data_master_granted_jtag_uart_0_avalon_jtag_slave & cpu_data_master_read);
+
+  //~jtag_uart_0_avalon_jtag_slave_write_n assignment, which is an e_mux
+  assign jtag_uart_0_avalon_jtag_slave_write_n = ~(cpu_data_master_granted_jtag_uart_0_avalon_jtag_slave & cpu_data_master_write);
+
+  assign shifted_address_to_jtag_uart_0_avalon_jtag_slave_from_cpu_data_master = cpu_data_master_address_to_slave;
+  //jtag_uart_0_avalon_jtag_slave_address mux, which is an e_mux
+  assign jtag_uart_0_avalon_jtag_slave_address = shifted_address_to_jtag_uart_0_avalon_jtag_slave_from_cpu_data_master >> 2;
+
+  //d1_jtag_uart_0_avalon_jtag_slave_end_xfer register, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          d1_jtag_uart_0_avalon_jtag_slave_end_xfer <= 1;
+      else 
+        d1_jtag_uart_0_avalon_jtag_slave_end_xfer <= jtag_uart_0_avalon_jtag_slave_end_xfer;
+    end
+
+
+  //jtag_uart_0_avalon_jtag_slave_waits_for_read in a cycle, which is an e_mux
+  assign jtag_uart_0_avalon_jtag_slave_waits_for_read = jtag_uart_0_avalon_jtag_slave_in_a_read_cycle & jtag_uart_0_avalon_jtag_slave_waitrequest_from_sa;
+
+  //jtag_uart_0_avalon_jtag_slave_in_a_read_cycle assignment, which is an e_assign
+  assign jtag_uart_0_avalon_jtag_slave_in_a_read_cycle = cpu_data_master_granted_jtag_uart_0_avalon_jtag_slave & cpu_data_master_read;
+
+  //in_a_read_cycle assignment, which is an e_mux
+  assign in_a_read_cycle = jtag_uart_0_avalon_jtag_slave_in_a_read_cycle;
+
+  //jtag_uart_0_avalon_jtag_slave_waits_for_write in a cycle, which is an e_mux
+  assign jtag_uart_0_avalon_jtag_slave_waits_for_write = jtag_uart_0_avalon_jtag_slave_in_a_write_cycle & jtag_uart_0_avalon_jtag_slave_waitrequest_from_sa;
+
+  //jtag_uart_0_avalon_jtag_slave_in_a_write_cycle assignment, which is an e_assign
+  assign jtag_uart_0_avalon_jtag_slave_in_a_write_cycle = cpu_data_master_granted_jtag_uart_0_avalon_jtag_slave & cpu_data_master_write;
+
+  //in_a_write_cycle assignment, which is an e_mux
+  assign in_a_write_cycle = jtag_uart_0_avalon_jtag_slave_in_a_write_cycle;
+
+  assign wait_for_jtag_uart_0_avalon_jtag_slave_counter = 0;
+  //assign jtag_uart_0_avalon_jtag_slave_irq_from_sa = jtag_uart_0_avalon_jtag_slave_irq so that symbol knows where to group signals which may go to master only, which is an e_assign
+  assign jtag_uart_0_avalon_jtag_slave_irq_from_sa = jtag_uart_0_avalon_jtag_slave_irq;
+
+
+//synthesis translate_off
+//////////////// SIMULATION-ONLY CONTENTS
+  //jtag_uart_0/avalon_jtag_slave enable non-zero assertions, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          enable_nonzero_assertions <= 0;
+      else 
+        enable_nonzero_assertions <= 1'b1;
+    end
+
+
+
+//////////////// END SIMULATION-ONLY CONTENTS
+
+//synthesis translate_on
 
 endmodule
 
@@ -3518,12 +4197,12 @@ module pixel_buffer_dma_avalon_pixel_dma_master_arbitrator (
   wire             pixel_buffer_dma_avalon_pixel_dma_master_run;
   wire             pixel_buffer_dma_avalon_pixel_dma_master_waitrequest;
   wire             pre_flush_pixel_buffer_dma_avalon_pixel_dma_master_readdatavalid;
-  wire             r_0;
-  //r_0 master_run cascaded wait assignment, which is an e_assign
-  assign r_0 = 1 & (pixel_buffer_dma_avalon_pixel_dma_master_qualified_request_pixel_buffer_avalon_sram_slave | ~pixel_buffer_dma_avalon_pixel_dma_master_requests_pixel_buffer_avalon_sram_slave) & (pixel_buffer_dma_avalon_pixel_dma_master_granted_pixel_buffer_avalon_sram_slave | ~pixel_buffer_dma_avalon_pixel_dma_master_qualified_request_pixel_buffer_avalon_sram_slave) & ((~pixel_buffer_dma_avalon_pixel_dma_master_qualified_request_pixel_buffer_avalon_sram_slave | ~pixel_buffer_dma_avalon_pixel_dma_master_read | (1 & pixel_buffer_dma_avalon_pixel_dma_master_read)));
+  wire             r_1;
+  //r_1 master_run cascaded wait assignment, which is an e_assign
+  assign r_1 = 1 & (pixel_buffer_dma_avalon_pixel_dma_master_qualified_request_pixel_buffer_avalon_sram_slave | ~pixel_buffer_dma_avalon_pixel_dma_master_requests_pixel_buffer_avalon_sram_slave) & (pixel_buffer_dma_avalon_pixel_dma_master_granted_pixel_buffer_avalon_sram_slave | ~pixel_buffer_dma_avalon_pixel_dma_master_qualified_request_pixel_buffer_avalon_sram_slave) & ((~pixel_buffer_dma_avalon_pixel_dma_master_qualified_request_pixel_buffer_avalon_sram_slave | ~pixel_buffer_dma_avalon_pixel_dma_master_read | (1 & pixel_buffer_dma_avalon_pixel_dma_master_read)));
 
   //cascaded wait assignment, which is an e_assign
-  assign pixel_buffer_dma_avalon_pixel_dma_master_run = r_0;
+  assign pixel_buffer_dma_avalon_pixel_dma_master_run = r_1;
 
   //optimize select-logic by passing only those address bits which matter.
   assign pixel_buffer_dma_avalon_pixel_dma_master_address_to_slave = {11'b0,
@@ -3927,7 +4606,7 @@ module the_whole_shit_clock_0_in_arbitrator (
   //assign the_whole_shit_clock_0_in_readdata_from_sa = the_whole_shit_clock_0_in_readdata so that symbol knows where to group signals which may go to master only, which is an e_assign
   assign the_whole_shit_clock_0_in_readdata_from_sa = the_whole_shit_clock_0_in_readdata;
 
-  assign cpu_data_master_requests_the_whole_shit_clock_0_in = ({cpu_data_master_address_to_slave[21 : 1] , 1'b0} == 22'h301010) & (cpu_data_master_read | cpu_data_master_write);
+  assign cpu_data_master_requests_the_whole_shit_clock_0_in = ({cpu_data_master_address_to_slave[21 : 1] , 1'b0} == 22'h301020) & (cpu_data_master_read | cpu_data_master_write);
   //assign the_whole_shit_clock_0_in_waitrequest_from_sa = the_whole_shit_clock_0_in_waitrequest so that symbol knows where to group signals which may go to master only, which is an e_assign
   assign the_whole_shit_clock_0_in_waitrequest_from_sa = the_whole_shit_clock_0_in_waitrequest;
 
@@ -4374,54 +5053,6 @@ endmodule
 // altera message_level Level1 
 // altera message_off 10034 10035 10036 10037 10230 10240 10030 
 
-module the_whole_shit_reset_clk_0_domain_synch_module (
-                                                        // inputs:
-                                                         clk,
-                                                         data_in,
-                                                         reset_n,
-
-                                                        // outputs:
-                                                         data_out
-                                                      )
-;
-
-  output           data_out;
-  input            clk;
-  input            data_in;
-  input            reset_n;
-
-  reg              data_in_d1 /* synthesis ALTERA_ATTRIBUTE = "{-from \"*\"} CUT=ON ; PRESERVE_REGISTER=ON ; SUPPRESS_DA_RULE_INTERNAL=R101"  */;
-  reg              data_out /* synthesis ALTERA_ATTRIBUTE = "PRESERVE_REGISTER=ON ; SUPPRESS_DA_RULE_INTERNAL=R101"  */;
-  always @(posedge clk or negedge reset_n)
-    begin
-      if (reset_n == 0)
-          data_in_d1 <= 0;
-      else 
-        data_in_d1 <= data_in;
-    end
-
-
-  always @(posedge clk or negedge reset_n)
-    begin
-      if (reset_n == 0)
-          data_out <= 0;
-      else 
-        data_out <= data_in_d1;
-    end
-
-
-
-endmodule
-
-
-// synthesis translate_off
-`timescale 1ns / 1ps
-// synthesis translate_on
-
-// turn off superfluous verilog processor warnings 
-// altera message_level Level1 
-// altera message_off 10034 10035 10036 10037 10230 10240 10030 
-
 module the_whole_shit_reset_clocks_0_sys_clk_out_domain_synch_module (
                                                                        // inputs:
                                                                         clk,
@@ -4470,15 +5101,63 @@ endmodule
 // altera message_level Level1 
 // altera message_off 10034 10035 10036 10037 10230 10240 10030 
 
-module the_whole_shit_reset_clocks_0_VGA_CLK_out_domain_synch_module (
-                                                                       // inputs:
-                                                                        clk,
-                                                                        data_in,
-                                                                        reset_n,
+module the_whole_shit_reset_clk_0_domain_synch_module (
+                                                        // inputs:
+                                                         clk,
+                                                         data_in,
+                                                         reset_n,
 
-                                                                       // outputs:
-                                                                        data_out
-                                                                     )
+                                                        // outputs:
+                                                         data_out
+                                                      )
+;
+
+  output           data_out;
+  input            clk;
+  input            data_in;
+  input            reset_n;
+
+  reg              data_in_d1 /* synthesis ALTERA_ATTRIBUTE = "{-from \"*\"} CUT=ON ; PRESERVE_REGISTER=ON ; SUPPRESS_DA_RULE_INTERNAL=R101"  */;
+  reg              data_out /* synthesis ALTERA_ATTRIBUTE = "PRESERVE_REGISTER=ON ; SUPPRESS_DA_RULE_INTERNAL=R101"  */;
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          data_in_d1 <= 0;
+      else 
+        data_in_d1 <= data_in;
+    end
+
+
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          data_out <= 0;
+      else 
+        data_out <= data_in_d1;
+    end
+
+
+
+endmodule
+
+
+// synthesis translate_off
+`timescale 1ns / 1ps
+// synthesis translate_on
+
+// turn off superfluous verilog processor warnings 
+// altera message_level Level1 
+// altera message_off 10034 10035 10036 10037 10230 10240 10030 
+
+module the_whole_shit_reset_clocks_0_vga_clk_domain_synch_module (
+                                                                   // inputs:
+                                                                    clk,
+                                                                    data_in,
+                                                                    reset_n,
+
+                                                                   // outputs:
+                                                                    data_out
+                                                                 )
 ;
 
   output           data_out;
@@ -4521,9 +5200,12 @@ endmodule
 module the_whole_shit (
                         // 1) global signals:
                          clk_0,
-                         clocks_0_VGA_CLK_out,
                          clocks_0_sys_clk_out,
+                         clocks_0_vga_clk,
                          reset_n,
+
+                        // the_buttons
+                         in_port_to_the_buttons,
 
                         // the_pixel_buffer
                          SRAM_ADDR_from_the_pixel_buffer,
@@ -4561,9 +5243,10 @@ module the_whole_shit (
   output  [  7: 0] VGA_R_from_the_vga_controller;
   output           VGA_SYNC_from_the_vga_controller;
   output           VGA_VS_from_the_vga_controller;
-  output           clocks_0_VGA_CLK_out;
   output           clocks_0_sys_clk_out;
+  output           clocks_0_vga_clk;
   input            clk_0;
+  input   [  3: 0] in_port_to_the_buttons;
   input            reset_n;
 
   wire    [ 19: 0] SRAM_ADDR_from_the_pixel_buffer;
@@ -4581,14 +5264,23 @@ module the_whole_shit (
   wire    [  7: 0] VGA_R_from_the_vga_controller;
   wire             VGA_SYNC_from_the_vga_controller;
   wire             VGA_VS_from_the_vga_controller;
+  wire    [  1: 0] buttons_s1_address;
+  wire             buttons_s1_chipselect;
+  wire             buttons_s1_irq;
+  wire             buttons_s1_irq_from_sa;
+  wire    [ 31: 0] buttons_s1_readdata;
+  wire    [ 31: 0] buttons_s1_readdata_from_sa;
+  wire             buttons_s1_reset_n;
+  wire             buttons_s1_write_n;
+  wire    [ 31: 0] buttons_s1_writedata;
   wire             clk_0_reset_n;
-  wire             clocks_0_VGA_CLK_out;
-  wire             clocks_0_VGA_CLK_out_reset_n;
   wire             clocks_0_avalon_clocks_slave_address;
   wire    [  7: 0] clocks_0_avalon_clocks_slave_readdata;
   wire    [  7: 0] clocks_0_avalon_clocks_slave_readdata_from_sa;
   wire             clocks_0_sys_clk_out;
   wire             clocks_0_sys_clk_out_reset_n;
+  wire             clocks_0_vga_clk;
+  wire             clocks_0_vga_clk_reset_n;
   wire    [ 21: 0] cpu_data_master_address;
   wire    [ 21: 0] cpu_data_master_address_to_slave;
   wire    [  3: 0] cpu_data_master_byteenable;
@@ -4598,20 +5290,26 @@ module the_whole_shit (
   wire    [ 15: 0] cpu_data_master_dbs_write_16;
   wire    [  7: 0] cpu_data_master_dbs_write_8;
   wire             cpu_data_master_debugaccess;
+  wire             cpu_data_master_granted_buttons_s1;
   wire             cpu_data_master_granted_cpu_jtag_debug_module;
+  wire             cpu_data_master_granted_jtag_uart_0_avalon_jtag_slave;
   wire             cpu_data_master_granted_onchip_ram_s1;
   wire             cpu_data_master_granted_pixel_buffer_avalon_sram_slave;
   wire             cpu_data_master_granted_pixel_buffer_dma_avalon_control_slave;
   wire             cpu_data_master_granted_the_whole_shit_clock_0_in;
   wire    [ 31: 0] cpu_data_master_irq;
   wire             cpu_data_master_latency_counter;
+  wire             cpu_data_master_qualified_request_buttons_s1;
   wire             cpu_data_master_qualified_request_cpu_jtag_debug_module;
+  wire             cpu_data_master_qualified_request_jtag_uart_0_avalon_jtag_slave;
   wire             cpu_data_master_qualified_request_onchip_ram_s1;
   wire             cpu_data_master_qualified_request_pixel_buffer_avalon_sram_slave;
   wire             cpu_data_master_qualified_request_pixel_buffer_dma_avalon_control_slave;
   wire             cpu_data_master_qualified_request_the_whole_shit_clock_0_in;
   wire             cpu_data_master_read;
+  wire             cpu_data_master_read_data_valid_buttons_s1;
   wire             cpu_data_master_read_data_valid_cpu_jtag_debug_module;
+  wire             cpu_data_master_read_data_valid_jtag_uart_0_avalon_jtag_slave;
   wire             cpu_data_master_read_data_valid_onchip_ram_s1;
   wire             cpu_data_master_read_data_valid_pixel_buffer_avalon_sram_slave;
   wire             cpu_data_master_read_data_valid_pixel_buffer_avalon_sram_slave_shift_register;
@@ -4619,7 +5317,9 @@ module the_whole_shit (
   wire             cpu_data_master_read_data_valid_the_whole_shit_clock_0_in;
   wire    [ 31: 0] cpu_data_master_readdata;
   wire             cpu_data_master_readdatavalid;
+  wire             cpu_data_master_requests_buttons_s1;
   wire             cpu_data_master_requests_cpu_jtag_debug_module;
+  wire             cpu_data_master_requests_jtag_uart_0_avalon_jtag_slave;
   wire             cpu_data_master_requests_onchip_ram_s1;
   wire             cpu_data_master_requests_pixel_buffer_avalon_sram_slave;
   wire             cpu_data_master_requests_pixel_buffer_dma_avalon_control_slave;
@@ -4660,8 +5360,10 @@ module the_whole_shit (
   wire             cpu_jtag_debug_module_resetrequest_from_sa;
   wire             cpu_jtag_debug_module_write;
   wire    [ 31: 0] cpu_jtag_debug_module_writedata;
+  wire             d1_buttons_s1_end_xfer;
   wire             d1_clocks_0_avalon_clocks_slave_end_xfer;
   wire             d1_cpu_jtag_debug_module_end_xfer;
+  wire             d1_jtag_uart_0_avalon_jtag_slave_end_xfer;
   wire             d1_onchip_ram_s1_end_xfer;
   wire             d1_pixel_buffer_avalon_sram_slave_end_xfer;
   wire             d1_pixel_buffer_dma_avalon_control_slave_end_xfer;
@@ -4677,6 +5379,22 @@ module the_whole_shit (
   wire             dual_clock_fifo_avalon_dc_buffer_source_ready;
   wire             dual_clock_fifo_avalon_dc_buffer_source_startofpacket;
   wire             dual_clock_fifo_avalon_dc_buffer_source_valid;
+  wire             jtag_uart_0_avalon_jtag_slave_address;
+  wire             jtag_uart_0_avalon_jtag_slave_chipselect;
+  wire             jtag_uart_0_avalon_jtag_slave_dataavailable;
+  wire             jtag_uart_0_avalon_jtag_slave_dataavailable_from_sa;
+  wire             jtag_uart_0_avalon_jtag_slave_irq;
+  wire             jtag_uart_0_avalon_jtag_slave_irq_from_sa;
+  wire             jtag_uart_0_avalon_jtag_slave_read_n;
+  wire    [ 31: 0] jtag_uart_0_avalon_jtag_slave_readdata;
+  wire    [ 31: 0] jtag_uart_0_avalon_jtag_slave_readdata_from_sa;
+  wire             jtag_uart_0_avalon_jtag_slave_readyfordata;
+  wire             jtag_uart_0_avalon_jtag_slave_readyfordata_from_sa;
+  wire             jtag_uart_0_avalon_jtag_slave_reset_n;
+  wire             jtag_uart_0_avalon_jtag_slave_waitrequest;
+  wire             jtag_uart_0_avalon_jtag_slave_waitrequest_from_sa;
+  wire             jtag_uart_0_avalon_jtag_slave_write_n;
+  wire    [ 31: 0] jtag_uart_0_avalon_jtag_slave_writedata;
   wire    [ 16: 0] onchip_ram_s1_address;
   wire    [  3: 0] onchip_ram_s1_byteenable;
   wire             onchip_ram_s1_chipselect;
@@ -4769,6 +5487,45 @@ module the_whole_shit (
   wire             vga_controller_avalon_vga_sink_reset;
   wire             vga_controller_avalon_vga_sink_startofpacket;
   wire             vga_controller_avalon_vga_sink_valid;
+  buttons_s1_arbitrator the_buttons_s1
+    (
+      .buttons_s1_address                                                            (buttons_s1_address),
+      .buttons_s1_chipselect                                                         (buttons_s1_chipselect),
+      .buttons_s1_irq                                                                (buttons_s1_irq),
+      .buttons_s1_irq_from_sa                                                        (buttons_s1_irq_from_sa),
+      .buttons_s1_readdata                                                           (buttons_s1_readdata),
+      .buttons_s1_readdata_from_sa                                                   (buttons_s1_readdata_from_sa),
+      .buttons_s1_reset_n                                                            (buttons_s1_reset_n),
+      .buttons_s1_write_n                                                            (buttons_s1_write_n),
+      .buttons_s1_writedata                                                          (buttons_s1_writedata),
+      .clk                                                                           (clocks_0_sys_clk_out),
+      .cpu_data_master_address_to_slave                                              (cpu_data_master_address_to_slave),
+      .cpu_data_master_granted_buttons_s1                                            (cpu_data_master_granted_buttons_s1),
+      .cpu_data_master_latency_counter                                               (cpu_data_master_latency_counter),
+      .cpu_data_master_qualified_request_buttons_s1                                  (cpu_data_master_qualified_request_buttons_s1),
+      .cpu_data_master_read                                                          (cpu_data_master_read),
+      .cpu_data_master_read_data_valid_buttons_s1                                    (cpu_data_master_read_data_valid_buttons_s1),
+      .cpu_data_master_read_data_valid_pixel_buffer_avalon_sram_slave_shift_register (cpu_data_master_read_data_valid_pixel_buffer_avalon_sram_slave_shift_register),
+      .cpu_data_master_requests_buttons_s1                                           (cpu_data_master_requests_buttons_s1),
+      .cpu_data_master_write                                                         (cpu_data_master_write),
+      .cpu_data_master_writedata                                                     (cpu_data_master_writedata),
+      .d1_buttons_s1_end_xfer                                                        (d1_buttons_s1_end_xfer),
+      .reset_n                                                                       (clocks_0_sys_clk_out_reset_n)
+    );
+
+  buttons the_buttons
+    (
+      .address    (buttons_s1_address),
+      .chipselect (buttons_s1_chipselect),
+      .clk        (clocks_0_sys_clk_out),
+      .in_port    (in_port_to_the_buttons),
+      .irq        (buttons_s1_irq),
+      .readdata   (buttons_s1_readdata),
+      .reset_n    (buttons_s1_reset_n),
+      .write_n    (buttons_s1_write_n),
+      .writedata  (buttons_s1_writedata)
+    );
+
   clocks_0_avalon_clocks_slave_arbitrator the_clocks_0_avalon_clocks_slave
     (
       .clk                                                                       (clk_0),
@@ -4786,8 +5543,8 @@ module the_whole_shit (
       .the_whole_shit_clock_0_out_write                                          (the_whole_shit_clock_0_out_write)
     );
 
-  //clocks_0_VGA_CLK_out out_clk assignment, which is an e_assign
-  assign clocks_0_VGA_CLK_out = out_clk_clocks_0_VGA_CLK;
+  //clocks_0_vga_clk out_clk assignment, which is an e_assign
+  assign clocks_0_vga_clk = out_clk_clocks_0_VGA_CLK;
 
   //clocks_0_sys_clk_out out_clk assignment, which is an e_assign
   assign clocks_0_sys_clk_out = out_clk_clocks_0_sys_clk;
@@ -4842,6 +5599,8 @@ module the_whole_shit (
 
   cpu_data_master_arbitrator the_cpu_data_master
     (
+      .buttons_s1_irq_from_sa                                                        (buttons_s1_irq_from_sa),
+      .buttons_s1_readdata_from_sa                                                   (buttons_s1_readdata_from_sa),
       .clk                                                                           (clocks_0_sys_clk_out),
       .cpu_data_master_address                                                       (cpu_data_master_address),
       .cpu_data_master_address_to_slave                                              (cpu_data_master_address_to_slave),
@@ -4851,19 +5610,26 @@ module the_whole_shit (
       .cpu_data_master_dbs_address                                                   (cpu_data_master_dbs_address),
       .cpu_data_master_dbs_write_16                                                  (cpu_data_master_dbs_write_16),
       .cpu_data_master_dbs_write_8                                                   (cpu_data_master_dbs_write_8),
+      .cpu_data_master_granted_buttons_s1                                            (cpu_data_master_granted_buttons_s1),
       .cpu_data_master_granted_cpu_jtag_debug_module                                 (cpu_data_master_granted_cpu_jtag_debug_module),
+      .cpu_data_master_granted_jtag_uart_0_avalon_jtag_slave                         (cpu_data_master_granted_jtag_uart_0_avalon_jtag_slave),
       .cpu_data_master_granted_onchip_ram_s1                                         (cpu_data_master_granted_onchip_ram_s1),
       .cpu_data_master_granted_pixel_buffer_avalon_sram_slave                        (cpu_data_master_granted_pixel_buffer_avalon_sram_slave),
       .cpu_data_master_granted_pixel_buffer_dma_avalon_control_slave                 (cpu_data_master_granted_pixel_buffer_dma_avalon_control_slave),
       .cpu_data_master_granted_the_whole_shit_clock_0_in                             (cpu_data_master_granted_the_whole_shit_clock_0_in),
+      .cpu_data_master_irq                                                           (cpu_data_master_irq),
       .cpu_data_master_latency_counter                                               (cpu_data_master_latency_counter),
+      .cpu_data_master_qualified_request_buttons_s1                                  (cpu_data_master_qualified_request_buttons_s1),
       .cpu_data_master_qualified_request_cpu_jtag_debug_module                       (cpu_data_master_qualified_request_cpu_jtag_debug_module),
+      .cpu_data_master_qualified_request_jtag_uart_0_avalon_jtag_slave               (cpu_data_master_qualified_request_jtag_uart_0_avalon_jtag_slave),
       .cpu_data_master_qualified_request_onchip_ram_s1                               (cpu_data_master_qualified_request_onchip_ram_s1),
       .cpu_data_master_qualified_request_pixel_buffer_avalon_sram_slave              (cpu_data_master_qualified_request_pixel_buffer_avalon_sram_slave),
       .cpu_data_master_qualified_request_pixel_buffer_dma_avalon_control_slave       (cpu_data_master_qualified_request_pixel_buffer_dma_avalon_control_slave),
       .cpu_data_master_qualified_request_the_whole_shit_clock_0_in                   (cpu_data_master_qualified_request_the_whole_shit_clock_0_in),
       .cpu_data_master_read                                                          (cpu_data_master_read),
+      .cpu_data_master_read_data_valid_buttons_s1                                    (cpu_data_master_read_data_valid_buttons_s1),
       .cpu_data_master_read_data_valid_cpu_jtag_debug_module                         (cpu_data_master_read_data_valid_cpu_jtag_debug_module),
+      .cpu_data_master_read_data_valid_jtag_uart_0_avalon_jtag_slave                 (cpu_data_master_read_data_valid_jtag_uart_0_avalon_jtag_slave),
       .cpu_data_master_read_data_valid_onchip_ram_s1                                 (cpu_data_master_read_data_valid_onchip_ram_s1),
       .cpu_data_master_read_data_valid_pixel_buffer_avalon_sram_slave                (cpu_data_master_read_data_valid_pixel_buffer_avalon_sram_slave),
       .cpu_data_master_read_data_valid_pixel_buffer_avalon_sram_slave_shift_register (cpu_data_master_read_data_valid_pixel_buffer_avalon_sram_slave_shift_register),
@@ -4871,7 +5637,9 @@ module the_whole_shit (
       .cpu_data_master_read_data_valid_the_whole_shit_clock_0_in                     (cpu_data_master_read_data_valid_the_whole_shit_clock_0_in),
       .cpu_data_master_readdata                                                      (cpu_data_master_readdata),
       .cpu_data_master_readdatavalid                                                 (cpu_data_master_readdatavalid),
+      .cpu_data_master_requests_buttons_s1                                           (cpu_data_master_requests_buttons_s1),
       .cpu_data_master_requests_cpu_jtag_debug_module                                (cpu_data_master_requests_cpu_jtag_debug_module),
+      .cpu_data_master_requests_jtag_uart_0_avalon_jtag_slave                        (cpu_data_master_requests_jtag_uart_0_avalon_jtag_slave),
       .cpu_data_master_requests_onchip_ram_s1                                        (cpu_data_master_requests_onchip_ram_s1),
       .cpu_data_master_requests_pixel_buffer_avalon_sram_slave                       (cpu_data_master_requests_pixel_buffer_avalon_sram_slave),
       .cpu_data_master_requests_pixel_buffer_dma_avalon_control_slave                (cpu_data_master_requests_pixel_buffer_dma_avalon_control_slave),
@@ -4880,11 +5648,16 @@ module the_whole_shit (
       .cpu_data_master_write                                                         (cpu_data_master_write),
       .cpu_data_master_writedata                                                     (cpu_data_master_writedata),
       .cpu_jtag_debug_module_readdata_from_sa                                        (cpu_jtag_debug_module_readdata_from_sa),
+      .d1_buttons_s1_end_xfer                                                        (d1_buttons_s1_end_xfer),
       .d1_cpu_jtag_debug_module_end_xfer                                             (d1_cpu_jtag_debug_module_end_xfer),
+      .d1_jtag_uart_0_avalon_jtag_slave_end_xfer                                     (d1_jtag_uart_0_avalon_jtag_slave_end_xfer),
       .d1_onchip_ram_s1_end_xfer                                                     (d1_onchip_ram_s1_end_xfer),
       .d1_pixel_buffer_avalon_sram_slave_end_xfer                                    (d1_pixel_buffer_avalon_sram_slave_end_xfer),
       .d1_pixel_buffer_dma_avalon_control_slave_end_xfer                             (d1_pixel_buffer_dma_avalon_control_slave_end_xfer),
       .d1_the_whole_shit_clock_0_in_end_xfer                                         (d1_the_whole_shit_clock_0_in_end_xfer),
+      .jtag_uart_0_avalon_jtag_slave_irq_from_sa                                     (jtag_uart_0_avalon_jtag_slave_irq_from_sa),
+      .jtag_uart_0_avalon_jtag_slave_readdata_from_sa                                (jtag_uart_0_avalon_jtag_slave_readdata_from_sa),
+      .jtag_uart_0_avalon_jtag_slave_waitrequest_from_sa                             (jtag_uart_0_avalon_jtag_slave_waitrequest_from_sa),
       .onchip_ram_s1_readdata_from_sa                                                (onchip_ram_s1_readdata_from_sa),
       .pixel_buffer_avalon_sram_slave_readdata_from_sa                               (pixel_buffer_avalon_sram_slave_readdata_from_sa),
       .pixel_buffer_dma_avalon_control_slave_readdata_from_sa                        (pixel_buffer_dma_avalon_control_slave_readdata_from_sa),
@@ -4974,20 +5747,20 @@ module the_whole_shit (
 
   dual_clock_fifo_avalon_dc_buffer_source_arbitrator the_dual_clock_fifo_avalon_dc_buffer_source
     (
-      .clk                                                   (clocks_0_VGA_CLK_out),
+      .clk                                                   (clocks_0_vga_clk),
       .dual_clock_fifo_avalon_dc_buffer_source_data          (dual_clock_fifo_avalon_dc_buffer_source_data),
       .dual_clock_fifo_avalon_dc_buffer_source_endofpacket   (dual_clock_fifo_avalon_dc_buffer_source_endofpacket),
       .dual_clock_fifo_avalon_dc_buffer_source_ready         (dual_clock_fifo_avalon_dc_buffer_source_ready),
       .dual_clock_fifo_avalon_dc_buffer_source_startofpacket (dual_clock_fifo_avalon_dc_buffer_source_startofpacket),
       .dual_clock_fifo_avalon_dc_buffer_source_valid         (dual_clock_fifo_avalon_dc_buffer_source_valid),
-      .reset_n                                               (clocks_0_VGA_CLK_out_reset_n),
+      .reset_n                                               (clocks_0_vga_clk_reset_n),
       .vga_controller_avalon_vga_sink_ready_from_sa          (vga_controller_avalon_vga_sink_ready_from_sa)
     );
 
   dual_clock_fifo the_dual_clock_fifo
     (
       .clk_stream_in            (clocks_0_sys_clk_out),
-      .clk_stream_out           (clocks_0_VGA_CLK_out),
+      .clk_stream_out           (clocks_0_vga_clk),
       .stream_in_data           (dual_clock_fifo_avalon_dc_buffer_sink_data),
       .stream_in_endofpacket    (dual_clock_fifo_avalon_dc_buffer_sink_endofpacket),
       .stream_in_ready          (dual_clock_fifo_avalon_dc_buffer_sink_ready),
@@ -4998,6 +5771,55 @@ module the_whole_shit (
       .stream_out_ready         (dual_clock_fifo_avalon_dc_buffer_source_ready),
       .stream_out_startofpacket (dual_clock_fifo_avalon_dc_buffer_source_startofpacket),
       .stream_out_valid         (dual_clock_fifo_avalon_dc_buffer_source_valid)
+    );
+
+  jtag_uart_0_avalon_jtag_slave_arbitrator the_jtag_uart_0_avalon_jtag_slave
+    (
+      .clk                                                                           (clocks_0_sys_clk_out),
+      .cpu_data_master_address_to_slave                                              (cpu_data_master_address_to_slave),
+      .cpu_data_master_granted_jtag_uart_0_avalon_jtag_slave                         (cpu_data_master_granted_jtag_uart_0_avalon_jtag_slave),
+      .cpu_data_master_latency_counter                                               (cpu_data_master_latency_counter),
+      .cpu_data_master_qualified_request_jtag_uart_0_avalon_jtag_slave               (cpu_data_master_qualified_request_jtag_uart_0_avalon_jtag_slave),
+      .cpu_data_master_read                                                          (cpu_data_master_read),
+      .cpu_data_master_read_data_valid_jtag_uart_0_avalon_jtag_slave                 (cpu_data_master_read_data_valid_jtag_uart_0_avalon_jtag_slave),
+      .cpu_data_master_read_data_valid_pixel_buffer_avalon_sram_slave_shift_register (cpu_data_master_read_data_valid_pixel_buffer_avalon_sram_slave_shift_register),
+      .cpu_data_master_requests_jtag_uart_0_avalon_jtag_slave                        (cpu_data_master_requests_jtag_uart_0_avalon_jtag_slave),
+      .cpu_data_master_write                                                         (cpu_data_master_write),
+      .cpu_data_master_writedata                                                     (cpu_data_master_writedata),
+      .d1_jtag_uart_0_avalon_jtag_slave_end_xfer                                     (d1_jtag_uart_0_avalon_jtag_slave_end_xfer),
+      .jtag_uart_0_avalon_jtag_slave_address                                         (jtag_uart_0_avalon_jtag_slave_address),
+      .jtag_uart_0_avalon_jtag_slave_chipselect                                      (jtag_uart_0_avalon_jtag_slave_chipselect),
+      .jtag_uart_0_avalon_jtag_slave_dataavailable                                   (jtag_uart_0_avalon_jtag_slave_dataavailable),
+      .jtag_uart_0_avalon_jtag_slave_dataavailable_from_sa                           (jtag_uart_0_avalon_jtag_slave_dataavailable_from_sa),
+      .jtag_uart_0_avalon_jtag_slave_irq                                             (jtag_uart_0_avalon_jtag_slave_irq),
+      .jtag_uart_0_avalon_jtag_slave_irq_from_sa                                     (jtag_uart_0_avalon_jtag_slave_irq_from_sa),
+      .jtag_uart_0_avalon_jtag_slave_read_n                                          (jtag_uart_0_avalon_jtag_slave_read_n),
+      .jtag_uart_0_avalon_jtag_slave_readdata                                        (jtag_uart_0_avalon_jtag_slave_readdata),
+      .jtag_uart_0_avalon_jtag_slave_readdata_from_sa                                (jtag_uart_0_avalon_jtag_slave_readdata_from_sa),
+      .jtag_uart_0_avalon_jtag_slave_readyfordata                                    (jtag_uart_0_avalon_jtag_slave_readyfordata),
+      .jtag_uart_0_avalon_jtag_slave_readyfordata_from_sa                            (jtag_uart_0_avalon_jtag_slave_readyfordata_from_sa),
+      .jtag_uart_0_avalon_jtag_slave_reset_n                                         (jtag_uart_0_avalon_jtag_slave_reset_n),
+      .jtag_uart_0_avalon_jtag_slave_waitrequest                                     (jtag_uart_0_avalon_jtag_slave_waitrequest),
+      .jtag_uart_0_avalon_jtag_slave_waitrequest_from_sa                             (jtag_uart_0_avalon_jtag_slave_waitrequest_from_sa),
+      .jtag_uart_0_avalon_jtag_slave_write_n                                         (jtag_uart_0_avalon_jtag_slave_write_n),
+      .jtag_uart_0_avalon_jtag_slave_writedata                                       (jtag_uart_0_avalon_jtag_slave_writedata),
+      .reset_n                                                                       (clocks_0_sys_clk_out_reset_n)
+    );
+
+  jtag_uart_0 the_jtag_uart_0
+    (
+      .av_address     (jtag_uart_0_avalon_jtag_slave_address),
+      .av_chipselect  (jtag_uart_0_avalon_jtag_slave_chipselect),
+      .av_irq         (jtag_uart_0_avalon_jtag_slave_irq),
+      .av_read_n      (jtag_uart_0_avalon_jtag_slave_read_n),
+      .av_readdata    (jtag_uart_0_avalon_jtag_slave_readdata),
+      .av_waitrequest (jtag_uart_0_avalon_jtag_slave_waitrequest),
+      .av_write_n     (jtag_uart_0_avalon_jtag_slave_write_n),
+      .av_writedata   (jtag_uart_0_avalon_jtag_slave_writedata),
+      .clk            (clocks_0_sys_clk_out),
+      .dataavailable  (jtag_uart_0_avalon_jtag_slave_dataavailable),
+      .readyfordata   (jtag_uart_0_avalon_jtag_slave_readyfordata),
+      .rst_n          (jtag_uart_0_avalon_jtag_slave_reset_n)
     );
 
   onchip_ram_s1_arbitrator the_onchip_ram_s1
@@ -5319,12 +6141,12 @@ module the_whole_shit (
 
   vga_controller_avalon_vga_sink_arbitrator the_vga_controller_avalon_vga_sink
     (
-      .clk                                                   (clocks_0_VGA_CLK_out),
+      .clk                                                   (clocks_0_vga_clk),
       .dual_clock_fifo_avalon_dc_buffer_source_data          (dual_clock_fifo_avalon_dc_buffer_source_data),
       .dual_clock_fifo_avalon_dc_buffer_source_endofpacket   (dual_clock_fifo_avalon_dc_buffer_source_endofpacket),
       .dual_clock_fifo_avalon_dc_buffer_source_startofpacket (dual_clock_fifo_avalon_dc_buffer_source_startofpacket),
       .dual_clock_fifo_avalon_dc_buffer_source_valid         (dual_clock_fifo_avalon_dc_buffer_source_valid),
-      .reset_n                                               (clocks_0_VGA_CLK_out_reset_n),
+      .reset_n                                               (clocks_0_vga_clk_reset_n),
       .vga_controller_avalon_vga_sink_data                   (vga_controller_avalon_vga_sink_data),
       .vga_controller_avalon_vga_sink_endofpacket            (vga_controller_avalon_vga_sink_endofpacket),
       .vga_controller_avalon_vga_sink_ready                  (vga_controller_avalon_vga_sink_ready),
@@ -5344,7 +6166,7 @@ module the_whole_shit (
       .VGA_R         (VGA_R_from_the_vga_controller),
       .VGA_SYNC      (VGA_SYNC_from_the_vga_controller),
       .VGA_VS        (VGA_VS_from_the_vga_controller),
-      .clk           (clocks_0_VGA_CLK_out),
+      .clk           (clocks_0_vga_clk),
       .data          (vga_controller_avalon_vga_sink_data),
       .endofpacket   (vga_controller_avalon_vga_sink_endofpacket),
       .ready         (vga_controller_avalon_vga_sink_ready),
@@ -5354,11 +6176,11 @@ module the_whole_shit (
     );
 
   //reset is asserted asynchronously and deasserted synchronously
-  the_whole_shit_reset_clk_0_domain_synch_module the_whole_shit_reset_clk_0_domain_synch
+  the_whole_shit_reset_clocks_0_sys_clk_out_domain_synch_module the_whole_shit_reset_clocks_0_sys_clk_out_domain_synch
     (
-      .clk      (clk_0),
+      .clk      (clocks_0_sys_clk_out),
       .data_in  (1'b1),
-      .data_out (clk_0_reset_n),
+      .data_out (clocks_0_sys_clk_out_reset_n),
       .reset_n  (reset_n_sources)
     );
 
@@ -5371,25 +6193,22 @@ module the_whole_shit (
     0);
 
   //reset is asserted asynchronously and deasserted synchronously
-  the_whole_shit_reset_clocks_0_sys_clk_out_domain_synch_module the_whole_shit_reset_clocks_0_sys_clk_out_domain_synch
+  the_whole_shit_reset_clk_0_domain_synch_module the_whole_shit_reset_clk_0_domain_synch
     (
-      .clk      (clocks_0_sys_clk_out),
+      .clk      (clk_0),
       .data_in  (1'b1),
-      .data_out (clocks_0_sys_clk_out_reset_n),
+      .data_out (clk_0_reset_n),
       .reset_n  (reset_n_sources)
     );
 
   //reset is asserted asynchronously and deasserted synchronously
-  the_whole_shit_reset_clocks_0_VGA_CLK_out_domain_synch_module the_whole_shit_reset_clocks_0_VGA_CLK_out_domain_synch
+  the_whole_shit_reset_clocks_0_vga_clk_domain_synch_module the_whole_shit_reset_clocks_0_vga_clk_domain_synch
     (
-      .clk      (clocks_0_VGA_CLK_out),
+      .clk      (clocks_0_vga_clk),
       .data_in  (1'b1),
-      .data_out (clocks_0_VGA_CLK_out_reset_n),
+      .data_out (clocks_0_vga_clk_reset_n),
       .reset_n  (reset_n_sources)
     );
-
-  //cpu_data_master_irq of type irq does not connect to anything so wire it to default (0)
-  assign cpu_data_master_irq = 0;
 
   //the_whole_shit_clock_0_out_endofpacket of type endofpacket does not connect to anything so wire it to default (0)
   assign the_whole_shit_clock_0_out_endofpacket = 0;
@@ -5420,11 +6239,9 @@ endmodule
 `include "c:/altera/11.0/quartus/eda/sim_lib/sgate.v"
 `include "clocks_0.v"
 `include "rgb_resampler.v"
-`include "video_vga_controller_0.v"
 `include "vga_controller.v"
 `include "dual_clock_fifo.v"
 `include "pixel_buffer.v"
-`include "video_pixel_buffer_dma_0.v"
 `include "pixel_buffer_dma.v"
 `include "cpu_test_bench.v"
 `include "cpu_mult_cell.v"
@@ -5435,6 +6252,8 @@ endmodule
 `include "cpu.v"
 `include "the_whole_shit_clock_0.v"
 `include "onchip_ram.v"
+`include "jtag_uart_0.v"
+`include "buttons.v"
 
 `timescale 1ns / 1ps
 
@@ -5459,9 +6278,11 @@ module test_bench
   wire             VGA_VS_from_the_vga_controller;
   wire             clk;
   reg              clk_0;
-  wire             clocks_0_VGA_CLK_out;
   wire             clocks_0_sys_clk_out;
-  wire    [ 31: 0] cpu_data_master_irq;
+  wire             clocks_0_vga_clk;
+  wire    [  3: 0] in_port_to_the_buttons;
+  wire             jtag_uart_0_avalon_jtag_slave_dataavailable_from_sa;
+  wire             jtag_uart_0_avalon_jtag_slave_readyfordata_from_sa;
   reg              reset_n;
   wire             the_whole_shit_clock_0_in_endofpacket_from_sa;
   wire             the_whole_shit_clock_0_out_endofpacket;
@@ -5491,8 +6312,9 @@ module test_bench
       .VGA_SYNC_from_the_vga_controller     (VGA_SYNC_from_the_vga_controller),
       .VGA_VS_from_the_vga_controller       (VGA_VS_from_the_vga_controller),
       .clk_0                                (clk_0),
-      .clocks_0_VGA_CLK_out                 (clocks_0_VGA_CLK_out),
       .clocks_0_sys_clk_out                 (clocks_0_sys_clk_out),
+      .clocks_0_vga_clk                     (clocks_0_vga_clk),
+      .in_port_to_the_buttons               (in_port_to_the_buttons),
       .reset_n                              (reset_n)
     );
 

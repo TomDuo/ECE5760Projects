@@ -108,6 +108,7 @@
 <definedSymbol symbol="__hal__=1"/>
 <definedSymbol symbol="ALT_NO_INSTRUCTION_EMULATION=1"/>
 <definedSymbol symbol="ALT_SINGLE_THREADED=1"/>
+<definedSymbol symbol="ALT_USE_SMALL_DRIVERS=1"/>
 </collector>
 </instance>
 <instance id="preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.673252082;preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.673252082.;cdt.managedbuild.tool.gnu.c.compiler.cygwin.base.1748823824;cdt.managedbuild.tool.gnu.c.compiler.input.cygwin.721081101">
@@ -204,6 +205,7 @@
 <definedSymbol symbol="__hal__=1"/>
 <definedSymbol symbol="ALT_NO_INSTRUCTION_EMULATION=1"/>
 <definedSymbol symbol="ALT_SINGLE_THREADED=1"/>
+<definedSymbol symbol="ALT_USE_SMALL_DRIVERS=1"/>
 </collector>
 </instance>
 </scannerInfo>

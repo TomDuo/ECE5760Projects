@@ -3,77 +3,82 @@ Copyright (c) 1999-2009 Altera Corporation.  All rights reserved.
 
 
 No .sopc_builder configuration file(!)
-# 2015.02.11 13:58:53 (*) mk_custom_sdk starting
-# 2015.02.11 13:58:53 (*) Reading project C:/ECE5760Projects/lander/the_whole_shit.ptf.
+# 2015.02.11 22:30:19 (*) mk_custom_sdk starting
+# 2015.02.11 22:30:19 (*) Reading project C:/ECE5760Projects/lander/the_whole_shit.ptf.
 
-# 2015.02.11 13:58:53 (*) Finding all CPUs
-# 2015.02.11 13:58:53 (*) Finding all available components
-# 2015.02.11 13:58:53 (*) Reading C:/ECE5760Projects/lander/.sopc_builder/install.ptf
+# 2015.02.11 22:30:19 (*) Finding all CPUs
+# 2015.02.11 22:30:19 (*) Finding all available components
+# 2015.02.11 22:30:19 (*) Reading C:/ECE5760Projects/lander/.sopc_builder/install.ptf
 
-# 2015.02.11 13:58:53 (*) Found 63 components
+# 2015.02.11 22:30:19 (*) Found 63 components
 
-# 2015.02.11 13:58:54 (*) Finding all peripherals
+# 2015.02.11 22:30:20 (*) Finding all peripherals
 
-# 2015.02.11 13:58:54 (*) Finding software components
+# 2015.02.11 22:30:20 (*) Finding software components
 
-# 2015.02.11 13:58:54 (*) (Legacy SDK Generation Skipped)
-# 2015.02.11 13:58:54 (*) (All TCL Script Generation Skipped)
-# 2015.02.11 13:58:54 (*) (No Libraries Built)
-# 2015.02.11 13:58:54 (*) (Contents Generation Skipped)
-# 2015.02.11 13:58:54 (*) mk_custom_sdk finishing
-# 2015.02.11 13:58:54 (*) Starting generation for system: the_whole_shit.
+# 2015.02.11 22:30:20 (*) (Legacy SDK Generation Skipped)
+# 2015.02.11 22:30:20 (*) (All TCL Script Generation Skipped)
+# 2015.02.11 22:30:20 (*) (No Libraries Built)
+# 2015.02.11 22:30:20 (*) (Contents Generation Skipped)
+# 2015.02.11 22:30:20 (*) mk_custom_sdk finishing
+# 2015.02.11 22:30:20 (*) Starting generation for system: the_whole_shit.
 
+.
+.
 .
 ..
 
-# 2015.02.11 13:58:55 (*) Running Generator Program for cpu
+# 2015.02.11 22:30:21 (*) Running Generator Program for cpu
 
-# 2015.02.11 13:58:56 (*) Starting Nios II generation
-# 2015.02.11 13:58:56 (*)   Checking for plaintext license.
-# 2015.02.11 13:58:56 (*)   Plaintext license not found.
-# 2015.02.11 13:58:56 (*)   Checking for encrypted license (non-evaluation).
-# 2015.02.11 13:58:56 (*)   Encrypted license found.  SOF will not be time-limited.
-# 2015.02.11 13:58:56 (*)   Getting CPU configuration settings
+# 2015.02.11 22:30:22 (*) Starting Nios II generation
+# 2015.02.11 22:30:22 (*)   Checking for plaintext license.
+# 2015.02.11 22:30:22 (*)   Plaintext license not found.
+# 2015.02.11 22:30:22 (*)   Checking for encrypted license (non-evaluation).
+# 2015.02.11 22:30:23 (*)   Encrypted license found.  SOF will not be time-limited.
+# 2015.02.11 22:30:23 (*)   Getting CPU configuration settings
 Warning: currently assigned JTAG instance ID 0 for cpu/jtag_debug_module is shared by unnamed.ptf/cpu/jtag_debug_module. Reassigned to 1.
 
-# 2015.02.11 13:58:57 (*)   Elaborating CPU configuration settings
-# 2015.02.11 13:58:57 (*)   Creating all objects for CPU
-# 2015.02.11 13:58:57 (*)     Testbench
-# 2015.02.11 13:58:57 (*)     Instruction decoding
-# 2015.02.11 13:58:57 (*)       Instruction fields
-# 2015.02.11 13:58:57 (*)       Instruction decodes
-# 2015.02.11 13:58:58 (*)       Signals for RTL simulation waveforms
-# 2015.02.11 13:58:58 (*)       Instruction controls
-# 2015.02.11 13:58:58 (*)     Pipeline frontend
-# 2015.02.11 13:58:58 (*)     Pipeline backend
+# 2015.02.11 22:30:23 (*)   Elaborating CPU configuration settings
+# 2015.02.11 22:30:23 (*)   Creating all objects for CPU
+# 2015.02.11 22:30:23 (*)     Testbench
+# 2015.02.11 22:30:23 (*)     Instruction decoding
+# 2015.02.11 22:30:23 (*)       Instruction fields
+# 2015.02.11 22:30:24 (*)       Instruction decodes
+# 2015.02.11 22:30:24 (*)       Signals for RTL simulation waveforms
+# 2015.02.11 22:30:24 (*)       Instruction controls
+# 2015.02.11 22:30:24 (*)     Pipeline frontend
+# 2015.02.11 22:30:25 (*)     Pipeline backend
 
-# 2015.02.11 13:59:01 (*)   Generating HDL from CPU objects
-# 2015.02.11 13:59:04 (*)   Creating encrypted HDL
-# 2015.02.11 13:59:06 (*) Done Nios II generation
+# 2015.02.11 22:30:28 (*)   Generating HDL from CPU objects
+# 2015.02.11 22:30:31 (*)   Creating encrypted HDL
+# 2015.02.11 22:30:33 (*) Done Nios II generation
 
-# 2015.02.11 13:59:06 (*) Running Generator Program for onchip_ram
+# 2015.02.11 22:30:33 (*) Running Generator Program for onchip_ram
 
-# 2015.02.11 13:59:08 (*) Running Generator Program for the_whole_shit_clock_0
+# 2015.02.11 22:30:35 (*) Running Generator Program for buttons
 
+# 2015.02.11 22:30:36 (*) Running Generator Program for jtag_uart_0
 
-# 2015.02.11 13:59:09 (*) Making arbitration and system (top) modules.
-
-# 2015.02.11 13:59:13 (*) Generating Quartus symbol for top level: the_whole_shit
-
-# 2015.02.11 13:59:13 (*) Generating Symbol C:/ECE5760Projects/lander/the_whole_shit.bsf
-
-# 2015.02.11 13:59:13 (*) Creating command-line system-generation script: C:/ECE5760Projects/lander/the_whole_shit_generation_script
-
-# 2015.02.11 13:59:13 (*) Running setup for HDL simulator: modelsim
+# 2015.02.11 22:30:37 (*) Running Generator Program for the_whole_shit_clock_0
 
 
-# 2015.02.11 13:59:13 (*) Completed generation for system: the_whole_shit.
-# 2015.02.11 13:59:13 (*) THE FOLLOWING SYSTEM ITEMS HAVE BEEN GENERATED:
+# 2015.02.11 22:30:38 (*) Making arbitration and system (top) modules.
+
+# 2015.02.11 22:30:42 (*) Generating Quartus symbol for top level: the_whole_shit
+
+# 2015.02.11 22:30:42 (*) Symbol C:/ECE5760Projects/lander/the_whole_shit.bsf already exists, no need to regenerate
+# 2015.02.11 22:30:42 (*) Creating command-line system-generation script: C:/ECE5760Projects/lander/the_whole_shit_generation_script
+
+# 2015.02.11 22:30:42 (*) Running setup for HDL simulator: modelsim
+
+
+# 2015.02.11 22:30:42 (*) Completed generation for system: the_whole_shit.
+# 2015.02.11 22:30:42 (*) THE FOLLOWING SYSTEM ITEMS HAVE BEEN GENERATED:
   SOPC Builder database : C:/ECE5760Projects/lander/the_whole_shit.ptf 
   System HDL Model : C:/ECE5760Projects/lander/the_whole_shit.v 
   System Generation Script : C:/ECE5760Projects/lander/the_whole_shit_generation_script 
 
-# 2015.02.11 13:59:13 (*) SUCCESS: SYSTEM GENERATION COMPLETED.
+# 2015.02.11 22:30:42 (*) SUCCESS: SYSTEM GENERATION COMPLETED.
 
 
 Press 'Exit' to exit.

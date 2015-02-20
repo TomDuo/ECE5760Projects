@@ -1,0 +1,93 @@
+
+#include "drawing.h"
+#include <stdlib.h>
+#include "math.h"
+
+#define RED 0xfa00
+#define GREEN 0x7e0
+#define BLUE 0x001f
+
+void draw_line(int x1, int y1, int x2, int y2, short color)
+{
+  int i,dx,dy,sdx,sdy,dxabs,dyabs,x,y,px,py;
+  volatile short* VGA = (short*)0;
+
+  dx=x2-x1;      /* the horizontal distance of the line */
+  dy=y2-y1;      /* the vertical distance of the line */
+  dxabs=abs(dx);
+  dyabs=abs(dy);
+  sdx=sgn(dx);
+  sdy=sgn(dy);
+  x=dyabs>>1;
+  y=dxabs>>1;
+  px=x1;
+  py=y1;
+
+  VGA[(py << 10) + px]=color;
+
+  if (dxabs>=dyabs) /* the line is more horizontal than vertical */
+  {
+    for(i=0;i<dxabs;i++)
+    {
+      y+=dyabs;
+      if (y>=dxabs)
+      {
+        y-=dxabs;
+        py+=sdy;
+      }
+      px+=sdx;
+      VGA[(py << 10) + px]=color;
+    }
+  }
+  else /* the line is more vertical than horizontal */
+  {
+    for(i=0;i<dyabs;i++)
+    {
+      x+=dxabs;
+      if (x>=dyabs)
+      {
+        x-=dyabs;
+        px+=sdx;
+      }
+      py+=sdy;
+      VGA[(py << 10) + px]=color;
+    }
+  }
+}
+
+void clear_screen()
+{
+	draw_box(0,0,640,480, 0x0000);
+}
+
+
+void draw_box(int x1, int y1, int x2, int y2, short pixel_color)
+{
+	int offset, row, col;
+	/* Declare volatile pointer to pixel buffer (volatile means that IO load
+	   and store instructions will be used to access these pointer locations,
+	   instead of regular memory loads and stores) */
+  	volatile short * pixel_buffer = (short *) 0x00000000;	// VGA pixel buffer address
+
+	/* assume that the box coordinates are valid */
+	for (row = y1; row < y2; ++row)
+	{
+		for(col = x1; col < x2; ++col)
+		{
+			offset = (row << 10) + col;
+			*(pixel_buffer + offset) = pixel_color;	// compute halfword address, set pixel
+		}
+	}
+}
+
+void draw_lander(int x, int y, int angle, int thrust)
+{
+	draw_line(x, y+50, x, y+150, RED);//(int x1, int y1, int x2, int y2, short color)
+	draw_line(x, y+150, x+200, y+150,RED);
+	draw_line(x+200, y+50, x+200, y+150,RED);
+	draw_line(x, y+50, x+50, y,RED);
+	draw_line(x+50, y, x+200, y+50,RED);
+
+
+
+}

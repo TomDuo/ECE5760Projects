@@ -1,0 +1,280 @@
+!SESSION 2015-02-19 17:28:02.276 -----------------------------------------------
+eclipse.buildId=M20100909-0800
+java.version=1.6.0_23
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-02-19 17:33:11.376
+!MESSAGE Indexed 'legit_BSP' (78 sources, 96 headers) in 4.67 sec: 3,036 declarations; 4,763 references; 59 unresolved inclusions; 5 syntax errors; 103 unresolved names (1.30%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-02-19 17:36:23.756
+!MESSAGE Indexed 'legit_app' (0 sources, 13 headers) in 0.01 sec: 0 declarations; 0 references; 13 unresolved inclusions; 0 syntax errors; 0 unresolved names (0.00%)
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 17:52:17.068
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 17:52:20.110
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/sean_fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 17:57:16.115
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 17:57:18.325
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 17:57:21.087
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/sean_fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 17:57:50.910
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 17:57:53.190
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 17:57:56.002
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/sean_fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 18:12:35.140
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 18:12:38.032
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/sean_fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 18:16:25.815
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 18:16:28.557
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/sean_fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 18:38:19.732
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 18:38:22.032
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 18:38:24.914
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/sean_fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 18:39:17.007
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 18:39:19.267
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 18:39:22.079
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/sean_fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 19:01:47.801
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 19:01:50.353
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 19:01:53.481
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/sean_fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 19:10:46.769
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 19:10:49.276
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 19:10:52.303
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/sean_fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 20:28:11.418
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 20:28:13.743
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 20:28:16.909
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/sean_fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 21:14:35.070
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 21:14:37.542
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 21:14:40.624
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/sean_fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 22:00:44.915
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 22:00:47.336
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 22:00:50.460
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/sean_fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 22:01:51.511
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 22:01:53.846
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 22:01:56.939
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/sean_fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 22:06:46.135
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 22:07:07.126
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 22:07:10.288
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/sean_fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 22:07:44.602
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 22:07:47.140
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 22:07:50.183
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/sean_fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 22:09:07.549
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 22:09:10.084
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 22:09:13.107
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/sean_fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 22:11:19.829
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 22:11:22.286
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 22:11:25.331
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/sean_fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 22:13:19.000
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 22:13:21.457
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 22:13:24.688
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/sean_fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 22:13:51.891
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 22:13:54.497
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 22:13:57.618
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/sean_fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 22:17:01.406
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 22:17:03.809
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 22:17:06.904
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/sean_fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 22:17:44.338
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 22:17:46.745
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 22:17:49.849
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/sean_fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 22:21:02.583
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 22:21:05.131
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 22:21:08.282
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/sean_fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 22:23:32.422
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 22:23:34.926
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 22:23:38.057
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/sean_fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 22:25:31.160
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 22:25:33.586
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 22:25:36.608
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/sean_fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 22:26:40.402
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 22:26:42.772
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 22:26:45.873
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/sean_fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 22:39:32.710
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 22:39:35.159
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 22:39:38.265
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/sean_fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 23:54:42.342
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 23:54:44.768
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 23:54:47.731
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/sean_fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 23:55:54.855
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 23:55:57.365
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-19 23:56:00.575
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/sean_fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-20 00:12:50.065
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-20 00:12:53.075
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/sean_fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-20 00:13:56.997
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-20 00:13:59.386
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-20 00:14:02.704
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/sean_fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-20 00:15:20.288
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-20 00:15:22.707
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-20 00:15:25.893
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/sean_fei/legit_start/verilog/software/legit_app/legit_app.elf]

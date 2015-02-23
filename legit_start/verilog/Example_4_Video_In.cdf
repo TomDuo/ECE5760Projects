@@ -4,7 +4,7 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Cfg)
-		Device PartName(EP4CE115F29) Path("C:/sean_fei/legit_start/verilog/") File("Example_4_Video_In.sof") MfrSpec(OpMask(1));
+		Device PartName(EP4CE115F29) Path("C:/fei/legit_start/verilog/") File("Example_4_Video_In.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 

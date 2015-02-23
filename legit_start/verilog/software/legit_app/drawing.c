@@ -1,10 +1,27 @@
 
 #include "drawing.h"
 #include <stdlib.h>
+#include <stdio.h>
 
-#define RED 0xfa00
-#define GREEN 0x7e0
-#define BLUE 0x001f
+#define BLACK           0x0000      /*   0,   0,   0 */
+#define NAVY            0x000F      /*   0,   0, 128 */
+#define DarkGreen       0x03E0      /*   0, 128,   0 */
+#define DarkCyan        0x03EF      /*   0, 128, 128 */
+#define MAROON          0x7800      /* 128,   0,   0 */
+#define PURPLE          0x780F      /* 128,   0, 128 */
+#define OLIVE           0x7BE0      /* 128, 128,   0 */
+#define LightGrey       0xC618      /* 192, 192, 192 */
+#define DarkGrey        0x7BEF      /* 128, 128, 128 */
+#define BLUE            0x001F      /*   0,   0, 255 */
+#define GREEN           0x07E0      /*   0, 255,   0 */
+#define CYAN            0x07FF      /*   0, 255, 255 */
+#define RED             0xF800      /* 255,   0,   0 */
+#define MAGENTA         0xF81F      /* 255,   0, 255 */
+#define YELLOW          0xFFE0      /* 255, 255,   0 */
+#define WHITE           0xFFFF      /* 255, 255, 255 */
+#define ORANGE          0xFD20      /* 255, 165,   0 */
+#define GreenYellow     0xAFE5      /* 173, 255,  47 */
+#define PINK                        0xF81F
 
 unsigned int cos_table[91] = {255, 255, 255, 255, 254, 254, 254, 253, 253, 252, 251,
 		250, 249, 248, 247, 246, 245, 244, 243, 241, 240, 238, 236, 235, 233,
@@ -21,9 +38,26 @@ unsigned int sin_table[91] = {0, 4, 9, 13, 18, 22, 27, 31, 35, 40, 44, 49, 53, 5
 		244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 253, 254, 254, 254,
 		255, 255, 255, 255};
 
-int cos(unsigned int theta, unsigned int a){
+#define INPUT_ABS(a) do { \
+			if (a < 0){ \
+				input = (unsigned int)(-a); \
+				sign = -sign; \
+			} else { \
+				input = (unsigned int)a; \
+			} \
+		} while(0)
+
+int cos(int theta_raw, int a){
 	unsigned int result_abs;
+	unsigned int theta;
+	unsigned int input;
 	signed short sign = 1;
+
+	if (theta_raw < 0){
+		theta = (unsigned int)(-theta_raw);
+	}
+
+	INPUT_ABS(a);
 
 	theta = theta % 365;
 	if(theta > 180){
@@ -31,29 +65,38 @@ int cos(unsigned int theta, unsigned int a){
 	}
 
 	if (theta > 90) {
-		sign = -1;
+		sign = -sign;
 		theta = 180 - theta;
 	}
-	result_abs = cos_table[theta] * a>>8;
-	printf("%dcos(%d)=%d * %d\n", a, theta, result_abs, sign);
+	result_abs = cos_table[theta] * input >> 8;
+	printf("%dcos(%d)=%d * %d\n", input, theta, result_abs, sign);
 	return (int)result_abs * sign;
 }
 
-int sin(unsigned int theta, unsigned int a){
+int sin(int theta_raw, int a){
 	unsigned int result_abs;
+	unsigned int theta;
+	unsigned int input;
 	signed short sign = 1;
+
+	if (theta_raw < 0){
+		theta = (unsigned int)(-theta_raw);
+		sign = -sign;
+	}
+
+	INPUT_ABS(a);
 
 	theta = theta % 365;
 	if(theta > 180){
-		sign = -1;
+		sign = -sign;
 		theta = theta - 180;
 	}
 
 	if (theta > 90) {
 		theta = 180 - theta;
 	}
-	result_abs = sin_table[theta] * a>>8;
-	printf("%dsin%d=%d * %d\n", a, theta, result_abs, sign);
+	result_abs = sin_table[theta] * input >> 8;
+	printf("%dsin%d=%d * %d\n", input, theta, result_abs, sign);
 	return (int)result_abs * sign;
 }
 
@@ -129,34 +172,48 @@ void draw_box(int x1, int y1, int x2, int y2, short pixel_color)
 		}
 	}
 }
-void draw_line_w_angle(unsigned int theta, int offset_x, int offset_y, int x1, int y1, int x2, int y2, int short color){
-//	int theta1 =
-//	int theta2 =
-//	draw_line(center_x + sin(theta, len1), center_y + cos(theta, len1), center_x + sin(theta, len2), cos(theta, len2), color);
-}
 
 void rotate(int cx, int cy, int* x, int* y, unsigned int theta)
 {
+	int res_x;
+	int res_y;
 	*x -= cx;
 	*y -= cy;
-	*x = cx + cos(theta, *x) - sin(theta, *y);
-	*y = cy + sin(theta, *x) + cos(theta, *y);
+	printf("cx=%d cy=%d x' =%d y'=%d ", cx, cy, *x, *y);
+	res_x = cx + cos(theta, *x) - sin(theta, *y);
+	res_y = cy + sin(theta, *x) + cos(theta, *y);
+	*x = res_x;
+	*y = res_y;
+	printf("x'' =%d y''=%d ",*x, *y);
 }
 
 #define ROTATE(n) rotate(x, y, &(x##n), &(y##n), theta)
 
 void draw_lander(int x, int y, unsigned int theta, int thrust)
 {
-	int x1 = x;
-	int y1 = y+40;
-	int x2 = x;
-	int y2 = y+90;
-	int x3 = x+60;
-	int y3 = y+90;
-	int x4 = x+60;
-	int y4 = y+40;
-	int x5 = x+30;
-	int y5 = y;
+	int x1 = x - (3<<3);
+	int y1 = y;
+	int x2 = x - (3<<3);
+	int y2 = y + (5<<3);
+	int x3 = x + (3<<3);
+	int y3 = y + (5<<3);
+	int x4 = x + (3<<3);
+	int y4 = y;
+	int x5 = x;
+	int y5 = y - (4<<3);
+
+	int x6 = x;
+	int y6 = y + (6<<3);
+	int x7 = x - (2<<3);
+	int y7 = y6;
+	int x8 = x - (1<<3);
+	int y8 = y + (9<<3);
+	int x9 = x + (2<<3);
+	int y9 = y6;
+	int x10 = x + (1<<3);
+	int y10 = y8;
+
+
 
 	//clean and legit
 	draw_line(x1, y1, x2, y2, RED);
@@ -165,16 +222,35 @@ void draw_lander(int x, int y, unsigned int theta, int thrust)
 	draw_line(x1, y1, x5, y5,RED);
 	draw_line(x5, y5, x4, y4,RED);
 
+	draw_line(x7, y7, x9, y9,CYAN);
+	draw_line(x6, y6, x8, y8,CYAN);
+	draw_line(x7, y7, x8, y8,CYAN);
+	draw_line(x7, y7, x10, y10,CYAN);
+	draw_line(x9, y9, x10, y10,CYAN);
+
 	ROTATE(1);
 	ROTATE(2);
 	ROTATE(3);
 	ROTATE(4);
 	ROTATE(5);
+	ROTATE(6);
+	ROTATE(7);
+	ROTATE(8);
+	ROTATE(9);
+	ROTATE(10);
 
-	draw_line(x1, y1, x2, y2, RED);
-	draw_line(x2, y2, x3, y3,RED);
-	draw_line(x3, y3, x4, y4,RED);
-	draw_line(x1, y1, x5, y5,RED);
-	draw_line(x5, y5, x4, y4,RED);
+	draw_line(x1, y1, x2, y2, BLUE);
+	draw_line(x2, y2, x3, y3, BLUE);
+	draw_line(x3, y3, x4, y4, BLUE);
+	draw_line(x1, y1, x5, y5, BLUE);
+	draw_line(x5, y5, x4, y4, BLUE);
+	draw_line(x6, y6, x8, y8,YELLOW);
+	draw_line(x6, y6, x7, y7,YELLOW);
+	draw_line(x7, y7, x8, y8,YELLOW);
+
+}
+
+void erase_lander()
+{
 
 }

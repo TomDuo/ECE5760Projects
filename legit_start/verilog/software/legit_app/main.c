@@ -19,6 +19,7 @@ int main(void)
  	draw_line(0, 300, 200, 400, 0xffff);
  	draw_line(400, 400, 640, 200, 0xffff);
  	draw_lander(100,100,-90 ,1);
+ 	erase_lander(100,100, 0,1);
 	while(1)
 		usleep(10000000);
 	return 0;

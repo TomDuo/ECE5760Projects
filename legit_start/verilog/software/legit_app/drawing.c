@@ -189,7 +189,7 @@ void rotate(int cx, int cy, int* x, int* y, unsigned int theta)
 
 #define ROTATE(n) rotate(x, y, &(x##n), &(y##n), theta)
 
-void draw_lander(int x, int y, unsigned int theta, int thrust)
+void draw_lander(int x, int y, int theta, int thrust)
 {
 	int x1 = x - (3<<3);
 	int y1 = y;
@@ -202,18 +202,19 @@ void draw_lander(int x, int y, unsigned int theta, int thrust)
 	int x5 = x;
 	int y5 = y - (4<<3);
 
-	int x6 = x;
+	int x6 = x - (1<<3);
 	int y6 = y + (6<<3);
-	int x7 = x - (2<<3);
+	int x7 = x - (3<<3);
 	int y7 = y6;
-	int x8 = x - (1<<3);
+	int x8 = x - (2<<3);
 	int y8 = y + (9<<3);
-	int x9 = x + (2<<3);
+
+	int x9 = x + (1<<3);
 	int y9 = y6;
-	int x10 = x + (1<<3);
-	int y10 = y8;
-
-
+	int x10 = x + (3<<3);
+	int y10 = y6;
+	int x11 = x + (2<<3);
+	int y11 = y8;
 
 	//clean and legit
 	draw_line(x1, y1, x2, y2, RED);
@@ -222,11 +223,14 @@ void draw_lander(int x, int y, unsigned int theta, int thrust)
 	draw_line(x1, y1, x5, y5,RED);
 	draw_line(x5, y5, x4, y4,RED);
 
-	draw_line(x7, y7, x9, y9,CYAN);
-	draw_line(x6, y6, x8, y8,CYAN);
-	draw_line(x7, y7, x8, y8,CYAN);
-	draw_line(x7, y7, x10, y10,CYAN);
-	draw_line(x9, y9, x10, y10,CYAN);
+	if(thrust){
+		draw_line(x6, y6, x7, y7,CYAN);
+		draw_line(x9, y9, x10, y10,CYAN);
+		draw_line(x6, y6, x8, y8,CYAN);
+		draw_line(x7, y7, x8, y8,CYAN);
+		draw_line(x9, y9, x11, y11,CYAN);
+		draw_line(x10, y10, x11, y11,CYAN);
+	}
 
 	ROTATE(1);
 	ROTATE(2);
@@ -238,19 +242,61 @@ void draw_lander(int x, int y, unsigned int theta, int thrust)
 	ROTATE(8);
 	ROTATE(9);
 	ROTATE(10);
+	ROTATE(11);
 
 	draw_line(x1, y1, x2, y2, BLUE);
 	draw_line(x2, y2, x3, y3, BLUE);
 	draw_line(x3, y3, x4, y4, BLUE);
 	draw_line(x1, y1, x5, y5, BLUE);
 	draw_line(x5, y5, x4, y4, BLUE);
-	draw_line(x6, y6, x8, y8,YELLOW);
-	draw_line(x6, y6, x7, y7,YELLOW);
-	draw_line(x7, y7, x8, y8,YELLOW);
+	if(thrust){
+		draw_line(x6, y6, x7, y7,YELLOW);
+		draw_line(x9, y9, x10, y10,YELLOW);
+		draw_line(x6, y6, x8, y8,YELLOW);
+		draw_line(x7, y7, x8, y8,YELLOW);
+		draw_line(x9, y9, x11, y11,YELLOW);
+		draw_line(x10, y10, x11, y11,YELLOW);
+	}
 
 }
 
-void erase_lander()
+void erase_lander(int x, int y, int theta, int thrust)
 {
+	int x1 = x - (3<<3);
+	int y1 = y;
+	int x2 = x - (3<<3);
+	int y2 = y + (5<<3);
+	int x3 = x + (3<<3);
+	int y3 = y + (5<<3);
+	int x4 = x + (3<<3);
+	int y4 = y;
+	int x5 = x;
+	int y5 = y - (4<<3);
 
+	int x6 = x - (1<<3);
+	int y6 = y + (6<<3);
+	int x7 = x - (3<<3);
+	int y7 = y6;
+	int x8 = x - (2<<3);
+	int y8 = y + (9<<3);
+
+	int x9 = x + (1<<3);
+	int y9 = y6;
+	int x10 = x + (3<<3);
+	int y10 = y6;
+	int x11 = x + (2<<3);
+	int y11 = y8;
+	draw_line(x1, y1, x2, y2, BLACK);
+	draw_line(x2, y2, x3, y3, BLACK);
+	draw_line(x3, y3, x4, y4, BLACK);
+	draw_line(x1, y1, x5, y5, BLACK);
+	draw_line(x5, y5, x4, y4, BLACK);
+	if(thrust){
+		draw_line(x6, y6, x7, y7,BLACK);
+		draw_line(x9, y9, x10, y10,BLACK);
+		draw_line(x6, y6, x8, y8,BLACK);
+		draw_line(x7, y7, x8, y8,BLACK);
+		draw_line(x9, y9, x11, y11,BLACK);
+		draw_line(x10, y10, x11, y11,BLACK);
+	}
 }

@@ -10,6 +10,7 @@
 ********************************************************************************/
 int main(void)
 {
+ 	int x = 0;
 	printf("HELLO\n");
 	init_pio();
 	/* draw a blue box approx in the middle of the screen */
@@ -18,10 +19,14 @@ int main(void)
  	draw_line(200, 400, 400, 400, 0xffff);
  	draw_line(0, 300, 200, 400, 0xffff);
  	draw_line(400, 400, 640, 200, 0xffff);
- 	draw_lander(100,100,-90 ,1);
- 	erase_lander(100,100, 0,1);
+
 	while(1)
-		usleep(10000000);
+	{
+		x = (x < 640 ? x + 60 : 0);
+	 	draw_lander(x, 100, -270, 1);
+	 	usleep(1000000);
+	 	erase_lander(x, 100, -270, 1);
+	}
 	return 0;
 }
 

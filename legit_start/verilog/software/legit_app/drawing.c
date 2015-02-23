@@ -69,7 +69,7 @@ int cos(int theta_raw, int a){
 		theta = 180 - theta;
 	}
 	result_abs = cos_table[theta] * input >> 8;
-	printf("%dcos(%d)=%d * %d\n", input, theta, result_abs, sign);
+	//printf("%dcos(%d)=%d * %d\n", input, theta, result_abs, sign);
 	return (int)result_abs * sign;
 }
 
@@ -96,7 +96,7 @@ int sin(int theta_raw, int a){
 		theta = 180 - theta;
 	}
 	result_abs = sin_table[theta] * input >> 8;
-	printf("%dsin%d=%d * %d\n", input, theta, result_abs, sign);
+	//printf("%dsin%d=%d * %d\n", input, theta, result_abs, sign);
 	return (int)result_abs * sign;
 }
 
@@ -179,12 +179,12 @@ void rotate(int cx, int cy, int* x, int* y, unsigned int theta)
 	int res_y;
 	*x -= cx;
 	*y -= cy;
-	printf("cx=%d cy=%d x' =%d y'=%d ", cx, cy, *x, *y);
+	//printf("cx=%d cy=%d x' =%d y'=%d ", cx, cy, *x, *y);
 	res_x = cx + cos(theta, *x) - sin(theta, *y);
 	res_y = cy + sin(theta, *x) + cos(theta, *y);
 	*x = res_x;
 	*y = res_y;
-	printf("x'' =%d y''=%d ",*x, *y);
+	//printf("x'' =%d y''=%d ",*x, *y);
 }
 
 #define ROTATE(n) rotate(x, y, &(x##n), &(y##n), theta)
@@ -215,7 +215,7 @@ void draw_lander(int x, int y, int theta, int thrust)
 	int y10 = y6;
 	int x11 = x + (2<<3);
 	int y11 = y8;
-
+/*
 	//clean and legit
 	draw_line(x1, y1, x2, y2, RED);
 	draw_line(x2, y2, x3, y3,RED);
@@ -231,7 +231,7 @@ void draw_lander(int x, int y, int theta, int thrust)
 		draw_line(x9, y9, x11, y11,CYAN);
 		draw_line(x10, y10, x11, y11,CYAN);
 	}
-
+*/
 	ROTATE(1);
 	ROTATE(2);
 	ROTATE(3);
@@ -286,17 +286,30 @@ void erase_lander(int x, int y, int theta, int thrust)
 	int y10 = y6;
 	int x11 = x + (2<<3);
 	int y11 = y8;
-	draw_line(x1, y1, x2, y2, BLACK);
-	draw_line(x2, y2, x3, y3, BLACK);
-	draw_line(x3, y3, x4, y4, BLACK);
-	draw_line(x1, y1, x5, y5, BLACK);
-	draw_line(x5, y5, x4, y4, BLACK);
+
+	ROTATE(1);
+	ROTATE(2);
+	ROTATE(3);
+	ROTATE(4);
+	ROTATE(5);
+	ROTATE(6);
+	ROTATE(7);
+	ROTATE(8);
+	ROTATE(9);
+	ROTATE(10);
+	ROTATE(11);
+
+	draw_line(x1, y1, x2, y2, WHITE);
+	draw_line(x2, y2, x3, y3, WHITE);
+	draw_line(x3, y3, x4, y4, WHITE);
+	draw_line(x1, y1, x5, y5, WHITE);
+	draw_line(x5, y5, x4, y4, WHITE);
 	if(thrust){
-		draw_line(x6, y6, x7, y7,BLACK);
-		draw_line(x9, y9, x10, y10,BLACK);
-		draw_line(x6, y6, x8, y8,BLACK);
-		draw_line(x7, y7, x8, y8,BLACK);
-		draw_line(x9, y9, x11, y11,BLACK);
-		draw_line(x10, y10, x11, y11,BLACK);
+		draw_line(x6, y6, x7, y7,WHITE);
+		draw_line(x9, y9, x10, y10,WHITE);
+		draw_line(x6, y6, x8, y8,WHITE);
+		draw_line(x7, y7, x8, y8,WHITE);
+		draw_line(x9, y9, x11, y11,WHITE);
+		draw_line(x10, y10, x11, y11,WHITE);
 	}
 }

@@ -1,0 +1,25 @@
+!SESSION 2015-02-25 11:53:17.960 -----------------------------------------------
+eclipse.buildId=M20100909-0800
+java.version=1.6.0_23
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-02-25 11:55:06.170
+!MESSAGE Indexed 'legit_app' (3 sources, 66 headers) in 3.46 sec: 2,832 declarations; 2,974 references; 3 unresolved inclusions; 2 syntax errors; 9 unresolved names (0.15%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-02-25 11:55:22.660
+!MESSAGE Indexed 'legit_BSP' (78 sources, 120 headers) in 1.80 sec: 4,242 declarations; 5,956 references; 0 unresolved inclusions; 3 syntax errors; 10 unresolved names (0.10%)
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 11:55:55.300
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 11:55:58.542
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/our_shit/ECE5760Projects/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 12:06:27.134
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 12:06:30.316
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/our_shit/ECE5760Projects/legit_start/verilog/software/legit_app/legit_app.elf]

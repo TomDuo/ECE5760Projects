@@ -1,3 +1,4 @@
+Warning (10268): Verilog HDL information at LFSR_attack_decay.v(42): always construct contains both blocking and non-blocking assignments
 Warning (10037): Verilog HDL or VHDL warning at cpu.v(1501): conditional expression evaluates to a constant
 Warning (10037): Verilog HDL or VHDL warning at cpu.v(1503): conditional expression evaluates to a constant
 Warning (10037): Verilog HDL or VHDL warning at cpu.v(1659): conditional expression evaluates to a constant

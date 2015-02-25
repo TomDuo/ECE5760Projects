@@ -25,5 +25,14 @@ int main(void)
 	return 0;
 }
 
+/*
+ * TODO: char display overlay for meter and countdown etc
+ *  	 merge code and set pins for sound
+ *  	collision detection and check points
+ *  	crash handling and restart
+ *  	adjust parameters to follow the spec.
+ *
+ */
+
 
 

@@ -1,5 +1,5 @@
 Flow report for Example_4_Video_In
-Sun Feb 22 21:52:32 2015
+Tue Feb 24 22:36:50 2015
 Quartus II 64-Bit Version 11.0 Build 157 04/27/2011 SJ Full Version
 
 
@@ -38,7 +38,7 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------+
 ; Flow Summary                                                                   ;
 +------------------------------------+-------------------------------------------+
-; Flow Status                        ; Successful - Sun Feb 22 21:52:32 2015     ;
+; Flow Status                        ; Successful - Tue Feb 24 22:36:50 2015     ;
 ; Quartus II 64-Bit Version          ; 11.0 Build 157 04/27/2011 SJ Full Version ;
 ; Revision Name                      ; Example_4_Video_In                        ;
 ; Top-level Entity Name              ; Example_4_Video_In                        ;
@@ -62,7 +62,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 02/22/2015 21:50:44 ;
+; Start date & time ; 02/24/2015 22:35:26 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; Example_4_Video_In  ;
 +-------------------+---------------------+
@@ -73,7 +73,7 @@ applicable agreement for further details.
 +-------------------------------------+----------------------------------+---------------+-------------+----------------+
 ; Assignment Name                     ; Value                            ; Default Value ; Entity Name ; Section Id     ;
 +-------------------------------------+----------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 132683363511449.142465984403524  ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID               ; 132683363511538.142483532606796  ; --            ; --          ; --             ;
 ; PARTITION_COLOR                     ; 16764057                         ; --            ; --          ; Top            ;
 ; PARTITION_FITTER_PRESERVATION_LEVEL ; PLACEMENT_AND_ROUTING            ; --            ; --          ; Top            ;
 ; PARTITION_NETLIST_TYPE              ; SOURCE                           ; --            ; --          ; Top            ;
@@ -87,11 +87,11 @@ applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:39     ; 1.0                     ; 483 MB              ; 00:00:29                           ;
-; Fitter                    ; 00:00:45     ; 2.1                     ; 778 MB              ; 00:00:48                           ;
-; TimeQuest Timing Analyzer ; 00:00:13     ; 1.7                     ; 528 MB              ; 00:00:13                           ;
-; Assembler                 ; 00:00:11     ; 1.0                     ; 617 MB              ; 00:00:10                           ;
-; Total                     ; 00:01:48     ; --                      ; --                  ; 00:01:40                           ;
+; Analysis & Synthesis      ; 00:00:27     ; 1.0                     ; 483 MB              ; 00:00:27                           ;
+; Fitter                    ; 00:00:38     ; 2.3                     ; 779 MB              ; 00:00:48                           ;
+; Assembler                 ; 00:00:10     ; 1.0                     ; 617 MB              ; 00:00:10                           ;
+; TimeQuest Timing Analyzer ; 00:00:10     ; 2.2                     ; 528 MB              ; 00:00:12                           ;
+; Total                     ; 00:01:25     ; --                      ; --                  ; 00:01:37                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -100,10 +100,10 @@ applicable agreement for further details.
 +---------------------------+------------------+-----------+------------+----------------+
 ; Module Name               ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
 +---------------------------+------------------+-----------+------------+----------------+
-; Analysis & Synthesis      ; PH238-17         ; Windows 7 ; 6.1        ; x86_64         ;
-; Fitter                    ; PH238-17         ; Windows 7 ; 6.1        ; x86_64         ;
-; TimeQuest Timing Analyzer ; PH238-17         ; Windows 7 ; 6.1        ; x86_64         ;
-; Assembler                 ; PH238-17         ; Windows 7 ; 6.1        ; x86_64         ;
+; Analysis & Synthesis      ; PH238-07         ; Windows 7 ; 6.1        ; x86_64         ;
+; Fitter                    ; PH238-07         ; Windows 7 ; 6.1        ; x86_64         ;
+; Assembler                 ; PH238-07         ; Windows 7 ; 6.1        ; x86_64         ;
+; TimeQuest Timing Analyzer ; PH238-07         ; Windows 7 ; 6.1        ; x86_64         ;
 +---------------------------+------------------+-----------+------------+----------------+
 
 
@@ -112,8 +112,8 @@ applicable agreement for further details.
 ------------
 quartus_map --read_settings_files=on --write_settings_files=off Example_4_Video_In -c Example_4_Video_In
 quartus_fit --read_settings_files=off --write_settings_files=off Example_4_Video_In -c Example_4_Video_In
-quartus_sta Example_4_Video_In -c Example_4_Video_In
 quartus_asm --read_settings_files=off --write_settings_files=off Example_4_Video_In -c Example_4_Video_In
+quartus_sta Example_4_Video_In -c Example_4_Video_In
 
 
 

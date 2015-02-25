@@ -14,18 +14,13 @@ int main(void)
 	printf("HELLO\n");
 	init_pio();
 	/* draw a blue box approx in the middle of the screen */
- 	clear_screen();
- 	usleep(1000);
- 	draw_line(200, 400, 400, 400, 0xffff);
- 	draw_line(0, 300, 200, 400, 0xffff);
- 	draw_line(400, 400, 640, 200, 0xffff);
+ 	reset();
 
 	while(1)
 	{
 		x = (x < 640 ? x + 60 : 0);
-	 	draw_lander(x, 100, -270, 1);
+	 	draw_lander();
 	 	usleep(1000000);
-	 	erase_lander(x, 100, -270, 1);
 	}
 	return 0;
 }

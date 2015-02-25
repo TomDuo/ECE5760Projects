@@ -13,8 +13,9 @@
 
 void draw_box (int, int, int, int, short);
 void draw_surface(int x1, int y1, int x2, int y2);
-void clear_screen();
+void reset();
 void line_fast(int x1, int y1, int x2, int y2, short color);
 void draw_line(int x1, int y1, int x2, int y2, short color);
+void instruction(int inst);
 
 #endif /* DRAWING_H_ */

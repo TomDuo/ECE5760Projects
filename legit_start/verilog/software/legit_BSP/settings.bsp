@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Feb 22, 2015 10:17:32 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1424661452294</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Feb 24, 2015 10:46:41 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1424836001756</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\fei\legit_start\verilog\software\legit_BSP</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\Video_System.sopcinfo</SopcDesignFile>

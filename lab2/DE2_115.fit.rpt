@@ -1,5 +1,5 @@
 Fitter report for DE2_115
-Sat Feb 07 02:15:42 2015
+Tue Feb 24 22:33:00 2015
 Quartus II 64-Bit Version 11.0 Build 157 04/27/2011 SJ Full Version
 
 
@@ -74,7 +74,7 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------+
 ; Fitter Summary                                                                 ;
 +------------------------------------+-------------------------------------------+
-; Fitter Status                      ; Successful - Sat Feb 07 02:15:42 2015     ;
+; Fitter Status                      ; Successful - Tue Feb 24 22:33:00 2015     ;
 ; Quartus II 64-Bit Version          ; 11.0 Build 157 04/27/2011 SJ Full Version ;
 ; Revision Name                      ; DE2_115                                   ;
 ; Top-level Entity Name              ; DE2_115                                   ;
@@ -412,7 +412,7 @@ applicable agreement for further details.
 +--------------+
 ; Pin-Out File ;
 +--------------+
-The pin-out file can be found in C:/ECE5760Projects/lab2/DE2_115.pin.
+The pin-out file can be found in C:/fei/lab2/DE2_115.pin.
 
 
 +--------------------------------------------------------------------------------------------------+
@@ -3381,7 +3381,7 @@ This will disable optimization of problematic paths and expose them for further 
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Fitter
     Info: Version 11.0 Build 157 04/27/2011 SJ Full Version
-    Info: Processing started: Sat Feb 07 02:15:02 2015
+    Info: Processing started: Tue Feb 24 22:32:20 2015
 Info: Command: quartus_fit --read_settings_files=off --write_settings_files=off DE2_115 -c DE2_115
 Info: Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info: Selected device EP4CE115F29C7 for design "DE2_115"
@@ -3553,17 +3553,17 @@ Warning: Following 24 pins have no output enable or a GND or VCC output enable -
     Info: Pin SRAM_DQ[13] has a permanently disabled output enable
     Info: Pin SRAM_DQ[14] has a permanently disabled output enable
     Info: Pin SRAM_DQ[15] has a permanently disabled output enable
-Info: Generated suppressed messages file C:/ECE5760Projects/lab2/DE2_115.fit.smsg
+Info: Generated suppressed messages file C:/fei/lab2/DE2_115.fit.smsg
 Info: Quartus II 64-Bit Fitter was successful. 0 errors, 3 warnings
-    Info: Peak virtual memory: 780 megabytes
-    Info: Processing ended: Sat Feb 07 02:15:44 2015
+    Info: Peak virtual memory: 784 megabytes
+    Info: Processing ended: Tue Feb 24 22:33:02 2015
     Info: Elapsed time: 00:00:42
-    Info: Total CPU time (on all processors): 00:00:49
+    Info: Total CPU time (on all processors): 00:00:50
 
 
 +----------------------------+
 ; Fitter Suppressed Messages ;
 +----------------------------+
-The suppressed messages can be found in C:/ECE5760Projects/lab2/DE2_115.fit.smsg.
+The suppressed messages can be found in C:/fei/lab2/DE2_115.fit.smsg.
 
 

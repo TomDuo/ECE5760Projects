@@ -829,3 +829,414 @@ Command-line arguments:  -data C:\fei\legit_start\software -os win32 -ws win32 -
 
 !ENTRY org.eclipse.core.resources 4 567 2015-02-22 22:11:12.445
 !MESSAGE The project description file (.project) for 'legit_app' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.
+!SESSION 2015-02-24 22:42:25.129 -----------------------------------------------
+eclipse.buildId=M20100909-0800
+java.version=1.6.0_23
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-02-24 22:45:26.806
+!MESSAGE Indexed 'legit_BSP' (78 sources, 120 headers) in 4.10 sec: 4,242 declarations; 5,956 references; 0 unresolved inclusions; 3 syntax errors; 10 unresolved names (0.10%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-02-24 22:45:40.156
+!MESSAGE Indexed 'legit_app' (3 sources, 66 headers) in 0.40 sec: 2,838 declarations; 2,855 references; 3 unresolved inclusions; 2 syntax errors; 9 unresolved names (0.16%)
+
+!ENTRY com.altera.sbtgui.launch 4 0 2015-02-24 22:51:43.556
+!MESSAGE The system console model is invalid. Cannot launch.
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-24 22:56:43.880
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-24 22:56:46.752
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-24 22:57:22.465
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-24 22:57:24.565
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-24 22:57:27.477
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-24 22:58:00.330
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-24 22:58:02.450
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-24 22:58:05.312
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-24 22:58:38.575
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-24 22:58:40.875
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-24 22:58:43.767
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-24 23:00:56.190
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-24 23:00:58.480
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-24 23:01:01.342
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-24 23:03:26.515
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-24 23:03:28.875
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-24 23:03:31.787
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY org.eclipse.cdt.launch 4 150 2015-02-24 23:03:55.850
+!MESSAGE Error starting process.
+!STACK 0
+java.io.IOException: Cannot run program "C:\fei\legit_start\verilog\software\legit_app\legit_app.elf": Launching failed
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:297)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:88)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:89)
+	at org.eclipse.cdt.launch.internal.LocalCDILaunchDelegate.exec(LocalCDILaunchDelegate.java:381)
+	at org.eclipse.cdt.launch.internal.LocalCDILaunchDelegate.runLocalApplication(LocalCDILaunchDelegate.java:96)
+	at org.eclipse.cdt.launch.internal.LocalCDILaunchDelegate.launch(LocalCDILaunchDelegate.java:70)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:853)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:702)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:923)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1126)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.launch 4 150 2015-02-24 23:03:55.850
+!MESSAGE Cannot run program "C:\fei\legit_start\verilog\software\legit_app\legit_app.elf": Launching failed
+!STACK 0
+java.io.IOException: Cannot run program "C:\fei\legit_start\verilog\software\legit_app\legit_app.elf": Launching failed
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:297)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:88)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:89)
+	at org.eclipse.cdt.launch.internal.LocalCDILaunchDelegate.exec(LocalCDILaunchDelegate.java:381)
+	at org.eclipse.cdt.launch.internal.LocalCDILaunchDelegate.runLocalApplication(LocalCDILaunchDelegate.java:96)
+	at org.eclipse.cdt.launch.internal.LocalCDILaunchDelegate.launch(LocalCDILaunchDelegate.java:70)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:853)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:702)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:923)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1126)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-24 23:04:13.370
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-24 23:04:15.600
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-24 23:04:18.552
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-24 23:07:20.446
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-24 23:07:22.706
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-24 23:07:25.698
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY org.eclipse.cdt.launch 4 150 2015-02-24 23:08:54.331
+!MESSAGE Error starting process.
+!STACK 0
+java.io.IOException: Cannot run program "C:\fei\legit_start\verilog\software\legit_app\legit_app.elf": Launching failed
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:297)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:88)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:89)
+	at org.eclipse.cdt.launch.internal.LocalCDILaunchDelegate.exec(LocalCDILaunchDelegate.java:381)
+	at org.eclipse.cdt.launch.internal.LocalCDILaunchDelegate.runLocalApplication(LocalCDILaunchDelegate.java:96)
+	at org.eclipse.cdt.launch.internal.LocalCDILaunchDelegate.launch(LocalCDILaunchDelegate.java:70)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:853)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:702)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:923)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1126)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.launch 4 150 2015-02-24 23:08:54.331
+!MESSAGE Cannot run program "C:\fei\legit_start\verilog\software\legit_app\legit_app.elf": Launching failed
+!STACK 0
+java.io.IOException: Cannot run program "C:\fei\legit_start\verilog\software\legit_app\legit_app.elf": Launching failed
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:297)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:88)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:89)
+	at org.eclipse.cdt.launch.internal.LocalCDILaunchDelegate.exec(LocalCDILaunchDelegate.java:381)
+	at org.eclipse.cdt.launch.internal.LocalCDILaunchDelegate.runLocalApplication(LocalCDILaunchDelegate.java:96)
+	at org.eclipse.cdt.launch.internal.LocalCDILaunchDelegate.launch(LocalCDILaunchDelegate.java:70)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:853)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:702)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:923)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1126)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-24 23:09:01.101
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-24 23:09:03.511
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-24 23:09:06.513
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY org.eclipse.cdt.launch 4 150 2015-02-24 23:10:53.436
+!MESSAGE Error starting process.
+!STACK 0
+java.io.IOException: Cannot run program "C:\fei\legit_start\verilog\software\legit_app\legit_app.elf": Launching failed
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:297)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:88)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:89)
+	at org.eclipse.cdt.launch.internal.LocalCDILaunchDelegate.exec(LocalCDILaunchDelegate.java:381)
+	at org.eclipse.cdt.launch.internal.LocalCDILaunchDelegate.runLocalApplication(LocalCDILaunchDelegate.java:96)
+	at org.eclipse.cdt.launch.internal.LocalCDILaunchDelegate.launch(LocalCDILaunchDelegate.java:70)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:853)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:702)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:923)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1126)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.launch 4 150 2015-02-24 23:10:53.436
+!MESSAGE Cannot run program "C:\fei\legit_start\verilog\software\legit_app\legit_app.elf": Launching failed
+!STACK 0
+java.io.IOException: Cannot run program "C:\fei\legit_start\verilog\software\legit_app\legit_app.elf": Launching failed
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:297)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:88)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:89)
+	at org.eclipse.cdt.launch.internal.LocalCDILaunchDelegate.exec(LocalCDILaunchDelegate.java:381)
+	at org.eclipse.cdt.launch.internal.LocalCDILaunchDelegate.runLocalApplication(LocalCDILaunchDelegate.java:96)
+	at org.eclipse.cdt.launch.internal.LocalCDILaunchDelegate.launch(LocalCDILaunchDelegate.java:70)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:853)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:702)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:923)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1126)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-24 23:10:59.476
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-24 23:11:01.946
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-24 23:11:04.798
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY org.eclipse.cdt.launch 4 150 2015-02-24 23:12:22.011
+!MESSAGE Error starting process.
+!STACK 0
+java.io.IOException: Cannot run program "C:\fei\legit_start\verilog\software\legit_app\legit_app.elf": Launching failed
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:297)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:88)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:89)
+	at org.eclipse.cdt.launch.internal.LocalCDILaunchDelegate.exec(LocalCDILaunchDelegate.java:381)
+	at org.eclipse.cdt.launch.internal.LocalCDILaunchDelegate.runLocalApplication(LocalCDILaunchDelegate.java:96)
+	at org.eclipse.cdt.launch.internal.LocalCDILaunchDelegate.launch(LocalCDILaunchDelegate.java:70)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:853)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:702)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:923)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1126)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.launch 4 150 2015-02-24 23:12:22.011
+!MESSAGE Cannot run program "C:\fei\legit_start\verilog\software\legit_app\legit_app.elf": Launching failed
+!STACK 0
+java.io.IOException: Cannot run program "C:\fei\legit_start\verilog\software\legit_app\legit_app.elf": Launching failed
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:297)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:88)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:89)
+	at org.eclipse.cdt.launch.internal.LocalCDILaunchDelegate.exec(LocalCDILaunchDelegate.java:381)
+	at org.eclipse.cdt.launch.internal.LocalCDILaunchDelegate.runLocalApplication(LocalCDILaunchDelegate.java:96)
+	at org.eclipse.cdt.launch.internal.LocalCDILaunchDelegate.launch(LocalCDILaunchDelegate.java:70)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:853)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:702)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:923)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1126)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-24 23:12:26.901
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-24 23:12:29.211
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-24 23:12:32.083
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 01:20:32.106
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 01:20:34.346
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 01:20:37.388
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 01:24:20.211
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 01:24:22.391
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 01:24:25.063
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 01:25:52.837
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 01:25:55.067
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 01:25:57.949
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 01:28:13.022
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 01:28:15.402
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 01:28:18.274
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 01:29:00.277
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 01:29:02.797
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 01:29:05.639
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 01:29:31.412
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 01:29:33.842
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 01:29:36.844
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 01:34:18.398
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 01:34:20.698
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 01:34:23.390
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 01:35:17.363
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 01:35:19.763
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 01:35:22.575
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 01:36:14.888
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 01:36:17.208
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 01:36:20.080
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 01:37:56.054
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 01:37:58.434
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 01:38:01.366
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 01:40:59.389
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 01:41:01.559
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 01:41:04.521
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 01:43:39.784
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 01:43:42.074
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 01:43:45.026
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY org.eclipse.cdt.launch 4 150 2015-02-25 01:45:40.979
+!MESSAGE Error starting process.
+!STACK 0
+java.io.IOException: Cannot run program "C:\fei\legit_start\verilog\software\legit_app\legit_app.elf": Launching failed
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:297)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:88)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:89)
+	at org.eclipse.cdt.launch.internal.LocalCDILaunchDelegate.exec(LocalCDILaunchDelegate.java:381)
+	at org.eclipse.cdt.launch.internal.LocalCDILaunchDelegate.runLocalApplication(LocalCDILaunchDelegate.java:96)
+	at org.eclipse.cdt.launch.internal.LocalCDILaunchDelegate.launch(LocalCDILaunchDelegate.java:70)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:853)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:702)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:923)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1126)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.launch 4 150 2015-02-25 01:45:40.979
+!MESSAGE Cannot run program "C:\fei\legit_start\verilog\software\legit_app\legit_app.elf": Launching failed
+!STACK 0
+java.io.IOException: Cannot run program "C:\fei\legit_start\verilog\software\legit_app\legit_app.elf": Launching failed
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:297)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:88)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:89)
+	at org.eclipse.cdt.launch.internal.LocalCDILaunchDelegate.exec(LocalCDILaunchDelegate.java:381)
+	at org.eclipse.cdt.launch.internal.LocalCDILaunchDelegate.runLocalApplication(LocalCDILaunchDelegate.java:96)
+	at org.eclipse.cdt.launch.internal.LocalCDILaunchDelegate.launch(LocalCDILaunchDelegate.java:70)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:853)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:702)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:923)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1126)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 01:45:47.729
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 01:45:50.339
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 01:45:53.481
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 01:48:34.645
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 01:48:36.925
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 01:48:39.737
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 01:49:08.940
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 01:49:11.310
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 01:49:14.262
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/fei/legit_start/verilog/software/legit_app/legit_app.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 02:25:12.969
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 02:25:15.339
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-02-25 02:25:18.071
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/fei/legit_start/verilog/software/legit_app/legit_app.elf]

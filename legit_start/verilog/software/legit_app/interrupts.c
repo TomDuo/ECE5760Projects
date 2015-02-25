@@ -1,5 +1,6 @@
 #include "interrupts.h"
 #include <stdio.h>
+#include "drawing.h"
 
 /* A variable to hold the value of the button pio edge capture register. */
 volatile int edge_capture;
@@ -23,7 +24,7 @@ void handle_button_interrupts(void* context, alt_u32 id)
 		case 8: button_number = 3; break;
     }
 
-    printf("Button %d pressed\n", button_number);
+    instruction(button_number);
     /* Reset the Button's edge capture register. */
     IOWR_ALTERA_AVALON_PIO_EDGE_CAP(PIO_BASE, 0);
 }

@@ -1,5 +1,5 @@
 Assembler report for Example_4_Video_In
-Sun Feb 22 21:52:32 2015
+Tue Feb 24 22:36:50 2015
 Quartus II 64-Bit Version 11.0 Build 157 04/27/2011 SJ Full Version
 
 
@@ -39,7 +39,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Sun Feb 22 21:52:32 2015 ;
+; Assembler Status      ; Successful - Tue Feb 24 22:36:50 2015 ;
 ; Revision Name         ; Example_4_Video_In                    ;
 ; Top-level Entity Name ; Example_4_Video_In                    ;
 ; Family                ; Cyclone IV E                          ;
@@ -128,14 +128,14 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Assembler
     Info: Version 11.0 Build 157 04/27/2011 SJ Full Version
-    Info: Processing started: Sun Feb 22 21:52:21 2015
+    Info: Processing started: Tue Feb 24 22:36:40 2015
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off Example_4_Video_In -c Example_4_Video_In
 Info: Writing out detailed assembly data for power analysis
 Info: Assembler is generating device programming files
 Info: Quartus II 64-Bit Assembler was successful. 0 errors, 0 warnings
     Info: Peak virtual memory: 617 megabytes
-    Info: Processing ended: Sun Feb 22 21:52:32 2015
-    Info: Elapsed time: 00:00:11
+    Info: Processing ended: Tue Feb 24 22:36:50 2015
+    Info: Elapsed time: 00:00:10
     Info: Total CPU time (on all processors): 00:00:10
 
 

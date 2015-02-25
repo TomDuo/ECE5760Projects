@@ -4,6 +4,9 @@
 <scannerInfo id="org.eclipse.cdt.make.core.discoveredScannerInfo">
 <instance id="preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.1802798897;preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.1802798897.;cdt.managedbuild.tool.gnu.cpp.compiler.cygwin.base.925092005;cdt.managedbuild.tool.gnu.cpp.compiler.input.cygwin.1674275525">
 <collector id="org.eclipse.cdt.make.core.PerProjectSICollector">
+<includePath path="C:/fei/legit_start/verilog/software/legit_BSP/HAL/inc"/>
+<includePath path="C:/fei/legit_start/verilog/software/legit_BSP"/>
+<includePath path="C:/fei/legit_start/verilog/software/legit_BSP/drivers/inc"/>
 <includePath path="C:/sean_fei/legit_start/verilog/software/legit_BSP/HAL/inc"/>
 <includePath path="C:/sean_fei/legit_start/verilog/software/legit_BSP"/>
 <includePath path="C:/sean_fei/legit_start/verilog/software/legit_BSP/drivers/inc"/>
@@ -112,6 +115,9 @@
 </instance>
 <instance id="preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.1802798897;preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.1802798897.;cdt.managedbuild.tool.gnu.c.compiler.cygwin.base.1478134130;cdt.managedbuild.tool.gnu.c.compiler.input.cygwin.1080899476">
 <collector id="org.eclipse.cdt.make.core.PerProjectSICollector">
+<includePath path="C:/fei/legit_start/verilog/software/legit_BSP/HAL/inc"/>
+<includePath path="C:/fei/legit_start/verilog/software/legit_BSP"/>
+<includePath path="C:/fei/legit_start/verilog/software/legit_BSP/drivers/inc"/>
 <includePath path="C:/sean_fei/legit_start/verilog/software/legit_BSP/HAL/inc"/>
 <includePath path="C:/sean_fei/legit_start/verilog/software/legit_BSP"/>
 <includePath path="C:/sean_fei/legit_start/verilog/software/legit_BSP/drivers/inc"/>

@@ -21,7 +21,16 @@
 #define WHITE           0xFFFF      /* 255, 255, 255 */
 #define ORANGE          0xFD20      /* 255, 165,   0 */
 #define GreenYellow     0xAFE5      /* 173, 255,  47 */
-#define PINK                        0xF81F
+#define PINK            0xF81F
+
+#define TURN_DELTA 5
+
+int theta, delta_theta = 0;
+int fuel;
+int show_thrust;
+int x,y,vx, vy, ax, ay;
+int x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11 = 0;
+int y1, y2, y3, y4, y5, y6, y7, y8, y9, y10, y11 = 0;
 
 unsigned int cos_table[91] = {255, 255, 255, 255, 254, 254, 254, 253, 253, 252, 251,
 		250, 249, 248, 247, 246, 245, 244, 243, 241, 240, 238, 236, 235, 233,
@@ -55,11 +64,14 @@ int cos(int theta_raw, int a){
 
 	if (theta_raw < 0){
 		theta = (unsigned int)(-theta_raw);
+	} else {
+		theta = (unsigned int)theta_raw;
 	}
 
 	INPUT_ABS(a);
 
 	theta = theta % 365;
+
 	if(theta > 180){
 		theta = 360 - theta;
 	}
@@ -68,6 +80,7 @@ int cos(int theta_raw, int a){
 		sign = -sign;
 		theta = 180 - theta;
 	}
+
 	result_abs = cos_table[theta] * input >> 8;
 	//printf("%dcos(%d)=%d * %d\n", input, theta, result_abs, sign);
 	return (int)result_abs * sign;
@@ -82,6 +95,8 @@ int sin(int theta_raw, int a){
 	if (theta_raw < 0){
 		theta = (unsigned int)(-theta_raw);
 		sign = -sign;
+	} else {
+		theta = (unsigned int)theta_raw;
 	}
 
 	INPUT_ABS(a);
@@ -173,6 +188,49 @@ void draw_box(int x1, int y1, int x2, int y2, short pixel_color)
 	}
 }
 
+/* ============== Draw Logic ================= */
+void update_params(){
+	vx += ax;
+	vy += ay;
+	ax = 0;
+	ay = 10;
+	x += vx;
+	y += vy;
+	theta += delta_theta;
+	delta_theta = 0;
+}
+
+void crash(){
+	printf("crashed!!!!!");
+}
+
+void success(){
+	printf("win!!!");
+}
+
+void check_status(){
+	int i;
+	int x_arr[] = {x1, x2, x3};
+	int y_arr[] = {y1, y2, y3};
+	//check if crashed
+	if (x<0 || y<0 || x > 640 || y > 480){
+		crash();
+		return;
+	}
+	for (i = 1; i++; i<=11){
+		if (x_arr[i] < 200){
+			2*x_arr[i] + 3*(y_arr[i] - 200) < 2*(300 + 200);
+			crash();
+			return;
+		}
+	}
+
+
+ 	//draw_line(200, 400, 400, 400, 0xffff);
+ 	//draw_line(0, 300, 200, 400, 0xffff);
+ 	//draw_line(400, 400, 640, 200, 0xffff);
+}
+
 void rotate(int cx, int cy, int* x, int* y, unsigned int theta)
 {
 	int res_x;
@@ -188,128 +246,164 @@ void rotate(int cx, int cy, int* x, int* y, unsigned int theta)
 }
 
 #define ROTATE(n) rotate(x, y, &(x##n), &(y##n), theta)
-
-void draw_lander(int x, int y, int theta, int thrust)
+void draw_lander()
 {
-	int x1 = x - (3<<3);
-	int y1 = y;
-	int x2 = x - (3<<3);
-	int y2 = y + (5<<3);
-	int x3 = x + (3<<3);
-	int y3 = y + (5<<3);
-	int x4 = x + (3<<3);
-	int y4 = y;
-	int x5 = x;
-	int y5 = y - (4<<3);
-
-	int x6 = x - (1<<3);
-	int y6 = y + (6<<3);
-	int x7 = x - (3<<3);
-	int y7 = y6;
-	int x8 = x - (2<<3);
-	int y8 = y + (9<<3);
-
-	int x9 = x + (1<<3);
-	int y9 = y6;
-	int x10 = x + (3<<3);
-	int y10 = y6;
-	int x11 = x + (2<<3);
-	int y11 = y8;
-/*
-	//clean and legit
-	draw_line(x1, y1, x2, y2, RED);
-	draw_line(x2, y2, x3, y3,RED);
-	draw_line(x3, y3, x4, y4,RED);
-	draw_line(x1, y1, x5, y5,RED);
-	draw_line(x5, y5, x4, y4,RED);
-
-	if(thrust){
-		draw_line(x6, y6, x7, y7,CYAN);
-		draw_line(x9, y9, x10, y10,CYAN);
-		draw_line(x6, y6, x8, y8,CYAN);
-		draw_line(x7, y7, x8, y8,CYAN);
-		draw_line(x9, y9, x11, y11,CYAN);
-		draw_line(x10, y10, x11, y11,CYAN);
-	}
-*/
-	ROTATE(1);
-	ROTATE(2);
-	ROTATE(3);
-	ROTATE(4);
-	ROTATE(5);
-	ROTATE(6);
-	ROTATE(7);
-	ROTATE(8);
-	ROTATE(9);
-	ROTATE(10);
-	ROTATE(11);
-
-	draw_line(x1, y1, x2, y2, BLUE);
-	draw_line(x2, y2, x3, y3, BLUE);
-	draw_line(x3, y3, x4, y4, BLUE);
-	draw_line(x1, y1, x5, y5, BLUE);
-	draw_line(x5, y5, x4, y4, BLUE);
-	if(thrust){
-		draw_line(x6, y6, x7, y7,YELLOW);
-		draw_line(x9, y9, x10, y10,YELLOW);
-		draw_line(x6, y6, x8, y8,YELLOW);
-		draw_line(x7, y7, x8, y8,YELLOW);
-		draw_line(x9, y9, x11, y11,YELLOW);
-		draw_line(x10, y10, x11, y11,YELLOW);
-	}
-
-}
-
-void erase_lander(int x, int y, int theta, int thrust)
-{
-	int x1 = x - (3<<3);
-	int y1 = y;
-	int x2 = x - (3<<3);
-	int y2 = y + (5<<3);
-	int x3 = x + (3<<3);
-	int y3 = y + (5<<3);
-	int x4 = x + (3<<3);
-	int y4 = y;
-	int x5 = x;
-	int y5 = y - (4<<3);
-
-	int x6 = x - (1<<3);
-	int y6 = y + (6<<3);
-	int x7 = x - (3<<3);
-	int y7 = y6;
-	int x8 = x - (2<<3);
-	int y8 = y + (9<<3);
-
-	int x9 = x + (1<<3);
-	int y9 = y6;
-	int x10 = x + (3<<3);
-	int y10 = y6;
-	int x11 = x + (2<<3);
-	int y11 = y8;
+	// Cleaning last frame
+	x1 = x - (3<<1);
+	y1 = y;
+	x2 = x - (3<<1);
+	y2 = y + (5<<1);
+	x3 = x + (3<<1);
+	y3 = y + (5<<1);
+	x4 = x + (3<<1);
+	y4 = y;
+	x5 = x;
+	y5 = y - (4<<1);
 
 	ROTATE(1);
 	ROTATE(2);
 	ROTATE(3);
 	ROTATE(4);
 	ROTATE(5);
-	ROTATE(6);
-	ROTATE(7);
-	ROTATE(8);
-	ROTATE(9);
-	ROTATE(10);
-	ROTATE(11);
 
 	draw_line(x1, y1, x2, y2, WHITE);
 	draw_line(x2, y2, x3, y3, WHITE);
 	draw_line(x3, y3, x4, y4, WHITE);
 	draw_line(x1, y1, x5, y5, WHITE);
 	draw_line(x5, y5, x4, y4, WHITE);
-	if(thrust){
+	if(show_thrust){
+		x6 = x - (1<<1);
+		y6 = y + (6<<1);
+		x7 = x - (3<<1);
+		y7 = y6;
+		x8 = x - (2<<1);
+		y8 = y + (9<<1);
+
+		x9 = x + (1<<1);
+		y9 = y6;
+		x10 = x + (3<<1);
+		y10 = y6;
+		x11 = x + (2<<1);
+		y11 = y8;
+		ROTATE(6);
+		ROTATE(7);
+		ROTATE(8);
+		ROTATE(9);
+		ROTATE(10);
+		ROTATE(11);
 		draw_line(x6, y6, x7, y7,WHITE);
 		draw_line(x9, y9, x10, y10,WHITE);
 		draw_line(x6, y6, x8, y8,WHITE);
 		draw_line(x7, y7, x8, y8,WHITE);
 		draw_line(x9, y9, x11, y11,WHITE);
 		draw_line(x10, y10, x11, y11,WHITE);
+	}
+
+	check_status();
+	update_params();
+	// Drawing new frame
+	x1 = x - (3<<1);
+	y1 = y;
+	x2 = x - (3<<1);
+	y2 = y + (5<<1);
+	x3 = x + (3<<1);
+	y3 = y + (5<<1);
+	x4 = x + (3<<1);
+	y4 = y;
+	x5 = x;
+	y5 = y - (4<<1);
+	ROTATE(1);
+	ROTATE(2);
+	ROTATE(3);
+	ROTATE(4);
+	ROTATE(5);
+
+	draw_line(x1, y1, x2, y2, BLUE);
+	draw_line(x2, y2, x3, y3, BLUE);
+	draw_line(x3, y3, x4, y4, BLUE);
+	draw_line(x1, y1, x5, y5, BLUE);
+	draw_line(x5, y5, x4, y4, BLUE);
+	if(show_thrust){
+		x6 = x - (1<<1);
+		y6 = y + (6<<1);
+		x7 = x - (3<<1);
+		y7 = y6;
+		x8 = x - (2<<1);
+		y8 = y + (9<<1);
+
+		x9 = x + (1<<1);
+		y9 = y6;
+		x10 = x + (3<<1);
+		y10 = y6;
+		x11 = x + (2<<1);
+		y11 = y8;
+		ROTATE(6);
+		ROTATE(7);
+		ROTATE(8);
+		ROTATE(9);
+		ROTATE(10);
+		ROTATE(11);
+		draw_line(x6, y6, x7, y7,YELLOW);
+		draw_line(x9, y9, x10, y10,YELLOW);
+		draw_line(x6, y6, x8, y8,YELLOW);
+		draw_line(x7, y7, x8, y8,YELLOW);
+		draw_line(x9, y9, x11, y11,YELLOW);
+		draw_line(x10, y10, x11, y11,YELLOW);
+
+		show_thrust--;
+	}
+
+}
+
+/* ============== Control Logic ================= */
+void reset(){
+	x = 0;
+	y = 0;
+	vx = 5;
+	vy = 0;
+	ax = 0;
+	ay = 10;
+	theta = 90;
+	delta_theta = 0;
+	fuel = 10;
+	show_thrust = 0;
+
+	clear_screen();
+ 	draw_line(200, 400, 400, 400, 0xffff);
+ 	draw_line(0, 300, 200, 400, 0xffff);
+ 	draw_line(400, 400, 640, 200, 0xffff);
+	printf("reset!\n");
+}
+
+// dir = 1: left
+// dir = 0: right
+void turn(short dir){
+	if (dir){
+		delta_theta += TURN_DELTA;
+		printf("left!\n");
+	} else {
+		delta_theta -= TURN_DELTA;
+		printf("right!\n");
+	}
+}
+
+void thrust(){
+	if (!fuel){
+		printf("out of fuel!!\n");
+		return;
+	}
+	show_thrust += 2;
+	ax += sin(theta, 20);
+	ay -= cos(theta, 20);
+	fuel--;
+	printf("fuel is now down to %d\n", fuel);
+}
+
+void instruction(int inst){
+	switch (inst){
+		case 0: reset(); break;
+		case 1: turn(1); break;
+		case 2: turn(0); break;
+		case 3: thrust(); break;
 	}
 }

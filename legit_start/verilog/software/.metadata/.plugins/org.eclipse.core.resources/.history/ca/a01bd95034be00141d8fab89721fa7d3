@@ -1,0 +1,475 @@
+
+#include "drawing.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <system.h>
+
+#define BLACK           0x0000      /*   0,   0,   0 */
+#define NAVY            0x000F      /*   0,   0, 128 */
+#define DarkGreen       0x03E0      /*   0, 128,   0 */
+#define DarkCyan        0x03EF      /*   0, 128, 128 */
+#define MAROON          0x7800      /* 128,   0,   0 */
+#define PURPLE          0x780F      /* 128,   0, 128 */
+#define OLIVE           0x7BE0      /* 128, 128,   0 */
+#define LightGrey       0xC618      /* 192, 192, 192 */
+#define DarkGrey        0x7BEF      /* 128, 128, 128 */
+#define BLUE            0x001F      /*   0,   0, 255 */
+#define GREEN           0x07E0      /*   0, 255,   0 */
+#define CYAN            0x07FF      /*   0, 255, 255 */
+#define RED             0xF800      /* 255,   0,   0 */
+#define MAGENTA         0xF81F      /* 255,   0, 255 */
+#define YELLOW          0xFFE0      /* 255, 255,   0 */
+#define WHITE           0xFFFF      /* 255, 255, 255 */
+#define ORANGE          0xFD20      /* 255, 165,   0 */
+#define GreenYellow     0xAFE5      /* 173, 255,  47 */
+#define PINK            0xF81F
+
+#define TURN_DELTA 10
+
+int theta, delta_theta = 0;
+int fuel;
+int show_thrust;
+int x,y,vx, vy, ax, ay;
+int x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11 = 0;
+int y1, y2, y3, y4, y5, y6, y7, y8, y9, y10, y11 = 0;
+
+unsigned int cos_table[91] = {255, 255, 255, 255, 254, 254, 254, 253, 253, 252, 251,
+		250, 249, 248, 247, 246, 245, 244, 243, 241, 240, 238, 236, 235, 233,
+		231, 229, 227, 225, 223, 221, 219, 216, 214, 211, 209, 206, 204, 201,
+		198, 195, 192, 190, 186, 183, 180, 177, 174, 171, 167, 164, 160, 157,
+		153, 150, 146, 143, 139, 135, 131, 128, 124, 120, 116, 112, 108, 104,
+		100, 96, 91, 87, 83, 79, 75, 70, 66, 62, 57, 53, 49, 44, 40, 35, 31,
+		27, 22, 18, 13, 9, 4, 0};
+unsigned int sin_table[91] = {0, 4, 9, 13, 18, 22, 27, 31, 35, 40, 44, 49, 53, 57, 62,
+		66, 70, 75, 79, 83, 87, 91, 96, 100, 104, 108, 112, 116, 120, 124, 128,
+		131, 135, 139, 143, 146, 150, 153, 157, 160, 164, 167, 171, 174, 177,
+		180, 183, 186, 190, 192, 195, 198, 201, 204, 206, 209, 211, 214, 216,
+		219, 221, 223, 225, 227, 229, 231, 233, 235, 236, 238, 240, 241, 243,
+		244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 253, 254, 254, 254,
+		255, 255, 255, 255};
+
+#define INPUT_ABS(a) do { \
+			if (a < 0){ \
+				input = (unsigned int)(-a); \
+				sign = -sign; \
+			} else { \
+				input = (unsigned int)a; \
+			} \
+		} while(0)
+
+int cos(int theta_raw, int a){
+	unsigned int result_abs;
+	unsigned int theta;
+	unsigned int input;
+	signed short sign = 1;
+
+	if (theta_raw < 0){
+		theta = (unsigned int)(-theta_raw);
+	} else {
+		theta = (unsigned int)theta_raw;
+	}
+
+	INPUT_ABS(a);
+
+	theta = theta % 365;
+
+	if(theta > 180){
+		theta = 360 - theta;
+	}
+
+	if (theta > 90) {
+		sign = -sign;
+		theta = 180 - theta;
+	}
+
+	result_abs = cos_table[theta] * input >> 8;
+	//printf("%dcos(%d)=%d * %d\n", input, theta, result_abs, sign);
+	return (int)result_abs * sign;
+}
+
+int sin(int theta_raw, int a){
+	unsigned int result_abs;
+	unsigned int theta;
+	unsigned int input;
+	signed short sign = 1;
+
+	if (theta_raw < 0){
+		theta = (unsigned int)(-theta_raw);
+		sign = -sign;
+	} else {
+		theta = (unsigned int)theta_raw;
+	}
+
+	INPUT_ABS(a);
+
+	theta = theta % 365;
+	if(theta > 180){
+		sign = -sign;
+		theta = theta - 180;
+	}
+
+	if (theta > 90) {
+		theta = 180 - theta;
+	}
+	result_abs = sin_table[theta] * input >> 8;
+	//printf("%dsin%d=%d * %d\n", input, theta, result_abs, sign);
+	return (int)result_abs * sign;
+}
+
+void draw_line(int x1, int y1, int x2, int y2, short color)
+{
+  int i,dx,dy,sdx,sdy,dxabs,dyabs,x,y,px,py;
+  volatile short* VGA = (short*)0;
+
+  dx=x2-x1;      /* the horizontal distance of the line */
+  dy=y2-y1;      /* the vertical distance of the line */
+  dxabs=abs(dx);
+  dyabs=abs(dy);
+  sdx=sgn(dx);
+  sdy=sgn(dy);
+  x=dyabs>>1;
+  y=dxabs>>1;
+  px=x1;
+  py=y1;
+
+  VGA[(py << 10) + px]=color;
+
+  if (dxabs>=dyabs) /* the line is more horizontal than vertical */
+  {
+    for(i=0;i<dxabs;i++)
+    {
+      y+=dyabs;
+      if (y>=dxabs)
+      {
+        y-=dxabs;
+        py+=sdy;
+      }
+      px+=sdx;
+      VGA[(py << 10) + px]=color;
+    }
+  }
+  else /* the line is more vertical than horizontal */
+  {
+    for(i=0;i<dyabs;i++)
+    {
+      x+=dxabs;
+      if (x>=dyabs)
+      {
+        x-=dyabs;
+        px+=sdx;
+      }
+      py+=sdy;
+      VGA[(py << 10) + px]=color;
+    }
+  }
+}
+void clear_text()
+{
+	int char_x, char_y;
+	for (char_x = 0; char_x < 80; ++char_x)
+	{
+		for (char_y = 0; char_y < 60; ++char_y)
+		{
+			VGA_text(char_x, char_y, " ");
+		}
+	}
+}
+
+void clear_screen()
+{
+
+	clear_text();
+	draw_box(0,0,640,480, 0x0000);
+	draw_box(495,400,605,420, GreenYellow);
+}
+
+
+void draw_box(int x1, int y1, int x2, int y2, short pixel_color)
+{
+	int offset, row, col;
+	/* Declare volatile pointer to pixel buffer (volatile means that IO load
+	   and store instructions will be used to access these pointer locations,
+	   instead of regular memory loads and stores) */
+  	volatile short * pixel_buffer = (short *) 0x00000000;	// VGA pixel buffer address
+
+	/* assume that the box coordinates are valid */
+	for (row = y1; row < y2; ++row)
+	{
+		for(col = x1; col < x2; ++col)
+		{
+			offset = (row << 10) + col;
+			*(pixel_buffer + offset) = pixel_color;	// compute halfword address, set pixel
+		}
+	}
+}
+
+/* ============== Draw Logic ================= */
+
+/****************************************************************************************
+ * Subroutine to send a string of text to the VGA monitor
+****************************************************************************************/
+void VGA_text(int x, int y, char * text_ptr)
+{
+	int offset;
+	/* Declare volatile pointer to char buffer (volatile means that IO load
+	   and store instructions will be used to access these pointer locations,
+	   instead of regular memory loads and stores) */
+  	volatile char * character_buffer = (char *) VIDEO_CHARACTER_BUFFER_WITH_DMA_0_AVALON_CHAR_BUFFER_SLAVE_BASE;	// VGA character buffer
+
+	/* assume that the text string fits on one line */
+	offset = (y << 7) + x;
+	while ( *(text_ptr) )
+	{
+		*(character_buffer + offset) = *(text_ptr);	// write to the character buffer
+		++text_ptr;
+		++offset;
+	}
+}
+
+void update_params(){
+	vx += (ax>>3);
+	vy += (ay>>3);
+	ax = 0;
+	ay = 10;
+	x += (vx>>3);
+	y += (vy>>3);
+	theta += delta_theta;
+	delta_theta = 0;
+}
+
+void crash(){
+	printf("crashed!!!!!");
+	*(int*)0x303000=0x1;
+ 	usleep(1000000);
+	reset();
+}
+
+void success(){
+	printf("win!!!");
+	*(int*)0x303000=0x2;
+ 	usleep(500000);
+	reset();
+}
+
+void check_status(){
+	int i=0;
+	int x_arr[] = {x1, x2, x3, x4, x5};
+	int y_arr[] = {y1, y2, y3, y4, y5};
+	//check if crashed
+	if (x<0 || y<0 || x > 640 || y > 480){
+		crash();
+	}
+	for (i = 0; i<5; i++){
+		if (x_arr[i] < 300 &&
+				 2*y_arr[i]- x_arr[i] > 2* 300){
+			crash();
+			return;
+		} else if (x_arr[i] > 400 &&
+				y_arr[i] + x_arr[i] > 800){
+			crash();
+			return;
+		} else {
+			if(y_arr[i] >= 400){
+				if(vx < 10 && vx >-10 && vy < 10 && vy > -10){
+					success();
+					return;
+				} else {
+					crash();
+					return;
+				}
+			}
+		}
+	}
+ 	//draw_line(200, 400, 400, 400, 0xffff);
+ 	//draw_line(0, 300, 200, 400, 0xffff);
+ 	//draw_line(400, 400, 640, 200, 0xffff);
+}
+
+void rotate(int cx, int cy, int* x, int* y, unsigned int theta)
+{
+	int res_x;
+	int res_y;
+	*x -= cx;
+	*y -= cy;
+	//printf("cx=%d cy=%d x' =%d y'=%d ", cx, cy, *x, *y);
+	res_x = cx + cos(theta, *x) - sin(theta, *y);
+	res_y = cy + sin(theta, *x) + cos(theta, *y);
+	*x = res_x;
+	*y = res_y;
+	//printf("x'' =%d y''=%d ",*x, *y);
+}
+
+#define ROTATE(n) rotate(x, y, &(x##n), &(y##n), theta)
+void draw_lander()
+{
+	char clock[40];
+	sprintf(clock, "Time: %d   \0", count);
+	VGA_text (10, 50, clock);
+	// Cleaning last frame
+	x1 = x - (3<<1);
+	y1 = y;
+	x2 = x - (3<<1);
+	y2 = y + (5<<1);
+	x3 = x + (3<<1);
+	y3 = y + (5<<1);
+	x4 = x + (3<<1);
+	y4 = y;
+	x5 = x;
+	y5 = y - (4<<1);
+
+	ROTATE(1);
+	ROTATE(2);
+	ROTATE(3);
+	ROTATE(4);
+	ROTATE(5);
+
+	draw_line(x1, y1, x2, y2, BLACK);
+	draw_line(x2, y2, x3, y3, BLACK);
+	draw_line(x3, y3, x4, y4, BLACK);
+	draw_line(x1, y1, x5, y5, BLACK);
+	draw_line(x5, y5, x4, y4, BLACK);
+	if(show_thrust){
+		x6 = x - (1<<1);
+		y6 = y + (6<<1);
+		x7 = x - (3<<1);
+		y7 = y6;
+		x8 = x - (2<<1);
+		y8 = y + (9<<1);
+
+		x9 = x + (1<<1);
+		y9 = y6;
+		x10 = x + (3<<1);
+		y10 = y6;
+		x11 = x + (2<<1);
+		y11 = y8;
+		ROTATE(6);
+		ROTATE(7);
+		ROTATE(8);
+		ROTATE(9);
+		ROTATE(10);
+		ROTATE(11);
+		draw_line(x6, y6, x7, y7,BLACK);
+		draw_line(x9, y9, x10, y10,BLACK);
+		draw_line(x6, y6, x8, y8,BLACK);
+		draw_line(x7, y7, x8, y8,BLACK);
+		draw_line(x9, y9, x11, y11,BLACK);
+		draw_line(x10, y10, x11, y11,BLACK);
+
+		show_thrust--;
+	}
+
+	check_status();
+	update_params();
+	// Drawing new frame
+	x1 = x - (3<<1);
+	y1 = y;
+	x2 = x - (3<<1);
+	y2 = y + (5<<1);
+	x3 = x + (3<<1);
+	y3 = y + (5<<1);
+	x4 = x + (3<<1);
+	y4 = y;
+	x5 = x;
+	y5 = y - (4<<1);
+	ROTATE(1);
+	ROTATE(2);
+	ROTATE(3);
+	ROTATE(4);
+	ROTATE(5);
+
+	draw_line(x1, y1, x2, y2, RED);
+	draw_line(x2, y2, x3, y3, RED);
+	draw_line(x3, y3, x4, y4, RED);
+	draw_line(x1, y1, x5, y5, RED);
+	draw_line(x5, y5, x4, y4, RED);
+	if(show_thrust){
+		x6 = x - (1<<1);
+		y6 = y + (6<<1);
+		x7 = x - (3<<1);
+		y7 = y6;
+		x8 = x - (2<<1);
+		y8 = y + (9<<1);
+
+		x9 = x + (1<<1);
+		y9 = y6;
+		x10 = x + (3<<1);
+		y10 = y6;
+		x11 = x + (2<<1);
+		y11 = y8;
+		ROTATE(6);
+		ROTATE(7);
+		ROTATE(8);
+		ROTATE(9);
+		ROTATE(10);
+		ROTATE(11);
+		draw_line(x6, y6, x7, y7,YELLOW);
+		draw_line(x9, y9, x10, y10,YELLOW);
+		draw_line(x6, y6, x8, y8,YELLOW);
+		draw_line(x7, y7, x8, y8,YELLOW);
+		draw_line(x9, y9, x11, y11,YELLOW);
+		draw_line(x10, y10, x11, y11,YELLOW);
+
+	}
+}
+
+/* ============== Control Logic ================= */
+void reset(){
+	/* create a message to be displayed on the VGA display */
+	char fuel_text[40] = "Fuel Bar:   \0";
+	x = 0;
+	y = 0;
+	vx = 1<<3;
+	vy = 0;
+	ax = 0;
+	ay = 10;
+	theta = 90;
+	delta_theta = 0;
+	fuel = 50;
+	show_thrust = 0;
+
+	*(int*)SOUND_BASE=0x0;
+	clear_screen();
+
+ 	draw_line(200, 400, 400, 400, 0xffff);
+ 	draw_line(0, 300, 200, 400, 0xffff);
+ 	draw_line(400, 400, 640, 160, 0xffff);
+	printf("reset!\n");
+
+
+	/* output text message near the middle of the VGA monitor */
+	VGA_text (52, 50, fuel_text);
+}
+
+// dir = 1: left
+// dir = 0: right
+void turn(short dir){
+	if (dir){
+		delta_theta += TURN_DELTA;
+		printf("left!\n");
+	} else {
+		delta_theta -= TURN_DELTA;
+		printf("right!\n");
+	}
+}
+
+void thrust(){
+	if (!fuel){
+		printf("out of fuel!!\n");
+		return;
+	}
+	show_thrust += 3;
+	ax += sin(theta, 20<<2);
+	ay -= cos(theta, 20<<2);
+	fuel--;
+	draw_box(500,403,600 - fuel*2,417, BLACK);
+	printf("fuel is now down to %d\n", fuel);
+}
+
+void instruction(int inst){
+	switch (inst){
+		case 0: reset(); break;
+		case 1: turn(1); break;
+		case 2: turn(0); break;
+		case 3: thrust(); break;
+	}
+}

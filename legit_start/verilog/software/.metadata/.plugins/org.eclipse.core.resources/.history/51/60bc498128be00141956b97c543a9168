@@ -1,0 +1,59 @@
+#include <stdlib.h>
+#include <unistd.h>
+#include <stdio.h>
+#include "drawing.h"
+#include "interrupts.h"
+
+/* function prototypes */
+void VGA_text (int, int, char *);
+
+/********************************************************************************
+ * This program demonstrates use of pixel buffer. It Draws a blue box on the
+ * VGA display
+********************************************************************************/
+int main(void)
+{
+ 	int x = 0;
+	printf("HELLO\n");
+	init_pio();
+	/* draw a blue box approx in the middle of the screen */
+ 	reset();
+
+	while(1)
+	{
+		x = (x < 640 ? x + 60 : 0);
+	 	draw_lander();
+	 	usleep(50000);
+	}
+	return 0;
+}
+
+/****************************************************************************************
+ * Subroutine to send a string of text to the VGA monitor
+****************************************************************************************/
+void VGA_text(int x, int y, char * text_ptr)
+{
+	int offset;
+	/* Declare volatile pointer to char buffer (volatile means that IO load
+	   and store instructions will be used to access these pointer locations,
+	   instead of regular memory loads and stores) */
+  	volatile char * character_buffer = (char *) 0x00008000;	// VGA character buffer
+
+	/* assume that the text string fits on one line */
+	offset = (y << 7) + x;
+	while ( *(text_ptr) )
+	{
+		*(character_buffer + offset) = *(text_ptr);	// write to the character buffer
+		++text_ptr;
+		++offset;
+	}
+}
+/*
+ * TODO: char display overlay for meter and countdown etc
+ *  	adjust parameters to follow the spec.
+ *  copy the box of shit
+ *
+ */
+
+
+

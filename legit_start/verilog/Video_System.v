@@ -174,7 +174,7 @@ module CPU_jtag_debug_module_arbitrator (
   //assign CPU_jtag_debug_module_readdata_from_sa = CPU_jtag_debug_module_readdata so that symbol knows where to group signals which may go to master only, which is an e_assign
   assign CPU_jtag_debug_module_readdata_from_sa = CPU_jtag_debug_module_readdata;
 
-  assign CPU_data_master_requests_CPU_jtag_debug_module = ({CPU_data_master_address_to_slave[21 : 11] , 11'b0} == 22'h300800) & (CPU_data_master_read | CPU_data_master_write);
+  assign CPU_data_master_requests_CPU_jtag_debug_module = ({CPU_data_master_address_to_slave[21 : 11] , 11'b0} == 22'h302800) & (CPU_data_master_read | CPU_data_master_write);
   //CPU_jtag_debug_module_arb_share_counter set values, which is an e_mux
   assign CPU_jtag_debug_module_arb_share_set_values = 1;
 
@@ -261,7 +261,7 @@ module CPU_jtag_debug_module_arbitrator (
   //CPU_jtag_debug_module_writedata mux, which is an e_mux
   assign CPU_jtag_debug_module_writedata = CPU_data_master_writedata;
 
-  assign CPU_instruction_master_requests_CPU_jtag_debug_module = (({CPU_instruction_master_address_to_slave[21 : 11] , 11'b0} == 22'h300800) & (CPU_instruction_master_read)) & CPU_instruction_master_read;
+  assign CPU_instruction_master_requests_CPU_jtag_debug_module = (({CPU_instruction_master_address_to_slave[21 : 11] , 11'b0} == 22'h302800) & (CPU_instruction_master_read)) & CPU_instruction_master_read;
   //CPU/data_master granted CPU/jtag_debug_module last time, which is an e_register
   always @(posedge clk or negedge reset_n)
     begin
@@ -558,6 +558,7 @@ module CPU_data_master_arbitrator (
                                      CPU_data_master_address,
                                      CPU_data_master_byteenable_Pixel_Buffer_avalon_sram_slave,
                                      CPU_data_master_byteenable_Video_System_clock_0_in,
+                                     CPU_data_master_byteenable_video_character_buffer_with_dma_0_avalon_char_buffer_slave,
                                      CPU_data_master_granted_CPU_jtag_debug_module,
                                      CPU_data_master_granted_Onchip_Memory_s1,
                                      CPU_data_master_granted_Pixel_Buffer_DMA_avalon_control_slave,
@@ -566,6 +567,8 @@ module CPU_data_master_arbitrator (
                                      CPU_data_master_granted_Video_System_clock_1_in,
                                      CPU_data_master_granted_Video_System_clock_2_in,
                                      CPU_data_master_granted_Video_System_clock_3_in,
+                                     CPU_data_master_granted_video_character_buffer_with_dma_0_avalon_char_buffer_slave,
+                                     CPU_data_master_granted_video_character_buffer_with_dma_0_avalon_char_control_slave,
                                      CPU_data_master_qualified_request_CPU_jtag_debug_module,
                                      CPU_data_master_qualified_request_Onchip_Memory_s1,
                                      CPU_data_master_qualified_request_Pixel_Buffer_DMA_avalon_control_slave,
@@ -574,6 +577,8 @@ module CPU_data_master_arbitrator (
                                      CPU_data_master_qualified_request_Video_System_clock_1_in,
                                      CPU_data_master_qualified_request_Video_System_clock_2_in,
                                      CPU_data_master_qualified_request_Video_System_clock_3_in,
+                                     CPU_data_master_qualified_request_video_character_buffer_with_dma_0_avalon_char_buffer_slave,
+                                     CPU_data_master_qualified_request_video_character_buffer_with_dma_0_avalon_char_control_slave,
                                      CPU_data_master_read,
                                      CPU_data_master_read_data_valid_CPU_jtag_debug_module,
                                      CPU_data_master_read_data_valid_Onchip_Memory_s1,
@@ -584,6 +589,8 @@ module CPU_data_master_arbitrator (
                                      CPU_data_master_read_data_valid_Video_System_clock_1_in,
                                      CPU_data_master_read_data_valid_Video_System_clock_2_in,
                                      CPU_data_master_read_data_valid_Video_System_clock_3_in,
+                                     CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_buffer_slave,
+                                     CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_control_slave,
                                      CPU_data_master_requests_CPU_jtag_debug_module,
                                      CPU_data_master_requests_Onchip_Memory_s1,
                                      CPU_data_master_requests_Pixel_Buffer_DMA_avalon_control_slave,
@@ -592,6 +599,8 @@ module CPU_data_master_arbitrator (
                                      CPU_data_master_requests_Video_System_clock_1_in,
                                      CPU_data_master_requests_Video_System_clock_2_in,
                                      CPU_data_master_requests_Video_System_clock_3_in,
+                                     CPU_data_master_requests_video_character_buffer_with_dma_0_avalon_char_buffer_slave,
+                                     CPU_data_master_requests_video_character_buffer_with_dma_0_avalon_char_control_slave,
                                      CPU_data_master_write,
                                      CPU_data_master_writedata,
                                      CPU_jtag_debug_module_readdata_from_sa,
@@ -615,13 +624,20 @@ module CPU_data_master_arbitrator (
                                      d1_Video_System_clock_1_in_end_xfer,
                                      d1_Video_System_clock_2_in_end_xfer,
                                      d1_Video_System_clock_3_in_end_xfer,
+                                     d1_video_character_buffer_with_dma_0_avalon_char_buffer_slave_end_xfer,
+                                     d1_video_character_buffer_with_dma_0_avalon_char_control_slave_end_xfer,
                                      jtag_uart_0_avalon_jtag_slave_irq_from_sa,
                                      pio_0_s1_irq_from_sa,
                                      registered_CPU_data_master_read_data_valid_Onchip_Memory_s1,
                                      registered_CPU_data_master_read_data_valid_Pixel_Buffer_DMA_avalon_control_slave,
+                                     registered_CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_buffer_slave,
+                                     registered_CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_control_slave,
                                      reset_n,
                                      sys_clk,
                                      sys_clk_reset_n,
+                                     video_character_buffer_with_dma_0_avalon_char_buffer_slave_readdata_from_sa,
+                                     video_character_buffer_with_dma_0_avalon_char_buffer_slave_waitrequest_from_sa,
+                                     video_character_buffer_with_dma_0_avalon_char_control_slave_readdata_from_sa,
 
                                     // outputs:
                                      CPU_data_master_address_to_slave,
@@ -646,6 +662,7 @@ module CPU_data_master_arbitrator (
   input   [ 21: 0] CPU_data_master_address;
   input   [  1: 0] CPU_data_master_byteenable_Pixel_Buffer_avalon_sram_slave;
   input            CPU_data_master_byteenable_Video_System_clock_0_in;
+  input            CPU_data_master_byteenable_video_character_buffer_with_dma_0_avalon_char_buffer_slave;
   input            CPU_data_master_granted_CPU_jtag_debug_module;
   input            CPU_data_master_granted_Onchip_Memory_s1;
   input            CPU_data_master_granted_Pixel_Buffer_DMA_avalon_control_slave;
@@ -654,6 +671,8 @@ module CPU_data_master_arbitrator (
   input            CPU_data_master_granted_Video_System_clock_1_in;
   input            CPU_data_master_granted_Video_System_clock_2_in;
   input            CPU_data_master_granted_Video_System_clock_3_in;
+  input            CPU_data_master_granted_video_character_buffer_with_dma_0_avalon_char_buffer_slave;
+  input            CPU_data_master_granted_video_character_buffer_with_dma_0_avalon_char_control_slave;
   input            CPU_data_master_qualified_request_CPU_jtag_debug_module;
   input            CPU_data_master_qualified_request_Onchip_Memory_s1;
   input            CPU_data_master_qualified_request_Pixel_Buffer_DMA_avalon_control_slave;
@@ -662,6 +681,8 @@ module CPU_data_master_arbitrator (
   input            CPU_data_master_qualified_request_Video_System_clock_1_in;
   input            CPU_data_master_qualified_request_Video_System_clock_2_in;
   input            CPU_data_master_qualified_request_Video_System_clock_3_in;
+  input            CPU_data_master_qualified_request_video_character_buffer_with_dma_0_avalon_char_buffer_slave;
+  input            CPU_data_master_qualified_request_video_character_buffer_with_dma_0_avalon_char_control_slave;
   input            CPU_data_master_read;
   input            CPU_data_master_read_data_valid_CPU_jtag_debug_module;
   input            CPU_data_master_read_data_valid_Onchip_Memory_s1;
@@ -672,6 +693,8 @@ module CPU_data_master_arbitrator (
   input            CPU_data_master_read_data_valid_Video_System_clock_1_in;
   input            CPU_data_master_read_data_valid_Video_System_clock_2_in;
   input            CPU_data_master_read_data_valid_Video_System_clock_3_in;
+  input            CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_buffer_slave;
+  input            CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_control_slave;
   input            CPU_data_master_requests_CPU_jtag_debug_module;
   input            CPU_data_master_requests_Onchip_Memory_s1;
   input            CPU_data_master_requests_Pixel_Buffer_DMA_avalon_control_slave;
@@ -680,6 +703,8 @@ module CPU_data_master_arbitrator (
   input            CPU_data_master_requests_Video_System_clock_1_in;
   input            CPU_data_master_requests_Video_System_clock_2_in;
   input            CPU_data_master_requests_Video_System_clock_3_in;
+  input            CPU_data_master_requests_video_character_buffer_with_dma_0_avalon_char_buffer_slave;
+  input            CPU_data_master_requests_video_character_buffer_with_dma_0_avalon_char_control_slave;
   input            CPU_data_master_write;
   input   [ 31: 0] CPU_data_master_writedata;
   input   [ 31: 0] CPU_jtag_debug_module_readdata_from_sa;
@@ -703,13 +728,20 @@ module CPU_data_master_arbitrator (
   input            d1_Video_System_clock_1_in_end_xfer;
   input            d1_Video_System_clock_2_in_end_xfer;
   input            d1_Video_System_clock_3_in_end_xfer;
+  input            d1_video_character_buffer_with_dma_0_avalon_char_buffer_slave_end_xfer;
+  input            d1_video_character_buffer_with_dma_0_avalon_char_control_slave_end_xfer;
   input            jtag_uart_0_avalon_jtag_slave_irq_from_sa;
   input            pio_0_s1_irq_from_sa;
   input            registered_CPU_data_master_read_data_valid_Onchip_Memory_s1;
   input            registered_CPU_data_master_read_data_valid_Pixel_Buffer_DMA_avalon_control_slave;
+  input            registered_CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_buffer_slave;
+  input            registered_CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_control_slave;
   input            reset_n;
   input            sys_clk;
   input            sys_clk_reset_n;
+  input   [  7: 0] video_character_buffer_with_dma_0_avalon_char_buffer_slave_readdata_from_sa;
+  input            video_character_buffer_with_dma_0_avalon_char_buffer_slave_waitrequest_from_sa;
+  input   [ 31: 0] video_character_buffer_with_dma_0_avalon_char_control_slave_readdata_from_sa;
 
   wire    [ 21: 0] CPU_data_master_address_to_slave;
   reg     [  1: 0] CPU_data_master_dbs_address;
@@ -737,6 +769,7 @@ module CPU_data_master_arbitrator (
   wire             pre_dbs_count_enable;
   wire             r_0;
   wire             r_1;
+  wire             r_2;
   reg     [ 31: 0] registered_CPU_data_master_readdata;
   wire             sys_clk_jtag_uart_0_avalon_jtag_slave_irq_from_sa;
   wire             sys_clk_pio_0_s1_irq_from_sa;
@@ -744,10 +777,13 @@ module CPU_data_master_arbitrator (
   assign r_0 = 1 & (CPU_data_master_qualified_request_CPU_jtag_debug_module | ~CPU_data_master_requests_CPU_jtag_debug_module) & (CPU_data_master_granted_CPU_jtag_debug_module | ~CPU_data_master_qualified_request_CPU_jtag_debug_module) & ((~CPU_data_master_qualified_request_CPU_jtag_debug_module | ~CPU_data_master_read | (1 & 1 & CPU_data_master_read))) & ((~CPU_data_master_qualified_request_CPU_jtag_debug_module | ~CPU_data_master_write | (1 & CPU_data_master_write))) & 1 & (CPU_data_master_qualified_request_Onchip_Memory_s1 | registered_CPU_data_master_read_data_valid_Onchip_Memory_s1 | ~CPU_data_master_requests_Onchip_Memory_s1) & (CPU_data_master_granted_Onchip_Memory_s1 | ~CPU_data_master_qualified_request_Onchip_Memory_s1) & ((~CPU_data_master_qualified_request_Onchip_Memory_s1 | ~CPU_data_master_read | (registered_CPU_data_master_read_data_valid_Onchip_Memory_s1 & CPU_data_master_read))) & ((~CPU_data_master_qualified_request_Onchip_Memory_s1 | ~(CPU_data_master_read | CPU_data_master_write) | (1 & (CPU_data_master_read | CPU_data_master_write)))) & 1 & (CPU_data_master_qualified_request_Pixel_Buffer_avalon_sram_slave | (CPU_data_master_read_data_valid_Pixel_Buffer_avalon_sram_slave & CPU_data_master_dbs_address[1]) | (CPU_data_master_write & !CPU_data_master_byteenable_Pixel_Buffer_avalon_sram_slave & CPU_data_master_dbs_address[1]) | ~CPU_data_master_requests_Pixel_Buffer_avalon_sram_slave) & (CPU_data_master_granted_Pixel_Buffer_avalon_sram_slave | ~CPU_data_master_qualified_request_Pixel_Buffer_avalon_sram_slave) & ((~CPU_data_master_qualified_request_Pixel_Buffer_avalon_sram_slave | ~CPU_data_master_read | (CPU_data_master_read_data_valid_Pixel_Buffer_avalon_sram_slave & (CPU_data_master_dbs_address[1]) & CPU_data_master_read))) & ((~CPU_data_master_qualified_request_Pixel_Buffer_avalon_sram_slave | ~CPU_data_master_write | (1 & (CPU_data_master_dbs_address[1]) & CPU_data_master_write))) & 1 & (CPU_data_master_qualified_request_Pixel_Buffer_DMA_avalon_control_slave | registered_CPU_data_master_read_data_valid_Pixel_Buffer_DMA_avalon_control_slave | ~CPU_data_master_requests_Pixel_Buffer_DMA_avalon_control_slave) & ((~CPU_data_master_qualified_request_Pixel_Buffer_DMA_avalon_control_slave | ~CPU_data_master_read | (registered_CPU_data_master_read_data_valid_Pixel_Buffer_DMA_avalon_control_slave & CPU_data_master_read))) & ((~CPU_data_master_qualified_request_Pixel_Buffer_DMA_avalon_control_slave | ~(CPU_data_master_read | CPU_data_master_write) | (1 & (CPU_data_master_read | CPU_data_master_write)))) & 1;
 
   //cascaded wait assignment, which is an e_assign
-  assign CPU_data_master_run = r_0 & r_1;
+  assign CPU_data_master_run = r_0 & r_1 & r_2;
 
   //r_1 master_run cascaded wait assignment, which is an e_assign
-  assign r_1 = ((CPU_data_master_qualified_request_Video_System_clock_0_in | ((CPU_data_master_write & !CPU_data_master_byteenable_Video_System_clock_0_in & CPU_data_master_dbs_address[1] & CPU_data_master_dbs_address[0])) | ~CPU_data_master_requests_Video_System_clock_0_in)) & ((~CPU_data_master_qualified_request_Video_System_clock_0_in | ~CPU_data_master_read | (1 & ~Video_System_clock_0_in_waitrequest_from_sa & (CPU_data_master_dbs_address[1] & CPU_data_master_dbs_address[0]) & CPU_data_master_read))) & ((~CPU_data_master_qualified_request_Video_System_clock_0_in | ~CPU_data_master_write | (1 & ~Video_System_clock_0_in_waitrequest_from_sa & (CPU_data_master_dbs_address[1] & CPU_data_master_dbs_address[0]) & CPU_data_master_write))) & 1 & (CPU_data_master_qualified_request_Video_System_clock_1_in | ~CPU_data_master_requests_Video_System_clock_1_in) & ((~CPU_data_master_qualified_request_Video_System_clock_1_in | ~(CPU_data_master_read | CPU_data_master_write) | (1 & ~Video_System_clock_1_in_waitrequest_from_sa & (CPU_data_master_read | CPU_data_master_write)))) & ((~CPU_data_master_qualified_request_Video_System_clock_1_in | ~(CPU_data_master_read | CPU_data_master_write) | (1 & ~Video_System_clock_1_in_waitrequest_from_sa & (CPU_data_master_read | CPU_data_master_write)))) & 1 & (CPU_data_master_qualified_request_Video_System_clock_2_in | ~CPU_data_master_requests_Video_System_clock_2_in) & ((~CPU_data_master_qualified_request_Video_System_clock_2_in | ~(CPU_data_master_read | CPU_data_master_write) | (1 & ~Video_System_clock_2_in_waitrequest_from_sa & (CPU_data_master_read | CPU_data_master_write)))) & ((~CPU_data_master_qualified_request_Video_System_clock_2_in | ~(CPU_data_master_read | CPU_data_master_write) | (1 & ~Video_System_clock_2_in_waitrequest_from_sa & (CPU_data_master_read | CPU_data_master_write)))) & 1 & (CPU_data_master_qualified_request_Video_System_clock_3_in | ~CPU_data_master_requests_Video_System_clock_3_in) & ((~CPU_data_master_qualified_request_Video_System_clock_3_in | ~(CPU_data_master_read | CPU_data_master_write) | (1 & ~Video_System_clock_3_in_waitrequest_from_sa & (CPU_data_master_read | CPU_data_master_write)))) & ((~CPU_data_master_qualified_request_Video_System_clock_3_in | ~(CPU_data_master_read | CPU_data_master_write) | (1 & ~Video_System_clock_3_in_waitrequest_from_sa & (CPU_data_master_read | CPU_data_master_write))));
+  assign r_1 = ((CPU_data_master_qualified_request_Video_System_clock_0_in | ((CPU_data_master_write & !CPU_data_master_byteenable_Video_System_clock_0_in & CPU_data_master_dbs_address[1] & CPU_data_master_dbs_address[0])) | ~CPU_data_master_requests_Video_System_clock_0_in)) & ((~CPU_data_master_qualified_request_Video_System_clock_0_in | ~CPU_data_master_read | (1 & ~Video_System_clock_0_in_waitrequest_from_sa & (CPU_data_master_dbs_address[1] & CPU_data_master_dbs_address[0]) & CPU_data_master_read))) & ((~CPU_data_master_qualified_request_Video_System_clock_0_in | ~CPU_data_master_write | (1 & ~Video_System_clock_0_in_waitrequest_from_sa & (CPU_data_master_dbs_address[1] & CPU_data_master_dbs_address[0]) & CPU_data_master_write))) & 1 & (CPU_data_master_qualified_request_Video_System_clock_1_in | ~CPU_data_master_requests_Video_System_clock_1_in) & ((~CPU_data_master_qualified_request_Video_System_clock_1_in | ~(CPU_data_master_read | CPU_data_master_write) | (1 & ~Video_System_clock_1_in_waitrequest_from_sa & (CPU_data_master_read | CPU_data_master_write)))) & ((~CPU_data_master_qualified_request_Video_System_clock_1_in | ~(CPU_data_master_read | CPU_data_master_write) | (1 & ~Video_System_clock_1_in_waitrequest_from_sa & (CPU_data_master_read | CPU_data_master_write)))) & 1 & (CPU_data_master_qualified_request_Video_System_clock_2_in | ~CPU_data_master_requests_Video_System_clock_2_in) & ((~CPU_data_master_qualified_request_Video_System_clock_2_in | ~(CPU_data_master_read | CPU_data_master_write) | (1 & ~Video_System_clock_2_in_waitrequest_from_sa & (CPU_data_master_read | CPU_data_master_write)))) & ((~CPU_data_master_qualified_request_Video_System_clock_2_in | ~(CPU_data_master_read | CPU_data_master_write) | (1 & ~Video_System_clock_2_in_waitrequest_from_sa & (CPU_data_master_read | CPU_data_master_write)))) & 1 & (CPU_data_master_qualified_request_Video_System_clock_3_in | ~CPU_data_master_requests_Video_System_clock_3_in) & ((~CPU_data_master_qualified_request_Video_System_clock_3_in | ~(CPU_data_master_read | CPU_data_master_write) | (1 & ~Video_System_clock_3_in_waitrequest_from_sa & (CPU_data_master_read | CPU_data_master_write)))) & ((~CPU_data_master_qualified_request_Video_System_clock_3_in | ~(CPU_data_master_read | CPU_data_master_write) | (1 & ~Video_System_clock_3_in_waitrequest_from_sa & (CPU_data_master_read | CPU_data_master_write)))) & 1 & ((CPU_data_master_qualified_request_video_character_buffer_with_dma_0_avalon_char_buffer_slave | (registered_CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_buffer_slave & CPU_data_master_dbs_address[1] & CPU_data_master_dbs_address[0]) | ((CPU_data_master_write & !CPU_data_master_byteenable_video_character_buffer_with_dma_0_avalon_char_buffer_slave & CPU_data_master_dbs_address[1] & CPU_data_master_dbs_address[0])) | ~CPU_data_master_requests_video_character_buffer_with_dma_0_avalon_char_buffer_slave)) & ((~CPU_data_master_qualified_request_video_character_buffer_with_dma_0_avalon_char_buffer_slave | ~CPU_data_master_read | (registered_CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_buffer_slave & (CPU_data_master_dbs_address[1] & CPU_data_master_dbs_address[0]) & CPU_data_master_read))) & ((~CPU_data_master_qualified_request_video_character_buffer_with_dma_0_avalon_char_buffer_slave | ~CPU_data_master_write | (1 & ~video_character_buffer_with_dma_0_avalon_char_buffer_slave_waitrequest_from_sa & (CPU_data_master_dbs_address[1] & CPU_data_master_dbs_address[0]) & CPU_data_master_write))) & 1;
+
+  //r_2 master_run cascaded wait assignment, which is an e_assign
+  assign r_2 = (CPU_data_master_qualified_request_video_character_buffer_with_dma_0_avalon_char_control_slave | registered_CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_control_slave | ~CPU_data_master_requests_video_character_buffer_with_dma_0_avalon_char_control_slave) & ((~CPU_data_master_qualified_request_video_character_buffer_with_dma_0_avalon_char_control_slave | ~CPU_data_master_read | (registered_CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_control_slave & CPU_data_master_read))) & ((~CPU_data_master_qualified_request_video_character_buffer_with_dma_0_avalon_char_control_slave | ~(CPU_data_master_read | CPU_data_master_write) | (1 & (CPU_data_master_read | CPU_data_master_write))));
 
   //optimize select-logic by passing only those address bits which matter.
   assign CPU_data_master_address_to_slave = CPU_data_master_address[21 : 0];
@@ -760,7 +796,12 @@ module CPU_data_master_arbitrator (
     ({32 {~CPU_data_master_requests_Video_System_clock_0_in}} | registered_CPU_data_master_readdata) &
     ({32 {~CPU_data_master_requests_Video_System_clock_1_in}} | registered_CPU_data_master_readdata) &
     ({32 {~CPU_data_master_requests_Video_System_clock_2_in}} | registered_CPU_data_master_readdata) &
-    ({32 {~CPU_data_master_requests_Video_System_clock_3_in}} | registered_CPU_data_master_readdata);
+    ({32 {~CPU_data_master_requests_Video_System_clock_3_in}} | registered_CPU_data_master_readdata) &
+    ({32 {~CPU_data_master_requests_video_character_buffer_with_dma_0_avalon_char_buffer_slave}} | {video_character_buffer_with_dma_0_avalon_char_buffer_slave_readdata_from_sa[7 : 0],
+    dbs_8_reg_segment_2,
+    dbs_8_reg_segment_1,
+    dbs_8_reg_segment_0}) &
+    ({32 {~CPU_data_master_requests_video_character_buffer_with_dma_0_avalon_char_control_slave}} | video_character_buffer_with_dma_0_avalon_char_control_slave_readdata_from_sa);
 
   //actual waitrequest port, which is an e_register
   always @(posedge clk or negedge reset_n)
@@ -784,7 +825,8 @@ module CPU_data_master_arbitrator (
 
   //compute the last dbs term, which is an e_mux
   assign last_dbs_term_and_run = (CPU_data_master_requests_Pixel_Buffer_avalon_sram_slave)? (((CPU_data_master_dbs_address == 2'b10) & CPU_data_master_write & !CPU_data_master_byteenable_Pixel_Buffer_avalon_sram_slave)) :
-    (((CPU_data_master_dbs_address == 2'b11) & CPU_data_master_write & !CPU_data_master_byteenable_Video_System_clock_0_in));
+    (CPU_data_master_requests_Video_System_clock_0_in)? (((CPU_data_master_dbs_address == 2'b11) & CPU_data_master_write & !CPU_data_master_byteenable_Video_System_clock_0_in)) :
+    (((CPU_data_master_dbs_address == 2'b11) & CPU_data_master_write & !CPU_data_master_byteenable_video_character_buffer_with_dma_0_avalon_char_buffer_slave));
 
   //pre dbs count enable, which is an e_mux
   assign pre_dbs_count_enable = (((~CPU_data_master_no_byte_enables_and_last_term) & CPU_data_master_requests_Pixel_Buffer_avalon_sram_slave & CPU_data_master_write & !CPU_data_master_byteenable_Pixel_Buffer_avalon_sram_slave)) |
@@ -792,7 +834,10 @@ module CPU_data_master_arbitrator (
     (CPU_data_master_granted_Pixel_Buffer_avalon_sram_slave & CPU_data_master_write & 1 & 1) |
     (((~CPU_data_master_no_byte_enables_and_last_term) & CPU_data_master_requests_Video_System_clock_0_in & CPU_data_master_write & !CPU_data_master_byteenable_Video_System_clock_0_in)) |
     (CPU_data_master_granted_Video_System_clock_0_in & CPU_data_master_read & 1 & 1 & ~Video_System_clock_0_in_waitrequest_from_sa) |
-    (CPU_data_master_granted_Video_System_clock_0_in & CPU_data_master_write & 1 & 1 & ~Video_System_clock_0_in_waitrequest_from_sa);
+    (CPU_data_master_granted_Video_System_clock_0_in & CPU_data_master_write & 1 & 1 & ~Video_System_clock_0_in_waitrequest_from_sa) |
+    (((~CPU_data_master_no_byte_enables_and_last_term) & CPU_data_master_requests_video_character_buffer_with_dma_0_avalon_char_buffer_slave & CPU_data_master_write & !CPU_data_master_byteenable_video_character_buffer_with_dma_0_avalon_char_buffer_slave)) |
+    CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_buffer_slave |
+    (CPU_data_master_granted_video_character_buffer_with_dma_0_avalon_char_buffer_slave & CPU_data_master_write & 1 & 1 & ~video_character_buffer_with_dma_0_avalon_char_buffer_slave_waitrequest_from_sa);
 
   //input to dbs-16 stored 0, which is an e_mux
   assign p1_dbs_16_reg_segment_0 = Pixel_Buffer_avalon_sram_slave_readdata_from_sa;
@@ -835,6 +880,7 @@ module CPU_data_master_arbitrator (
   //dbs count increment, which is an e_mux
   assign CPU_data_master_dbs_increment = (CPU_data_master_requests_Pixel_Buffer_avalon_sram_slave)? 2 :
     (CPU_data_master_requests_Video_System_clock_0_in)? 1 :
+    (CPU_data_master_requests_video_character_buffer_with_dma_0_avalon_char_buffer_slave)? 1 :
     0;
 
   //dbs counter overflow, which is an e_assign
@@ -846,7 +892,8 @@ module CPU_data_master_arbitrator (
   //dbs count enable, which is an e_mux
   assign dbs_count_enable = pre_dbs_count_enable &
     (~(CPU_data_master_requests_Pixel_Buffer_avalon_sram_slave & ~CPU_data_master_waitrequest)) &
-    (~(CPU_data_master_requests_Video_System_clock_0_in & ~CPU_data_master_waitrequest));
+    (~(CPU_data_master_requests_Video_System_clock_0_in & ~CPU_data_master_waitrequest)) &
+    (~(CPU_data_master_requests_video_character_buffer_with_dma_0_avalon_char_buffer_slave & ~CPU_data_master_waitrequest & CPU_data_master_write));
 
   //dbs counter, which is an e_register
   always @(posedge clk or negedge reset_n)
@@ -859,7 +906,8 @@ module CPU_data_master_arbitrator (
 
 
   //input to dbs-8 stored 0, which is an e_mux
-  assign p1_dbs_8_reg_segment_0 = Video_System_clock_0_in_readdata_from_sa;
+  assign p1_dbs_8_reg_segment_0 = (CPU_data_master_requests_Video_System_clock_0_in)? Video_System_clock_0_in_readdata_from_sa :
+    video_character_buffer_with_dma_0_avalon_char_buffer_slave_readdata_from_sa;
 
   //dbs register for dbs-8 segment 0, which is an e_register
   always @(posedge clk or negedge reset_n)
@@ -872,7 +920,8 @@ module CPU_data_master_arbitrator (
 
 
   //input to dbs-8 stored 1, which is an e_mux
-  assign p1_dbs_8_reg_segment_1 = Video_System_clock_0_in_readdata_from_sa;
+  assign p1_dbs_8_reg_segment_1 = (CPU_data_master_requests_Video_System_clock_0_in)? Video_System_clock_0_in_readdata_from_sa :
+    video_character_buffer_with_dma_0_avalon_char_buffer_slave_readdata_from_sa;
 
   //dbs register for dbs-8 segment 1, which is an e_register
   always @(posedge clk or negedge reset_n)
@@ -885,7 +934,8 @@ module CPU_data_master_arbitrator (
 
 
   //input to dbs-8 stored 2, which is an e_mux
-  assign p1_dbs_8_reg_segment_2 = Video_System_clock_0_in_readdata_from_sa;
+  assign p1_dbs_8_reg_segment_2 = (CPU_data_master_requests_Video_System_clock_0_in)? Video_System_clock_0_in_readdata_from_sa :
+    video_character_buffer_with_dma_0_avalon_char_buffer_slave_readdata_from_sa;
 
   //dbs register for dbs-8 segment 2, which is an e_register
   always @(posedge clk or negedge reset_n)
@@ -899,6 +949,10 @@ module CPU_data_master_arbitrator (
 
   //mux write dbs 2, which is an e_mux
   assign CPU_data_master_dbs_write_8 = ((CPU_data_master_dbs_address[1 : 0] == 0))? CPU_data_master_writedata[7 : 0] :
+    ((CPU_data_master_dbs_address[1 : 0] == 1))? CPU_data_master_writedata[15 : 8] :
+    ((CPU_data_master_dbs_address[1 : 0] == 2))? CPU_data_master_writedata[23 : 16] :
+    ((CPU_data_master_dbs_address[1 : 0] == 3))? CPU_data_master_writedata[31 : 24] :
+    ((CPU_data_master_dbs_address[1 : 0] == 0))? CPU_data_master_writedata[7 : 0] :
     ((CPU_data_master_dbs_address[1 : 0] == 1))? CPU_data_master_writedata[15 : 8] :
     ((CPU_data_master_dbs_address[1 : 0] == 2))? CPU_data_master_writedata[23 : 16] :
     CPU_data_master_writedata[31 : 24];
@@ -1377,12 +1431,12 @@ endmodule
 module Dual_Clock_FIFO_avalon_dc_buffer_sink_arbitrator (
                                                           // inputs:
                                                            Dual_Clock_FIFO_avalon_dc_buffer_sink_ready,
-                                                           Pixel_RGB_Resampler_avalon_rgb_source_data,
-                                                           Pixel_RGB_Resampler_avalon_rgb_source_endofpacket,
-                                                           Pixel_RGB_Resampler_avalon_rgb_source_startofpacket,
-                                                           Pixel_RGB_Resampler_avalon_rgb_source_valid,
                                                            clk,
                                                            reset_n,
+                                                           video_alpha_blender_0_avalon_blended_source_data,
+                                                           video_alpha_blender_0_avalon_blended_source_endofpacket,
+                                                           video_alpha_blender_0_avalon_blended_source_startofpacket,
+                                                           video_alpha_blender_0_avalon_blended_source_valid,
 
                                                           // outputs:
                                                            Dual_Clock_FIFO_avalon_dc_buffer_sink_data,
@@ -1399,12 +1453,12 @@ module Dual_Clock_FIFO_avalon_dc_buffer_sink_arbitrator (
   output           Dual_Clock_FIFO_avalon_dc_buffer_sink_startofpacket;
   output           Dual_Clock_FIFO_avalon_dc_buffer_sink_valid;
   input            Dual_Clock_FIFO_avalon_dc_buffer_sink_ready;
-  input   [ 29: 0] Pixel_RGB_Resampler_avalon_rgb_source_data;
-  input            Pixel_RGB_Resampler_avalon_rgb_source_endofpacket;
-  input            Pixel_RGB_Resampler_avalon_rgb_source_startofpacket;
-  input            Pixel_RGB_Resampler_avalon_rgb_source_valid;
   input            clk;
   input            reset_n;
+  input   [ 29: 0] video_alpha_blender_0_avalon_blended_source_data;
+  input            video_alpha_blender_0_avalon_blended_source_endofpacket;
+  input            video_alpha_blender_0_avalon_blended_source_startofpacket;
+  input            video_alpha_blender_0_avalon_blended_source_valid;
 
   wire    [ 29: 0] Dual_Clock_FIFO_avalon_dc_buffer_sink_data;
   wire             Dual_Clock_FIFO_avalon_dc_buffer_sink_endofpacket;
@@ -1412,19 +1466,19 @@ module Dual_Clock_FIFO_avalon_dc_buffer_sink_arbitrator (
   wire             Dual_Clock_FIFO_avalon_dc_buffer_sink_startofpacket;
   wire             Dual_Clock_FIFO_avalon_dc_buffer_sink_valid;
   //mux Dual_Clock_FIFO_avalon_dc_buffer_sink_data, which is an e_mux
-  assign Dual_Clock_FIFO_avalon_dc_buffer_sink_data = Pixel_RGB_Resampler_avalon_rgb_source_data;
+  assign Dual_Clock_FIFO_avalon_dc_buffer_sink_data = video_alpha_blender_0_avalon_blended_source_data;
 
   //mux Dual_Clock_FIFO_avalon_dc_buffer_sink_endofpacket, which is an e_mux
-  assign Dual_Clock_FIFO_avalon_dc_buffer_sink_endofpacket = Pixel_RGB_Resampler_avalon_rgb_source_endofpacket;
+  assign Dual_Clock_FIFO_avalon_dc_buffer_sink_endofpacket = video_alpha_blender_0_avalon_blended_source_endofpacket;
 
   //assign Dual_Clock_FIFO_avalon_dc_buffer_sink_ready_from_sa = Dual_Clock_FIFO_avalon_dc_buffer_sink_ready so that symbol knows where to group signals which may go to master only, which is an e_assign
   assign Dual_Clock_FIFO_avalon_dc_buffer_sink_ready_from_sa = Dual_Clock_FIFO_avalon_dc_buffer_sink_ready;
 
   //mux Dual_Clock_FIFO_avalon_dc_buffer_sink_startofpacket, which is an e_mux
-  assign Dual_Clock_FIFO_avalon_dc_buffer_sink_startofpacket = Pixel_RGB_Resampler_avalon_rgb_source_startofpacket;
+  assign Dual_Clock_FIFO_avalon_dc_buffer_sink_startofpacket = video_alpha_blender_0_avalon_blended_source_startofpacket;
 
   //mux Dual_Clock_FIFO_avalon_dc_buffer_sink_valid, which is an e_mux
-  assign Dual_Clock_FIFO_avalon_dc_buffer_sink_valid = Pixel_RGB_Resampler_avalon_rgb_source_valid;
+  assign Dual_Clock_FIFO_avalon_dc_buffer_sink_valid = video_alpha_blender_0_avalon_blended_source_valid;
 
 
 endmodule
@@ -2879,7 +2933,7 @@ module Pixel_Buffer_DMA_avalon_control_slave_arbitrator (
   //assign Pixel_Buffer_DMA_avalon_control_slave_readdata_from_sa = Pixel_Buffer_DMA_avalon_control_slave_readdata so that symbol knows where to group signals which may go to master only, which is an e_assign
   assign Pixel_Buffer_DMA_avalon_control_slave_readdata_from_sa = Pixel_Buffer_DMA_avalon_control_slave_readdata;
 
-  assign CPU_data_master_requests_Pixel_Buffer_DMA_avalon_control_slave = ({CPU_data_master_address_to_slave[21 : 4] , 4'b0} == 22'h301000) & (CPU_data_master_read | CPU_data_master_write);
+  assign CPU_data_master_requests_Pixel_Buffer_DMA_avalon_control_slave = ({CPU_data_master_address_to_slave[21 : 4] , 4'b0} == 22'h303020) & (CPU_data_master_read | CPU_data_master_write);
   //registered rdv signal_name registered_CPU_data_master_read_data_valid_Pixel_Buffer_DMA_avalon_control_slave assignment, which is an e_assign
   assign registered_CPU_data_master_read_data_valid_Pixel_Buffer_DMA_avalon_control_slave = CPU_data_master_read_data_valid_Pixel_Buffer_DMA_avalon_control_slave_shift_register_in;
 
@@ -3369,13 +3423,13 @@ endmodule
 
 module Pixel_RGB_Resampler_avalon_rgb_source_arbitrator (
                                                           // inputs:
-                                                           Dual_Clock_FIFO_avalon_dc_buffer_sink_ready_from_sa,
                                                            Pixel_RGB_Resampler_avalon_rgb_source_data,
                                                            Pixel_RGB_Resampler_avalon_rgb_source_endofpacket,
                                                            Pixel_RGB_Resampler_avalon_rgb_source_startofpacket,
                                                            Pixel_RGB_Resampler_avalon_rgb_source_valid,
                                                            clk,
                                                            reset_n,
+                                                           video_alpha_blender_0_avalon_background_sink_ready_from_sa,
 
                                                           // outputs:
                                                            Pixel_RGB_Resampler_avalon_rgb_source_ready
@@ -3383,17 +3437,17 @@ module Pixel_RGB_Resampler_avalon_rgb_source_arbitrator (
 ;
 
   output           Pixel_RGB_Resampler_avalon_rgb_source_ready;
-  input            Dual_Clock_FIFO_avalon_dc_buffer_sink_ready_from_sa;
   input   [ 29: 0] Pixel_RGB_Resampler_avalon_rgb_source_data;
   input            Pixel_RGB_Resampler_avalon_rgb_source_endofpacket;
   input            Pixel_RGB_Resampler_avalon_rgb_source_startofpacket;
   input            Pixel_RGB_Resampler_avalon_rgb_source_valid;
   input            clk;
   input            reset_n;
+  input            video_alpha_blender_0_avalon_background_sink_ready_from_sa;
 
   wire             Pixel_RGB_Resampler_avalon_rgb_source_ready;
   //mux Pixel_RGB_Resampler_avalon_rgb_source_ready, which is an e_mux
-  assign Pixel_RGB_Resampler_avalon_rgb_source_ready = Dual_Clock_FIFO_avalon_dc_buffer_sink_ready_from_sa;
+  assign Pixel_RGB_Resampler_avalon_rgb_source_ready = video_alpha_blender_0_avalon_background_sink_ready_from_sa;
 
 
 endmodule
@@ -3607,7 +3661,7 @@ module Video_System_clock_0_in_arbitrator (
   //assign Video_System_clock_0_in_readdata_from_sa = Video_System_clock_0_in_readdata so that symbol knows where to group signals which may go to master only, which is an e_assign
   assign Video_System_clock_0_in_readdata_from_sa = Video_System_clock_0_in_readdata;
 
-  assign CPU_data_master_requests_Video_System_clock_0_in = ({CPU_data_master_address_to_slave[21 : 1] , 1'b0} == 22'h301028) & (CPU_data_master_read | CPU_data_master_write);
+  assign CPU_data_master_requests_Video_System_clock_0_in = ({CPU_data_master_address_to_slave[21 : 1] , 1'b0} == 22'h303050) & (CPU_data_master_read | CPU_data_master_write);
   //assign Video_System_clock_0_in_waitrequest_from_sa = Video_System_clock_0_in_waitrequest so that symbol knows where to group signals which may go to master only, which is an e_assign
   assign Video_System_clock_0_in_waitrequest_from_sa = Video_System_clock_0_in_waitrequest;
 
@@ -4103,7 +4157,7 @@ module Video_System_clock_1_in_arbitrator (
   //assign Video_System_clock_1_in_readdata_from_sa = Video_System_clock_1_in_readdata so that symbol knows where to group signals which may go to master only, which is an e_assign
   assign Video_System_clock_1_in_readdata_from_sa = Video_System_clock_1_in_readdata;
 
-  assign CPU_data_master_requests_Video_System_clock_1_in = ({CPU_data_master_address_to_slave[21 : 3] , 3'b0} == 22'h301020) & (CPU_data_master_read | CPU_data_master_write);
+  assign CPU_data_master_requests_Video_System_clock_1_in = ({CPU_data_master_address_to_slave[21 : 3] , 3'b0} == 22'h303040) & (CPU_data_master_read | CPU_data_master_write);
   //assign Video_System_clock_1_in_waitrequest_from_sa = Video_System_clock_1_in_waitrequest so that symbol knows where to group signals which may go to master only, which is an e_assign
   assign Video_System_clock_1_in_waitrequest_from_sa = Video_System_clock_1_in_waitrequest;
 
@@ -4615,7 +4669,7 @@ module Video_System_clock_2_in_arbitrator (
   //assign Video_System_clock_2_in_readdata_from_sa = Video_System_clock_2_in_readdata so that symbol knows where to group signals which may go to master only, which is an e_assign
   assign Video_System_clock_2_in_readdata_from_sa = Video_System_clock_2_in_readdata;
 
-  assign CPU_data_master_requests_Video_System_clock_2_in = ({CPU_data_master_address_to_slave[21 : 4] , 4'b0} == 22'h301010) & (CPU_data_master_read | CPU_data_master_write);
+  assign CPU_data_master_requests_Video_System_clock_2_in = ({CPU_data_master_address_to_slave[21 : 4] , 4'b0} == 22'h303030) & (CPU_data_master_read | CPU_data_master_write);
   //assign Video_System_clock_2_in_waitrequest_from_sa = Video_System_clock_2_in_waitrequest so that symbol knows where to group signals which may go to master only, which is an e_assign
   assign Video_System_clock_2_in_waitrequest_from_sa = Video_System_clock_2_in_waitrequest;
 
@@ -5125,7 +5179,7 @@ module Video_System_clock_3_in_arbitrator (
   //assign Video_System_clock_3_in_readdata_from_sa = Video_System_clock_3_in_readdata so that symbol knows where to group signals which may go to master only, which is an e_assign
   assign Video_System_clock_3_in_readdata_from_sa = Video_System_clock_3_in_readdata;
 
-  assign CPU_data_master_requests_Video_System_clock_3_in = ({CPU_data_master_address_to_slave[21 : 5] , 5'b0} == 22'h200000) & (CPU_data_master_read | CPU_data_master_write);
+  assign CPU_data_master_requests_Video_System_clock_3_in = ({CPU_data_master_address_to_slave[21 : 5] , 5'b0} == 22'h303000) & (CPU_data_master_read | CPU_data_master_write);
   //assign Video_System_clock_3_in_waitrequest_from_sa = Video_System_clock_3_in_waitrequest so that symbol knows where to group signals which may go to master only, which is an e_assign
   assign Video_System_clock_3_in_waitrequest_from_sa = Video_System_clock_3_in_waitrequest;
 
@@ -6366,6 +6420,870 @@ endmodule
 // altera message_level Level1 
 // altera message_off 10034 10035 10036 10037 10230 10240 10030 
 
+module video_alpha_blender_0_avalon_background_sink_arbitrator (
+                                                                 // inputs:
+                                                                  Pixel_RGB_Resampler_avalon_rgb_source_data,
+                                                                  Pixel_RGB_Resampler_avalon_rgb_source_endofpacket,
+                                                                  Pixel_RGB_Resampler_avalon_rgb_source_startofpacket,
+                                                                  Pixel_RGB_Resampler_avalon_rgb_source_valid,
+                                                                  clk,
+                                                                  reset_n,
+                                                                  video_alpha_blender_0_avalon_background_sink_ready,
+
+                                                                 // outputs:
+                                                                  video_alpha_blender_0_avalon_background_sink_data,
+                                                                  video_alpha_blender_0_avalon_background_sink_endofpacket,
+                                                                  video_alpha_blender_0_avalon_background_sink_ready_from_sa,
+                                                                  video_alpha_blender_0_avalon_background_sink_startofpacket,
+                                                                  video_alpha_blender_0_avalon_background_sink_valid
+                                                               )
+;
+
+  output  [ 29: 0] video_alpha_blender_0_avalon_background_sink_data;
+  output           video_alpha_blender_0_avalon_background_sink_endofpacket;
+  output           video_alpha_blender_0_avalon_background_sink_ready_from_sa;
+  output           video_alpha_blender_0_avalon_background_sink_startofpacket;
+  output           video_alpha_blender_0_avalon_background_sink_valid;
+  input   [ 29: 0] Pixel_RGB_Resampler_avalon_rgb_source_data;
+  input            Pixel_RGB_Resampler_avalon_rgb_source_endofpacket;
+  input            Pixel_RGB_Resampler_avalon_rgb_source_startofpacket;
+  input            Pixel_RGB_Resampler_avalon_rgb_source_valid;
+  input            clk;
+  input            reset_n;
+  input            video_alpha_blender_0_avalon_background_sink_ready;
+
+  wire    [ 29: 0] video_alpha_blender_0_avalon_background_sink_data;
+  wire             video_alpha_blender_0_avalon_background_sink_endofpacket;
+  wire             video_alpha_blender_0_avalon_background_sink_ready_from_sa;
+  wire             video_alpha_blender_0_avalon_background_sink_startofpacket;
+  wire             video_alpha_blender_0_avalon_background_sink_valid;
+  //mux video_alpha_blender_0_avalon_background_sink_data, which is an e_mux
+  assign video_alpha_blender_0_avalon_background_sink_data = Pixel_RGB_Resampler_avalon_rgb_source_data;
+
+  //mux video_alpha_blender_0_avalon_background_sink_endofpacket, which is an e_mux
+  assign video_alpha_blender_0_avalon_background_sink_endofpacket = Pixel_RGB_Resampler_avalon_rgb_source_endofpacket;
+
+  //assign video_alpha_blender_0_avalon_background_sink_ready_from_sa = video_alpha_blender_0_avalon_background_sink_ready so that symbol knows where to group signals which may go to master only, which is an e_assign
+  assign video_alpha_blender_0_avalon_background_sink_ready_from_sa = video_alpha_blender_0_avalon_background_sink_ready;
+
+  //mux video_alpha_blender_0_avalon_background_sink_startofpacket, which is an e_mux
+  assign video_alpha_blender_0_avalon_background_sink_startofpacket = Pixel_RGB_Resampler_avalon_rgb_source_startofpacket;
+
+  //mux video_alpha_blender_0_avalon_background_sink_valid, which is an e_mux
+  assign video_alpha_blender_0_avalon_background_sink_valid = Pixel_RGB_Resampler_avalon_rgb_source_valid;
+
+
+endmodule
+
+
+// synthesis translate_off
+`timescale 1ns / 1ps
+// synthesis translate_on
+
+// turn off superfluous verilog processor warnings 
+// altera message_level Level1 
+// altera message_off 10034 10035 10036 10037 10230 10240 10030 
+
+module video_alpha_blender_0_avalon_foreground_sink_arbitrator (
+                                                                 // inputs:
+                                                                  clk,
+                                                                  reset_n,
+                                                                  video_alpha_blender_0_avalon_foreground_sink_ready,
+                                                                  video_character_buffer_with_dma_0_avalon_char_source_data,
+                                                                  video_character_buffer_with_dma_0_avalon_char_source_endofpacket,
+                                                                  video_character_buffer_with_dma_0_avalon_char_source_startofpacket,
+                                                                  video_character_buffer_with_dma_0_avalon_char_source_valid,
+
+                                                                 // outputs:
+                                                                  video_alpha_blender_0_avalon_foreground_sink_data,
+                                                                  video_alpha_blender_0_avalon_foreground_sink_endofpacket,
+                                                                  video_alpha_blender_0_avalon_foreground_sink_ready_from_sa,
+                                                                  video_alpha_blender_0_avalon_foreground_sink_reset,
+                                                                  video_alpha_blender_0_avalon_foreground_sink_startofpacket,
+                                                                  video_alpha_blender_0_avalon_foreground_sink_valid
+                                                               )
+;
+
+  output  [ 39: 0] video_alpha_blender_0_avalon_foreground_sink_data;
+  output           video_alpha_blender_0_avalon_foreground_sink_endofpacket;
+  output           video_alpha_blender_0_avalon_foreground_sink_ready_from_sa;
+  output           video_alpha_blender_0_avalon_foreground_sink_reset;
+  output           video_alpha_blender_0_avalon_foreground_sink_startofpacket;
+  output           video_alpha_blender_0_avalon_foreground_sink_valid;
+  input            clk;
+  input            reset_n;
+  input            video_alpha_blender_0_avalon_foreground_sink_ready;
+  input   [ 39: 0] video_character_buffer_with_dma_0_avalon_char_source_data;
+  input            video_character_buffer_with_dma_0_avalon_char_source_endofpacket;
+  input            video_character_buffer_with_dma_0_avalon_char_source_startofpacket;
+  input            video_character_buffer_with_dma_0_avalon_char_source_valid;
+
+  wire    [ 39: 0] video_alpha_blender_0_avalon_foreground_sink_data;
+  wire             video_alpha_blender_0_avalon_foreground_sink_endofpacket;
+  wire             video_alpha_blender_0_avalon_foreground_sink_ready_from_sa;
+  wire             video_alpha_blender_0_avalon_foreground_sink_reset;
+  wire             video_alpha_blender_0_avalon_foreground_sink_startofpacket;
+  wire             video_alpha_blender_0_avalon_foreground_sink_valid;
+  //mux video_alpha_blender_0_avalon_foreground_sink_data, which is an e_mux
+  assign video_alpha_blender_0_avalon_foreground_sink_data = video_character_buffer_with_dma_0_avalon_char_source_data;
+
+  //mux video_alpha_blender_0_avalon_foreground_sink_endofpacket, which is an e_mux
+  assign video_alpha_blender_0_avalon_foreground_sink_endofpacket = video_character_buffer_with_dma_0_avalon_char_source_endofpacket;
+
+  //assign video_alpha_blender_0_avalon_foreground_sink_ready_from_sa = video_alpha_blender_0_avalon_foreground_sink_ready so that symbol knows where to group signals which may go to master only, which is an e_assign
+  assign video_alpha_blender_0_avalon_foreground_sink_ready_from_sa = video_alpha_blender_0_avalon_foreground_sink_ready;
+
+  //mux video_alpha_blender_0_avalon_foreground_sink_startofpacket, which is an e_mux
+  assign video_alpha_blender_0_avalon_foreground_sink_startofpacket = video_character_buffer_with_dma_0_avalon_char_source_startofpacket;
+
+  //mux video_alpha_blender_0_avalon_foreground_sink_valid, which is an e_mux
+  assign video_alpha_blender_0_avalon_foreground_sink_valid = video_character_buffer_with_dma_0_avalon_char_source_valid;
+
+  //~video_alpha_blender_0_avalon_foreground_sink_reset assignment, which is an e_assign
+  assign video_alpha_blender_0_avalon_foreground_sink_reset = ~reset_n;
+
+
+endmodule
+
+
+// synthesis translate_off
+`timescale 1ns / 1ps
+// synthesis translate_on
+
+// turn off superfluous verilog processor warnings 
+// altera message_level Level1 
+// altera message_off 10034 10035 10036 10037 10230 10240 10030 
+
+module video_alpha_blender_0_avalon_blended_source_arbitrator (
+                                                                // inputs:
+                                                                 Dual_Clock_FIFO_avalon_dc_buffer_sink_ready_from_sa,
+                                                                 clk,
+                                                                 reset_n,
+                                                                 video_alpha_blender_0_avalon_blended_source_data,
+                                                                 video_alpha_blender_0_avalon_blended_source_endofpacket,
+                                                                 video_alpha_blender_0_avalon_blended_source_startofpacket,
+                                                                 video_alpha_blender_0_avalon_blended_source_valid,
+
+                                                                // outputs:
+                                                                 video_alpha_blender_0_avalon_blended_source_ready
+                                                              )
+;
+
+  output           video_alpha_blender_0_avalon_blended_source_ready;
+  input            Dual_Clock_FIFO_avalon_dc_buffer_sink_ready_from_sa;
+  input            clk;
+  input            reset_n;
+  input   [ 29: 0] video_alpha_blender_0_avalon_blended_source_data;
+  input            video_alpha_blender_0_avalon_blended_source_endofpacket;
+  input            video_alpha_blender_0_avalon_blended_source_startofpacket;
+  input            video_alpha_blender_0_avalon_blended_source_valid;
+
+  wire             video_alpha_blender_0_avalon_blended_source_ready;
+  //mux video_alpha_blender_0_avalon_blended_source_ready, which is an e_mux
+  assign video_alpha_blender_0_avalon_blended_source_ready = Dual_Clock_FIFO_avalon_dc_buffer_sink_ready_from_sa;
+
+
+endmodule
+
+
+// synthesis translate_off
+`timescale 1ns / 1ps
+// synthesis translate_on
+
+// turn off superfluous verilog processor warnings 
+// altera message_level Level1 
+// altera message_off 10034 10035 10036 10037 10230 10240 10030 
+
+module video_character_buffer_with_dma_0_avalon_char_buffer_slave_arbitrator (
+                                                                               // inputs:
+                                                                                CPU_data_master_address_to_slave,
+                                                                                CPU_data_master_byteenable,
+                                                                                CPU_data_master_dbs_address,
+                                                                                CPU_data_master_dbs_write_8,
+                                                                                CPU_data_master_no_byte_enables_and_last_term,
+                                                                                CPU_data_master_read,
+                                                                                CPU_data_master_waitrequest,
+                                                                                CPU_data_master_write,
+                                                                                clk,
+                                                                                reset_n,
+                                                                                video_character_buffer_with_dma_0_avalon_char_buffer_slave_readdata,
+                                                                                video_character_buffer_with_dma_0_avalon_char_buffer_slave_waitrequest,
+
+                                                                               // outputs:
+                                                                                CPU_data_master_byteenable_video_character_buffer_with_dma_0_avalon_char_buffer_slave,
+                                                                                CPU_data_master_granted_video_character_buffer_with_dma_0_avalon_char_buffer_slave,
+                                                                                CPU_data_master_qualified_request_video_character_buffer_with_dma_0_avalon_char_buffer_slave,
+                                                                                CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_buffer_slave,
+                                                                                CPU_data_master_requests_video_character_buffer_with_dma_0_avalon_char_buffer_slave,
+                                                                                d1_video_character_buffer_with_dma_0_avalon_char_buffer_slave_end_xfer,
+                                                                                registered_CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_buffer_slave,
+                                                                                video_character_buffer_with_dma_0_avalon_char_buffer_slave_address,
+                                                                                video_character_buffer_with_dma_0_avalon_char_buffer_slave_byteenable,
+                                                                                video_character_buffer_with_dma_0_avalon_char_buffer_slave_chipselect,
+                                                                                video_character_buffer_with_dma_0_avalon_char_buffer_slave_read,
+                                                                                video_character_buffer_with_dma_0_avalon_char_buffer_slave_readdata_from_sa,
+                                                                                video_character_buffer_with_dma_0_avalon_char_buffer_slave_waitrequest_from_sa,
+                                                                                video_character_buffer_with_dma_0_avalon_char_buffer_slave_write,
+                                                                                video_character_buffer_with_dma_0_avalon_char_buffer_slave_writedata
+                                                                             )
+;
+
+  output           CPU_data_master_byteenable_video_character_buffer_with_dma_0_avalon_char_buffer_slave;
+  output           CPU_data_master_granted_video_character_buffer_with_dma_0_avalon_char_buffer_slave;
+  output           CPU_data_master_qualified_request_video_character_buffer_with_dma_0_avalon_char_buffer_slave;
+  output           CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_buffer_slave;
+  output           CPU_data_master_requests_video_character_buffer_with_dma_0_avalon_char_buffer_slave;
+  output           d1_video_character_buffer_with_dma_0_avalon_char_buffer_slave_end_xfer;
+  output           registered_CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_buffer_slave;
+  output  [ 12: 0] video_character_buffer_with_dma_0_avalon_char_buffer_slave_address;
+  output           video_character_buffer_with_dma_0_avalon_char_buffer_slave_byteenable;
+  output           video_character_buffer_with_dma_0_avalon_char_buffer_slave_chipselect;
+  output           video_character_buffer_with_dma_0_avalon_char_buffer_slave_read;
+  output  [  7: 0] video_character_buffer_with_dma_0_avalon_char_buffer_slave_readdata_from_sa;
+  output           video_character_buffer_with_dma_0_avalon_char_buffer_slave_waitrequest_from_sa;
+  output           video_character_buffer_with_dma_0_avalon_char_buffer_slave_write;
+  output  [  7: 0] video_character_buffer_with_dma_0_avalon_char_buffer_slave_writedata;
+  input   [ 21: 0] CPU_data_master_address_to_slave;
+  input   [  3: 0] CPU_data_master_byteenable;
+  input   [  1: 0] CPU_data_master_dbs_address;
+  input   [  7: 0] CPU_data_master_dbs_write_8;
+  input            CPU_data_master_no_byte_enables_and_last_term;
+  input            CPU_data_master_read;
+  input            CPU_data_master_waitrequest;
+  input            CPU_data_master_write;
+  input            clk;
+  input            reset_n;
+  input   [  7: 0] video_character_buffer_with_dma_0_avalon_char_buffer_slave_readdata;
+  input            video_character_buffer_with_dma_0_avalon_char_buffer_slave_waitrequest;
+
+  wire             CPU_data_master_arbiterlock;
+  wire             CPU_data_master_arbiterlock2;
+  wire             CPU_data_master_byteenable_video_character_buffer_with_dma_0_avalon_char_buffer_slave;
+  wire             CPU_data_master_byteenable_video_character_buffer_with_dma_0_avalon_char_buffer_slave_segment_0;
+  wire             CPU_data_master_byteenable_video_character_buffer_with_dma_0_avalon_char_buffer_slave_segment_1;
+  wire             CPU_data_master_byteenable_video_character_buffer_with_dma_0_avalon_char_buffer_slave_segment_2;
+  wire             CPU_data_master_byteenable_video_character_buffer_with_dma_0_avalon_char_buffer_slave_segment_3;
+  wire             CPU_data_master_continuerequest;
+  wire             CPU_data_master_granted_video_character_buffer_with_dma_0_avalon_char_buffer_slave;
+  wire             CPU_data_master_qualified_request_video_character_buffer_with_dma_0_avalon_char_buffer_slave;
+  wire             CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_buffer_slave;
+  reg              CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_buffer_slave_shift_register;
+  wire             CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_buffer_slave_shift_register_in;
+  wire             CPU_data_master_requests_video_character_buffer_with_dma_0_avalon_char_buffer_slave;
+  wire             CPU_data_master_saved_grant_video_character_buffer_with_dma_0_avalon_char_buffer_slave;
+  reg              d1_reasons_to_wait;
+  reg              d1_video_character_buffer_with_dma_0_avalon_char_buffer_slave_end_xfer;
+  reg              enable_nonzero_assertions;
+  wire             end_xfer_arb_share_counter_term_video_character_buffer_with_dma_0_avalon_char_buffer_slave;
+  wire             in_a_read_cycle;
+  wire             in_a_write_cycle;
+  wire             p1_CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_buffer_slave_shift_register;
+  wire             registered_CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_buffer_slave;
+  wire    [ 12: 0] video_character_buffer_with_dma_0_avalon_char_buffer_slave_address;
+  wire             video_character_buffer_with_dma_0_avalon_char_buffer_slave_allgrants;
+  wire             video_character_buffer_with_dma_0_avalon_char_buffer_slave_allow_new_arb_cycle;
+  wire             video_character_buffer_with_dma_0_avalon_char_buffer_slave_any_bursting_master_saved_grant;
+  wire             video_character_buffer_with_dma_0_avalon_char_buffer_slave_any_continuerequest;
+  wire             video_character_buffer_with_dma_0_avalon_char_buffer_slave_arb_counter_enable;
+  reg     [  2: 0] video_character_buffer_with_dma_0_avalon_char_buffer_slave_arb_share_counter;
+  wire    [  2: 0] video_character_buffer_with_dma_0_avalon_char_buffer_slave_arb_share_counter_next_value;
+  wire    [  2: 0] video_character_buffer_with_dma_0_avalon_char_buffer_slave_arb_share_set_values;
+  wire             video_character_buffer_with_dma_0_avalon_char_buffer_slave_beginbursttransfer_internal;
+  wire             video_character_buffer_with_dma_0_avalon_char_buffer_slave_begins_xfer;
+  wire             video_character_buffer_with_dma_0_avalon_char_buffer_slave_byteenable;
+  wire             video_character_buffer_with_dma_0_avalon_char_buffer_slave_chipselect;
+  wire             video_character_buffer_with_dma_0_avalon_char_buffer_slave_end_xfer;
+  wire             video_character_buffer_with_dma_0_avalon_char_buffer_slave_firsttransfer;
+  wire             video_character_buffer_with_dma_0_avalon_char_buffer_slave_grant_vector;
+  wire             video_character_buffer_with_dma_0_avalon_char_buffer_slave_in_a_read_cycle;
+  wire             video_character_buffer_with_dma_0_avalon_char_buffer_slave_in_a_write_cycle;
+  wire             video_character_buffer_with_dma_0_avalon_char_buffer_slave_master_qreq_vector;
+  wire             video_character_buffer_with_dma_0_avalon_char_buffer_slave_non_bursting_master_requests;
+  wire             video_character_buffer_with_dma_0_avalon_char_buffer_slave_read;
+  wire    [  7: 0] video_character_buffer_with_dma_0_avalon_char_buffer_slave_readdata_from_sa;
+  reg              video_character_buffer_with_dma_0_avalon_char_buffer_slave_reg_firsttransfer;
+  reg              video_character_buffer_with_dma_0_avalon_char_buffer_slave_slavearbiterlockenable;
+  wire             video_character_buffer_with_dma_0_avalon_char_buffer_slave_slavearbiterlockenable2;
+  wire             video_character_buffer_with_dma_0_avalon_char_buffer_slave_unreg_firsttransfer;
+  wire             video_character_buffer_with_dma_0_avalon_char_buffer_slave_waitrequest_from_sa;
+  wire             video_character_buffer_with_dma_0_avalon_char_buffer_slave_waits_for_read;
+  wire             video_character_buffer_with_dma_0_avalon_char_buffer_slave_waits_for_write;
+  wire             video_character_buffer_with_dma_0_avalon_char_buffer_slave_write;
+  wire    [  7: 0] video_character_buffer_with_dma_0_avalon_char_buffer_slave_writedata;
+  wire             wait_for_video_character_buffer_with_dma_0_avalon_char_buffer_slave_counter;
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          d1_reasons_to_wait <= 0;
+      else 
+        d1_reasons_to_wait <= ~video_character_buffer_with_dma_0_avalon_char_buffer_slave_end_xfer;
+    end
+
+
+  assign video_character_buffer_with_dma_0_avalon_char_buffer_slave_begins_xfer = ~d1_reasons_to_wait & ((CPU_data_master_qualified_request_video_character_buffer_with_dma_0_avalon_char_buffer_slave));
+  //assign video_character_buffer_with_dma_0_avalon_char_buffer_slave_readdata_from_sa = video_character_buffer_with_dma_0_avalon_char_buffer_slave_readdata so that symbol knows where to group signals which may go to master only, which is an e_assign
+  assign video_character_buffer_with_dma_0_avalon_char_buffer_slave_readdata_from_sa = video_character_buffer_with_dma_0_avalon_char_buffer_slave_readdata;
+
+  assign CPU_data_master_requests_video_character_buffer_with_dma_0_avalon_char_buffer_slave = ({CPU_data_master_address_to_slave[21 : 13] , 13'b0} == 22'h300000) & (CPU_data_master_read | CPU_data_master_write);
+  //assign video_character_buffer_with_dma_0_avalon_char_buffer_slave_waitrequest_from_sa = video_character_buffer_with_dma_0_avalon_char_buffer_slave_waitrequest so that symbol knows where to group signals which may go to master only, which is an e_assign
+  assign video_character_buffer_with_dma_0_avalon_char_buffer_slave_waitrequest_from_sa = video_character_buffer_with_dma_0_avalon_char_buffer_slave_waitrequest;
+
+  //registered rdv signal_name registered_CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_buffer_slave assignment, which is an e_assign
+  assign registered_CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_buffer_slave = CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_buffer_slave_shift_register_in;
+
+  //video_character_buffer_with_dma_0_avalon_char_buffer_slave_arb_share_counter set values, which is an e_mux
+  assign video_character_buffer_with_dma_0_avalon_char_buffer_slave_arb_share_set_values = (CPU_data_master_granted_video_character_buffer_with_dma_0_avalon_char_buffer_slave)? 4 :
+    1;
+
+  //video_character_buffer_with_dma_0_avalon_char_buffer_slave_non_bursting_master_requests mux, which is an e_mux
+  assign video_character_buffer_with_dma_0_avalon_char_buffer_slave_non_bursting_master_requests = CPU_data_master_requests_video_character_buffer_with_dma_0_avalon_char_buffer_slave;
+
+  //video_character_buffer_with_dma_0_avalon_char_buffer_slave_any_bursting_master_saved_grant mux, which is an e_mux
+  assign video_character_buffer_with_dma_0_avalon_char_buffer_slave_any_bursting_master_saved_grant = 0;
+
+  //video_character_buffer_with_dma_0_avalon_char_buffer_slave_arb_share_counter_next_value assignment, which is an e_assign
+  assign video_character_buffer_with_dma_0_avalon_char_buffer_slave_arb_share_counter_next_value = video_character_buffer_with_dma_0_avalon_char_buffer_slave_firsttransfer ? (video_character_buffer_with_dma_0_avalon_char_buffer_slave_arb_share_set_values - 1) : |video_character_buffer_with_dma_0_avalon_char_buffer_slave_arb_share_counter ? (video_character_buffer_with_dma_0_avalon_char_buffer_slave_arb_share_counter - 1) : 0;
+
+  //video_character_buffer_with_dma_0_avalon_char_buffer_slave_allgrants all slave grants, which is an e_mux
+  assign video_character_buffer_with_dma_0_avalon_char_buffer_slave_allgrants = |video_character_buffer_with_dma_0_avalon_char_buffer_slave_grant_vector;
+
+  //video_character_buffer_with_dma_0_avalon_char_buffer_slave_end_xfer assignment, which is an e_assign
+  assign video_character_buffer_with_dma_0_avalon_char_buffer_slave_end_xfer = ~(video_character_buffer_with_dma_0_avalon_char_buffer_slave_waits_for_read | video_character_buffer_with_dma_0_avalon_char_buffer_slave_waits_for_write);
+
+  //end_xfer_arb_share_counter_term_video_character_buffer_with_dma_0_avalon_char_buffer_slave arb share counter enable term, which is an e_assign
+  assign end_xfer_arb_share_counter_term_video_character_buffer_with_dma_0_avalon_char_buffer_slave = video_character_buffer_with_dma_0_avalon_char_buffer_slave_end_xfer & (~video_character_buffer_with_dma_0_avalon_char_buffer_slave_any_bursting_master_saved_grant | in_a_read_cycle | in_a_write_cycle);
+
+  //video_character_buffer_with_dma_0_avalon_char_buffer_slave_arb_share_counter arbitration counter enable, which is an e_assign
+  assign video_character_buffer_with_dma_0_avalon_char_buffer_slave_arb_counter_enable = (end_xfer_arb_share_counter_term_video_character_buffer_with_dma_0_avalon_char_buffer_slave & video_character_buffer_with_dma_0_avalon_char_buffer_slave_allgrants) | (end_xfer_arb_share_counter_term_video_character_buffer_with_dma_0_avalon_char_buffer_slave & ~video_character_buffer_with_dma_0_avalon_char_buffer_slave_non_bursting_master_requests);
+
+  //video_character_buffer_with_dma_0_avalon_char_buffer_slave_arb_share_counter counter, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          video_character_buffer_with_dma_0_avalon_char_buffer_slave_arb_share_counter <= 0;
+      else if (video_character_buffer_with_dma_0_avalon_char_buffer_slave_arb_counter_enable)
+          video_character_buffer_with_dma_0_avalon_char_buffer_slave_arb_share_counter <= video_character_buffer_with_dma_0_avalon_char_buffer_slave_arb_share_counter_next_value;
+    end
+
+
+  //video_character_buffer_with_dma_0_avalon_char_buffer_slave_slavearbiterlockenable slave enables arbiterlock, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          video_character_buffer_with_dma_0_avalon_char_buffer_slave_slavearbiterlockenable <= 0;
+      else if ((|video_character_buffer_with_dma_0_avalon_char_buffer_slave_master_qreq_vector & end_xfer_arb_share_counter_term_video_character_buffer_with_dma_0_avalon_char_buffer_slave) | (end_xfer_arb_share_counter_term_video_character_buffer_with_dma_0_avalon_char_buffer_slave & ~video_character_buffer_with_dma_0_avalon_char_buffer_slave_non_bursting_master_requests))
+          video_character_buffer_with_dma_0_avalon_char_buffer_slave_slavearbiterlockenable <= |video_character_buffer_with_dma_0_avalon_char_buffer_slave_arb_share_counter_next_value;
+    end
+
+
+  //CPU/data_master video_character_buffer_with_dma_0/avalon_char_buffer_slave arbiterlock, which is an e_assign
+  assign CPU_data_master_arbiterlock = video_character_buffer_with_dma_0_avalon_char_buffer_slave_slavearbiterlockenable & CPU_data_master_continuerequest;
+
+  //video_character_buffer_with_dma_0_avalon_char_buffer_slave_slavearbiterlockenable2 slave enables arbiterlock2, which is an e_assign
+  assign video_character_buffer_with_dma_0_avalon_char_buffer_slave_slavearbiterlockenable2 = |video_character_buffer_with_dma_0_avalon_char_buffer_slave_arb_share_counter_next_value;
+
+  //CPU/data_master video_character_buffer_with_dma_0/avalon_char_buffer_slave arbiterlock2, which is an e_assign
+  assign CPU_data_master_arbiterlock2 = video_character_buffer_with_dma_0_avalon_char_buffer_slave_slavearbiterlockenable2 & CPU_data_master_continuerequest;
+
+  //video_character_buffer_with_dma_0_avalon_char_buffer_slave_any_continuerequest at least one master continues requesting, which is an e_assign
+  assign video_character_buffer_with_dma_0_avalon_char_buffer_slave_any_continuerequest = 1;
+
+  //CPU_data_master_continuerequest continued request, which is an e_assign
+  assign CPU_data_master_continuerequest = 1;
+
+  assign CPU_data_master_qualified_request_video_character_buffer_with_dma_0_avalon_char_buffer_slave = CPU_data_master_requests_video_character_buffer_with_dma_0_avalon_char_buffer_slave & ~((CPU_data_master_read & ((|CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_buffer_slave_shift_register))) | ((~CPU_data_master_waitrequest | CPU_data_master_no_byte_enables_and_last_term | !CPU_data_master_byteenable_video_character_buffer_with_dma_0_avalon_char_buffer_slave) & CPU_data_master_write));
+  //CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_buffer_slave_shift_register_in mux for readlatency shift register, which is an e_mux
+  assign CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_buffer_slave_shift_register_in = CPU_data_master_granted_video_character_buffer_with_dma_0_avalon_char_buffer_slave & CPU_data_master_read & ~video_character_buffer_with_dma_0_avalon_char_buffer_slave_waits_for_read & ~(|CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_buffer_slave_shift_register);
+
+  //shift register p1 CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_buffer_slave_shift_register in if flush, otherwise shift left, which is an e_mux
+  assign p1_CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_buffer_slave_shift_register = {CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_buffer_slave_shift_register, CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_buffer_slave_shift_register_in};
+
+  //CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_buffer_slave_shift_register for remembering which master asked for a fixed latency read, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_buffer_slave_shift_register <= 0;
+      else 
+        CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_buffer_slave_shift_register <= p1_CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_buffer_slave_shift_register;
+    end
+
+
+  //local readdatavalid CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_buffer_slave, which is an e_mux
+  assign CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_buffer_slave = CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_buffer_slave_shift_register;
+
+  //video_character_buffer_with_dma_0_avalon_char_buffer_slave_writedata mux, which is an e_mux
+  assign video_character_buffer_with_dma_0_avalon_char_buffer_slave_writedata = CPU_data_master_dbs_write_8;
+
+  //master is always granted when requested
+  assign CPU_data_master_granted_video_character_buffer_with_dma_0_avalon_char_buffer_slave = CPU_data_master_qualified_request_video_character_buffer_with_dma_0_avalon_char_buffer_slave;
+
+  //CPU/data_master saved-grant video_character_buffer_with_dma_0/avalon_char_buffer_slave, which is an e_assign
+  assign CPU_data_master_saved_grant_video_character_buffer_with_dma_0_avalon_char_buffer_slave = CPU_data_master_requests_video_character_buffer_with_dma_0_avalon_char_buffer_slave;
+
+  //allow new arb cycle for video_character_buffer_with_dma_0/avalon_char_buffer_slave, which is an e_assign
+  assign video_character_buffer_with_dma_0_avalon_char_buffer_slave_allow_new_arb_cycle = 1;
+
+  //placeholder chosen master
+  assign video_character_buffer_with_dma_0_avalon_char_buffer_slave_grant_vector = 1;
+
+  //placeholder vector of master qualified-requests
+  assign video_character_buffer_with_dma_0_avalon_char_buffer_slave_master_qreq_vector = 1;
+
+  assign video_character_buffer_with_dma_0_avalon_char_buffer_slave_chipselect = CPU_data_master_granted_video_character_buffer_with_dma_0_avalon_char_buffer_slave;
+  //video_character_buffer_with_dma_0_avalon_char_buffer_slave_firsttransfer first transaction, which is an e_assign
+  assign video_character_buffer_with_dma_0_avalon_char_buffer_slave_firsttransfer = video_character_buffer_with_dma_0_avalon_char_buffer_slave_begins_xfer ? video_character_buffer_with_dma_0_avalon_char_buffer_slave_unreg_firsttransfer : video_character_buffer_with_dma_0_avalon_char_buffer_slave_reg_firsttransfer;
+
+  //video_character_buffer_with_dma_0_avalon_char_buffer_slave_unreg_firsttransfer first transaction, which is an e_assign
+  assign video_character_buffer_with_dma_0_avalon_char_buffer_slave_unreg_firsttransfer = ~(video_character_buffer_with_dma_0_avalon_char_buffer_slave_slavearbiterlockenable & video_character_buffer_with_dma_0_avalon_char_buffer_slave_any_continuerequest);
+
+  //video_character_buffer_with_dma_0_avalon_char_buffer_slave_reg_firsttransfer first transaction, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          video_character_buffer_with_dma_0_avalon_char_buffer_slave_reg_firsttransfer <= 1'b1;
+      else if (video_character_buffer_with_dma_0_avalon_char_buffer_slave_begins_xfer)
+          video_character_buffer_with_dma_0_avalon_char_buffer_slave_reg_firsttransfer <= video_character_buffer_with_dma_0_avalon_char_buffer_slave_unreg_firsttransfer;
+    end
+
+
+  //video_character_buffer_with_dma_0_avalon_char_buffer_slave_beginbursttransfer_internal begin burst transfer, which is an e_assign
+  assign video_character_buffer_with_dma_0_avalon_char_buffer_slave_beginbursttransfer_internal = video_character_buffer_with_dma_0_avalon_char_buffer_slave_begins_xfer;
+
+  //video_character_buffer_with_dma_0_avalon_char_buffer_slave_read assignment, which is an e_mux
+  assign video_character_buffer_with_dma_0_avalon_char_buffer_slave_read = CPU_data_master_granted_video_character_buffer_with_dma_0_avalon_char_buffer_slave & CPU_data_master_read;
+
+  //video_character_buffer_with_dma_0_avalon_char_buffer_slave_write assignment, which is an e_mux
+  assign video_character_buffer_with_dma_0_avalon_char_buffer_slave_write = CPU_data_master_granted_video_character_buffer_with_dma_0_avalon_char_buffer_slave & CPU_data_master_write;
+
+  //video_character_buffer_with_dma_0_avalon_char_buffer_slave_address mux, which is an e_mux
+  assign video_character_buffer_with_dma_0_avalon_char_buffer_slave_address = {CPU_data_master_address_to_slave >> 2,
+    CPU_data_master_dbs_address[1 : 0]};
+
+  //d1_video_character_buffer_with_dma_0_avalon_char_buffer_slave_end_xfer register, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          d1_video_character_buffer_with_dma_0_avalon_char_buffer_slave_end_xfer <= 1;
+      else 
+        d1_video_character_buffer_with_dma_0_avalon_char_buffer_slave_end_xfer <= video_character_buffer_with_dma_0_avalon_char_buffer_slave_end_xfer;
+    end
+
+
+  //video_character_buffer_with_dma_0_avalon_char_buffer_slave_waits_for_read in a cycle, which is an e_mux
+  assign video_character_buffer_with_dma_0_avalon_char_buffer_slave_waits_for_read = video_character_buffer_with_dma_0_avalon_char_buffer_slave_in_a_read_cycle & video_character_buffer_with_dma_0_avalon_char_buffer_slave_waitrequest_from_sa;
+
+  //video_character_buffer_with_dma_0_avalon_char_buffer_slave_in_a_read_cycle assignment, which is an e_assign
+  assign video_character_buffer_with_dma_0_avalon_char_buffer_slave_in_a_read_cycle = CPU_data_master_granted_video_character_buffer_with_dma_0_avalon_char_buffer_slave & CPU_data_master_read;
+
+  //in_a_read_cycle assignment, which is an e_mux
+  assign in_a_read_cycle = video_character_buffer_with_dma_0_avalon_char_buffer_slave_in_a_read_cycle;
+
+  //video_character_buffer_with_dma_0_avalon_char_buffer_slave_waits_for_write in a cycle, which is an e_mux
+  assign video_character_buffer_with_dma_0_avalon_char_buffer_slave_waits_for_write = video_character_buffer_with_dma_0_avalon_char_buffer_slave_in_a_write_cycle & video_character_buffer_with_dma_0_avalon_char_buffer_slave_waitrequest_from_sa;
+
+  //video_character_buffer_with_dma_0_avalon_char_buffer_slave_in_a_write_cycle assignment, which is an e_assign
+  assign video_character_buffer_with_dma_0_avalon_char_buffer_slave_in_a_write_cycle = CPU_data_master_granted_video_character_buffer_with_dma_0_avalon_char_buffer_slave & CPU_data_master_write;
+
+  //in_a_write_cycle assignment, which is an e_mux
+  assign in_a_write_cycle = video_character_buffer_with_dma_0_avalon_char_buffer_slave_in_a_write_cycle;
+
+  assign wait_for_video_character_buffer_with_dma_0_avalon_char_buffer_slave_counter = 0;
+  //video_character_buffer_with_dma_0_avalon_char_buffer_slave_byteenable byte enable port mux, which is an e_mux
+  assign video_character_buffer_with_dma_0_avalon_char_buffer_slave_byteenable = (CPU_data_master_granted_video_character_buffer_with_dma_0_avalon_char_buffer_slave)? CPU_data_master_byteenable_video_character_buffer_with_dma_0_avalon_char_buffer_slave :
+    -1;
+
+  assign {CPU_data_master_byteenable_video_character_buffer_with_dma_0_avalon_char_buffer_slave_segment_3,
+CPU_data_master_byteenable_video_character_buffer_with_dma_0_avalon_char_buffer_slave_segment_2,
+CPU_data_master_byteenable_video_character_buffer_with_dma_0_avalon_char_buffer_slave_segment_1,
+CPU_data_master_byteenable_video_character_buffer_with_dma_0_avalon_char_buffer_slave_segment_0} = CPU_data_master_byteenable;
+  assign CPU_data_master_byteenable_video_character_buffer_with_dma_0_avalon_char_buffer_slave = ((CPU_data_master_dbs_address[1 : 0] == 0))? CPU_data_master_byteenable_video_character_buffer_with_dma_0_avalon_char_buffer_slave_segment_0 :
+    ((CPU_data_master_dbs_address[1 : 0] == 1))? CPU_data_master_byteenable_video_character_buffer_with_dma_0_avalon_char_buffer_slave_segment_1 :
+    ((CPU_data_master_dbs_address[1 : 0] == 2))? CPU_data_master_byteenable_video_character_buffer_with_dma_0_avalon_char_buffer_slave_segment_2 :
+    CPU_data_master_byteenable_video_character_buffer_with_dma_0_avalon_char_buffer_slave_segment_3;
+
+
+//synthesis translate_off
+//////////////// SIMULATION-ONLY CONTENTS
+  //video_character_buffer_with_dma_0/avalon_char_buffer_slave enable non-zero assertions, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          enable_nonzero_assertions <= 0;
+      else 
+        enable_nonzero_assertions <= 1'b1;
+    end
+
+
+
+//////////////// END SIMULATION-ONLY CONTENTS
+
+//synthesis translate_on
+
+endmodule
+
+
+// synthesis translate_off
+`timescale 1ns / 1ps
+// synthesis translate_on
+
+// turn off superfluous verilog processor warnings 
+// altera message_level Level1 
+// altera message_off 10034 10035 10036 10037 10230 10240 10030 
+
+module video_character_buffer_with_dma_0_avalon_char_control_slave_arbitrator (
+                                                                                // inputs:
+                                                                                 CPU_data_master_address_to_slave,
+                                                                                 CPU_data_master_byteenable,
+                                                                                 CPU_data_master_read,
+                                                                                 CPU_data_master_waitrequest,
+                                                                                 CPU_data_master_write,
+                                                                                 CPU_data_master_writedata,
+                                                                                 clk,
+                                                                                 reset_n,
+                                                                                 video_character_buffer_with_dma_0_avalon_char_control_slave_readdata,
+
+                                                                                // outputs:
+                                                                                 CPU_data_master_granted_video_character_buffer_with_dma_0_avalon_char_control_slave,
+                                                                                 CPU_data_master_qualified_request_video_character_buffer_with_dma_0_avalon_char_control_slave,
+                                                                                 CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_control_slave,
+                                                                                 CPU_data_master_requests_video_character_buffer_with_dma_0_avalon_char_control_slave,
+                                                                                 d1_video_character_buffer_with_dma_0_avalon_char_control_slave_end_xfer,
+                                                                                 registered_CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_control_slave,
+                                                                                 video_character_buffer_with_dma_0_avalon_char_control_slave_address,
+                                                                                 video_character_buffer_with_dma_0_avalon_char_control_slave_byteenable,
+                                                                                 video_character_buffer_with_dma_0_avalon_char_control_slave_chipselect,
+                                                                                 video_character_buffer_with_dma_0_avalon_char_control_slave_read,
+                                                                                 video_character_buffer_with_dma_0_avalon_char_control_slave_readdata_from_sa,
+                                                                                 video_character_buffer_with_dma_0_avalon_char_control_slave_reset,
+                                                                                 video_character_buffer_with_dma_0_avalon_char_control_slave_write,
+                                                                                 video_character_buffer_with_dma_0_avalon_char_control_slave_writedata
+                                                                              )
+;
+
+  output           CPU_data_master_granted_video_character_buffer_with_dma_0_avalon_char_control_slave;
+  output           CPU_data_master_qualified_request_video_character_buffer_with_dma_0_avalon_char_control_slave;
+  output           CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_control_slave;
+  output           CPU_data_master_requests_video_character_buffer_with_dma_0_avalon_char_control_slave;
+  output           d1_video_character_buffer_with_dma_0_avalon_char_control_slave_end_xfer;
+  output           registered_CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_control_slave;
+  output           video_character_buffer_with_dma_0_avalon_char_control_slave_address;
+  output  [  3: 0] video_character_buffer_with_dma_0_avalon_char_control_slave_byteenable;
+  output           video_character_buffer_with_dma_0_avalon_char_control_slave_chipselect;
+  output           video_character_buffer_with_dma_0_avalon_char_control_slave_read;
+  output  [ 31: 0] video_character_buffer_with_dma_0_avalon_char_control_slave_readdata_from_sa;
+  output           video_character_buffer_with_dma_0_avalon_char_control_slave_reset;
+  output           video_character_buffer_with_dma_0_avalon_char_control_slave_write;
+  output  [ 31: 0] video_character_buffer_with_dma_0_avalon_char_control_slave_writedata;
+  input   [ 21: 0] CPU_data_master_address_to_slave;
+  input   [  3: 0] CPU_data_master_byteenable;
+  input            CPU_data_master_read;
+  input            CPU_data_master_waitrequest;
+  input            CPU_data_master_write;
+  input   [ 31: 0] CPU_data_master_writedata;
+  input            clk;
+  input            reset_n;
+  input   [ 31: 0] video_character_buffer_with_dma_0_avalon_char_control_slave_readdata;
+
+  wire             CPU_data_master_arbiterlock;
+  wire             CPU_data_master_arbiterlock2;
+  wire             CPU_data_master_continuerequest;
+  wire             CPU_data_master_granted_video_character_buffer_with_dma_0_avalon_char_control_slave;
+  wire             CPU_data_master_qualified_request_video_character_buffer_with_dma_0_avalon_char_control_slave;
+  wire             CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_control_slave;
+  reg              CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_control_slave_shift_register;
+  wire             CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_control_slave_shift_register_in;
+  wire             CPU_data_master_requests_video_character_buffer_with_dma_0_avalon_char_control_slave;
+  wire             CPU_data_master_saved_grant_video_character_buffer_with_dma_0_avalon_char_control_slave;
+  reg              d1_reasons_to_wait;
+  reg              d1_video_character_buffer_with_dma_0_avalon_char_control_slave_end_xfer;
+  reg              enable_nonzero_assertions;
+  wire             end_xfer_arb_share_counter_term_video_character_buffer_with_dma_0_avalon_char_control_slave;
+  wire             in_a_read_cycle;
+  wire             in_a_write_cycle;
+  wire             p1_CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_control_slave_shift_register;
+  wire             registered_CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_control_slave;
+  wire    [ 21: 0] shifted_address_to_video_character_buffer_with_dma_0_avalon_char_control_slave_from_CPU_data_master;
+  wire             video_character_buffer_with_dma_0_avalon_char_control_slave_address;
+  wire             video_character_buffer_with_dma_0_avalon_char_control_slave_allgrants;
+  wire             video_character_buffer_with_dma_0_avalon_char_control_slave_allow_new_arb_cycle;
+  wire             video_character_buffer_with_dma_0_avalon_char_control_slave_any_bursting_master_saved_grant;
+  wire             video_character_buffer_with_dma_0_avalon_char_control_slave_any_continuerequest;
+  wire             video_character_buffer_with_dma_0_avalon_char_control_slave_arb_counter_enable;
+  reg     [  2: 0] video_character_buffer_with_dma_0_avalon_char_control_slave_arb_share_counter;
+  wire    [  2: 0] video_character_buffer_with_dma_0_avalon_char_control_slave_arb_share_counter_next_value;
+  wire    [  2: 0] video_character_buffer_with_dma_0_avalon_char_control_slave_arb_share_set_values;
+  wire             video_character_buffer_with_dma_0_avalon_char_control_slave_beginbursttransfer_internal;
+  wire             video_character_buffer_with_dma_0_avalon_char_control_slave_begins_xfer;
+  wire    [  3: 0] video_character_buffer_with_dma_0_avalon_char_control_slave_byteenable;
+  wire             video_character_buffer_with_dma_0_avalon_char_control_slave_chipselect;
+  wire             video_character_buffer_with_dma_0_avalon_char_control_slave_end_xfer;
+  wire             video_character_buffer_with_dma_0_avalon_char_control_slave_firsttransfer;
+  wire             video_character_buffer_with_dma_0_avalon_char_control_slave_grant_vector;
+  wire             video_character_buffer_with_dma_0_avalon_char_control_slave_in_a_read_cycle;
+  wire             video_character_buffer_with_dma_0_avalon_char_control_slave_in_a_write_cycle;
+  wire             video_character_buffer_with_dma_0_avalon_char_control_slave_master_qreq_vector;
+  wire             video_character_buffer_with_dma_0_avalon_char_control_slave_non_bursting_master_requests;
+  wire             video_character_buffer_with_dma_0_avalon_char_control_slave_read;
+  wire    [ 31: 0] video_character_buffer_with_dma_0_avalon_char_control_slave_readdata_from_sa;
+  reg              video_character_buffer_with_dma_0_avalon_char_control_slave_reg_firsttransfer;
+  wire             video_character_buffer_with_dma_0_avalon_char_control_slave_reset;
+  reg              video_character_buffer_with_dma_0_avalon_char_control_slave_slavearbiterlockenable;
+  wire             video_character_buffer_with_dma_0_avalon_char_control_slave_slavearbiterlockenable2;
+  wire             video_character_buffer_with_dma_0_avalon_char_control_slave_unreg_firsttransfer;
+  wire             video_character_buffer_with_dma_0_avalon_char_control_slave_waits_for_read;
+  wire             video_character_buffer_with_dma_0_avalon_char_control_slave_waits_for_write;
+  wire             video_character_buffer_with_dma_0_avalon_char_control_slave_write;
+  wire    [ 31: 0] video_character_buffer_with_dma_0_avalon_char_control_slave_writedata;
+  wire             wait_for_video_character_buffer_with_dma_0_avalon_char_control_slave_counter;
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          d1_reasons_to_wait <= 0;
+      else 
+        d1_reasons_to_wait <= ~video_character_buffer_with_dma_0_avalon_char_control_slave_end_xfer;
+    end
+
+
+  assign video_character_buffer_with_dma_0_avalon_char_control_slave_begins_xfer = ~d1_reasons_to_wait & ((CPU_data_master_qualified_request_video_character_buffer_with_dma_0_avalon_char_control_slave));
+  //assign video_character_buffer_with_dma_0_avalon_char_control_slave_readdata_from_sa = video_character_buffer_with_dma_0_avalon_char_control_slave_readdata so that symbol knows where to group signals which may go to master only, which is an e_assign
+  assign video_character_buffer_with_dma_0_avalon_char_control_slave_readdata_from_sa = video_character_buffer_with_dma_0_avalon_char_control_slave_readdata;
+
+  assign CPU_data_master_requests_video_character_buffer_with_dma_0_avalon_char_control_slave = ({CPU_data_master_address_to_slave[21 : 3] , 3'b0} == 22'h303048) & (CPU_data_master_read | CPU_data_master_write);
+  //registered rdv signal_name registered_CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_control_slave assignment, which is an e_assign
+  assign registered_CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_control_slave = CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_control_slave_shift_register_in;
+
+  //video_character_buffer_with_dma_0_avalon_char_control_slave_arb_share_counter set values, which is an e_mux
+  assign video_character_buffer_with_dma_0_avalon_char_control_slave_arb_share_set_values = 1;
+
+  //video_character_buffer_with_dma_0_avalon_char_control_slave_non_bursting_master_requests mux, which is an e_mux
+  assign video_character_buffer_with_dma_0_avalon_char_control_slave_non_bursting_master_requests = CPU_data_master_requests_video_character_buffer_with_dma_0_avalon_char_control_slave;
+
+  //video_character_buffer_with_dma_0_avalon_char_control_slave_any_bursting_master_saved_grant mux, which is an e_mux
+  assign video_character_buffer_with_dma_0_avalon_char_control_slave_any_bursting_master_saved_grant = 0;
+
+  //video_character_buffer_with_dma_0_avalon_char_control_slave_arb_share_counter_next_value assignment, which is an e_assign
+  assign video_character_buffer_with_dma_0_avalon_char_control_slave_arb_share_counter_next_value = video_character_buffer_with_dma_0_avalon_char_control_slave_firsttransfer ? (video_character_buffer_with_dma_0_avalon_char_control_slave_arb_share_set_values - 1) : |video_character_buffer_with_dma_0_avalon_char_control_slave_arb_share_counter ? (video_character_buffer_with_dma_0_avalon_char_control_slave_arb_share_counter - 1) : 0;
+
+  //video_character_buffer_with_dma_0_avalon_char_control_slave_allgrants all slave grants, which is an e_mux
+  assign video_character_buffer_with_dma_0_avalon_char_control_slave_allgrants = |video_character_buffer_with_dma_0_avalon_char_control_slave_grant_vector;
+
+  //video_character_buffer_with_dma_0_avalon_char_control_slave_end_xfer assignment, which is an e_assign
+  assign video_character_buffer_with_dma_0_avalon_char_control_slave_end_xfer = ~(video_character_buffer_with_dma_0_avalon_char_control_slave_waits_for_read | video_character_buffer_with_dma_0_avalon_char_control_slave_waits_for_write);
+
+  //end_xfer_arb_share_counter_term_video_character_buffer_with_dma_0_avalon_char_control_slave arb share counter enable term, which is an e_assign
+  assign end_xfer_arb_share_counter_term_video_character_buffer_with_dma_0_avalon_char_control_slave = video_character_buffer_with_dma_0_avalon_char_control_slave_end_xfer & (~video_character_buffer_with_dma_0_avalon_char_control_slave_any_bursting_master_saved_grant | in_a_read_cycle | in_a_write_cycle);
+
+  //video_character_buffer_with_dma_0_avalon_char_control_slave_arb_share_counter arbitration counter enable, which is an e_assign
+  assign video_character_buffer_with_dma_0_avalon_char_control_slave_arb_counter_enable = (end_xfer_arb_share_counter_term_video_character_buffer_with_dma_0_avalon_char_control_slave & video_character_buffer_with_dma_0_avalon_char_control_slave_allgrants) | (end_xfer_arb_share_counter_term_video_character_buffer_with_dma_0_avalon_char_control_slave & ~video_character_buffer_with_dma_0_avalon_char_control_slave_non_bursting_master_requests);
+
+  //video_character_buffer_with_dma_0_avalon_char_control_slave_arb_share_counter counter, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          video_character_buffer_with_dma_0_avalon_char_control_slave_arb_share_counter <= 0;
+      else if (video_character_buffer_with_dma_0_avalon_char_control_slave_arb_counter_enable)
+          video_character_buffer_with_dma_0_avalon_char_control_slave_arb_share_counter <= video_character_buffer_with_dma_0_avalon_char_control_slave_arb_share_counter_next_value;
+    end
+
+
+  //video_character_buffer_with_dma_0_avalon_char_control_slave_slavearbiterlockenable slave enables arbiterlock, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          video_character_buffer_with_dma_0_avalon_char_control_slave_slavearbiterlockenable <= 0;
+      else if ((|video_character_buffer_with_dma_0_avalon_char_control_slave_master_qreq_vector & end_xfer_arb_share_counter_term_video_character_buffer_with_dma_0_avalon_char_control_slave) | (end_xfer_arb_share_counter_term_video_character_buffer_with_dma_0_avalon_char_control_slave & ~video_character_buffer_with_dma_0_avalon_char_control_slave_non_bursting_master_requests))
+          video_character_buffer_with_dma_0_avalon_char_control_slave_slavearbiterlockenable <= |video_character_buffer_with_dma_0_avalon_char_control_slave_arb_share_counter_next_value;
+    end
+
+
+  //CPU/data_master video_character_buffer_with_dma_0/avalon_char_control_slave arbiterlock, which is an e_assign
+  assign CPU_data_master_arbiterlock = video_character_buffer_with_dma_0_avalon_char_control_slave_slavearbiterlockenable & CPU_data_master_continuerequest;
+
+  //video_character_buffer_with_dma_0_avalon_char_control_slave_slavearbiterlockenable2 slave enables arbiterlock2, which is an e_assign
+  assign video_character_buffer_with_dma_0_avalon_char_control_slave_slavearbiterlockenable2 = |video_character_buffer_with_dma_0_avalon_char_control_slave_arb_share_counter_next_value;
+
+  //CPU/data_master video_character_buffer_with_dma_0/avalon_char_control_slave arbiterlock2, which is an e_assign
+  assign CPU_data_master_arbiterlock2 = video_character_buffer_with_dma_0_avalon_char_control_slave_slavearbiterlockenable2 & CPU_data_master_continuerequest;
+
+  //video_character_buffer_with_dma_0_avalon_char_control_slave_any_continuerequest at least one master continues requesting, which is an e_assign
+  assign video_character_buffer_with_dma_0_avalon_char_control_slave_any_continuerequest = 1;
+
+  //CPU_data_master_continuerequest continued request, which is an e_assign
+  assign CPU_data_master_continuerequest = 1;
+
+  assign CPU_data_master_qualified_request_video_character_buffer_with_dma_0_avalon_char_control_slave = CPU_data_master_requests_video_character_buffer_with_dma_0_avalon_char_control_slave & ~((CPU_data_master_read & ((|CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_control_slave_shift_register))) | ((~CPU_data_master_waitrequest) & CPU_data_master_write));
+  //CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_control_slave_shift_register_in mux for readlatency shift register, which is an e_mux
+  assign CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_control_slave_shift_register_in = CPU_data_master_granted_video_character_buffer_with_dma_0_avalon_char_control_slave & CPU_data_master_read & ~video_character_buffer_with_dma_0_avalon_char_control_slave_waits_for_read & ~(|CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_control_slave_shift_register);
+
+  //shift register p1 CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_control_slave_shift_register in if flush, otherwise shift left, which is an e_mux
+  assign p1_CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_control_slave_shift_register = {CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_control_slave_shift_register, CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_control_slave_shift_register_in};
+
+  //CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_control_slave_shift_register for remembering which master asked for a fixed latency read, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_control_slave_shift_register <= 0;
+      else 
+        CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_control_slave_shift_register <= p1_CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_control_slave_shift_register;
+    end
+
+
+  //local readdatavalid CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_control_slave, which is an e_mux
+  assign CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_control_slave = CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_control_slave_shift_register;
+
+  //video_character_buffer_with_dma_0_avalon_char_control_slave_writedata mux, which is an e_mux
+  assign video_character_buffer_with_dma_0_avalon_char_control_slave_writedata = CPU_data_master_writedata;
+
+  //master is always granted when requested
+  assign CPU_data_master_granted_video_character_buffer_with_dma_0_avalon_char_control_slave = CPU_data_master_qualified_request_video_character_buffer_with_dma_0_avalon_char_control_slave;
+
+  //CPU/data_master saved-grant video_character_buffer_with_dma_0/avalon_char_control_slave, which is an e_assign
+  assign CPU_data_master_saved_grant_video_character_buffer_with_dma_0_avalon_char_control_slave = CPU_data_master_requests_video_character_buffer_with_dma_0_avalon_char_control_slave;
+
+  //allow new arb cycle for video_character_buffer_with_dma_0/avalon_char_control_slave, which is an e_assign
+  assign video_character_buffer_with_dma_0_avalon_char_control_slave_allow_new_arb_cycle = 1;
+
+  //placeholder chosen master
+  assign video_character_buffer_with_dma_0_avalon_char_control_slave_grant_vector = 1;
+
+  //placeholder vector of master qualified-requests
+  assign video_character_buffer_with_dma_0_avalon_char_control_slave_master_qreq_vector = 1;
+
+  //~video_character_buffer_with_dma_0_avalon_char_control_slave_reset assignment, which is an e_assign
+  assign video_character_buffer_with_dma_0_avalon_char_control_slave_reset = ~reset_n;
+
+  assign video_character_buffer_with_dma_0_avalon_char_control_slave_chipselect = CPU_data_master_granted_video_character_buffer_with_dma_0_avalon_char_control_slave;
+  //video_character_buffer_with_dma_0_avalon_char_control_slave_firsttransfer first transaction, which is an e_assign
+  assign video_character_buffer_with_dma_0_avalon_char_control_slave_firsttransfer = video_character_buffer_with_dma_0_avalon_char_control_slave_begins_xfer ? video_character_buffer_with_dma_0_avalon_char_control_slave_unreg_firsttransfer : video_character_buffer_with_dma_0_avalon_char_control_slave_reg_firsttransfer;
+
+  //video_character_buffer_with_dma_0_avalon_char_control_slave_unreg_firsttransfer first transaction, which is an e_assign
+  assign video_character_buffer_with_dma_0_avalon_char_control_slave_unreg_firsttransfer = ~(video_character_buffer_with_dma_0_avalon_char_control_slave_slavearbiterlockenable & video_character_buffer_with_dma_0_avalon_char_control_slave_any_continuerequest);
+
+  //video_character_buffer_with_dma_0_avalon_char_control_slave_reg_firsttransfer first transaction, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          video_character_buffer_with_dma_0_avalon_char_control_slave_reg_firsttransfer <= 1'b1;
+      else if (video_character_buffer_with_dma_0_avalon_char_control_slave_begins_xfer)
+          video_character_buffer_with_dma_0_avalon_char_control_slave_reg_firsttransfer <= video_character_buffer_with_dma_0_avalon_char_control_slave_unreg_firsttransfer;
+    end
+
+
+  //video_character_buffer_with_dma_0_avalon_char_control_slave_beginbursttransfer_internal begin burst transfer, which is an e_assign
+  assign video_character_buffer_with_dma_0_avalon_char_control_slave_beginbursttransfer_internal = video_character_buffer_with_dma_0_avalon_char_control_slave_begins_xfer;
+
+  //video_character_buffer_with_dma_0_avalon_char_control_slave_read assignment, which is an e_mux
+  assign video_character_buffer_with_dma_0_avalon_char_control_slave_read = CPU_data_master_granted_video_character_buffer_with_dma_0_avalon_char_control_slave & CPU_data_master_read;
+
+  //video_character_buffer_with_dma_0_avalon_char_control_slave_write assignment, which is an e_mux
+  assign video_character_buffer_with_dma_0_avalon_char_control_slave_write = CPU_data_master_granted_video_character_buffer_with_dma_0_avalon_char_control_slave & CPU_data_master_write;
+
+  assign shifted_address_to_video_character_buffer_with_dma_0_avalon_char_control_slave_from_CPU_data_master = CPU_data_master_address_to_slave;
+  //video_character_buffer_with_dma_0_avalon_char_control_slave_address mux, which is an e_mux
+  assign video_character_buffer_with_dma_0_avalon_char_control_slave_address = shifted_address_to_video_character_buffer_with_dma_0_avalon_char_control_slave_from_CPU_data_master >> 2;
+
+  //d1_video_character_buffer_with_dma_0_avalon_char_control_slave_end_xfer register, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          d1_video_character_buffer_with_dma_0_avalon_char_control_slave_end_xfer <= 1;
+      else 
+        d1_video_character_buffer_with_dma_0_avalon_char_control_slave_end_xfer <= video_character_buffer_with_dma_0_avalon_char_control_slave_end_xfer;
+    end
+
+
+  //video_character_buffer_with_dma_0_avalon_char_control_slave_waits_for_read in a cycle, which is an e_mux
+  assign video_character_buffer_with_dma_0_avalon_char_control_slave_waits_for_read = video_character_buffer_with_dma_0_avalon_char_control_slave_in_a_read_cycle & 0;
+
+  //video_character_buffer_with_dma_0_avalon_char_control_slave_in_a_read_cycle assignment, which is an e_assign
+  assign video_character_buffer_with_dma_0_avalon_char_control_slave_in_a_read_cycle = CPU_data_master_granted_video_character_buffer_with_dma_0_avalon_char_control_slave & CPU_data_master_read;
+
+  //in_a_read_cycle assignment, which is an e_mux
+  assign in_a_read_cycle = video_character_buffer_with_dma_0_avalon_char_control_slave_in_a_read_cycle;
+
+  //video_character_buffer_with_dma_0_avalon_char_control_slave_waits_for_write in a cycle, which is an e_mux
+  assign video_character_buffer_with_dma_0_avalon_char_control_slave_waits_for_write = video_character_buffer_with_dma_0_avalon_char_control_slave_in_a_write_cycle & 0;
+
+  //video_character_buffer_with_dma_0_avalon_char_control_slave_in_a_write_cycle assignment, which is an e_assign
+  assign video_character_buffer_with_dma_0_avalon_char_control_slave_in_a_write_cycle = CPU_data_master_granted_video_character_buffer_with_dma_0_avalon_char_control_slave & CPU_data_master_write;
+
+  //in_a_write_cycle assignment, which is an e_mux
+  assign in_a_write_cycle = video_character_buffer_with_dma_0_avalon_char_control_slave_in_a_write_cycle;
+
+  assign wait_for_video_character_buffer_with_dma_0_avalon_char_control_slave_counter = 0;
+  //video_character_buffer_with_dma_0_avalon_char_control_slave_byteenable byte enable port mux, which is an e_mux
+  assign video_character_buffer_with_dma_0_avalon_char_control_slave_byteenable = (CPU_data_master_granted_video_character_buffer_with_dma_0_avalon_char_control_slave)? CPU_data_master_byteenable :
+    -1;
+
+
+//synthesis translate_off
+//////////////// SIMULATION-ONLY CONTENTS
+  //video_character_buffer_with_dma_0/avalon_char_control_slave enable non-zero assertions, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          enable_nonzero_assertions <= 0;
+      else 
+        enable_nonzero_assertions <= 1'b1;
+    end
+
+
+
+//////////////// END SIMULATION-ONLY CONTENTS
+
+//synthesis translate_on
+
+endmodule
+
+
+// synthesis translate_off
+`timescale 1ns / 1ps
+// synthesis translate_on
+
+// turn off superfluous verilog processor warnings 
+// altera message_level Level1 
+// altera message_off 10034 10035 10036 10037 10230 10240 10030 
+
+module video_character_buffer_with_dma_0_avalon_char_source_arbitrator (
+                                                                         // inputs:
+                                                                          clk,
+                                                                          reset_n,
+                                                                          video_alpha_blender_0_avalon_foreground_sink_ready_from_sa,
+                                                                          video_character_buffer_with_dma_0_avalon_char_source_data,
+                                                                          video_character_buffer_with_dma_0_avalon_char_source_endofpacket,
+                                                                          video_character_buffer_with_dma_0_avalon_char_source_startofpacket,
+                                                                          video_character_buffer_with_dma_0_avalon_char_source_valid,
+
+                                                                         // outputs:
+                                                                          video_character_buffer_with_dma_0_avalon_char_source_ready
+                                                                       )
+;
+
+  output           video_character_buffer_with_dma_0_avalon_char_source_ready;
+  input            clk;
+  input            reset_n;
+  input            video_alpha_blender_0_avalon_foreground_sink_ready_from_sa;
+  input   [ 39: 0] video_character_buffer_with_dma_0_avalon_char_source_data;
+  input            video_character_buffer_with_dma_0_avalon_char_source_endofpacket;
+  input            video_character_buffer_with_dma_0_avalon_char_source_startofpacket;
+  input            video_character_buffer_with_dma_0_avalon_char_source_valid;
+
+  wire             video_character_buffer_with_dma_0_avalon_char_source_ready;
+  //mux video_character_buffer_with_dma_0_avalon_char_source_ready, which is an e_mux
+  assign video_character_buffer_with_dma_0_avalon_char_source_ready = video_alpha_blender_0_avalon_foreground_sink_ready_from_sa;
+
+
+endmodule
+
+
+// synthesis translate_off
+`timescale 1ns / 1ps
+// synthesis translate_on
+
+// turn off superfluous verilog processor warnings 
+// altera message_level Level1 
+// altera message_off 10034 10035 10036 10037 10230 10240 10030 
+
 module Video_System_reset_sys_clk_domain_synch_module (
                                                         // inputs:
                                                          clk,
@@ -6571,6 +7489,7 @@ module Video_System (
   wire    [  3: 0] CPU_data_master_byteenable;
   wire    [  1: 0] CPU_data_master_byteenable_Pixel_Buffer_avalon_sram_slave;
   wire             CPU_data_master_byteenable_Video_System_clock_0_in;
+  wire             CPU_data_master_byteenable_video_character_buffer_with_dma_0_avalon_char_buffer_slave;
   wire    [  1: 0] CPU_data_master_dbs_address;
   wire    [ 15: 0] CPU_data_master_dbs_write_16;
   wire    [  7: 0] CPU_data_master_dbs_write_8;
@@ -6583,6 +7502,8 @@ module Video_System (
   wire             CPU_data_master_granted_Video_System_clock_1_in;
   wire             CPU_data_master_granted_Video_System_clock_2_in;
   wire             CPU_data_master_granted_Video_System_clock_3_in;
+  wire             CPU_data_master_granted_video_character_buffer_with_dma_0_avalon_char_buffer_slave;
+  wire             CPU_data_master_granted_video_character_buffer_with_dma_0_avalon_char_control_slave;
   wire    [ 31: 0] CPU_data_master_irq;
   wire             CPU_data_master_no_byte_enables_and_last_term;
   wire             CPU_data_master_qualified_request_CPU_jtag_debug_module;
@@ -6593,6 +7514,8 @@ module Video_System (
   wire             CPU_data_master_qualified_request_Video_System_clock_1_in;
   wire             CPU_data_master_qualified_request_Video_System_clock_2_in;
   wire             CPU_data_master_qualified_request_Video_System_clock_3_in;
+  wire             CPU_data_master_qualified_request_video_character_buffer_with_dma_0_avalon_char_buffer_slave;
+  wire             CPU_data_master_qualified_request_video_character_buffer_with_dma_0_avalon_char_control_slave;
   wire             CPU_data_master_read;
   wire             CPU_data_master_read_data_valid_CPU_jtag_debug_module;
   wire             CPU_data_master_read_data_valid_Onchip_Memory_s1;
@@ -6603,6 +7526,8 @@ module Video_System (
   wire             CPU_data_master_read_data_valid_Video_System_clock_1_in;
   wire             CPU_data_master_read_data_valid_Video_System_clock_2_in;
   wire             CPU_data_master_read_data_valid_Video_System_clock_3_in;
+  wire             CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_buffer_slave;
+  wire             CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_control_slave;
   wire    [ 31: 0] CPU_data_master_readdata;
   wire             CPU_data_master_requests_CPU_jtag_debug_module;
   wire             CPU_data_master_requests_Onchip_Memory_s1;
@@ -6612,6 +7537,8 @@ module Video_System (
   wire             CPU_data_master_requests_Video_System_clock_1_in;
   wire             CPU_data_master_requests_Video_System_clock_2_in;
   wire             CPU_data_master_requests_Video_System_clock_3_in;
+  wire             CPU_data_master_requests_video_character_buffer_with_dma_0_avalon_char_buffer_slave;
+  wire             CPU_data_master_requests_video_character_buffer_with_dma_0_avalon_char_control_slave;
   wire             CPU_data_master_waitrequest;
   wire             CPU_data_master_write;
   wire    [ 31: 0] CPU_data_master_writedata;
@@ -6855,6 +7782,8 @@ module Video_System (
   wire             d1_jtag_uart_0_avalon_jtag_slave_end_xfer;
   wire             d1_pio_0_s1_end_xfer;
   wire             d1_sound_s1_end_xfer;
+  wire             d1_video_character_buffer_with_dma_0_avalon_char_buffer_slave_end_xfer;
+  wire             d1_video_character_buffer_with_dma_0_avalon_char_control_slave_end_xfer;
   wire             jtag_uart_0_avalon_jtag_slave_address;
   wire             jtag_uart_0_avalon_jtag_slave_chipselect;
   wire             jtag_uart_0_avalon_jtag_slave_dataavailable;
@@ -6885,6 +7814,8 @@ module Video_System (
   wire    [ 31: 0] pio_0_s1_writedata;
   wire             registered_CPU_data_master_read_data_valid_Onchip_Memory_s1;
   wire             registered_CPU_data_master_read_data_valid_Pixel_Buffer_DMA_avalon_control_slave;
+  wire             registered_CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_buffer_slave;
+  wire             registered_CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_control_slave;
   wire             reset_n_sources;
   wire    [  2: 0] sound_s1_address;
   wire             sound_s1_chipselect;
@@ -6897,6 +7828,48 @@ module Video_System (
   wire             sys_clk_reset_n;
   wire             vga_clk;
   wire             vga_clk_reset_n;
+  wire    [ 29: 0] video_alpha_blender_0_avalon_background_sink_data;
+  wire             video_alpha_blender_0_avalon_background_sink_endofpacket;
+  wire             video_alpha_blender_0_avalon_background_sink_ready;
+  wire             video_alpha_blender_0_avalon_background_sink_ready_from_sa;
+  wire             video_alpha_blender_0_avalon_background_sink_startofpacket;
+  wire             video_alpha_blender_0_avalon_background_sink_valid;
+  wire    [ 29: 0] video_alpha_blender_0_avalon_blended_source_data;
+  wire             video_alpha_blender_0_avalon_blended_source_endofpacket;
+  wire             video_alpha_blender_0_avalon_blended_source_ready;
+  wire             video_alpha_blender_0_avalon_blended_source_startofpacket;
+  wire             video_alpha_blender_0_avalon_blended_source_valid;
+  wire    [ 39: 0] video_alpha_blender_0_avalon_foreground_sink_data;
+  wire             video_alpha_blender_0_avalon_foreground_sink_endofpacket;
+  wire             video_alpha_blender_0_avalon_foreground_sink_ready;
+  wire             video_alpha_blender_0_avalon_foreground_sink_ready_from_sa;
+  wire             video_alpha_blender_0_avalon_foreground_sink_reset;
+  wire             video_alpha_blender_0_avalon_foreground_sink_startofpacket;
+  wire             video_alpha_blender_0_avalon_foreground_sink_valid;
+  wire    [ 12: 0] video_character_buffer_with_dma_0_avalon_char_buffer_slave_address;
+  wire             video_character_buffer_with_dma_0_avalon_char_buffer_slave_byteenable;
+  wire             video_character_buffer_with_dma_0_avalon_char_buffer_slave_chipselect;
+  wire             video_character_buffer_with_dma_0_avalon_char_buffer_slave_read;
+  wire    [  7: 0] video_character_buffer_with_dma_0_avalon_char_buffer_slave_readdata;
+  wire    [  7: 0] video_character_buffer_with_dma_0_avalon_char_buffer_slave_readdata_from_sa;
+  wire             video_character_buffer_with_dma_0_avalon_char_buffer_slave_waitrequest;
+  wire             video_character_buffer_with_dma_0_avalon_char_buffer_slave_waitrequest_from_sa;
+  wire             video_character_buffer_with_dma_0_avalon_char_buffer_slave_write;
+  wire    [  7: 0] video_character_buffer_with_dma_0_avalon_char_buffer_slave_writedata;
+  wire             video_character_buffer_with_dma_0_avalon_char_control_slave_address;
+  wire    [  3: 0] video_character_buffer_with_dma_0_avalon_char_control_slave_byteenable;
+  wire             video_character_buffer_with_dma_0_avalon_char_control_slave_chipselect;
+  wire             video_character_buffer_with_dma_0_avalon_char_control_slave_read;
+  wire    [ 31: 0] video_character_buffer_with_dma_0_avalon_char_control_slave_readdata;
+  wire    [ 31: 0] video_character_buffer_with_dma_0_avalon_char_control_slave_readdata_from_sa;
+  wire             video_character_buffer_with_dma_0_avalon_char_control_slave_reset;
+  wire             video_character_buffer_with_dma_0_avalon_char_control_slave_write;
+  wire    [ 31: 0] video_character_buffer_with_dma_0_avalon_char_control_slave_writedata;
+  wire    [ 39: 0] video_character_buffer_with_dma_0_avalon_char_source_data;
+  wire             video_character_buffer_with_dma_0_avalon_char_source_endofpacket;
+  wire             video_character_buffer_with_dma_0_avalon_char_source_ready;
+  wire             video_character_buffer_with_dma_0_avalon_char_source_startofpacket;
+  wire             video_character_buffer_with_dma_0_avalon_char_source_valid;
   CPU_jtag_debug_module_arbitrator the_CPU_jtag_debug_module
     (
       .CPU_data_master_address_to_slave                               (CPU_data_master_address_to_slave),
@@ -6935,81 +7908,97 @@ module Video_System (
 
   CPU_data_master_arbitrator the_CPU_data_master
     (
-      .CPU_data_master_address                                                          (CPU_data_master_address),
-      .CPU_data_master_address_to_slave                                                 (CPU_data_master_address_to_slave),
-      .CPU_data_master_byteenable_Pixel_Buffer_avalon_sram_slave                        (CPU_data_master_byteenable_Pixel_Buffer_avalon_sram_slave),
-      .CPU_data_master_byteenable_Video_System_clock_0_in                               (CPU_data_master_byteenable_Video_System_clock_0_in),
-      .CPU_data_master_dbs_address                                                      (CPU_data_master_dbs_address),
-      .CPU_data_master_dbs_write_16                                                     (CPU_data_master_dbs_write_16),
-      .CPU_data_master_dbs_write_8                                                      (CPU_data_master_dbs_write_8),
-      .CPU_data_master_granted_CPU_jtag_debug_module                                    (CPU_data_master_granted_CPU_jtag_debug_module),
-      .CPU_data_master_granted_Onchip_Memory_s1                                         (CPU_data_master_granted_Onchip_Memory_s1),
-      .CPU_data_master_granted_Pixel_Buffer_DMA_avalon_control_slave                    (CPU_data_master_granted_Pixel_Buffer_DMA_avalon_control_slave),
-      .CPU_data_master_granted_Pixel_Buffer_avalon_sram_slave                           (CPU_data_master_granted_Pixel_Buffer_avalon_sram_slave),
-      .CPU_data_master_granted_Video_System_clock_0_in                                  (CPU_data_master_granted_Video_System_clock_0_in),
-      .CPU_data_master_granted_Video_System_clock_1_in                                  (CPU_data_master_granted_Video_System_clock_1_in),
-      .CPU_data_master_granted_Video_System_clock_2_in                                  (CPU_data_master_granted_Video_System_clock_2_in),
-      .CPU_data_master_granted_Video_System_clock_3_in                                  (CPU_data_master_granted_Video_System_clock_3_in),
-      .CPU_data_master_irq                                                              (CPU_data_master_irq),
-      .CPU_data_master_no_byte_enables_and_last_term                                    (CPU_data_master_no_byte_enables_and_last_term),
-      .CPU_data_master_qualified_request_CPU_jtag_debug_module                          (CPU_data_master_qualified_request_CPU_jtag_debug_module),
-      .CPU_data_master_qualified_request_Onchip_Memory_s1                               (CPU_data_master_qualified_request_Onchip_Memory_s1),
-      .CPU_data_master_qualified_request_Pixel_Buffer_DMA_avalon_control_slave          (CPU_data_master_qualified_request_Pixel_Buffer_DMA_avalon_control_slave),
-      .CPU_data_master_qualified_request_Pixel_Buffer_avalon_sram_slave                 (CPU_data_master_qualified_request_Pixel_Buffer_avalon_sram_slave),
-      .CPU_data_master_qualified_request_Video_System_clock_0_in                        (CPU_data_master_qualified_request_Video_System_clock_0_in),
-      .CPU_data_master_qualified_request_Video_System_clock_1_in                        (CPU_data_master_qualified_request_Video_System_clock_1_in),
-      .CPU_data_master_qualified_request_Video_System_clock_2_in                        (CPU_data_master_qualified_request_Video_System_clock_2_in),
-      .CPU_data_master_qualified_request_Video_System_clock_3_in                        (CPU_data_master_qualified_request_Video_System_clock_3_in),
-      .CPU_data_master_read                                                             (CPU_data_master_read),
-      .CPU_data_master_read_data_valid_CPU_jtag_debug_module                            (CPU_data_master_read_data_valid_CPU_jtag_debug_module),
-      .CPU_data_master_read_data_valid_Onchip_Memory_s1                                 (CPU_data_master_read_data_valid_Onchip_Memory_s1),
-      .CPU_data_master_read_data_valid_Pixel_Buffer_DMA_avalon_control_slave            (CPU_data_master_read_data_valid_Pixel_Buffer_DMA_avalon_control_slave),
-      .CPU_data_master_read_data_valid_Pixel_Buffer_avalon_sram_slave                   (CPU_data_master_read_data_valid_Pixel_Buffer_avalon_sram_slave),
-      .CPU_data_master_read_data_valid_Pixel_Buffer_avalon_sram_slave_shift_register    (CPU_data_master_read_data_valid_Pixel_Buffer_avalon_sram_slave_shift_register),
-      .CPU_data_master_read_data_valid_Video_System_clock_0_in                          (CPU_data_master_read_data_valid_Video_System_clock_0_in),
-      .CPU_data_master_read_data_valid_Video_System_clock_1_in                          (CPU_data_master_read_data_valid_Video_System_clock_1_in),
-      .CPU_data_master_read_data_valid_Video_System_clock_2_in                          (CPU_data_master_read_data_valid_Video_System_clock_2_in),
-      .CPU_data_master_read_data_valid_Video_System_clock_3_in                          (CPU_data_master_read_data_valid_Video_System_clock_3_in),
-      .CPU_data_master_readdata                                                         (CPU_data_master_readdata),
-      .CPU_data_master_requests_CPU_jtag_debug_module                                   (CPU_data_master_requests_CPU_jtag_debug_module),
-      .CPU_data_master_requests_Onchip_Memory_s1                                        (CPU_data_master_requests_Onchip_Memory_s1),
-      .CPU_data_master_requests_Pixel_Buffer_DMA_avalon_control_slave                   (CPU_data_master_requests_Pixel_Buffer_DMA_avalon_control_slave),
-      .CPU_data_master_requests_Pixel_Buffer_avalon_sram_slave                          (CPU_data_master_requests_Pixel_Buffer_avalon_sram_slave),
-      .CPU_data_master_requests_Video_System_clock_0_in                                 (CPU_data_master_requests_Video_System_clock_0_in),
-      .CPU_data_master_requests_Video_System_clock_1_in                                 (CPU_data_master_requests_Video_System_clock_1_in),
-      .CPU_data_master_requests_Video_System_clock_2_in                                 (CPU_data_master_requests_Video_System_clock_2_in),
-      .CPU_data_master_requests_Video_System_clock_3_in                                 (CPU_data_master_requests_Video_System_clock_3_in),
-      .CPU_data_master_waitrequest                                                      (CPU_data_master_waitrequest),
-      .CPU_data_master_write                                                            (CPU_data_master_write),
-      .CPU_data_master_writedata                                                        (CPU_data_master_writedata),
-      .CPU_jtag_debug_module_readdata_from_sa                                           (CPU_jtag_debug_module_readdata_from_sa),
-      .Onchip_Memory_s1_readdata_from_sa                                                (Onchip_Memory_s1_readdata_from_sa),
-      .Pixel_Buffer_DMA_avalon_control_slave_readdata_from_sa                           (Pixel_Buffer_DMA_avalon_control_slave_readdata_from_sa),
-      .Pixel_Buffer_avalon_sram_slave_readdata_from_sa                                  (Pixel_Buffer_avalon_sram_slave_readdata_from_sa),
-      .Video_System_clock_0_in_readdata_from_sa                                         (Video_System_clock_0_in_readdata_from_sa),
-      .Video_System_clock_0_in_waitrequest_from_sa                                      (Video_System_clock_0_in_waitrequest_from_sa),
-      .Video_System_clock_1_in_readdata_from_sa                                         (Video_System_clock_1_in_readdata_from_sa),
-      .Video_System_clock_1_in_waitrequest_from_sa                                      (Video_System_clock_1_in_waitrequest_from_sa),
-      .Video_System_clock_2_in_readdata_from_sa                                         (Video_System_clock_2_in_readdata_from_sa),
-      .Video_System_clock_2_in_waitrequest_from_sa                                      (Video_System_clock_2_in_waitrequest_from_sa),
-      .Video_System_clock_3_in_readdata_from_sa                                         (Video_System_clock_3_in_readdata_from_sa),
-      .Video_System_clock_3_in_waitrequest_from_sa                                      (Video_System_clock_3_in_waitrequest_from_sa),
-      .clk                                                                              (sys_clk),
-      .d1_CPU_jtag_debug_module_end_xfer                                                (d1_CPU_jtag_debug_module_end_xfer),
-      .d1_Onchip_Memory_s1_end_xfer                                                     (d1_Onchip_Memory_s1_end_xfer),
-      .d1_Pixel_Buffer_DMA_avalon_control_slave_end_xfer                                (d1_Pixel_Buffer_DMA_avalon_control_slave_end_xfer),
-      .d1_Pixel_Buffer_avalon_sram_slave_end_xfer                                       (d1_Pixel_Buffer_avalon_sram_slave_end_xfer),
-      .d1_Video_System_clock_0_in_end_xfer                                              (d1_Video_System_clock_0_in_end_xfer),
-      .d1_Video_System_clock_1_in_end_xfer                                              (d1_Video_System_clock_1_in_end_xfer),
-      .d1_Video_System_clock_2_in_end_xfer                                              (d1_Video_System_clock_2_in_end_xfer),
-      .d1_Video_System_clock_3_in_end_xfer                                              (d1_Video_System_clock_3_in_end_xfer),
-      .jtag_uart_0_avalon_jtag_slave_irq_from_sa                                        (jtag_uart_0_avalon_jtag_slave_irq_from_sa),
-      .pio_0_s1_irq_from_sa                                                             (pio_0_s1_irq_from_sa),
-      .registered_CPU_data_master_read_data_valid_Onchip_Memory_s1                      (registered_CPU_data_master_read_data_valid_Onchip_Memory_s1),
-      .registered_CPU_data_master_read_data_valid_Pixel_Buffer_DMA_avalon_control_slave (registered_CPU_data_master_read_data_valid_Pixel_Buffer_DMA_avalon_control_slave),
-      .reset_n                                                                          (sys_clk_reset_n),
-      .sys_clk                                                                          (sys_clk),
-      .sys_clk_reset_n                                                                  (sys_clk_reset_n)
+      .CPU_data_master_address                                                                                (CPU_data_master_address),
+      .CPU_data_master_address_to_slave                                                                       (CPU_data_master_address_to_slave),
+      .CPU_data_master_byteenable_Pixel_Buffer_avalon_sram_slave                                              (CPU_data_master_byteenable_Pixel_Buffer_avalon_sram_slave),
+      .CPU_data_master_byteenable_Video_System_clock_0_in                                                     (CPU_data_master_byteenable_Video_System_clock_0_in),
+      .CPU_data_master_byteenable_video_character_buffer_with_dma_0_avalon_char_buffer_slave                  (CPU_data_master_byteenable_video_character_buffer_with_dma_0_avalon_char_buffer_slave),
+      .CPU_data_master_dbs_address                                                                            (CPU_data_master_dbs_address),
+      .CPU_data_master_dbs_write_16                                                                           (CPU_data_master_dbs_write_16),
+      .CPU_data_master_dbs_write_8                                                                            (CPU_data_master_dbs_write_8),
+      .CPU_data_master_granted_CPU_jtag_debug_module                                                          (CPU_data_master_granted_CPU_jtag_debug_module),
+      .CPU_data_master_granted_Onchip_Memory_s1                                                               (CPU_data_master_granted_Onchip_Memory_s1),
+      .CPU_data_master_granted_Pixel_Buffer_DMA_avalon_control_slave                                          (CPU_data_master_granted_Pixel_Buffer_DMA_avalon_control_slave),
+      .CPU_data_master_granted_Pixel_Buffer_avalon_sram_slave                                                 (CPU_data_master_granted_Pixel_Buffer_avalon_sram_slave),
+      .CPU_data_master_granted_Video_System_clock_0_in                                                        (CPU_data_master_granted_Video_System_clock_0_in),
+      .CPU_data_master_granted_Video_System_clock_1_in                                                        (CPU_data_master_granted_Video_System_clock_1_in),
+      .CPU_data_master_granted_Video_System_clock_2_in                                                        (CPU_data_master_granted_Video_System_clock_2_in),
+      .CPU_data_master_granted_Video_System_clock_3_in                                                        (CPU_data_master_granted_Video_System_clock_3_in),
+      .CPU_data_master_granted_video_character_buffer_with_dma_0_avalon_char_buffer_slave                     (CPU_data_master_granted_video_character_buffer_with_dma_0_avalon_char_buffer_slave),
+      .CPU_data_master_granted_video_character_buffer_with_dma_0_avalon_char_control_slave                    (CPU_data_master_granted_video_character_buffer_with_dma_0_avalon_char_control_slave),
+      .CPU_data_master_irq                                                                                    (CPU_data_master_irq),
+      .CPU_data_master_no_byte_enables_and_last_term                                                          (CPU_data_master_no_byte_enables_and_last_term),
+      .CPU_data_master_qualified_request_CPU_jtag_debug_module                                                (CPU_data_master_qualified_request_CPU_jtag_debug_module),
+      .CPU_data_master_qualified_request_Onchip_Memory_s1                                                     (CPU_data_master_qualified_request_Onchip_Memory_s1),
+      .CPU_data_master_qualified_request_Pixel_Buffer_DMA_avalon_control_slave                                (CPU_data_master_qualified_request_Pixel_Buffer_DMA_avalon_control_slave),
+      .CPU_data_master_qualified_request_Pixel_Buffer_avalon_sram_slave                                       (CPU_data_master_qualified_request_Pixel_Buffer_avalon_sram_slave),
+      .CPU_data_master_qualified_request_Video_System_clock_0_in                                              (CPU_data_master_qualified_request_Video_System_clock_0_in),
+      .CPU_data_master_qualified_request_Video_System_clock_1_in                                              (CPU_data_master_qualified_request_Video_System_clock_1_in),
+      .CPU_data_master_qualified_request_Video_System_clock_2_in                                              (CPU_data_master_qualified_request_Video_System_clock_2_in),
+      .CPU_data_master_qualified_request_Video_System_clock_3_in                                              (CPU_data_master_qualified_request_Video_System_clock_3_in),
+      .CPU_data_master_qualified_request_video_character_buffer_with_dma_0_avalon_char_buffer_slave           (CPU_data_master_qualified_request_video_character_buffer_with_dma_0_avalon_char_buffer_slave),
+      .CPU_data_master_qualified_request_video_character_buffer_with_dma_0_avalon_char_control_slave          (CPU_data_master_qualified_request_video_character_buffer_with_dma_0_avalon_char_control_slave),
+      .CPU_data_master_read                                                                                   (CPU_data_master_read),
+      .CPU_data_master_read_data_valid_CPU_jtag_debug_module                                                  (CPU_data_master_read_data_valid_CPU_jtag_debug_module),
+      .CPU_data_master_read_data_valid_Onchip_Memory_s1                                                       (CPU_data_master_read_data_valid_Onchip_Memory_s1),
+      .CPU_data_master_read_data_valid_Pixel_Buffer_DMA_avalon_control_slave                                  (CPU_data_master_read_data_valid_Pixel_Buffer_DMA_avalon_control_slave),
+      .CPU_data_master_read_data_valid_Pixel_Buffer_avalon_sram_slave                                         (CPU_data_master_read_data_valid_Pixel_Buffer_avalon_sram_slave),
+      .CPU_data_master_read_data_valid_Pixel_Buffer_avalon_sram_slave_shift_register                          (CPU_data_master_read_data_valid_Pixel_Buffer_avalon_sram_slave_shift_register),
+      .CPU_data_master_read_data_valid_Video_System_clock_0_in                                                (CPU_data_master_read_data_valid_Video_System_clock_0_in),
+      .CPU_data_master_read_data_valid_Video_System_clock_1_in                                                (CPU_data_master_read_data_valid_Video_System_clock_1_in),
+      .CPU_data_master_read_data_valid_Video_System_clock_2_in                                                (CPU_data_master_read_data_valid_Video_System_clock_2_in),
+      .CPU_data_master_read_data_valid_Video_System_clock_3_in                                                (CPU_data_master_read_data_valid_Video_System_clock_3_in),
+      .CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_buffer_slave             (CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_buffer_slave),
+      .CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_control_slave            (CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_control_slave),
+      .CPU_data_master_readdata                                                                               (CPU_data_master_readdata),
+      .CPU_data_master_requests_CPU_jtag_debug_module                                                         (CPU_data_master_requests_CPU_jtag_debug_module),
+      .CPU_data_master_requests_Onchip_Memory_s1                                                              (CPU_data_master_requests_Onchip_Memory_s1),
+      .CPU_data_master_requests_Pixel_Buffer_DMA_avalon_control_slave                                         (CPU_data_master_requests_Pixel_Buffer_DMA_avalon_control_slave),
+      .CPU_data_master_requests_Pixel_Buffer_avalon_sram_slave                                                (CPU_data_master_requests_Pixel_Buffer_avalon_sram_slave),
+      .CPU_data_master_requests_Video_System_clock_0_in                                                       (CPU_data_master_requests_Video_System_clock_0_in),
+      .CPU_data_master_requests_Video_System_clock_1_in                                                       (CPU_data_master_requests_Video_System_clock_1_in),
+      .CPU_data_master_requests_Video_System_clock_2_in                                                       (CPU_data_master_requests_Video_System_clock_2_in),
+      .CPU_data_master_requests_Video_System_clock_3_in                                                       (CPU_data_master_requests_Video_System_clock_3_in),
+      .CPU_data_master_requests_video_character_buffer_with_dma_0_avalon_char_buffer_slave                    (CPU_data_master_requests_video_character_buffer_with_dma_0_avalon_char_buffer_slave),
+      .CPU_data_master_requests_video_character_buffer_with_dma_0_avalon_char_control_slave                   (CPU_data_master_requests_video_character_buffer_with_dma_0_avalon_char_control_slave),
+      .CPU_data_master_waitrequest                                                                            (CPU_data_master_waitrequest),
+      .CPU_data_master_write                                                                                  (CPU_data_master_write),
+      .CPU_data_master_writedata                                                                              (CPU_data_master_writedata),
+      .CPU_jtag_debug_module_readdata_from_sa                                                                 (CPU_jtag_debug_module_readdata_from_sa),
+      .Onchip_Memory_s1_readdata_from_sa                                                                      (Onchip_Memory_s1_readdata_from_sa),
+      .Pixel_Buffer_DMA_avalon_control_slave_readdata_from_sa                                                 (Pixel_Buffer_DMA_avalon_control_slave_readdata_from_sa),
+      .Pixel_Buffer_avalon_sram_slave_readdata_from_sa                                                        (Pixel_Buffer_avalon_sram_slave_readdata_from_sa),
+      .Video_System_clock_0_in_readdata_from_sa                                                               (Video_System_clock_0_in_readdata_from_sa),
+      .Video_System_clock_0_in_waitrequest_from_sa                                                            (Video_System_clock_0_in_waitrequest_from_sa),
+      .Video_System_clock_1_in_readdata_from_sa                                                               (Video_System_clock_1_in_readdata_from_sa),
+      .Video_System_clock_1_in_waitrequest_from_sa                                                            (Video_System_clock_1_in_waitrequest_from_sa),
+      .Video_System_clock_2_in_readdata_from_sa                                                               (Video_System_clock_2_in_readdata_from_sa),
+      .Video_System_clock_2_in_waitrequest_from_sa                                                            (Video_System_clock_2_in_waitrequest_from_sa),
+      .Video_System_clock_3_in_readdata_from_sa                                                               (Video_System_clock_3_in_readdata_from_sa),
+      .Video_System_clock_3_in_waitrequest_from_sa                                                            (Video_System_clock_3_in_waitrequest_from_sa),
+      .clk                                                                                                    (sys_clk),
+      .d1_CPU_jtag_debug_module_end_xfer                                                                      (d1_CPU_jtag_debug_module_end_xfer),
+      .d1_Onchip_Memory_s1_end_xfer                                                                           (d1_Onchip_Memory_s1_end_xfer),
+      .d1_Pixel_Buffer_DMA_avalon_control_slave_end_xfer                                                      (d1_Pixel_Buffer_DMA_avalon_control_slave_end_xfer),
+      .d1_Pixel_Buffer_avalon_sram_slave_end_xfer                                                             (d1_Pixel_Buffer_avalon_sram_slave_end_xfer),
+      .d1_Video_System_clock_0_in_end_xfer                                                                    (d1_Video_System_clock_0_in_end_xfer),
+      .d1_Video_System_clock_1_in_end_xfer                                                                    (d1_Video_System_clock_1_in_end_xfer),
+      .d1_Video_System_clock_2_in_end_xfer                                                                    (d1_Video_System_clock_2_in_end_xfer),
+      .d1_Video_System_clock_3_in_end_xfer                                                                    (d1_Video_System_clock_3_in_end_xfer),
+      .d1_video_character_buffer_with_dma_0_avalon_char_buffer_slave_end_xfer                                 (d1_video_character_buffer_with_dma_0_avalon_char_buffer_slave_end_xfer),
+      .d1_video_character_buffer_with_dma_0_avalon_char_control_slave_end_xfer                                (d1_video_character_buffer_with_dma_0_avalon_char_control_slave_end_xfer),
+      .jtag_uart_0_avalon_jtag_slave_irq_from_sa                                                              (jtag_uart_0_avalon_jtag_slave_irq_from_sa),
+      .pio_0_s1_irq_from_sa                                                                                   (pio_0_s1_irq_from_sa),
+      .registered_CPU_data_master_read_data_valid_Onchip_Memory_s1                                            (registered_CPU_data_master_read_data_valid_Onchip_Memory_s1),
+      .registered_CPU_data_master_read_data_valid_Pixel_Buffer_DMA_avalon_control_slave                       (registered_CPU_data_master_read_data_valid_Pixel_Buffer_DMA_avalon_control_slave),
+      .registered_CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_buffer_slave  (registered_CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_buffer_slave),
+      .registered_CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_control_slave (registered_CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_control_slave),
+      .reset_n                                                                                                (sys_clk_reset_n),
+      .sys_clk                                                                                                (sys_clk),
+      .sys_clk_reset_n                                                                                        (sys_clk_reset_n),
+      .video_character_buffer_with_dma_0_avalon_char_buffer_slave_readdata_from_sa                            (video_character_buffer_with_dma_0_avalon_char_buffer_slave_readdata_from_sa),
+      .video_character_buffer_with_dma_0_avalon_char_buffer_slave_waitrequest_from_sa                         (video_character_buffer_with_dma_0_avalon_char_buffer_slave_waitrequest_from_sa),
+      .video_character_buffer_with_dma_0_avalon_char_control_slave_readdata_from_sa                           (video_character_buffer_with_dma_0_avalon_char_control_slave_readdata_from_sa)
     );
 
   CPU_instruction_master_arbitrator the_CPU_instruction_master
@@ -7097,18 +8086,18 @@ module Video_System (
 
   Dual_Clock_FIFO_avalon_dc_buffer_sink_arbitrator the_Dual_Clock_FIFO_avalon_dc_buffer_sink
     (
-      .Dual_Clock_FIFO_avalon_dc_buffer_sink_data          (Dual_Clock_FIFO_avalon_dc_buffer_sink_data),
-      .Dual_Clock_FIFO_avalon_dc_buffer_sink_endofpacket   (Dual_Clock_FIFO_avalon_dc_buffer_sink_endofpacket),
-      .Dual_Clock_FIFO_avalon_dc_buffer_sink_ready         (Dual_Clock_FIFO_avalon_dc_buffer_sink_ready),
-      .Dual_Clock_FIFO_avalon_dc_buffer_sink_ready_from_sa (Dual_Clock_FIFO_avalon_dc_buffer_sink_ready_from_sa),
-      .Dual_Clock_FIFO_avalon_dc_buffer_sink_startofpacket (Dual_Clock_FIFO_avalon_dc_buffer_sink_startofpacket),
-      .Dual_Clock_FIFO_avalon_dc_buffer_sink_valid         (Dual_Clock_FIFO_avalon_dc_buffer_sink_valid),
-      .Pixel_RGB_Resampler_avalon_rgb_source_data          (Pixel_RGB_Resampler_avalon_rgb_source_data),
-      .Pixel_RGB_Resampler_avalon_rgb_source_endofpacket   (Pixel_RGB_Resampler_avalon_rgb_source_endofpacket),
-      .Pixel_RGB_Resampler_avalon_rgb_source_startofpacket (Pixel_RGB_Resampler_avalon_rgb_source_startofpacket),
-      .Pixel_RGB_Resampler_avalon_rgb_source_valid         (Pixel_RGB_Resampler_avalon_rgb_source_valid),
-      .clk                                                 (sys_clk),
-      .reset_n                                             (sys_clk_reset_n)
+      .Dual_Clock_FIFO_avalon_dc_buffer_sink_data                (Dual_Clock_FIFO_avalon_dc_buffer_sink_data),
+      .Dual_Clock_FIFO_avalon_dc_buffer_sink_endofpacket         (Dual_Clock_FIFO_avalon_dc_buffer_sink_endofpacket),
+      .Dual_Clock_FIFO_avalon_dc_buffer_sink_ready               (Dual_Clock_FIFO_avalon_dc_buffer_sink_ready),
+      .Dual_Clock_FIFO_avalon_dc_buffer_sink_ready_from_sa       (Dual_Clock_FIFO_avalon_dc_buffer_sink_ready_from_sa),
+      .Dual_Clock_FIFO_avalon_dc_buffer_sink_startofpacket       (Dual_Clock_FIFO_avalon_dc_buffer_sink_startofpacket),
+      .Dual_Clock_FIFO_avalon_dc_buffer_sink_valid               (Dual_Clock_FIFO_avalon_dc_buffer_sink_valid),
+      .clk                                                       (sys_clk),
+      .reset_n                                                   (sys_clk_reset_n),
+      .video_alpha_blender_0_avalon_blended_source_data          (video_alpha_blender_0_avalon_blended_source_data),
+      .video_alpha_blender_0_avalon_blended_source_endofpacket   (video_alpha_blender_0_avalon_blended_source_endofpacket),
+      .video_alpha_blender_0_avalon_blended_source_startofpacket (video_alpha_blender_0_avalon_blended_source_startofpacket),
+      .video_alpha_blender_0_avalon_blended_source_valid         (video_alpha_blender_0_avalon_blended_source_valid)
     );
 
   Dual_Clock_FIFO_avalon_dc_buffer_source_arbitrator the_Dual_Clock_FIFO_avalon_dc_buffer_source
@@ -7344,14 +8333,14 @@ module Video_System (
 
   Pixel_RGB_Resampler_avalon_rgb_source_arbitrator the_Pixel_RGB_Resampler_avalon_rgb_source
     (
-      .Dual_Clock_FIFO_avalon_dc_buffer_sink_ready_from_sa (Dual_Clock_FIFO_avalon_dc_buffer_sink_ready_from_sa),
-      .Pixel_RGB_Resampler_avalon_rgb_source_data          (Pixel_RGB_Resampler_avalon_rgb_source_data),
-      .Pixel_RGB_Resampler_avalon_rgb_source_endofpacket   (Pixel_RGB_Resampler_avalon_rgb_source_endofpacket),
-      .Pixel_RGB_Resampler_avalon_rgb_source_ready         (Pixel_RGB_Resampler_avalon_rgb_source_ready),
-      .Pixel_RGB_Resampler_avalon_rgb_source_startofpacket (Pixel_RGB_Resampler_avalon_rgb_source_startofpacket),
-      .Pixel_RGB_Resampler_avalon_rgb_source_valid         (Pixel_RGB_Resampler_avalon_rgb_source_valid),
-      .clk                                                 (sys_clk),
-      .reset_n                                             (sys_clk_reset_n)
+      .Pixel_RGB_Resampler_avalon_rgb_source_data                 (Pixel_RGB_Resampler_avalon_rgb_source_data),
+      .Pixel_RGB_Resampler_avalon_rgb_source_endofpacket          (Pixel_RGB_Resampler_avalon_rgb_source_endofpacket),
+      .Pixel_RGB_Resampler_avalon_rgb_source_ready                (Pixel_RGB_Resampler_avalon_rgb_source_ready),
+      .Pixel_RGB_Resampler_avalon_rgb_source_startofpacket        (Pixel_RGB_Resampler_avalon_rgb_source_startofpacket),
+      .Pixel_RGB_Resampler_avalon_rgb_source_valid                (Pixel_RGB_Resampler_avalon_rgb_source_valid),
+      .clk                                                        (sys_clk),
+      .reset_n                                                    (sys_clk_reset_n),
+      .video_alpha_blender_0_avalon_background_sink_ready_from_sa (video_alpha_blender_0_avalon_background_sink_ready_from_sa)
     );
 
   Pixel_RGB_Resampler the_Pixel_RGB_Resampler
@@ -7835,6 +8824,168 @@ module Video_System (
       .writedata  (sound_s1_writedata)
     );
 
+  video_alpha_blender_0_avalon_background_sink_arbitrator the_video_alpha_blender_0_avalon_background_sink
+    (
+      .Pixel_RGB_Resampler_avalon_rgb_source_data                 (Pixel_RGB_Resampler_avalon_rgb_source_data),
+      .Pixel_RGB_Resampler_avalon_rgb_source_endofpacket          (Pixel_RGB_Resampler_avalon_rgb_source_endofpacket),
+      .Pixel_RGB_Resampler_avalon_rgb_source_startofpacket        (Pixel_RGB_Resampler_avalon_rgb_source_startofpacket),
+      .Pixel_RGB_Resampler_avalon_rgb_source_valid                (Pixel_RGB_Resampler_avalon_rgb_source_valid),
+      .clk                                                        (sys_clk),
+      .reset_n                                                    (sys_clk_reset_n),
+      .video_alpha_blender_0_avalon_background_sink_data          (video_alpha_blender_0_avalon_background_sink_data),
+      .video_alpha_blender_0_avalon_background_sink_endofpacket   (video_alpha_blender_0_avalon_background_sink_endofpacket),
+      .video_alpha_blender_0_avalon_background_sink_ready         (video_alpha_blender_0_avalon_background_sink_ready),
+      .video_alpha_blender_0_avalon_background_sink_ready_from_sa (video_alpha_blender_0_avalon_background_sink_ready_from_sa),
+      .video_alpha_blender_0_avalon_background_sink_startofpacket (video_alpha_blender_0_avalon_background_sink_startofpacket),
+      .video_alpha_blender_0_avalon_background_sink_valid         (video_alpha_blender_0_avalon_background_sink_valid)
+    );
+
+  video_alpha_blender_0_avalon_foreground_sink_arbitrator the_video_alpha_blender_0_avalon_foreground_sink
+    (
+      .clk                                                                (sys_clk),
+      .reset_n                                                            (sys_clk_reset_n),
+      .video_alpha_blender_0_avalon_foreground_sink_data                  (video_alpha_blender_0_avalon_foreground_sink_data),
+      .video_alpha_blender_0_avalon_foreground_sink_endofpacket           (video_alpha_blender_0_avalon_foreground_sink_endofpacket),
+      .video_alpha_blender_0_avalon_foreground_sink_ready                 (video_alpha_blender_0_avalon_foreground_sink_ready),
+      .video_alpha_blender_0_avalon_foreground_sink_ready_from_sa         (video_alpha_blender_0_avalon_foreground_sink_ready_from_sa),
+      .video_alpha_blender_0_avalon_foreground_sink_reset                 (video_alpha_blender_0_avalon_foreground_sink_reset),
+      .video_alpha_blender_0_avalon_foreground_sink_startofpacket         (video_alpha_blender_0_avalon_foreground_sink_startofpacket),
+      .video_alpha_blender_0_avalon_foreground_sink_valid                 (video_alpha_blender_0_avalon_foreground_sink_valid),
+      .video_character_buffer_with_dma_0_avalon_char_source_data          (video_character_buffer_with_dma_0_avalon_char_source_data),
+      .video_character_buffer_with_dma_0_avalon_char_source_endofpacket   (video_character_buffer_with_dma_0_avalon_char_source_endofpacket),
+      .video_character_buffer_with_dma_0_avalon_char_source_startofpacket (video_character_buffer_with_dma_0_avalon_char_source_startofpacket),
+      .video_character_buffer_with_dma_0_avalon_char_source_valid         (video_character_buffer_with_dma_0_avalon_char_source_valid)
+    );
+
+  video_alpha_blender_0_avalon_blended_source_arbitrator the_video_alpha_blender_0_avalon_blended_source
+    (
+      .Dual_Clock_FIFO_avalon_dc_buffer_sink_ready_from_sa       (Dual_Clock_FIFO_avalon_dc_buffer_sink_ready_from_sa),
+      .clk                                                       (sys_clk),
+      .reset_n                                                   (sys_clk_reset_n),
+      .video_alpha_blender_0_avalon_blended_source_data          (video_alpha_blender_0_avalon_blended_source_data),
+      .video_alpha_blender_0_avalon_blended_source_endofpacket   (video_alpha_blender_0_avalon_blended_source_endofpacket),
+      .video_alpha_blender_0_avalon_blended_source_ready         (video_alpha_blender_0_avalon_blended_source_ready),
+      .video_alpha_blender_0_avalon_blended_source_startofpacket (video_alpha_blender_0_avalon_blended_source_startofpacket),
+      .video_alpha_blender_0_avalon_blended_source_valid         (video_alpha_blender_0_avalon_blended_source_valid)
+    );
+
+  video_alpha_blender_0 the_video_alpha_blender_0
+    (
+      .background_data          (video_alpha_blender_0_avalon_background_sink_data),
+      .background_endofpacket   (video_alpha_blender_0_avalon_background_sink_endofpacket),
+      .background_ready         (video_alpha_blender_0_avalon_background_sink_ready),
+      .background_startofpacket (video_alpha_blender_0_avalon_background_sink_startofpacket),
+      .background_valid         (video_alpha_blender_0_avalon_background_sink_valid),
+      .clk                      (sys_clk),
+      .foreground_data          (video_alpha_blender_0_avalon_foreground_sink_data),
+      .foreground_endofpacket   (video_alpha_blender_0_avalon_foreground_sink_endofpacket),
+      .foreground_ready         (video_alpha_blender_0_avalon_foreground_sink_ready),
+      .foreground_startofpacket (video_alpha_blender_0_avalon_foreground_sink_startofpacket),
+      .foreground_valid         (video_alpha_blender_0_avalon_foreground_sink_valid),
+      .output_data              (video_alpha_blender_0_avalon_blended_source_data),
+      .output_endofpacket       (video_alpha_blender_0_avalon_blended_source_endofpacket),
+      .output_ready             (video_alpha_blender_0_avalon_blended_source_ready),
+      .output_startofpacket     (video_alpha_blender_0_avalon_blended_source_startofpacket),
+      .output_valid             (video_alpha_blender_0_avalon_blended_source_valid),
+      .reset                    (video_alpha_blender_0_avalon_foreground_sink_reset)
+    );
+
+  video_character_buffer_with_dma_0_avalon_char_buffer_slave_arbitrator the_video_character_buffer_with_dma_0_avalon_char_buffer_slave
+    (
+      .CPU_data_master_address_to_slave                                                                      (CPU_data_master_address_to_slave),
+      .CPU_data_master_byteenable                                                                            (CPU_data_master_byteenable),
+      .CPU_data_master_byteenable_video_character_buffer_with_dma_0_avalon_char_buffer_slave                 (CPU_data_master_byteenable_video_character_buffer_with_dma_0_avalon_char_buffer_slave),
+      .CPU_data_master_dbs_address                                                                           (CPU_data_master_dbs_address),
+      .CPU_data_master_dbs_write_8                                                                           (CPU_data_master_dbs_write_8),
+      .CPU_data_master_granted_video_character_buffer_with_dma_0_avalon_char_buffer_slave                    (CPU_data_master_granted_video_character_buffer_with_dma_0_avalon_char_buffer_slave),
+      .CPU_data_master_no_byte_enables_and_last_term                                                         (CPU_data_master_no_byte_enables_and_last_term),
+      .CPU_data_master_qualified_request_video_character_buffer_with_dma_0_avalon_char_buffer_slave          (CPU_data_master_qualified_request_video_character_buffer_with_dma_0_avalon_char_buffer_slave),
+      .CPU_data_master_read                                                                                  (CPU_data_master_read),
+      .CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_buffer_slave            (CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_buffer_slave),
+      .CPU_data_master_requests_video_character_buffer_with_dma_0_avalon_char_buffer_slave                   (CPU_data_master_requests_video_character_buffer_with_dma_0_avalon_char_buffer_slave),
+      .CPU_data_master_waitrequest                                                                           (CPU_data_master_waitrequest),
+      .CPU_data_master_write                                                                                 (CPU_data_master_write),
+      .clk                                                                                                   (sys_clk),
+      .d1_video_character_buffer_with_dma_0_avalon_char_buffer_slave_end_xfer                                (d1_video_character_buffer_with_dma_0_avalon_char_buffer_slave_end_xfer),
+      .registered_CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_buffer_slave (registered_CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_buffer_slave),
+      .reset_n                                                                                               (sys_clk_reset_n),
+      .video_character_buffer_with_dma_0_avalon_char_buffer_slave_address                                    (video_character_buffer_with_dma_0_avalon_char_buffer_slave_address),
+      .video_character_buffer_with_dma_0_avalon_char_buffer_slave_byteenable                                 (video_character_buffer_with_dma_0_avalon_char_buffer_slave_byteenable),
+      .video_character_buffer_with_dma_0_avalon_char_buffer_slave_chipselect                                 (video_character_buffer_with_dma_0_avalon_char_buffer_slave_chipselect),
+      .video_character_buffer_with_dma_0_avalon_char_buffer_slave_read                                       (video_character_buffer_with_dma_0_avalon_char_buffer_slave_read),
+      .video_character_buffer_with_dma_0_avalon_char_buffer_slave_readdata                                   (video_character_buffer_with_dma_0_avalon_char_buffer_slave_readdata),
+      .video_character_buffer_with_dma_0_avalon_char_buffer_slave_readdata_from_sa                           (video_character_buffer_with_dma_0_avalon_char_buffer_slave_readdata_from_sa),
+      .video_character_buffer_with_dma_0_avalon_char_buffer_slave_waitrequest                                (video_character_buffer_with_dma_0_avalon_char_buffer_slave_waitrequest),
+      .video_character_buffer_with_dma_0_avalon_char_buffer_slave_waitrequest_from_sa                        (video_character_buffer_with_dma_0_avalon_char_buffer_slave_waitrequest_from_sa),
+      .video_character_buffer_with_dma_0_avalon_char_buffer_slave_write                                      (video_character_buffer_with_dma_0_avalon_char_buffer_slave_write),
+      .video_character_buffer_with_dma_0_avalon_char_buffer_slave_writedata                                  (video_character_buffer_with_dma_0_avalon_char_buffer_slave_writedata)
+    );
+
+  video_character_buffer_with_dma_0_avalon_char_control_slave_arbitrator the_video_character_buffer_with_dma_0_avalon_char_control_slave
+    (
+      .CPU_data_master_address_to_slave                                                                       (CPU_data_master_address_to_slave),
+      .CPU_data_master_byteenable                                                                             (CPU_data_master_byteenable),
+      .CPU_data_master_granted_video_character_buffer_with_dma_0_avalon_char_control_slave                    (CPU_data_master_granted_video_character_buffer_with_dma_0_avalon_char_control_slave),
+      .CPU_data_master_qualified_request_video_character_buffer_with_dma_0_avalon_char_control_slave          (CPU_data_master_qualified_request_video_character_buffer_with_dma_0_avalon_char_control_slave),
+      .CPU_data_master_read                                                                                   (CPU_data_master_read),
+      .CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_control_slave            (CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_control_slave),
+      .CPU_data_master_requests_video_character_buffer_with_dma_0_avalon_char_control_slave                   (CPU_data_master_requests_video_character_buffer_with_dma_0_avalon_char_control_slave),
+      .CPU_data_master_waitrequest                                                                            (CPU_data_master_waitrequest),
+      .CPU_data_master_write                                                                                  (CPU_data_master_write),
+      .CPU_data_master_writedata                                                                              (CPU_data_master_writedata),
+      .clk                                                                                                    (sys_clk),
+      .d1_video_character_buffer_with_dma_0_avalon_char_control_slave_end_xfer                                (d1_video_character_buffer_with_dma_0_avalon_char_control_slave_end_xfer),
+      .registered_CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_control_slave (registered_CPU_data_master_read_data_valid_video_character_buffer_with_dma_0_avalon_char_control_slave),
+      .reset_n                                                                                                (sys_clk_reset_n),
+      .video_character_buffer_with_dma_0_avalon_char_control_slave_address                                    (video_character_buffer_with_dma_0_avalon_char_control_slave_address),
+      .video_character_buffer_with_dma_0_avalon_char_control_slave_byteenable                                 (video_character_buffer_with_dma_0_avalon_char_control_slave_byteenable),
+      .video_character_buffer_with_dma_0_avalon_char_control_slave_chipselect                                 (video_character_buffer_with_dma_0_avalon_char_control_slave_chipselect),
+      .video_character_buffer_with_dma_0_avalon_char_control_slave_read                                       (video_character_buffer_with_dma_0_avalon_char_control_slave_read),
+      .video_character_buffer_with_dma_0_avalon_char_control_slave_readdata                                   (video_character_buffer_with_dma_0_avalon_char_control_slave_readdata),
+      .video_character_buffer_with_dma_0_avalon_char_control_slave_readdata_from_sa                           (video_character_buffer_with_dma_0_avalon_char_control_slave_readdata_from_sa),
+      .video_character_buffer_with_dma_0_avalon_char_control_slave_reset                                      (video_character_buffer_with_dma_0_avalon_char_control_slave_reset),
+      .video_character_buffer_with_dma_0_avalon_char_control_slave_write                                      (video_character_buffer_with_dma_0_avalon_char_control_slave_write),
+      .video_character_buffer_with_dma_0_avalon_char_control_slave_writedata                                  (video_character_buffer_with_dma_0_avalon_char_control_slave_writedata)
+    );
+
+  video_character_buffer_with_dma_0_avalon_char_source_arbitrator the_video_character_buffer_with_dma_0_avalon_char_source
+    (
+      .clk                                                                (sys_clk),
+      .reset_n                                                            (sys_clk_reset_n),
+      .video_alpha_blender_0_avalon_foreground_sink_ready_from_sa         (video_alpha_blender_0_avalon_foreground_sink_ready_from_sa),
+      .video_character_buffer_with_dma_0_avalon_char_source_data          (video_character_buffer_with_dma_0_avalon_char_source_data),
+      .video_character_buffer_with_dma_0_avalon_char_source_endofpacket   (video_character_buffer_with_dma_0_avalon_char_source_endofpacket),
+      .video_character_buffer_with_dma_0_avalon_char_source_ready         (video_character_buffer_with_dma_0_avalon_char_source_ready),
+      .video_character_buffer_with_dma_0_avalon_char_source_startofpacket (video_character_buffer_with_dma_0_avalon_char_source_startofpacket),
+      .video_character_buffer_with_dma_0_avalon_char_source_valid         (video_character_buffer_with_dma_0_avalon_char_source_valid)
+    );
+
+  video_character_buffer_with_dma_0 the_video_character_buffer_with_dma_0
+    (
+      .buf_address          (video_character_buffer_with_dma_0_avalon_char_buffer_slave_address),
+      .buf_byteenable       (video_character_buffer_with_dma_0_avalon_char_buffer_slave_byteenable),
+      .buf_chipselect       (video_character_buffer_with_dma_0_avalon_char_buffer_slave_chipselect),
+      .buf_read             (video_character_buffer_with_dma_0_avalon_char_buffer_slave_read),
+      .buf_readdata         (video_character_buffer_with_dma_0_avalon_char_buffer_slave_readdata),
+      .buf_waitrequest      (video_character_buffer_with_dma_0_avalon_char_buffer_slave_waitrequest),
+      .buf_write            (video_character_buffer_with_dma_0_avalon_char_buffer_slave_write),
+      .buf_writedata        (video_character_buffer_with_dma_0_avalon_char_buffer_slave_writedata),
+      .clk                  (sys_clk),
+      .ctrl_address         (video_character_buffer_with_dma_0_avalon_char_control_slave_address),
+      .ctrl_byteenable      (video_character_buffer_with_dma_0_avalon_char_control_slave_byteenable),
+      .ctrl_chipselect      (video_character_buffer_with_dma_0_avalon_char_control_slave_chipselect),
+      .ctrl_read            (video_character_buffer_with_dma_0_avalon_char_control_slave_read),
+      .ctrl_readdata        (video_character_buffer_with_dma_0_avalon_char_control_slave_readdata),
+      .ctrl_write           (video_character_buffer_with_dma_0_avalon_char_control_slave_write),
+      .ctrl_writedata       (video_character_buffer_with_dma_0_avalon_char_control_slave_writedata),
+      .reset                (video_character_buffer_with_dma_0_avalon_char_control_slave_reset),
+      .stream_data          (video_character_buffer_with_dma_0_avalon_char_source_data),
+      .stream_endofpacket   (video_character_buffer_with_dma_0_avalon_char_source_endofpacket),
+      .stream_ready         (video_character_buffer_with_dma_0_avalon_char_source_ready),
+      .stream_startofpacket (video_character_buffer_with_dma_0_avalon_char_source_startofpacket),
+      .stream_valid         (video_character_buffer_with_dma_0_avalon_char_source_valid)
+    );
+
   //reset is asserted asynchronously and deasserted synchronously
   Video_System_reset_sys_clk_domain_synch_module Video_System_reset_sys_clk_domain_synch
     (
@@ -7906,26 +9057,28 @@ endmodule
 `include "c:/altera/11.0/quartus/eda/sim_lib/altera_mf.v"
 `include "c:/altera/11.0/quartus/eda/sim_lib/220model.v"
 `include "c:/altera/11.0/quartus/eda/sim_lib/sgate.v"
-`include "Pixel_RGB_Resampler.v"
 `include "Pixel_Buffer.v"
 `include "Pixel_Buffer_DMA.v"
 `include "Dual_Clock_FIFO.v"
+`include "video_character_buffer_with_dma_0.v"
+`include "Pixel_RGB_Resampler.v"
 `include "VGA_Controller.v"
+`include "video_alpha_blender_0.v"
 `include "Clock_Signals.v"
-`include "Video_System_clock_3.v"
 `include "Video_System_clock_0.v"
+`include "pio_0.v"
+`include "jtag_uart_0.v"
+`include "Video_System_clock_1.v"
+`include "sound.v"
+`include "Video_System_clock_3.v"
 `include "CPU_test_bench.v"
 `include "CPU_oci_test_bench.v"
 `include "CPU_jtag_debug_module_tck.v"
 `include "CPU_jtag_debug_module_sysclk.v"
 `include "CPU_jtag_debug_module_wrapper.v"
 `include "CPU.v"
-`include "pio_0.v"
 `include "Video_System_clock_2.v"
 `include "Onchip_Memory.v"
-`include "jtag_uart_0.v"
-`include "Video_System_clock_1.v"
-`include "sound.v"
 
 `timescale 1ns / 1ps
 

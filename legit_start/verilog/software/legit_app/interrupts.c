@@ -13,7 +13,7 @@ void handle_button_interrupts(void* context, alt_u32 id)
     int button_number;
     volatile int* edge_capture_ptr = (volatile int*) context;
     /* Store the value in the Button's edge capture register in *context. */
-    *edge_capture_ptr = IORD_ALTERA_AVALON_PIO_EDGE_CAP(PIO_BASE);
+    *edge_capture_ptr = IORD_ALTERA_AVALON_PIO_EDGE_CAP(PIO_0_BASE);
 
 
     switch(*edge_capture_ptr)
@@ -26,7 +26,7 @@ void handle_button_interrupts(void* context, alt_u32 id)
 
     instruction(button_number);
     /* Reset the Button's edge capture register. */
-    IOWR_ALTERA_AVALON_PIO_EDGE_CAP(PIO_BASE, 0);
+    IOWR_ALTERA_AVALON_PIO_EDGE_CAP(PIO_0_BASE, 0);
 }
 
 /* Initialize the pio. */
@@ -37,9 +37,9 @@ void init_pio()
      * prototype. */
     void* edge_capture_ptr = (void*) &edge_capture;
     /* Enable first four interrupts. */
-    IOWR_ALTERA_AVALON_PIO_IRQ_MASK(PIO_BASE, 0xf);
+    IOWR_ALTERA_AVALON_PIO_IRQ_MASK(PIO_0_BASE, 0xf);
     /* Reset the edge capture register. */
-    IOWR_ALTERA_AVALON_PIO_EDGE_CAP(PIO_BASE, 0x0);
+    IOWR_ALTERA_AVALON_PIO_EDGE_CAP(PIO_0_BASE, 0x0);
     /* Register the interrupt handler. */
     alt_irq_register(PIO_0_IRQ, edge_capture_ptr,
                       handle_button_interrupts );

@@ -163,9 +163,22 @@ void draw_line(int x1, int y1, int x2, int y2, short color)
     }
   }
 }
+void clear_text()
+{
+	int char_x, char_y;
+	for (char_x = 0; char_x < 80; ++char_x)
+	{
+		for (char_y = 0; char_y < 60; ++char_y)
+		{
+			VGA_text(char_x, char_y, " ");
+		}
+	}
+}
 
 void clear_screen()
 {
+
+	clear_text();
 	draw_box(0,0,640,480, 0x0000);
 	draw_box(495,400,605,420, GreenYellow);
 }
@@ -191,6 +204,28 @@ void draw_box(int x1, int y1, int x2, int y2, short pixel_color)
 }
 
 /* ============== Draw Logic ================= */
+
+/****************************************************************************************
+ * Subroutine to send a string of text to the VGA monitor
+****************************************************************************************/
+void VGA_text(int x, int y, char * text_ptr)
+{
+	int offset;
+	/* Declare volatile pointer to char buffer (volatile means that IO load
+	   and store instructions will be used to access these pointer locations,
+	   instead of regular memory loads and stores) */
+  	volatile char * character_buffer = (char *) VIDEO_CHARACTER_BUFFER_WITH_DMA_0_AVALON_CHAR_BUFFER_SLAVE_BASE;	// VGA character buffer
+
+	/* assume that the text string fits on one line */
+	offset = (y << 7) + x;
+	while ( *(text_ptr) )
+	{
+		*(character_buffer + offset) = *(text_ptr);	// write to the character buffer
+		++text_ptr;
+		++offset;
+	}
+}
+
 void update_params(){
 	vx += (ax>>3);
 	vy += (ay>>3);
@@ -204,15 +239,18 @@ void update_params(){
 
 void crash(){
 	printf("crashed!!!!!");
-	*(int*)SOUND_BASE=0x1;
- 	usleep(1000000);
+	*(int*)0x303000=0x1;
+
+	VGA_text (2, 52, "You crashed the lander! :(");
+	usleep(5000000);
 	reset();
 }
 
 void success(){
 	printf("win!!!");
-	*(int*)SOUND_BASE=0x2;
- 	usleep(500000);
+	*(int*)0x303000=0x2;
+	VGA_text (2, 52, "You landed the lander!!!!");
+	usleep(5000000);
 	reset();
 }
 
@@ -267,6 +305,14 @@ void rotate(int cx, int cy, int* x, int* y, unsigned int theta)
 #define ROTATE(n) rotate(x, y, &(x##n), &(y##n), theta)
 void draw_lander()
 {
+	char clock[40];
+	sprintf(clock, "Time: %d   ", count>>4);
+	VGA_text (2, 51, clock);
+	if (count <= 0){
+		VGA_text (2, 52, "Ran Out of Time");
+		usleep(5000000);
+		reset();
+	}
 	// Cleaning last frame
 	x1 = x - (3<<1);
 	y1 = y;
@@ -372,11 +418,12 @@ void draw_lander()
 		draw_line(x10, y10, x11, y11,YELLOW);
 
 	}
-
 }
 
 /* ============== Control Logic ================= */
 void reset(){
+	/* create a message to be displayed on the VGA display */
+	char fuel_text[40] = "Fuel Bar:   \0";
 	x = 0;
 	y = 0;
 	vx = 1<<3;
@@ -387,6 +434,7 @@ void reset(){
 	delta_theta = 0;
 	fuel = 50;
 	show_thrust = 0;
+	count = 30<<4;
 
 	*(int*)SOUND_BASE=0x0;
 	clear_screen();
@@ -395,6 +443,10 @@ void reset(){
  	draw_line(0, 300, 200, 400, 0xffff);
  	draw_line(400, 400, 640, 160, 0xffff);
 	printf("reset!\n");
+
+
+	/* output text message near the middle of the VGA monitor */
+	VGA_text (52, 51, fuel_text);
 }
 
 // dir = 1: left
@@ -418,6 +470,7 @@ void thrust(){
 	ax += sin(theta, 20<<2);
 	ay -= cos(theta, 20<<2);
 	fuel--;
+	draw_box(500,403,600 - fuel*2,417, BLACK);
 	printf("fuel is now down to %d\n", fuel);
 }
 

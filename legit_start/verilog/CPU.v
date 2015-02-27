@@ -4101,7 +4101,7 @@ module CPU (
     2'b11;
 
   assign F_pc_no_crst_nxt = (F_pc_sel_nxt == 2'b00)? 655368 :
-    (F_pc_sel_nxt == 2'b01)? 786952 :
+    (F_pc_sel_nxt == 2'b01)? 789000 :
     (F_pc_sel_nxt == 2'b10)? E_arith_result[21 : 2] :
     F_pc_plus_one;
 

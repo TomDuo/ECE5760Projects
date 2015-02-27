@@ -4,20 +4,20 @@
  <systemtable filter="Default">
   <columns>
    <opcodeName visible="0" />
-   <connections preferredWidth="111" />
+   <connections preferredWidth="143" />
    <irq preferredWidth="34" />
    <export visible="0" />
-   <name preferredWidth="167" />
+   <name preferredWidth="178" />
   </columns>
  </systemtable>
  <clocktable>
   <columns>
-   <clockname preferredWidth="247" />
-   <clocksource preferredWidth="245" />
-   <frequency preferredWidth="227" />
+   <clockname preferredWidth="203" />
+   <clocksource preferredWidth="201" />
+   <frequency preferredWidth="187" />
   </columns>
  </clocktable>
- <window width="1205" height="923" x="77" y="17" />
+ <window width="1205" height="923" x="28" y="55" />
  <library
-   expandedCategories="Library/Peripherals,Library,Library/Peripherals/Microcontroller Peripherals,Project" />
+   expandedCategories="Library/University Program/Audio &amp; Video,Library/Video and Image Processing,Library/University Program/Audio &amp; Video/Video,Library,Project,Library/University Program" />
 </preferences>

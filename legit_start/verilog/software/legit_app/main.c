@@ -16,11 +16,15 @@ int main(void)
 	/* draw a blue box approx in the middle of the screen */
  	reset();
 
-	while(1)
-	{
-		x = (x < 640 ? x + 60 : 0);
-	 	draw_lander();
-	 	usleep(50000);
+ 	while(1)
+ 	{
+		//if (alt_up_pixel_buffer_dma_check_swap_buffers_status(pixel_buffer_dev) == 0)
+		//{
+			count--;
+			x = (x < 640 ? x + 60 : 0);
+			draw_lander();
+			usleep(50000);
+		//}
 	}
 	return 0;
 }

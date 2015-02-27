@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Feb 26, 2015 6:40:08 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1424994008741</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Feb 26, 2015 9:50:38 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1425005438298</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\our_shit\ECE5760Projects\legit_start\verilog\software\legit_BSP</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\Video_System.sopcinfo</SopcDesignFile>
@@ -857,38 +857,50 @@
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>sound</slaveDescriptor>
-                <addressRange>0x00200000 - 0x0020001F</addressRange>
-                <addressSpan>32</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
                 <slaveDescriptor>Onchip_Memory</slaveDescriptor>
                 <addressRange>0x00280000 - 0x002E1A7F</addressRange>
                 <addressSpan>400000</addressSpan>
                 <attributes>memory</attributes>
         </MemoryMap>
         <MemoryMap>
+                <slaveDescriptor>video_character_buffer_with_dma_0_avalon_char_buffer_slave</slaveDescriptor>
+                <addressRange>0x00300000 - 0x00301FFF</addressRange>
+                <addressSpan>8192</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>sound</slaveDescriptor>
+                <addressRange>0x00303000 - 0x0030301F</addressRange>
+                <addressSpan>32</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
                 <slaveDescriptor>Pixel_Buffer_DMA</slaveDescriptor>
-                <addressRange>0x00301000 - 0x0030100F</addressRange>
+                <addressRange>0x00303020 - 0x0030302F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>pio_0</slaveDescriptor>
-                <addressRange>0x00301010 - 0x0030101F</addressRange>
+                <addressRange>0x00303030 - 0x0030303F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>jtag_uart_0</slaveDescriptor>
-                <addressRange>0x00301020 - 0x00301027</addressRange>
+                <addressRange>0x00303040 - 0x00303047</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes>printable</attributes>
         </MemoryMap>
         <MemoryMap>
+                <slaveDescriptor>video_character_buffer_with_dma_0_avalon_char_control_slave</slaveDescriptor>
+                <addressRange>0x00303048 - 0x0030304F</addressRange>
+                <addressSpan>8</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
                 <slaveDescriptor>Clock_Signals</slaveDescriptor>
-                <addressRange>0x00301028 - 0x00301029</addressRange>
+                <addressRange>0x00303050 - 0x00303051</addressRange>
                 <addressSpan>2</addressSpan>
                 <attributes/>
         </MemoryMap>

@@ -18,6 +18,7 @@
       .VGA_VS_from_the_VGA_Controller       (VGA_VS_from_the_VGA_Controller),
       .clk                                  (clk),
       .in_port_to_the_pio_0                 (in_port_to_the_pio_0),
+      .out_port_from_the_sound              (out_port_from_the_sound),
       .reset_n                              (reset_n),
       .sys_clk                              (sys_clk),
       .vga_clk                              (vga_clk)

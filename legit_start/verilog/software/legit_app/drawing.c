@@ -2,6 +2,7 @@
 #include "drawing.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <system.h>
 
 #define BLACK           0x0000      /*   0,   0,   0 */
 #define NAVY            0x000F      /*   0,   0, 128 */
@@ -23,7 +24,7 @@
 #define GreenYellow     0xAFE5      /* 173, 255,  47 */
 #define PINK            0xF81F
 
-#define TURN_DELTA 5
+#define TURN_DELTA 10
 
 int theta, delta_theta = 0;
 int fuel;
@@ -166,6 +167,7 @@ void draw_line(int x1, int y1, int x2, int y2, short color)
 void clear_screen()
 {
 	draw_box(0,0,640,480, 0x0000);
+	draw_box(495,400,605,420, GreenYellow);
 }
 
 
@@ -190,42 +192,59 @@ void draw_box(int x1, int y1, int x2, int y2, short pixel_color)
 
 /* ============== Draw Logic ================= */
 void update_params(){
-	vx += ax;
-	vy += ay;
+	vx += (ax>>3);
+	vy += (ay>>3);
 	ax = 0;
 	ay = 10;
-	x += vx;
-	y += vy;
+	x += (vx>>3);
+	y += (vy>>3);
 	theta += delta_theta;
 	delta_theta = 0;
 }
 
 void crash(){
 	printf("crashed!!!!!");
+	*(int*)SOUND_BASE=0x1;
+ 	usleep(1000000);
+	reset();
 }
 
 void success(){
 	printf("win!!!");
+	*(int*)SOUND_BASE=0x2;
+ 	usleep(500000);
+	reset();
 }
 
 void check_status(){
-	int i;
-	int x_arr[] = {x1, x2, x3};
-	int y_arr[] = {y1, y2, y3};
+	int i=0;
+	int x_arr[] = {x1, x2, x3, x4, x5};
+	int y_arr[] = {y1, y2, y3, y4, y5};
 	//check if crashed
 	if (x<0 || y<0 || x > 640 || y > 480){
 		crash();
-		return;
 	}
-	for (i = 1; i++; i<=11){
-		if (x_arr[i] < 200){
-			2*x_arr[i] + 3*(y_arr[i] - 200) < 2*(300 + 200);
+	for (i = 0; i<5; i++){
+		if (x_arr[i] < 300 &&
+				 2*y_arr[i]- x_arr[i] > 2* 300){
 			crash();
 			return;
+		} else if (x_arr[i] > 400 &&
+				y_arr[i] + x_arr[i] > 800){
+			crash();
+			return;
+		} else {
+			if(y_arr[i] >= 400){
+				if(vx < 10 && vx >-10 && vy < 10 && vy > -10){
+					success();
+					return;
+				} else {
+					crash();
+					return;
+				}
+			}
 		}
 	}
-
-
  	//draw_line(200, 400, 400, 400, 0xffff);
  	//draw_line(0, 300, 200, 400, 0xffff);
  	//draw_line(400, 400, 640, 200, 0xffff);
@@ -266,11 +285,11 @@ void draw_lander()
 	ROTATE(4);
 	ROTATE(5);
 
-	draw_line(x1, y1, x2, y2, WHITE);
-	draw_line(x2, y2, x3, y3, WHITE);
-	draw_line(x3, y3, x4, y4, WHITE);
-	draw_line(x1, y1, x5, y5, WHITE);
-	draw_line(x5, y5, x4, y4, WHITE);
+	draw_line(x1, y1, x2, y2, BLACK);
+	draw_line(x2, y2, x3, y3, BLACK);
+	draw_line(x3, y3, x4, y4, BLACK);
+	draw_line(x1, y1, x5, y5, BLACK);
+	draw_line(x5, y5, x4, y4, BLACK);
 	if(show_thrust){
 		x6 = x - (1<<1);
 		y6 = y + (6<<1);
@@ -291,12 +310,14 @@ void draw_lander()
 		ROTATE(9);
 		ROTATE(10);
 		ROTATE(11);
-		draw_line(x6, y6, x7, y7,WHITE);
-		draw_line(x9, y9, x10, y10,WHITE);
-		draw_line(x6, y6, x8, y8,WHITE);
-		draw_line(x7, y7, x8, y8,WHITE);
-		draw_line(x9, y9, x11, y11,WHITE);
-		draw_line(x10, y10, x11, y11,WHITE);
+		draw_line(x6, y6, x7, y7,BLACK);
+		draw_line(x9, y9, x10, y10,BLACK);
+		draw_line(x6, y6, x8, y8,BLACK);
+		draw_line(x7, y7, x8, y8,BLACK);
+		draw_line(x9, y9, x11, y11,BLACK);
+		draw_line(x10, y10, x11, y11,BLACK);
+
+		show_thrust--;
 	}
 
 	check_status();
@@ -318,11 +339,11 @@ void draw_lander()
 	ROTATE(4);
 	ROTATE(5);
 
-	draw_line(x1, y1, x2, y2, BLUE);
-	draw_line(x2, y2, x3, y3, BLUE);
-	draw_line(x3, y3, x4, y4, BLUE);
-	draw_line(x1, y1, x5, y5, BLUE);
-	draw_line(x5, y5, x4, y4, BLUE);
+	draw_line(x1, y1, x2, y2, RED);
+	draw_line(x2, y2, x3, y3, RED);
+	draw_line(x3, y3, x4, y4, RED);
+	draw_line(x1, y1, x5, y5, RED);
+	draw_line(x5, y5, x4, y4, RED);
 	if(show_thrust){
 		x6 = x - (1<<1);
 		y6 = y + (6<<1);
@@ -350,7 +371,6 @@ void draw_lander()
 		draw_line(x9, y9, x11, y11,YELLOW);
 		draw_line(x10, y10, x11, y11,YELLOW);
 
-		show_thrust--;
 	}
 
 }
@@ -359,19 +379,21 @@ void draw_lander()
 void reset(){
 	x = 0;
 	y = 0;
-	vx = 5;
+	vx = 1<<3;
 	vy = 0;
 	ax = 0;
 	ay = 10;
 	theta = 90;
 	delta_theta = 0;
-	fuel = 10;
+	fuel = 50;
 	show_thrust = 0;
 
+	*(int*)SOUND_BASE=0x0;
 	clear_screen();
+
  	draw_line(200, 400, 400, 400, 0xffff);
  	draw_line(0, 300, 200, 400, 0xffff);
- 	draw_line(400, 400, 640, 200, 0xffff);
+ 	draw_line(400, 400, 640, 160, 0xffff);
 	printf("reset!\n");
 }
 
@@ -392,9 +414,9 @@ void thrust(){
 		printf("out of fuel!!\n");
 		return;
 	}
-	show_thrust += 2;
-	ax += sin(theta, 20);
-	ay -= cos(theta, 20);
+	show_thrust += 3;
+	ax += sin(theta, 20<<2);
+	ay -= cos(theta, 20<<2);
 	fuel--;
 	printf("fuel is now down to %d\n", fuel);
 }

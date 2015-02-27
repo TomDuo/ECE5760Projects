@@ -25,5 +25,6 @@ set_global_assignment -name VERILOG_FILE [file join $::quartus(qip_path) VGA_Con
 # pio_0
 # null
 set_global_assignment -name SDC_FILE [file join $::quartus(ip_rootpath) altera/sopc_builder_ip/altera_avalon_clock_adapter/altera_avalon_clock_adapter.sdc]
-set_global_assignment -name SOPC_BUILDER_SIGNATURE_ID 00000000000000E00000014BA41205AB 
+# sound
+set_global_assignment -name SOPC_BUILDER_SIGNATURE_ID 00000000000000E00000014BC836753F 
  

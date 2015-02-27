@@ -188,6 +188,19 @@
          type = "int";
       }
    }
+   element pio_0.s1
+   {
+      datum _tags
+      {
+         value = "";
+         type = "String";
+      }
+      datum baseAddress
+      {
+         value = "3149840";
+         type = "long";
+      }
+   }
    element Onchip_Memory.s1
    {
       datum baseAddress
@@ -196,12 +209,20 @@
          type = "long";
       }
    }
-   element pio_0.s1
+   element sound.s1
    {
       datum baseAddress
       {
-         value = "3149840";
+         value = "2097152";
          type = "long";
+      }
+   }
+   element sound
+   {
+      datum _sortIndex
+      {
+         value = "11";
+         type = "int";
       }
    }
    element Clock_Signals.sys_clk
@@ -232,8 +253,8 @@
  <parameter name="maxAdditionalLatency" value="0" />
  <parameter name="projectName">Example_4_Video_In.qpf</parameter>
  <parameter name="sopcBorderPoints" value="true" />
- <parameter name="systemHash" value="41742192577" />
- <parameter name="timeStamp" value="1424386795009" />
+ <parameter name="systemHash" value="45866325928" />
+ <parameter name="timeStamp" value="1424994512216" />
  <module kind="clock_source" version="11.0" enabled="1" name="clk">
   <parameter name="clockFrequency" value="50000000" />
   <parameter name="clockFrequencyKnown" value="true" />
@@ -333,7 +354,7 @@
   <parameter name="dcache_numTCDM" value="_0" />
   <parameter name="dcache_lineSize" value="_32" />
   <parameter name="dcache_bursts" value="false" />
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='Pixel_Buffer.avalon_sram_slave' start='0x0' end='0x200000' /><slave name='Onchip_Memory.s1' start='0x280000' end='0x2E1A80' /><slave name='CPU.jtag_debug_module' start='0x300800' end='0x301000' /><slave name='Pixel_Buffer_DMA.avalon_control_slave' start='0x301000' end='0x301010' /><slave name='pio_0.s1' start='0x301010' end='0x301020' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x301020' end='0x301028' /><slave name='Clock_Signals.avalon_clocks_slave' start='0x301028' end='0x30102A' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='Pixel_Buffer.avalon_sram_slave' start='0x0' end='0x200000' /><slave name='sound.s1' start='0x200000' end='0x200020' /><slave name='Onchip_Memory.s1' start='0x280000' end='0x2E1A80' /><slave name='CPU.jtag_debug_module' start='0x300800' end='0x301000' /><slave name='Pixel_Buffer_DMA.avalon_control_slave' start='0x301000' end='0x301010' /><slave name='pio_0.s1' start='0x301010' end='0x301020' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x301020' end='0x301028' /><slave name='Clock_Signals.avalon_clocks_slave' start='0x301028' end='0x30102A' /></address-map>]]></parameter>
   <parameter name="dataAddrWidth" value="22" />
   <parameter name="customInstSlavesSystemInfo" value="&lt;info/&gt;" />
   <parameter name="cpuReset" value="false" />
@@ -468,6 +489,20 @@
   <parameter name="simDoTestBenchWiring" value="false" />
   <parameter name="simDrivenValue" value="0" />
   <parameter name="width" value="4" />
+ </module>
+ <module kind="altera_avalon_pio" version="11.0" enabled="1" name="sound">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="true" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="8" />
  </module>
  <connection
    kind="avalon"
@@ -616,5 +651,10 @@
  </connection>
  <connection kind="interrupt" version="11.0" start="CPU.d_irq" end="pio_0.irq">
   <parameter name="irqNumber" value="1" />
+ </connection>
+ <connection kind="clock" version="11.0" start="clk.clk" end="sound.clk" />
+ <connection kind="avalon" version="11.0" start="CPU.data_master" end="sound.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00200000" />
  </connection>
 </system>

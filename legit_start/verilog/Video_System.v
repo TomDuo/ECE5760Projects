@@ -565,6 +565,7 @@ module CPU_data_master_arbitrator (
                                      CPU_data_master_granted_Video_System_clock_0_in,
                                      CPU_data_master_granted_Video_System_clock_1_in,
                                      CPU_data_master_granted_Video_System_clock_2_in,
+                                     CPU_data_master_granted_Video_System_clock_3_in,
                                      CPU_data_master_qualified_request_CPU_jtag_debug_module,
                                      CPU_data_master_qualified_request_Onchip_Memory_s1,
                                      CPU_data_master_qualified_request_Pixel_Buffer_DMA_avalon_control_slave,
@@ -572,6 +573,7 @@ module CPU_data_master_arbitrator (
                                      CPU_data_master_qualified_request_Video_System_clock_0_in,
                                      CPU_data_master_qualified_request_Video_System_clock_1_in,
                                      CPU_data_master_qualified_request_Video_System_clock_2_in,
+                                     CPU_data_master_qualified_request_Video_System_clock_3_in,
                                      CPU_data_master_read,
                                      CPU_data_master_read_data_valid_CPU_jtag_debug_module,
                                      CPU_data_master_read_data_valid_Onchip_Memory_s1,
@@ -581,6 +583,7 @@ module CPU_data_master_arbitrator (
                                      CPU_data_master_read_data_valid_Video_System_clock_0_in,
                                      CPU_data_master_read_data_valid_Video_System_clock_1_in,
                                      CPU_data_master_read_data_valid_Video_System_clock_2_in,
+                                     CPU_data_master_read_data_valid_Video_System_clock_3_in,
                                      CPU_data_master_requests_CPU_jtag_debug_module,
                                      CPU_data_master_requests_Onchip_Memory_s1,
                                      CPU_data_master_requests_Pixel_Buffer_DMA_avalon_control_slave,
@@ -588,6 +591,7 @@ module CPU_data_master_arbitrator (
                                      CPU_data_master_requests_Video_System_clock_0_in,
                                      CPU_data_master_requests_Video_System_clock_1_in,
                                      CPU_data_master_requests_Video_System_clock_2_in,
+                                     CPU_data_master_requests_Video_System_clock_3_in,
                                      CPU_data_master_write,
                                      CPU_data_master_writedata,
                                      CPU_jtag_debug_module_readdata_from_sa,
@@ -600,6 +604,8 @@ module CPU_data_master_arbitrator (
                                      Video_System_clock_1_in_waitrequest_from_sa,
                                      Video_System_clock_2_in_readdata_from_sa,
                                      Video_System_clock_2_in_waitrequest_from_sa,
+                                     Video_System_clock_3_in_readdata_from_sa,
+                                     Video_System_clock_3_in_waitrequest_from_sa,
                                      clk,
                                      d1_CPU_jtag_debug_module_end_xfer,
                                      d1_Onchip_Memory_s1_end_xfer,
@@ -608,6 +614,7 @@ module CPU_data_master_arbitrator (
                                      d1_Video_System_clock_0_in_end_xfer,
                                      d1_Video_System_clock_1_in_end_xfer,
                                      d1_Video_System_clock_2_in_end_xfer,
+                                     d1_Video_System_clock_3_in_end_xfer,
                                      jtag_uart_0_avalon_jtag_slave_irq_from_sa,
                                      pio_0_s1_irq_from_sa,
                                      registered_CPU_data_master_read_data_valid_Onchip_Memory_s1,
@@ -646,6 +653,7 @@ module CPU_data_master_arbitrator (
   input            CPU_data_master_granted_Video_System_clock_0_in;
   input            CPU_data_master_granted_Video_System_clock_1_in;
   input            CPU_data_master_granted_Video_System_clock_2_in;
+  input            CPU_data_master_granted_Video_System_clock_3_in;
   input            CPU_data_master_qualified_request_CPU_jtag_debug_module;
   input            CPU_data_master_qualified_request_Onchip_Memory_s1;
   input            CPU_data_master_qualified_request_Pixel_Buffer_DMA_avalon_control_slave;
@@ -653,6 +661,7 @@ module CPU_data_master_arbitrator (
   input            CPU_data_master_qualified_request_Video_System_clock_0_in;
   input            CPU_data_master_qualified_request_Video_System_clock_1_in;
   input            CPU_data_master_qualified_request_Video_System_clock_2_in;
+  input            CPU_data_master_qualified_request_Video_System_clock_3_in;
   input            CPU_data_master_read;
   input            CPU_data_master_read_data_valid_CPU_jtag_debug_module;
   input            CPU_data_master_read_data_valid_Onchip_Memory_s1;
@@ -662,6 +671,7 @@ module CPU_data_master_arbitrator (
   input            CPU_data_master_read_data_valid_Video_System_clock_0_in;
   input            CPU_data_master_read_data_valid_Video_System_clock_1_in;
   input            CPU_data_master_read_data_valid_Video_System_clock_2_in;
+  input            CPU_data_master_read_data_valid_Video_System_clock_3_in;
   input            CPU_data_master_requests_CPU_jtag_debug_module;
   input            CPU_data_master_requests_Onchip_Memory_s1;
   input            CPU_data_master_requests_Pixel_Buffer_DMA_avalon_control_slave;
@@ -669,6 +679,7 @@ module CPU_data_master_arbitrator (
   input            CPU_data_master_requests_Video_System_clock_0_in;
   input            CPU_data_master_requests_Video_System_clock_1_in;
   input            CPU_data_master_requests_Video_System_clock_2_in;
+  input            CPU_data_master_requests_Video_System_clock_3_in;
   input            CPU_data_master_write;
   input   [ 31: 0] CPU_data_master_writedata;
   input   [ 31: 0] CPU_jtag_debug_module_readdata_from_sa;
@@ -681,6 +692,8 @@ module CPU_data_master_arbitrator (
   input            Video_System_clock_1_in_waitrequest_from_sa;
   input   [ 31: 0] Video_System_clock_2_in_readdata_from_sa;
   input            Video_System_clock_2_in_waitrequest_from_sa;
+  input   [ 31: 0] Video_System_clock_3_in_readdata_from_sa;
+  input            Video_System_clock_3_in_waitrequest_from_sa;
   input            clk;
   input            d1_CPU_jtag_debug_module_end_xfer;
   input            d1_Onchip_Memory_s1_end_xfer;
@@ -689,6 +702,7 @@ module CPU_data_master_arbitrator (
   input            d1_Video_System_clock_0_in_end_xfer;
   input            d1_Video_System_clock_1_in_end_xfer;
   input            d1_Video_System_clock_2_in_end_xfer;
+  input            d1_Video_System_clock_3_in_end_xfer;
   input            jtag_uart_0_avalon_jtag_slave_irq_from_sa;
   input            pio_0_s1_irq_from_sa;
   input            registered_CPU_data_master_read_data_valid_Onchip_Memory_s1;
@@ -733,7 +747,7 @@ module CPU_data_master_arbitrator (
   assign CPU_data_master_run = r_0 & r_1;
 
   //r_1 master_run cascaded wait assignment, which is an e_assign
-  assign r_1 = ((CPU_data_master_qualified_request_Video_System_clock_0_in | ((CPU_data_master_write & !CPU_data_master_byteenable_Video_System_clock_0_in & CPU_data_master_dbs_address[1] & CPU_data_master_dbs_address[0])) | ~CPU_data_master_requests_Video_System_clock_0_in)) & ((~CPU_data_master_qualified_request_Video_System_clock_0_in | ~CPU_data_master_read | (1 & ~Video_System_clock_0_in_waitrequest_from_sa & (CPU_data_master_dbs_address[1] & CPU_data_master_dbs_address[0]) & CPU_data_master_read))) & ((~CPU_data_master_qualified_request_Video_System_clock_0_in | ~CPU_data_master_write | (1 & ~Video_System_clock_0_in_waitrequest_from_sa & (CPU_data_master_dbs_address[1] & CPU_data_master_dbs_address[0]) & CPU_data_master_write))) & 1 & (CPU_data_master_qualified_request_Video_System_clock_1_in | ~CPU_data_master_requests_Video_System_clock_1_in) & ((~CPU_data_master_qualified_request_Video_System_clock_1_in | ~(CPU_data_master_read | CPU_data_master_write) | (1 & ~Video_System_clock_1_in_waitrequest_from_sa & (CPU_data_master_read | CPU_data_master_write)))) & ((~CPU_data_master_qualified_request_Video_System_clock_1_in | ~(CPU_data_master_read | CPU_data_master_write) | (1 & ~Video_System_clock_1_in_waitrequest_from_sa & (CPU_data_master_read | CPU_data_master_write)))) & 1 & (CPU_data_master_qualified_request_Video_System_clock_2_in | ~CPU_data_master_requests_Video_System_clock_2_in) & ((~CPU_data_master_qualified_request_Video_System_clock_2_in | ~(CPU_data_master_read | CPU_data_master_write) | (1 & ~Video_System_clock_2_in_waitrequest_from_sa & (CPU_data_master_read | CPU_data_master_write)))) & ((~CPU_data_master_qualified_request_Video_System_clock_2_in | ~(CPU_data_master_read | CPU_data_master_write) | (1 & ~Video_System_clock_2_in_waitrequest_from_sa & (CPU_data_master_read | CPU_data_master_write))));
+  assign r_1 = ((CPU_data_master_qualified_request_Video_System_clock_0_in | ((CPU_data_master_write & !CPU_data_master_byteenable_Video_System_clock_0_in & CPU_data_master_dbs_address[1] & CPU_data_master_dbs_address[0])) | ~CPU_data_master_requests_Video_System_clock_0_in)) & ((~CPU_data_master_qualified_request_Video_System_clock_0_in | ~CPU_data_master_read | (1 & ~Video_System_clock_0_in_waitrequest_from_sa & (CPU_data_master_dbs_address[1] & CPU_data_master_dbs_address[0]) & CPU_data_master_read))) & ((~CPU_data_master_qualified_request_Video_System_clock_0_in | ~CPU_data_master_write | (1 & ~Video_System_clock_0_in_waitrequest_from_sa & (CPU_data_master_dbs_address[1] & CPU_data_master_dbs_address[0]) & CPU_data_master_write))) & 1 & (CPU_data_master_qualified_request_Video_System_clock_1_in | ~CPU_data_master_requests_Video_System_clock_1_in) & ((~CPU_data_master_qualified_request_Video_System_clock_1_in | ~(CPU_data_master_read | CPU_data_master_write) | (1 & ~Video_System_clock_1_in_waitrequest_from_sa & (CPU_data_master_read | CPU_data_master_write)))) & ((~CPU_data_master_qualified_request_Video_System_clock_1_in | ~(CPU_data_master_read | CPU_data_master_write) | (1 & ~Video_System_clock_1_in_waitrequest_from_sa & (CPU_data_master_read | CPU_data_master_write)))) & 1 & (CPU_data_master_qualified_request_Video_System_clock_2_in | ~CPU_data_master_requests_Video_System_clock_2_in) & ((~CPU_data_master_qualified_request_Video_System_clock_2_in | ~(CPU_data_master_read | CPU_data_master_write) | (1 & ~Video_System_clock_2_in_waitrequest_from_sa & (CPU_data_master_read | CPU_data_master_write)))) & ((~CPU_data_master_qualified_request_Video_System_clock_2_in | ~(CPU_data_master_read | CPU_data_master_write) | (1 & ~Video_System_clock_2_in_waitrequest_from_sa & (CPU_data_master_read | CPU_data_master_write)))) & 1 & (CPU_data_master_qualified_request_Video_System_clock_3_in | ~CPU_data_master_requests_Video_System_clock_3_in) & ((~CPU_data_master_qualified_request_Video_System_clock_3_in | ~(CPU_data_master_read | CPU_data_master_write) | (1 & ~Video_System_clock_3_in_waitrequest_from_sa & (CPU_data_master_read | CPU_data_master_write)))) & ((~CPU_data_master_qualified_request_Video_System_clock_3_in | ~(CPU_data_master_read | CPU_data_master_write) | (1 & ~Video_System_clock_3_in_waitrequest_from_sa & (CPU_data_master_read | CPU_data_master_write))));
 
   //optimize select-logic by passing only those address bits which matter.
   assign CPU_data_master_address_to_slave = CPU_data_master_address[21 : 0];
@@ -745,7 +759,8 @@ module CPU_data_master_arbitrator (
     ({32 {~CPU_data_master_requests_Pixel_Buffer_DMA_avalon_control_slave}} | Pixel_Buffer_DMA_avalon_control_slave_readdata_from_sa) &
     ({32 {~CPU_data_master_requests_Video_System_clock_0_in}} | registered_CPU_data_master_readdata) &
     ({32 {~CPU_data_master_requests_Video_System_clock_1_in}} | registered_CPU_data_master_readdata) &
-    ({32 {~CPU_data_master_requests_Video_System_clock_2_in}} | registered_CPU_data_master_readdata);
+    ({32 {~CPU_data_master_requests_Video_System_clock_2_in}} | registered_CPU_data_master_readdata) &
+    ({32 {~CPU_data_master_requests_Video_System_clock_3_in}} | registered_CPU_data_master_readdata);
 
   //actual waitrequest port, which is an e_register
   always @(posedge clk or negedge reset_n)
@@ -810,7 +825,8 @@ module CPU_data_master_arbitrator (
     dbs_8_reg_segment_1,
     dbs_8_reg_segment_0}) &
     ({32 {~CPU_data_master_requests_Video_System_clock_1_in}} | Video_System_clock_1_in_readdata_from_sa) &
-    ({32 {~CPU_data_master_requests_Video_System_clock_2_in}} | Video_System_clock_2_in_readdata_from_sa);
+    ({32 {~CPU_data_master_requests_Video_System_clock_2_in}} | Video_System_clock_2_in_readdata_from_sa) &
+    ({32 {~CPU_data_master_requests_Video_System_clock_3_in}} | Video_System_clock_3_in_readdata_from_sa);
 
   //mux write dbs 1, which is an e_mux
   assign CPU_data_master_dbs_write_16 = (CPU_data_master_dbs_address[1])? CPU_data_master_writedata[31 : 16] :
@@ -4987,6 +5003,516 @@ endmodule
 // altera message_level Level1 
 // altera message_off 10034 10035 10036 10037 10230 10240 10030 
 
+module Video_System_clock_3_in_arbitrator (
+                                            // inputs:
+                                             CPU_data_master_address_to_slave,
+                                             CPU_data_master_byteenable,
+                                             CPU_data_master_read,
+                                             CPU_data_master_waitrequest,
+                                             CPU_data_master_write,
+                                             CPU_data_master_writedata,
+                                             Video_System_clock_3_in_endofpacket,
+                                             Video_System_clock_3_in_readdata,
+                                             Video_System_clock_3_in_waitrequest,
+                                             clk,
+                                             reset_n,
+
+                                            // outputs:
+                                             CPU_data_master_granted_Video_System_clock_3_in,
+                                             CPU_data_master_qualified_request_Video_System_clock_3_in,
+                                             CPU_data_master_read_data_valid_Video_System_clock_3_in,
+                                             CPU_data_master_requests_Video_System_clock_3_in,
+                                             Video_System_clock_3_in_address,
+                                             Video_System_clock_3_in_byteenable,
+                                             Video_System_clock_3_in_endofpacket_from_sa,
+                                             Video_System_clock_3_in_nativeaddress,
+                                             Video_System_clock_3_in_read,
+                                             Video_System_clock_3_in_readdata_from_sa,
+                                             Video_System_clock_3_in_reset_n,
+                                             Video_System_clock_3_in_waitrequest_from_sa,
+                                             Video_System_clock_3_in_write,
+                                             Video_System_clock_3_in_writedata,
+                                             d1_Video_System_clock_3_in_end_xfer
+                                          )
+;
+
+  output           CPU_data_master_granted_Video_System_clock_3_in;
+  output           CPU_data_master_qualified_request_Video_System_clock_3_in;
+  output           CPU_data_master_read_data_valid_Video_System_clock_3_in;
+  output           CPU_data_master_requests_Video_System_clock_3_in;
+  output  [  4: 0] Video_System_clock_3_in_address;
+  output  [  3: 0] Video_System_clock_3_in_byteenable;
+  output           Video_System_clock_3_in_endofpacket_from_sa;
+  output  [  2: 0] Video_System_clock_3_in_nativeaddress;
+  output           Video_System_clock_3_in_read;
+  output  [ 31: 0] Video_System_clock_3_in_readdata_from_sa;
+  output           Video_System_clock_3_in_reset_n;
+  output           Video_System_clock_3_in_waitrequest_from_sa;
+  output           Video_System_clock_3_in_write;
+  output  [ 31: 0] Video_System_clock_3_in_writedata;
+  output           d1_Video_System_clock_3_in_end_xfer;
+  input   [ 21: 0] CPU_data_master_address_to_slave;
+  input   [  3: 0] CPU_data_master_byteenable;
+  input            CPU_data_master_read;
+  input            CPU_data_master_waitrequest;
+  input            CPU_data_master_write;
+  input   [ 31: 0] CPU_data_master_writedata;
+  input            Video_System_clock_3_in_endofpacket;
+  input   [ 31: 0] Video_System_clock_3_in_readdata;
+  input            Video_System_clock_3_in_waitrequest;
+  input            clk;
+  input            reset_n;
+
+  wire             CPU_data_master_arbiterlock;
+  wire             CPU_data_master_arbiterlock2;
+  wire             CPU_data_master_continuerequest;
+  wire             CPU_data_master_granted_Video_System_clock_3_in;
+  wire             CPU_data_master_qualified_request_Video_System_clock_3_in;
+  wire             CPU_data_master_read_data_valid_Video_System_clock_3_in;
+  wire             CPU_data_master_requests_Video_System_clock_3_in;
+  wire             CPU_data_master_saved_grant_Video_System_clock_3_in;
+  wire    [  4: 0] Video_System_clock_3_in_address;
+  wire             Video_System_clock_3_in_allgrants;
+  wire             Video_System_clock_3_in_allow_new_arb_cycle;
+  wire             Video_System_clock_3_in_any_bursting_master_saved_grant;
+  wire             Video_System_clock_3_in_any_continuerequest;
+  wire             Video_System_clock_3_in_arb_counter_enable;
+  reg     [  2: 0] Video_System_clock_3_in_arb_share_counter;
+  wire    [  2: 0] Video_System_clock_3_in_arb_share_counter_next_value;
+  wire    [  2: 0] Video_System_clock_3_in_arb_share_set_values;
+  wire             Video_System_clock_3_in_beginbursttransfer_internal;
+  wire             Video_System_clock_3_in_begins_xfer;
+  wire    [  3: 0] Video_System_clock_3_in_byteenable;
+  wire             Video_System_clock_3_in_end_xfer;
+  wire             Video_System_clock_3_in_endofpacket_from_sa;
+  wire             Video_System_clock_3_in_firsttransfer;
+  wire             Video_System_clock_3_in_grant_vector;
+  wire             Video_System_clock_3_in_in_a_read_cycle;
+  wire             Video_System_clock_3_in_in_a_write_cycle;
+  wire             Video_System_clock_3_in_master_qreq_vector;
+  wire    [  2: 0] Video_System_clock_3_in_nativeaddress;
+  wire             Video_System_clock_3_in_non_bursting_master_requests;
+  wire             Video_System_clock_3_in_read;
+  wire    [ 31: 0] Video_System_clock_3_in_readdata_from_sa;
+  reg              Video_System_clock_3_in_reg_firsttransfer;
+  wire             Video_System_clock_3_in_reset_n;
+  reg              Video_System_clock_3_in_slavearbiterlockenable;
+  wire             Video_System_clock_3_in_slavearbiterlockenable2;
+  wire             Video_System_clock_3_in_unreg_firsttransfer;
+  wire             Video_System_clock_3_in_waitrequest_from_sa;
+  wire             Video_System_clock_3_in_waits_for_read;
+  wire             Video_System_clock_3_in_waits_for_write;
+  wire             Video_System_clock_3_in_write;
+  wire    [ 31: 0] Video_System_clock_3_in_writedata;
+  reg              d1_Video_System_clock_3_in_end_xfer;
+  reg              d1_reasons_to_wait;
+  reg              enable_nonzero_assertions;
+  wire             end_xfer_arb_share_counter_term_Video_System_clock_3_in;
+  wire             in_a_read_cycle;
+  wire             in_a_write_cycle;
+  wire    [ 21: 0] shifted_address_to_Video_System_clock_3_in_from_CPU_data_master;
+  wire             wait_for_Video_System_clock_3_in_counter;
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          d1_reasons_to_wait <= 0;
+      else 
+        d1_reasons_to_wait <= ~Video_System_clock_3_in_end_xfer;
+    end
+
+
+  assign Video_System_clock_3_in_begins_xfer = ~d1_reasons_to_wait & ((CPU_data_master_qualified_request_Video_System_clock_3_in));
+  //assign Video_System_clock_3_in_readdata_from_sa = Video_System_clock_3_in_readdata so that symbol knows where to group signals which may go to master only, which is an e_assign
+  assign Video_System_clock_3_in_readdata_from_sa = Video_System_clock_3_in_readdata;
+
+  assign CPU_data_master_requests_Video_System_clock_3_in = ({CPU_data_master_address_to_slave[21 : 5] , 5'b0} == 22'h200000) & (CPU_data_master_read | CPU_data_master_write);
+  //assign Video_System_clock_3_in_waitrequest_from_sa = Video_System_clock_3_in_waitrequest so that symbol knows where to group signals which may go to master only, which is an e_assign
+  assign Video_System_clock_3_in_waitrequest_from_sa = Video_System_clock_3_in_waitrequest;
+
+  //Video_System_clock_3_in_arb_share_counter set values, which is an e_mux
+  assign Video_System_clock_3_in_arb_share_set_values = 1;
+
+  //Video_System_clock_3_in_non_bursting_master_requests mux, which is an e_mux
+  assign Video_System_clock_3_in_non_bursting_master_requests = CPU_data_master_requests_Video_System_clock_3_in;
+
+  //Video_System_clock_3_in_any_bursting_master_saved_grant mux, which is an e_mux
+  assign Video_System_clock_3_in_any_bursting_master_saved_grant = 0;
+
+  //Video_System_clock_3_in_arb_share_counter_next_value assignment, which is an e_assign
+  assign Video_System_clock_3_in_arb_share_counter_next_value = Video_System_clock_3_in_firsttransfer ? (Video_System_clock_3_in_arb_share_set_values - 1) : |Video_System_clock_3_in_arb_share_counter ? (Video_System_clock_3_in_arb_share_counter - 1) : 0;
+
+  //Video_System_clock_3_in_allgrants all slave grants, which is an e_mux
+  assign Video_System_clock_3_in_allgrants = |Video_System_clock_3_in_grant_vector;
+
+  //Video_System_clock_3_in_end_xfer assignment, which is an e_assign
+  assign Video_System_clock_3_in_end_xfer = ~(Video_System_clock_3_in_waits_for_read | Video_System_clock_3_in_waits_for_write);
+
+  //end_xfer_arb_share_counter_term_Video_System_clock_3_in arb share counter enable term, which is an e_assign
+  assign end_xfer_arb_share_counter_term_Video_System_clock_3_in = Video_System_clock_3_in_end_xfer & (~Video_System_clock_3_in_any_bursting_master_saved_grant | in_a_read_cycle | in_a_write_cycle);
+
+  //Video_System_clock_3_in_arb_share_counter arbitration counter enable, which is an e_assign
+  assign Video_System_clock_3_in_arb_counter_enable = (end_xfer_arb_share_counter_term_Video_System_clock_3_in & Video_System_clock_3_in_allgrants) | (end_xfer_arb_share_counter_term_Video_System_clock_3_in & ~Video_System_clock_3_in_non_bursting_master_requests);
+
+  //Video_System_clock_3_in_arb_share_counter counter, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          Video_System_clock_3_in_arb_share_counter <= 0;
+      else if (Video_System_clock_3_in_arb_counter_enable)
+          Video_System_clock_3_in_arb_share_counter <= Video_System_clock_3_in_arb_share_counter_next_value;
+    end
+
+
+  //Video_System_clock_3_in_slavearbiterlockenable slave enables arbiterlock, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          Video_System_clock_3_in_slavearbiterlockenable <= 0;
+      else if ((|Video_System_clock_3_in_master_qreq_vector & end_xfer_arb_share_counter_term_Video_System_clock_3_in) | (end_xfer_arb_share_counter_term_Video_System_clock_3_in & ~Video_System_clock_3_in_non_bursting_master_requests))
+          Video_System_clock_3_in_slavearbiterlockenable <= |Video_System_clock_3_in_arb_share_counter_next_value;
+    end
+
+
+  //CPU/data_master Video_System_clock_3/in arbiterlock, which is an e_assign
+  assign CPU_data_master_arbiterlock = Video_System_clock_3_in_slavearbiterlockenable & CPU_data_master_continuerequest;
+
+  //Video_System_clock_3_in_slavearbiterlockenable2 slave enables arbiterlock2, which is an e_assign
+  assign Video_System_clock_3_in_slavearbiterlockenable2 = |Video_System_clock_3_in_arb_share_counter_next_value;
+
+  //CPU/data_master Video_System_clock_3/in arbiterlock2, which is an e_assign
+  assign CPU_data_master_arbiterlock2 = Video_System_clock_3_in_slavearbiterlockenable2 & CPU_data_master_continuerequest;
+
+  //Video_System_clock_3_in_any_continuerequest at least one master continues requesting, which is an e_assign
+  assign Video_System_clock_3_in_any_continuerequest = 1;
+
+  //CPU_data_master_continuerequest continued request, which is an e_assign
+  assign CPU_data_master_continuerequest = 1;
+
+  assign CPU_data_master_qualified_request_Video_System_clock_3_in = CPU_data_master_requests_Video_System_clock_3_in & ~((CPU_data_master_read & (~CPU_data_master_waitrequest)) | ((~CPU_data_master_waitrequest) & CPU_data_master_write));
+  //Video_System_clock_3_in_writedata mux, which is an e_mux
+  assign Video_System_clock_3_in_writedata = CPU_data_master_writedata;
+
+  //assign Video_System_clock_3_in_endofpacket_from_sa = Video_System_clock_3_in_endofpacket so that symbol knows where to group signals which may go to master only, which is an e_assign
+  assign Video_System_clock_3_in_endofpacket_from_sa = Video_System_clock_3_in_endofpacket;
+
+  //master is always granted when requested
+  assign CPU_data_master_granted_Video_System_clock_3_in = CPU_data_master_qualified_request_Video_System_clock_3_in;
+
+  //CPU/data_master saved-grant Video_System_clock_3/in, which is an e_assign
+  assign CPU_data_master_saved_grant_Video_System_clock_3_in = CPU_data_master_requests_Video_System_clock_3_in;
+
+  //allow new arb cycle for Video_System_clock_3/in, which is an e_assign
+  assign Video_System_clock_3_in_allow_new_arb_cycle = 1;
+
+  //placeholder chosen master
+  assign Video_System_clock_3_in_grant_vector = 1;
+
+  //placeholder vector of master qualified-requests
+  assign Video_System_clock_3_in_master_qreq_vector = 1;
+
+  //Video_System_clock_3_in_reset_n assignment, which is an e_assign
+  assign Video_System_clock_3_in_reset_n = reset_n;
+
+  //Video_System_clock_3_in_firsttransfer first transaction, which is an e_assign
+  assign Video_System_clock_3_in_firsttransfer = Video_System_clock_3_in_begins_xfer ? Video_System_clock_3_in_unreg_firsttransfer : Video_System_clock_3_in_reg_firsttransfer;
+
+  //Video_System_clock_3_in_unreg_firsttransfer first transaction, which is an e_assign
+  assign Video_System_clock_3_in_unreg_firsttransfer = ~(Video_System_clock_3_in_slavearbiterlockenable & Video_System_clock_3_in_any_continuerequest);
+
+  //Video_System_clock_3_in_reg_firsttransfer first transaction, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          Video_System_clock_3_in_reg_firsttransfer <= 1'b1;
+      else if (Video_System_clock_3_in_begins_xfer)
+          Video_System_clock_3_in_reg_firsttransfer <= Video_System_clock_3_in_unreg_firsttransfer;
+    end
+
+
+  //Video_System_clock_3_in_beginbursttransfer_internal begin burst transfer, which is an e_assign
+  assign Video_System_clock_3_in_beginbursttransfer_internal = Video_System_clock_3_in_begins_xfer;
+
+  //Video_System_clock_3_in_read assignment, which is an e_mux
+  assign Video_System_clock_3_in_read = CPU_data_master_granted_Video_System_clock_3_in & CPU_data_master_read;
+
+  //Video_System_clock_3_in_write assignment, which is an e_mux
+  assign Video_System_clock_3_in_write = CPU_data_master_granted_Video_System_clock_3_in & CPU_data_master_write;
+
+  assign shifted_address_to_Video_System_clock_3_in_from_CPU_data_master = CPU_data_master_address_to_slave;
+  //Video_System_clock_3_in_address mux, which is an e_mux
+  assign Video_System_clock_3_in_address = shifted_address_to_Video_System_clock_3_in_from_CPU_data_master >> 2;
+
+  //slaveid Video_System_clock_3_in_nativeaddress nativeaddress mux, which is an e_mux
+  assign Video_System_clock_3_in_nativeaddress = CPU_data_master_address_to_slave >> 2;
+
+  //d1_Video_System_clock_3_in_end_xfer register, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          d1_Video_System_clock_3_in_end_xfer <= 1;
+      else 
+        d1_Video_System_clock_3_in_end_xfer <= Video_System_clock_3_in_end_xfer;
+    end
+
+
+  //Video_System_clock_3_in_waits_for_read in a cycle, which is an e_mux
+  assign Video_System_clock_3_in_waits_for_read = Video_System_clock_3_in_in_a_read_cycle & Video_System_clock_3_in_waitrequest_from_sa;
+
+  //Video_System_clock_3_in_in_a_read_cycle assignment, which is an e_assign
+  assign Video_System_clock_3_in_in_a_read_cycle = CPU_data_master_granted_Video_System_clock_3_in & CPU_data_master_read;
+
+  //in_a_read_cycle assignment, which is an e_mux
+  assign in_a_read_cycle = Video_System_clock_3_in_in_a_read_cycle;
+
+  //Video_System_clock_3_in_waits_for_write in a cycle, which is an e_mux
+  assign Video_System_clock_3_in_waits_for_write = Video_System_clock_3_in_in_a_write_cycle & Video_System_clock_3_in_waitrequest_from_sa;
+
+  //Video_System_clock_3_in_in_a_write_cycle assignment, which is an e_assign
+  assign Video_System_clock_3_in_in_a_write_cycle = CPU_data_master_granted_Video_System_clock_3_in & CPU_data_master_write;
+
+  //in_a_write_cycle assignment, which is an e_mux
+  assign in_a_write_cycle = Video_System_clock_3_in_in_a_write_cycle;
+
+  assign wait_for_Video_System_clock_3_in_counter = 0;
+  //Video_System_clock_3_in_byteenable byte enable port mux, which is an e_mux
+  assign Video_System_clock_3_in_byteenable = (CPU_data_master_granted_Video_System_clock_3_in)? CPU_data_master_byteenable :
+    -1;
+
+
+//synthesis translate_off
+//////////////// SIMULATION-ONLY CONTENTS
+  //Video_System_clock_3/in enable non-zero assertions, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          enable_nonzero_assertions <= 0;
+      else 
+        enable_nonzero_assertions <= 1'b1;
+    end
+
+
+
+//////////////// END SIMULATION-ONLY CONTENTS
+
+//synthesis translate_on
+
+endmodule
+
+
+// synthesis translate_off
+`timescale 1ns / 1ps
+// synthesis translate_on
+
+// turn off superfluous verilog processor warnings 
+// altera message_level Level1 
+// altera message_off 10034 10035 10036 10037 10230 10240 10030 
+
+module Video_System_clock_3_out_arbitrator (
+                                             // inputs:
+                                              Video_System_clock_3_out_address,
+                                              Video_System_clock_3_out_byteenable,
+                                              Video_System_clock_3_out_granted_sound_s1,
+                                              Video_System_clock_3_out_qualified_request_sound_s1,
+                                              Video_System_clock_3_out_read,
+                                              Video_System_clock_3_out_read_data_valid_sound_s1,
+                                              Video_System_clock_3_out_requests_sound_s1,
+                                              Video_System_clock_3_out_write,
+                                              Video_System_clock_3_out_writedata,
+                                              clk,
+                                              d1_sound_s1_end_xfer,
+                                              reset_n,
+                                              sound_s1_readdata_from_sa,
+
+                                             // outputs:
+                                              Video_System_clock_3_out_address_to_slave,
+                                              Video_System_clock_3_out_readdata,
+                                              Video_System_clock_3_out_reset_n,
+                                              Video_System_clock_3_out_waitrequest
+                                           )
+;
+
+  output  [  4: 0] Video_System_clock_3_out_address_to_slave;
+  output  [ 31: 0] Video_System_clock_3_out_readdata;
+  output           Video_System_clock_3_out_reset_n;
+  output           Video_System_clock_3_out_waitrequest;
+  input   [  4: 0] Video_System_clock_3_out_address;
+  input   [  3: 0] Video_System_clock_3_out_byteenable;
+  input            Video_System_clock_3_out_granted_sound_s1;
+  input            Video_System_clock_3_out_qualified_request_sound_s1;
+  input            Video_System_clock_3_out_read;
+  input            Video_System_clock_3_out_read_data_valid_sound_s1;
+  input            Video_System_clock_3_out_requests_sound_s1;
+  input            Video_System_clock_3_out_write;
+  input   [ 31: 0] Video_System_clock_3_out_writedata;
+  input            clk;
+  input            d1_sound_s1_end_xfer;
+  input            reset_n;
+  input   [ 31: 0] sound_s1_readdata_from_sa;
+
+  reg     [  4: 0] Video_System_clock_3_out_address_last_time;
+  wire    [  4: 0] Video_System_clock_3_out_address_to_slave;
+  reg     [  3: 0] Video_System_clock_3_out_byteenable_last_time;
+  reg              Video_System_clock_3_out_read_last_time;
+  wire    [ 31: 0] Video_System_clock_3_out_readdata;
+  wire             Video_System_clock_3_out_reset_n;
+  wire             Video_System_clock_3_out_run;
+  wire             Video_System_clock_3_out_waitrequest;
+  reg              Video_System_clock_3_out_write_last_time;
+  reg     [ 31: 0] Video_System_clock_3_out_writedata_last_time;
+  reg              active_and_waiting_last_time;
+  wire             r_1;
+  //r_1 master_run cascaded wait assignment, which is an e_assign
+  assign r_1 = 1 & ((~Video_System_clock_3_out_qualified_request_sound_s1 | ~Video_System_clock_3_out_read | (1 & ~d1_sound_s1_end_xfer & Video_System_clock_3_out_read))) & ((~Video_System_clock_3_out_qualified_request_sound_s1 | ~Video_System_clock_3_out_write | (1 & Video_System_clock_3_out_write)));
+
+  //cascaded wait assignment, which is an e_assign
+  assign Video_System_clock_3_out_run = r_1;
+
+  //optimize select-logic by passing only those address bits which matter.
+  assign Video_System_clock_3_out_address_to_slave = Video_System_clock_3_out_address;
+
+  //Video_System_clock_3/out readdata mux, which is an e_mux
+  assign Video_System_clock_3_out_readdata = sound_s1_readdata_from_sa;
+
+  //actual waitrequest port, which is an e_assign
+  assign Video_System_clock_3_out_waitrequest = ~Video_System_clock_3_out_run;
+
+  //Video_System_clock_3_out_reset_n assignment, which is an e_assign
+  assign Video_System_clock_3_out_reset_n = reset_n;
+
+
+//synthesis translate_off
+//////////////// SIMULATION-ONLY CONTENTS
+  //Video_System_clock_3_out_address check against wait, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          Video_System_clock_3_out_address_last_time <= 0;
+      else 
+        Video_System_clock_3_out_address_last_time <= Video_System_clock_3_out_address;
+    end
+
+
+  //Video_System_clock_3/out waited last time, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          active_and_waiting_last_time <= 0;
+      else 
+        active_and_waiting_last_time <= Video_System_clock_3_out_waitrequest & (Video_System_clock_3_out_read | Video_System_clock_3_out_write);
+    end
+
+
+  //Video_System_clock_3_out_address matches last port_name, which is an e_process
+  always @(posedge clk)
+    begin
+      if (active_and_waiting_last_time & (Video_System_clock_3_out_address != Video_System_clock_3_out_address_last_time))
+        begin
+          $write("%0d ns: Video_System_clock_3_out_address did not heed wait!!!", $time);
+          $stop;
+        end
+    end
+
+
+  //Video_System_clock_3_out_byteenable check against wait, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          Video_System_clock_3_out_byteenable_last_time <= 0;
+      else 
+        Video_System_clock_3_out_byteenable_last_time <= Video_System_clock_3_out_byteenable;
+    end
+
+
+  //Video_System_clock_3_out_byteenable matches last port_name, which is an e_process
+  always @(posedge clk)
+    begin
+      if (active_and_waiting_last_time & (Video_System_clock_3_out_byteenable != Video_System_clock_3_out_byteenable_last_time))
+        begin
+          $write("%0d ns: Video_System_clock_3_out_byteenable did not heed wait!!!", $time);
+          $stop;
+        end
+    end
+
+
+  //Video_System_clock_3_out_read check against wait, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          Video_System_clock_3_out_read_last_time <= 0;
+      else 
+        Video_System_clock_3_out_read_last_time <= Video_System_clock_3_out_read;
+    end
+
+
+  //Video_System_clock_3_out_read matches last port_name, which is an e_process
+  always @(posedge clk)
+    begin
+      if (active_and_waiting_last_time & (Video_System_clock_3_out_read != Video_System_clock_3_out_read_last_time))
+        begin
+          $write("%0d ns: Video_System_clock_3_out_read did not heed wait!!!", $time);
+          $stop;
+        end
+    end
+
+
+  //Video_System_clock_3_out_write check against wait, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          Video_System_clock_3_out_write_last_time <= 0;
+      else 
+        Video_System_clock_3_out_write_last_time <= Video_System_clock_3_out_write;
+    end
+
+
+  //Video_System_clock_3_out_write matches last port_name, which is an e_process
+  always @(posedge clk)
+    begin
+      if (active_and_waiting_last_time & (Video_System_clock_3_out_write != Video_System_clock_3_out_write_last_time))
+        begin
+          $write("%0d ns: Video_System_clock_3_out_write did not heed wait!!!", $time);
+          $stop;
+        end
+    end
+
+
+  //Video_System_clock_3_out_writedata check against wait, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          Video_System_clock_3_out_writedata_last_time <= 0;
+      else 
+        Video_System_clock_3_out_writedata_last_time <= Video_System_clock_3_out_writedata;
+    end
+
+
+  //Video_System_clock_3_out_writedata matches last port_name, which is an e_process
+  always @(posedge clk)
+    begin
+      if (active_and_waiting_last_time & (Video_System_clock_3_out_writedata != Video_System_clock_3_out_writedata_last_time) & Video_System_clock_3_out_write)
+        begin
+          $write("%0d ns: Video_System_clock_3_out_writedata did not heed wait!!!", $time);
+          $stop;
+        end
+    end
+
+
+
+//////////////// END SIMULATION-ONLY CONTENTS
+
+//synthesis translate_on
+
+endmodule
+
+
+// synthesis translate_off
+`timescale 1ns / 1ps
+// synthesis translate_on
+
+// turn off superfluous verilog processor warnings 
+// altera message_level Level1 
+// altera message_off 10034 10035 10036 10037 10230 10240 10030 
+
 module jtag_uart_0_avalon_jtag_slave_arbitrator (
                                                   // inputs:
                                                    Video_System_clock_1_out_address_to_slave,
@@ -5571,6 +6097,275 @@ endmodule
 // altera message_level Level1 
 // altera message_off 10034 10035 10036 10037 10230 10240 10030 
 
+module sound_s1_arbitrator (
+                             // inputs:
+                              Video_System_clock_3_out_address_to_slave,
+                              Video_System_clock_3_out_nativeaddress,
+                              Video_System_clock_3_out_read,
+                              Video_System_clock_3_out_write,
+                              Video_System_clock_3_out_writedata,
+                              clk,
+                              reset_n,
+                              sound_s1_readdata,
+
+                             // outputs:
+                              Video_System_clock_3_out_granted_sound_s1,
+                              Video_System_clock_3_out_qualified_request_sound_s1,
+                              Video_System_clock_3_out_read_data_valid_sound_s1,
+                              Video_System_clock_3_out_requests_sound_s1,
+                              d1_sound_s1_end_xfer,
+                              sound_s1_address,
+                              sound_s1_chipselect,
+                              sound_s1_readdata_from_sa,
+                              sound_s1_reset_n,
+                              sound_s1_write_n,
+                              sound_s1_writedata
+                           )
+;
+
+  output           Video_System_clock_3_out_granted_sound_s1;
+  output           Video_System_clock_3_out_qualified_request_sound_s1;
+  output           Video_System_clock_3_out_read_data_valid_sound_s1;
+  output           Video_System_clock_3_out_requests_sound_s1;
+  output           d1_sound_s1_end_xfer;
+  output  [  2: 0] sound_s1_address;
+  output           sound_s1_chipselect;
+  output  [ 31: 0] sound_s1_readdata_from_sa;
+  output           sound_s1_reset_n;
+  output           sound_s1_write_n;
+  output  [ 31: 0] sound_s1_writedata;
+  input   [  4: 0] Video_System_clock_3_out_address_to_slave;
+  input   [  2: 0] Video_System_clock_3_out_nativeaddress;
+  input            Video_System_clock_3_out_read;
+  input            Video_System_clock_3_out_write;
+  input   [ 31: 0] Video_System_clock_3_out_writedata;
+  input            clk;
+  input            reset_n;
+  input   [ 31: 0] sound_s1_readdata;
+
+  wire             Video_System_clock_3_out_arbiterlock;
+  wire             Video_System_clock_3_out_arbiterlock2;
+  wire             Video_System_clock_3_out_continuerequest;
+  wire             Video_System_clock_3_out_granted_sound_s1;
+  wire             Video_System_clock_3_out_qualified_request_sound_s1;
+  wire             Video_System_clock_3_out_read_data_valid_sound_s1;
+  wire             Video_System_clock_3_out_requests_sound_s1;
+  wire             Video_System_clock_3_out_saved_grant_sound_s1;
+  reg              d1_reasons_to_wait;
+  reg              d1_sound_s1_end_xfer;
+  reg              enable_nonzero_assertions;
+  wire             end_xfer_arb_share_counter_term_sound_s1;
+  wire             in_a_read_cycle;
+  wire             in_a_write_cycle;
+  wire    [  2: 0] sound_s1_address;
+  wire             sound_s1_allgrants;
+  wire             sound_s1_allow_new_arb_cycle;
+  wire             sound_s1_any_bursting_master_saved_grant;
+  wire             sound_s1_any_continuerequest;
+  wire             sound_s1_arb_counter_enable;
+  reg              sound_s1_arb_share_counter;
+  wire             sound_s1_arb_share_counter_next_value;
+  wire             sound_s1_arb_share_set_values;
+  wire             sound_s1_beginbursttransfer_internal;
+  wire             sound_s1_begins_xfer;
+  wire             sound_s1_chipselect;
+  wire             sound_s1_end_xfer;
+  wire             sound_s1_firsttransfer;
+  wire             sound_s1_grant_vector;
+  wire             sound_s1_in_a_read_cycle;
+  wire             sound_s1_in_a_write_cycle;
+  wire             sound_s1_master_qreq_vector;
+  wire             sound_s1_non_bursting_master_requests;
+  wire    [ 31: 0] sound_s1_readdata_from_sa;
+  reg              sound_s1_reg_firsttransfer;
+  wire             sound_s1_reset_n;
+  reg              sound_s1_slavearbiterlockenable;
+  wire             sound_s1_slavearbiterlockenable2;
+  wire             sound_s1_unreg_firsttransfer;
+  wire             sound_s1_waits_for_read;
+  wire             sound_s1_waits_for_write;
+  wire             sound_s1_write_n;
+  wire    [ 31: 0] sound_s1_writedata;
+  wire             wait_for_sound_s1_counter;
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          d1_reasons_to_wait <= 0;
+      else 
+        d1_reasons_to_wait <= ~sound_s1_end_xfer;
+    end
+
+
+  assign sound_s1_begins_xfer = ~d1_reasons_to_wait & ((Video_System_clock_3_out_qualified_request_sound_s1));
+  //assign sound_s1_readdata_from_sa = sound_s1_readdata so that symbol knows where to group signals which may go to master only, which is an e_assign
+  assign sound_s1_readdata_from_sa = sound_s1_readdata;
+
+  assign Video_System_clock_3_out_requests_sound_s1 = (1) & (Video_System_clock_3_out_read | Video_System_clock_3_out_write);
+  //sound_s1_arb_share_counter set values, which is an e_mux
+  assign sound_s1_arb_share_set_values = 1;
+
+  //sound_s1_non_bursting_master_requests mux, which is an e_mux
+  assign sound_s1_non_bursting_master_requests = Video_System_clock_3_out_requests_sound_s1;
+
+  //sound_s1_any_bursting_master_saved_grant mux, which is an e_mux
+  assign sound_s1_any_bursting_master_saved_grant = 0;
+
+  //sound_s1_arb_share_counter_next_value assignment, which is an e_assign
+  assign sound_s1_arb_share_counter_next_value = sound_s1_firsttransfer ? (sound_s1_arb_share_set_values - 1) : |sound_s1_arb_share_counter ? (sound_s1_arb_share_counter - 1) : 0;
+
+  //sound_s1_allgrants all slave grants, which is an e_mux
+  assign sound_s1_allgrants = |sound_s1_grant_vector;
+
+  //sound_s1_end_xfer assignment, which is an e_assign
+  assign sound_s1_end_xfer = ~(sound_s1_waits_for_read | sound_s1_waits_for_write);
+
+  //end_xfer_arb_share_counter_term_sound_s1 arb share counter enable term, which is an e_assign
+  assign end_xfer_arb_share_counter_term_sound_s1 = sound_s1_end_xfer & (~sound_s1_any_bursting_master_saved_grant | in_a_read_cycle | in_a_write_cycle);
+
+  //sound_s1_arb_share_counter arbitration counter enable, which is an e_assign
+  assign sound_s1_arb_counter_enable = (end_xfer_arb_share_counter_term_sound_s1 & sound_s1_allgrants) | (end_xfer_arb_share_counter_term_sound_s1 & ~sound_s1_non_bursting_master_requests);
+
+  //sound_s1_arb_share_counter counter, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          sound_s1_arb_share_counter <= 0;
+      else if (sound_s1_arb_counter_enable)
+          sound_s1_arb_share_counter <= sound_s1_arb_share_counter_next_value;
+    end
+
+
+  //sound_s1_slavearbiterlockenable slave enables arbiterlock, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          sound_s1_slavearbiterlockenable <= 0;
+      else if ((|sound_s1_master_qreq_vector & end_xfer_arb_share_counter_term_sound_s1) | (end_xfer_arb_share_counter_term_sound_s1 & ~sound_s1_non_bursting_master_requests))
+          sound_s1_slavearbiterlockenable <= |sound_s1_arb_share_counter_next_value;
+    end
+
+
+  //Video_System_clock_3/out sound/s1 arbiterlock, which is an e_assign
+  assign Video_System_clock_3_out_arbiterlock = sound_s1_slavearbiterlockenable & Video_System_clock_3_out_continuerequest;
+
+  //sound_s1_slavearbiterlockenable2 slave enables arbiterlock2, which is an e_assign
+  assign sound_s1_slavearbiterlockenable2 = |sound_s1_arb_share_counter_next_value;
+
+  //Video_System_clock_3/out sound/s1 arbiterlock2, which is an e_assign
+  assign Video_System_clock_3_out_arbiterlock2 = sound_s1_slavearbiterlockenable2 & Video_System_clock_3_out_continuerequest;
+
+  //sound_s1_any_continuerequest at least one master continues requesting, which is an e_assign
+  assign sound_s1_any_continuerequest = 1;
+
+  //Video_System_clock_3_out_continuerequest continued request, which is an e_assign
+  assign Video_System_clock_3_out_continuerequest = 1;
+
+  assign Video_System_clock_3_out_qualified_request_sound_s1 = Video_System_clock_3_out_requests_sound_s1;
+  //sound_s1_writedata mux, which is an e_mux
+  assign sound_s1_writedata = Video_System_clock_3_out_writedata;
+
+  //master is always granted when requested
+  assign Video_System_clock_3_out_granted_sound_s1 = Video_System_clock_3_out_qualified_request_sound_s1;
+
+  //Video_System_clock_3/out saved-grant sound/s1, which is an e_assign
+  assign Video_System_clock_3_out_saved_grant_sound_s1 = Video_System_clock_3_out_requests_sound_s1;
+
+  //allow new arb cycle for sound/s1, which is an e_assign
+  assign sound_s1_allow_new_arb_cycle = 1;
+
+  //placeholder chosen master
+  assign sound_s1_grant_vector = 1;
+
+  //placeholder vector of master qualified-requests
+  assign sound_s1_master_qreq_vector = 1;
+
+  //sound_s1_reset_n assignment, which is an e_assign
+  assign sound_s1_reset_n = reset_n;
+
+  assign sound_s1_chipselect = Video_System_clock_3_out_granted_sound_s1;
+  //sound_s1_firsttransfer first transaction, which is an e_assign
+  assign sound_s1_firsttransfer = sound_s1_begins_xfer ? sound_s1_unreg_firsttransfer : sound_s1_reg_firsttransfer;
+
+  //sound_s1_unreg_firsttransfer first transaction, which is an e_assign
+  assign sound_s1_unreg_firsttransfer = ~(sound_s1_slavearbiterlockenable & sound_s1_any_continuerequest);
+
+  //sound_s1_reg_firsttransfer first transaction, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          sound_s1_reg_firsttransfer <= 1'b1;
+      else if (sound_s1_begins_xfer)
+          sound_s1_reg_firsttransfer <= sound_s1_unreg_firsttransfer;
+    end
+
+
+  //sound_s1_beginbursttransfer_internal begin burst transfer, which is an e_assign
+  assign sound_s1_beginbursttransfer_internal = sound_s1_begins_xfer;
+
+  //~sound_s1_write_n assignment, which is an e_mux
+  assign sound_s1_write_n = ~(Video_System_clock_3_out_granted_sound_s1 & Video_System_clock_3_out_write);
+
+  //sound_s1_address mux, which is an e_mux
+  assign sound_s1_address = Video_System_clock_3_out_nativeaddress;
+
+  //d1_sound_s1_end_xfer register, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          d1_sound_s1_end_xfer <= 1;
+      else 
+        d1_sound_s1_end_xfer <= sound_s1_end_xfer;
+    end
+
+
+  //sound_s1_waits_for_read in a cycle, which is an e_mux
+  assign sound_s1_waits_for_read = sound_s1_in_a_read_cycle & sound_s1_begins_xfer;
+
+  //sound_s1_in_a_read_cycle assignment, which is an e_assign
+  assign sound_s1_in_a_read_cycle = Video_System_clock_3_out_granted_sound_s1 & Video_System_clock_3_out_read;
+
+  //in_a_read_cycle assignment, which is an e_mux
+  assign in_a_read_cycle = sound_s1_in_a_read_cycle;
+
+  //sound_s1_waits_for_write in a cycle, which is an e_mux
+  assign sound_s1_waits_for_write = sound_s1_in_a_write_cycle & 0;
+
+  //sound_s1_in_a_write_cycle assignment, which is an e_assign
+  assign sound_s1_in_a_write_cycle = Video_System_clock_3_out_granted_sound_s1 & Video_System_clock_3_out_write;
+
+  //in_a_write_cycle assignment, which is an e_mux
+  assign in_a_write_cycle = sound_s1_in_a_write_cycle;
+
+  assign wait_for_sound_s1_counter = 0;
+
+//synthesis translate_off
+//////////////// SIMULATION-ONLY CONTENTS
+  //sound/s1 enable non-zero assertions, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          enable_nonzero_assertions <= 0;
+      else 
+        enable_nonzero_assertions <= 1'b1;
+    end
+
+
+
+//////////////// END SIMULATION-ONLY CONTENTS
+
+//synthesis translate_on
+
+endmodule
+
+
+// synthesis translate_off
+`timescale 1ns / 1ps
+// synthesis translate_on
+
+// turn off superfluous verilog processor warnings 
+// altera message_level Level1 
+// altera message_off 10034 10035 10036 10037 10230 10240 10030 
+
 module Video_System_reset_sys_clk_domain_synch_module (
                                                         // inputs:
                                                          clk,
@@ -5742,7 +6537,10 @@ module Video_System (
                        VGA_VS_from_the_VGA_Controller,
 
                       // the_pio_0
-                       in_port_to_the_pio_0
+                       in_port_to_the_pio_0,
+
+                      // the_sound
+                       out_port_from_the_sound
                     )
 ;
 
@@ -5761,6 +6559,7 @@ module Video_System (
   output  [  7: 0] VGA_R_from_the_VGA_Controller;
   output           VGA_SYNC_from_the_VGA_Controller;
   output           VGA_VS_from_the_VGA_Controller;
+  output  [  7: 0] out_port_from_the_sound;
   output           sys_clk;
   output           vga_clk;
   input            clk;
@@ -5783,6 +6582,7 @@ module Video_System (
   wire             CPU_data_master_granted_Video_System_clock_0_in;
   wire             CPU_data_master_granted_Video_System_clock_1_in;
   wire             CPU_data_master_granted_Video_System_clock_2_in;
+  wire             CPU_data_master_granted_Video_System_clock_3_in;
   wire    [ 31: 0] CPU_data_master_irq;
   wire             CPU_data_master_no_byte_enables_and_last_term;
   wire             CPU_data_master_qualified_request_CPU_jtag_debug_module;
@@ -5792,6 +6592,7 @@ module Video_System (
   wire             CPU_data_master_qualified_request_Video_System_clock_0_in;
   wire             CPU_data_master_qualified_request_Video_System_clock_1_in;
   wire             CPU_data_master_qualified_request_Video_System_clock_2_in;
+  wire             CPU_data_master_qualified_request_Video_System_clock_3_in;
   wire             CPU_data_master_read;
   wire             CPU_data_master_read_data_valid_CPU_jtag_debug_module;
   wire             CPU_data_master_read_data_valid_Onchip_Memory_s1;
@@ -5801,6 +6602,7 @@ module Video_System (
   wire             CPU_data_master_read_data_valid_Video_System_clock_0_in;
   wire             CPU_data_master_read_data_valid_Video_System_clock_1_in;
   wire             CPU_data_master_read_data_valid_Video_System_clock_2_in;
+  wire             CPU_data_master_read_data_valid_Video_System_clock_3_in;
   wire    [ 31: 0] CPU_data_master_readdata;
   wire             CPU_data_master_requests_CPU_jtag_debug_module;
   wire             CPU_data_master_requests_Onchip_Memory_s1;
@@ -5809,6 +6611,7 @@ module Video_System (
   wire             CPU_data_master_requests_Video_System_clock_0_in;
   wire             CPU_data_master_requests_Video_System_clock_1_in;
   wire             CPU_data_master_requests_Video_System_clock_2_in;
+  wire             CPU_data_master_requests_Video_System_clock_3_in;
   wire             CPU_data_master_waitrequest;
   wire             CPU_data_master_write;
   wire    [ 31: 0] CPU_data_master_writedata;
@@ -6011,6 +6814,34 @@ module Video_System (
   wire             Video_System_clock_2_out_waitrequest;
   wire             Video_System_clock_2_out_write;
   wire    [ 31: 0] Video_System_clock_2_out_writedata;
+  wire    [  4: 0] Video_System_clock_3_in_address;
+  wire    [  3: 0] Video_System_clock_3_in_byteenable;
+  wire             Video_System_clock_3_in_endofpacket;
+  wire             Video_System_clock_3_in_endofpacket_from_sa;
+  wire    [  2: 0] Video_System_clock_3_in_nativeaddress;
+  wire             Video_System_clock_3_in_read;
+  wire    [ 31: 0] Video_System_clock_3_in_readdata;
+  wire    [ 31: 0] Video_System_clock_3_in_readdata_from_sa;
+  wire             Video_System_clock_3_in_reset_n;
+  wire             Video_System_clock_3_in_waitrequest;
+  wire             Video_System_clock_3_in_waitrequest_from_sa;
+  wire             Video_System_clock_3_in_write;
+  wire    [ 31: 0] Video_System_clock_3_in_writedata;
+  wire    [  4: 0] Video_System_clock_3_out_address;
+  wire    [  4: 0] Video_System_clock_3_out_address_to_slave;
+  wire    [  3: 0] Video_System_clock_3_out_byteenable;
+  wire             Video_System_clock_3_out_endofpacket;
+  wire             Video_System_clock_3_out_granted_sound_s1;
+  wire    [  2: 0] Video_System_clock_3_out_nativeaddress;
+  wire             Video_System_clock_3_out_qualified_request_sound_s1;
+  wire             Video_System_clock_3_out_read;
+  wire             Video_System_clock_3_out_read_data_valid_sound_s1;
+  wire    [ 31: 0] Video_System_clock_3_out_readdata;
+  wire             Video_System_clock_3_out_requests_sound_s1;
+  wire             Video_System_clock_3_out_reset_n;
+  wire             Video_System_clock_3_out_waitrequest;
+  wire             Video_System_clock_3_out_write;
+  wire    [ 31: 0] Video_System_clock_3_out_writedata;
   wire             clk_reset_n;
   wire             d1_CPU_jtag_debug_module_end_xfer;
   wire             d1_Clock_Signals_avalon_clocks_slave_end_xfer;
@@ -6020,8 +6851,10 @@ module Video_System (
   wire             d1_Video_System_clock_0_in_end_xfer;
   wire             d1_Video_System_clock_1_in_end_xfer;
   wire             d1_Video_System_clock_2_in_end_xfer;
+  wire             d1_Video_System_clock_3_in_end_xfer;
   wire             d1_jtag_uart_0_avalon_jtag_slave_end_xfer;
   wire             d1_pio_0_s1_end_xfer;
+  wire             d1_sound_s1_end_xfer;
   wire             jtag_uart_0_avalon_jtag_slave_address;
   wire             jtag_uart_0_avalon_jtag_slave_chipselect;
   wire             jtag_uart_0_avalon_jtag_slave_dataavailable;
@@ -6040,6 +6873,7 @@ module Video_System (
   wire    [ 31: 0] jtag_uart_0_avalon_jtag_slave_writedata;
   wire             out_clk_Clock_Signals_VGA_CLK;
   wire             out_clk_Clock_Signals_sys_clk;
+  wire    [  7: 0] out_port_from_the_sound;
   wire    [  1: 0] pio_0_s1_address;
   wire             pio_0_s1_chipselect;
   wire             pio_0_s1_irq;
@@ -6052,6 +6886,13 @@ module Video_System (
   wire             registered_CPU_data_master_read_data_valid_Onchip_Memory_s1;
   wire             registered_CPU_data_master_read_data_valid_Pixel_Buffer_DMA_avalon_control_slave;
   wire             reset_n_sources;
+  wire    [  2: 0] sound_s1_address;
+  wire             sound_s1_chipselect;
+  wire    [ 31: 0] sound_s1_readdata;
+  wire    [ 31: 0] sound_s1_readdata_from_sa;
+  wire             sound_s1_reset_n;
+  wire             sound_s1_write_n;
+  wire    [ 31: 0] sound_s1_writedata;
   wire             sys_clk;
   wire             sys_clk_reset_n;
   wire             vga_clk;
@@ -6108,6 +6949,7 @@ module Video_System (
       .CPU_data_master_granted_Video_System_clock_0_in                                  (CPU_data_master_granted_Video_System_clock_0_in),
       .CPU_data_master_granted_Video_System_clock_1_in                                  (CPU_data_master_granted_Video_System_clock_1_in),
       .CPU_data_master_granted_Video_System_clock_2_in                                  (CPU_data_master_granted_Video_System_clock_2_in),
+      .CPU_data_master_granted_Video_System_clock_3_in                                  (CPU_data_master_granted_Video_System_clock_3_in),
       .CPU_data_master_irq                                                              (CPU_data_master_irq),
       .CPU_data_master_no_byte_enables_and_last_term                                    (CPU_data_master_no_byte_enables_and_last_term),
       .CPU_data_master_qualified_request_CPU_jtag_debug_module                          (CPU_data_master_qualified_request_CPU_jtag_debug_module),
@@ -6117,6 +6959,7 @@ module Video_System (
       .CPU_data_master_qualified_request_Video_System_clock_0_in                        (CPU_data_master_qualified_request_Video_System_clock_0_in),
       .CPU_data_master_qualified_request_Video_System_clock_1_in                        (CPU_data_master_qualified_request_Video_System_clock_1_in),
       .CPU_data_master_qualified_request_Video_System_clock_2_in                        (CPU_data_master_qualified_request_Video_System_clock_2_in),
+      .CPU_data_master_qualified_request_Video_System_clock_3_in                        (CPU_data_master_qualified_request_Video_System_clock_3_in),
       .CPU_data_master_read                                                             (CPU_data_master_read),
       .CPU_data_master_read_data_valid_CPU_jtag_debug_module                            (CPU_data_master_read_data_valid_CPU_jtag_debug_module),
       .CPU_data_master_read_data_valid_Onchip_Memory_s1                                 (CPU_data_master_read_data_valid_Onchip_Memory_s1),
@@ -6126,6 +6969,7 @@ module Video_System (
       .CPU_data_master_read_data_valid_Video_System_clock_0_in                          (CPU_data_master_read_data_valid_Video_System_clock_0_in),
       .CPU_data_master_read_data_valid_Video_System_clock_1_in                          (CPU_data_master_read_data_valid_Video_System_clock_1_in),
       .CPU_data_master_read_data_valid_Video_System_clock_2_in                          (CPU_data_master_read_data_valid_Video_System_clock_2_in),
+      .CPU_data_master_read_data_valid_Video_System_clock_3_in                          (CPU_data_master_read_data_valid_Video_System_clock_3_in),
       .CPU_data_master_readdata                                                         (CPU_data_master_readdata),
       .CPU_data_master_requests_CPU_jtag_debug_module                                   (CPU_data_master_requests_CPU_jtag_debug_module),
       .CPU_data_master_requests_Onchip_Memory_s1                                        (CPU_data_master_requests_Onchip_Memory_s1),
@@ -6134,6 +6978,7 @@ module Video_System (
       .CPU_data_master_requests_Video_System_clock_0_in                                 (CPU_data_master_requests_Video_System_clock_0_in),
       .CPU_data_master_requests_Video_System_clock_1_in                                 (CPU_data_master_requests_Video_System_clock_1_in),
       .CPU_data_master_requests_Video_System_clock_2_in                                 (CPU_data_master_requests_Video_System_clock_2_in),
+      .CPU_data_master_requests_Video_System_clock_3_in                                 (CPU_data_master_requests_Video_System_clock_3_in),
       .CPU_data_master_waitrequest                                                      (CPU_data_master_waitrequest),
       .CPU_data_master_write                                                            (CPU_data_master_write),
       .CPU_data_master_writedata                                                        (CPU_data_master_writedata),
@@ -6147,6 +6992,8 @@ module Video_System (
       .Video_System_clock_1_in_waitrequest_from_sa                                      (Video_System_clock_1_in_waitrequest_from_sa),
       .Video_System_clock_2_in_readdata_from_sa                                         (Video_System_clock_2_in_readdata_from_sa),
       .Video_System_clock_2_in_waitrequest_from_sa                                      (Video_System_clock_2_in_waitrequest_from_sa),
+      .Video_System_clock_3_in_readdata_from_sa                                         (Video_System_clock_3_in_readdata_from_sa),
+      .Video_System_clock_3_in_waitrequest_from_sa                                      (Video_System_clock_3_in_waitrequest_from_sa),
       .clk                                                                              (sys_clk),
       .d1_CPU_jtag_debug_module_end_xfer                                                (d1_CPU_jtag_debug_module_end_xfer),
       .d1_Onchip_Memory_s1_end_xfer                                                     (d1_Onchip_Memory_s1_end_xfer),
@@ -6155,6 +7002,7 @@ module Video_System (
       .d1_Video_System_clock_0_in_end_xfer                                              (d1_Video_System_clock_0_in_end_xfer),
       .d1_Video_System_clock_1_in_end_xfer                                              (d1_Video_System_clock_1_in_end_xfer),
       .d1_Video_System_clock_2_in_end_xfer                                              (d1_Video_System_clock_2_in_end_xfer),
+      .d1_Video_System_clock_3_in_end_xfer                                              (d1_Video_System_clock_3_in_end_xfer),
       .jtag_uart_0_avalon_jtag_slave_irq_from_sa                                        (jtag_uart_0_avalon_jtag_slave_irq_from_sa),
       .pio_0_s1_irq_from_sa                                                             (pio_0_s1_irq_from_sa),
       .registered_CPU_data_master_read_data_valid_Onchip_Memory_s1                      (registered_CPU_data_master_read_data_valid_Onchip_Memory_s1),
@@ -6789,6 +7637,83 @@ module Video_System (
       .slave_writedata      (Video_System_clock_2_in_writedata)
     );
 
+  Video_System_clock_3_in_arbitrator the_Video_System_clock_3_in
+    (
+      .CPU_data_master_address_to_slave                          (CPU_data_master_address_to_slave),
+      .CPU_data_master_byteenable                                (CPU_data_master_byteenable),
+      .CPU_data_master_granted_Video_System_clock_3_in           (CPU_data_master_granted_Video_System_clock_3_in),
+      .CPU_data_master_qualified_request_Video_System_clock_3_in (CPU_data_master_qualified_request_Video_System_clock_3_in),
+      .CPU_data_master_read                                      (CPU_data_master_read),
+      .CPU_data_master_read_data_valid_Video_System_clock_3_in   (CPU_data_master_read_data_valid_Video_System_clock_3_in),
+      .CPU_data_master_requests_Video_System_clock_3_in          (CPU_data_master_requests_Video_System_clock_3_in),
+      .CPU_data_master_waitrequest                               (CPU_data_master_waitrequest),
+      .CPU_data_master_write                                     (CPU_data_master_write),
+      .CPU_data_master_writedata                                 (CPU_data_master_writedata),
+      .Video_System_clock_3_in_address                           (Video_System_clock_3_in_address),
+      .Video_System_clock_3_in_byteenable                        (Video_System_clock_3_in_byteenable),
+      .Video_System_clock_3_in_endofpacket                       (Video_System_clock_3_in_endofpacket),
+      .Video_System_clock_3_in_endofpacket_from_sa               (Video_System_clock_3_in_endofpacket_from_sa),
+      .Video_System_clock_3_in_nativeaddress                     (Video_System_clock_3_in_nativeaddress),
+      .Video_System_clock_3_in_read                              (Video_System_clock_3_in_read),
+      .Video_System_clock_3_in_readdata                          (Video_System_clock_3_in_readdata),
+      .Video_System_clock_3_in_readdata_from_sa                  (Video_System_clock_3_in_readdata_from_sa),
+      .Video_System_clock_3_in_reset_n                           (Video_System_clock_3_in_reset_n),
+      .Video_System_clock_3_in_waitrequest                       (Video_System_clock_3_in_waitrequest),
+      .Video_System_clock_3_in_waitrequest_from_sa               (Video_System_clock_3_in_waitrequest_from_sa),
+      .Video_System_clock_3_in_write                             (Video_System_clock_3_in_write),
+      .Video_System_clock_3_in_writedata                         (Video_System_clock_3_in_writedata),
+      .clk                                                       (sys_clk),
+      .d1_Video_System_clock_3_in_end_xfer                       (d1_Video_System_clock_3_in_end_xfer),
+      .reset_n                                                   (sys_clk_reset_n)
+    );
+
+  Video_System_clock_3_out_arbitrator the_Video_System_clock_3_out
+    (
+      .Video_System_clock_3_out_address                    (Video_System_clock_3_out_address),
+      .Video_System_clock_3_out_address_to_slave           (Video_System_clock_3_out_address_to_slave),
+      .Video_System_clock_3_out_byteenable                 (Video_System_clock_3_out_byteenable),
+      .Video_System_clock_3_out_granted_sound_s1           (Video_System_clock_3_out_granted_sound_s1),
+      .Video_System_clock_3_out_qualified_request_sound_s1 (Video_System_clock_3_out_qualified_request_sound_s1),
+      .Video_System_clock_3_out_read                       (Video_System_clock_3_out_read),
+      .Video_System_clock_3_out_read_data_valid_sound_s1   (Video_System_clock_3_out_read_data_valid_sound_s1),
+      .Video_System_clock_3_out_readdata                   (Video_System_clock_3_out_readdata),
+      .Video_System_clock_3_out_requests_sound_s1          (Video_System_clock_3_out_requests_sound_s1),
+      .Video_System_clock_3_out_reset_n                    (Video_System_clock_3_out_reset_n),
+      .Video_System_clock_3_out_waitrequest                (Video_System_clock_3_out_waitrequest),
+      .Video_System_clock_3_out_write                      (Video_System_clock_3_out_write),
+      .Video_System_clock_3_out_writedata                  (Video_System_clock_3_out_writedata),
+      .clk                                                 (clk),
+      .d1_sound_s1_end_xfer                                (d1_sound_s1_end_xfer),
+      .reset_n                                             (clk_reset_n),
+      .sound_s1_readdata_from_sa                           (sound_s1_readdata_from_sa)
+    );
+
+  Video_System_clock_3 the_Video_System_clock_3
+    (
+      .master_address       (Video_System_clock_3_out_address),
+      .master_byteenable    (Video_System_clock_3_out_byteenable),
+      .master_clk           (clk),
+      .master_endofpacket   (Video_System_clock_3_out_endofpacket),
+      .master_nativeaddress (Video_System_clock_3_out_nativeaddress),
+      .master_read          (Video_System_clock_3_out_read),
+      .master_readdata      (Video_System_clock_3_out_readdata),
+      .master_reset_n       (Video_System_clock_3_out_reset_n),
+      .master_waitrequest   (Video_System_clock_3_out_waitrequest),
+      .master_write         (Video_System_clock_3_out_write),
+      .master_writedata     (Video_System_clock_3_out_writedata),
+      .slave_address        (Video_System_clock_3_in_address),
+      .slave_byteenable     (Video_System_clock_3_in_byteenable),
+      .slave_clk            (sys_clk),
+      .slave_endofpacket    (Video_System_clock_3_in_endofpacket),
+      .slave_nativeaddress  (Video_System_clock_3_in_nativeaddress),
+      .slave_read           (Video_System_clock_3_in_read),
+      .slave_readdata       (Video_System_clock_3_in_readdata),
+      .slave_reset_n        (Video_System_clock_3_in_reset_n),
+      .slave_waitrequest    (Video_System_clock_3_in_waitrequest),
+      .slave_write          (Video_System_clock_3_in_write),
+      .slave_writedata      (Video_System_clock_3_in_writedata)
+    );
+
   jtag_uart_0_avalon_jtag_slave_arbitrator the_jtag_uart_0_avalon_jtag_slave
     (
       .Video_System_clock_1_out_address_to_slave                                (Video_System_clock_1_out_address_to_slave),
@@ -6875,6 +7800,41 @@ module Video_System (
       .writedata  (pio_0_s1_writedata)
     );
 
+  sound_s1_arbitrator the_sound_s1
+    (
+      .Video_System_clock_3_out_address_to_slave           (Video_System_clock_3_out_address_to_slave),
+      .Video_System_clock_3_out_granted_sound_s1           (Video_System_clock_3_out_granted_sound_s1),
+      .Video_System_clock_3_out_nativeaddress              (Video_System_clock_3_out_nativeaddress),
+      .Video_System_clock_3_out_qualified_request_sound_s1 (Video_System_clock_3_out_qualified_request_sound_s1),
+      .Video_System_clock_3_out_read                       (Video_System_clock_3_out_read),
+      .Video_System_clock_3_out_read_data_valid_sound_s1   (Video_System_clock_3_out_read_data_valid_sound_s1),
+      .Video_System_clock_3_out_requests_sound_s1          (Video_System_clock_3_out_requests_sound_s1),
+      .Video_System_clock_3_out_write                      (Video_System_clock_3_out_write),
+      .Video_System_clock_3_out_writedata                  (Video_System_clock_3_out_writedata),
+      .clk                                                 (clk),
+      .d1_sound_s1_end_xfer                                (d1_sound_s1_end_xfer),
+      .reset_n                                             (clk_reset_n),
+      .sound_s1_address                                    (sound_s1_address),
+      .sound_s1_chipselect                                 (sound_s1_chipselect),
+      .sound_s1_readdata                                   (sound_s1_readdata),
+      .sound_s1_readdata_from_sa                           (sound_s1_readdata_from_sa),
+      .sound_s1_reset_n                                    (sound_s1_reset_n),
+      .sound_s1_write_n                                    (sound_s1_write_n),
+      .sound_s1_writedata                                  (sound_s1_writedata)
+    );
+
+  sound the_sound
+    (
+      .address    (sound_s1_address),
+      .chipselect (sound_s1_chipselect),
+      .clk        (clk),
+      .out_port   (out_port_from_the_sound),
+      .readdata   (sound_s1_readdata),
+      .reset_n    (sound_s1_reset_n),
+      .write_n    (sound_s1_write_n),
+      .writedata  (sound_s1_writedata)
+    );
+
   //reset is asserted asynchronously and deasserted synchronously
   Video_System_reset_sys_clk_domain_synch_module Video_System_reset_sys_clk_domain_synch
     (
@@ -6919,6 +7879,9 @@ module Video_System (
   //Video_System_clock_2_out_endofpacket of type endofpacket does not connect to anything so wire it to default (0)
   assign Video_System_clock_2_out_endofpacket = 0;
 
+  //Video_System_clock_3_out_endofpacket of type endofpacket does not connect to anything so wire it to default (0)
+  assign Video_System_clock_3_out_endofpacket = 0;
+
 
 endmodule
 
@@ -6949,6 +7912,7 @@ endmodule
 `include "Dual_Clock_FIFO.v"
 `include "VGA_Controller.v"
 `include "Clock_Signals.v"
+`include "Video_System_clock_3.v"
 `include "Video_System_clock_0.v"
 `include "CPU_test_bench.v"
 `include "CPU_oci_test_bench.v"
@@ -6961,6 +7925,7 @@ endmodule
 `include "Onchip_Memory.v"
 `include "jtag_uart_0.v"
 `include "Video_System_clock_1.v"
+`include "sound.v"
 
 `timescale 1ns / 1ps
 
@@ -6990,10 +7955,13 @@ module test_bench
   wire             Video_System_clock_1_out_endofpacket;
   wire             Video_System_clock_2_in_endofpacket_from_sa;
   wire             Video_System_clock_2_out_endofpacket;
+  wire             Video_System_clock_3_in_endofpacket_from_sa;
+  wire             Video_System_clock_3_out_endofpacket;
   reg              clk;
   wire    [  3: 0] in_port_to_the_pio_0;
   wire             jtag_uart_0_avalon_jtag_slave_dataavailable_from_sa;
   wire             jtag_uart_0_avalon_jtag_slave_readyfordata_from_sa;
+  wire    [  7: 0] out_port_from_the_sound;
   reg              reset_n;
   wire             sys_clk;
   wire             vga_clk;
@@ -7023,6 +7991,7 @@ module test_bench
       .VGA_VS_from_the_VGA_Controller       (VGA_VS_from_the_VGA_Controller),
       .clk                                  (clk),
       .in_port_to_the_pio_0                 (in_port_to_the_pio_0),
+      .out_port_from_the_sound              (out_port_from_the_sound),
       .reset_n                              (reset_n),
       .sys_clk                              (sys_clk),
       .vga_clk                              (vga_clk)

@@ -4,7 +4,7 @@
  * Machine generated for CPU 'CPU' in SOPC Builder design 'Video_System'
  * SOPC Builder design path: ../../Video_System.sopcinfo
  *
- * Generated: Tue Feb 24 22:46:42 EST 2015
+ * Generated: Thu Feb 26 18:40:10 EST 2015
  */
 
 /*
@@ -292,5 +292,32 @@
 #define PIO_0_RESET_VALUE 0x0
 #define PIO_0_SPAN 16
 #define PIO_0_TYPE "altera_avalon_pio"
+
+
+/*
+ * sound configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_sound altera_avalon_pio
+#define SOUND_BASE 0x200000
+#define SOUND_BIT_CLEARING_EDGE_REGISTER 0
+#define SOUND_BIT_MODIFYING_OUTPUT_REGISTER 1
+#define SOUND_CAPTURE 0
+#define SOUND_DATA_WIDTH 8
+#define SOUND_DO_TEST_BENCH_WIRING 0
+#define SOUND_DRIVEN_SIM_VALUE 0x0
+#define SOUND_EDGE_TYPE "NONE"
+#define SOUND_FREQ 50000000u
+#define SOUND_HAS_IN 0
+#define SOUND_HAS_OUT 1
+#define SOUND_HAS_TRI 0
+#define SOUND_IRQ -1
+#define SOUND_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define SOUND_IRQ_TYPE "NONE"
+#define SOUND_NAME "/dev/sound"
+#define SOUND_RESET_VALUE 0x0
+#define SOUND_SPAN 32
+#define SOUND_TYPE "altera_avalon_pio"
 
 #endif /* __SYSTEM_H_ */

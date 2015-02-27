@@ -4,6 +4,15 @@
 <scannerInfo id="org.eclipse.cdt.make.core.discoveredScannerInfo">
 <instance id="preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.1624212479;preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.1624212479.;cdt.managedbuild.tool.gnu.cpp.compiler.cygwin.base.1147992395;cdt.managedbuild.tool.gnu.cpp.compiler.input.cygwin.139992917">
 <collector id="org.eclipse.cdt.make.core.PerProjectSICollector">
+<includePath path="C:/our_shit/ECE5760Projects/legit_start/verilog/software/legit_BSP/HAL/inc"/>
+<includePath path="C:/our_shit/ECE5760Projects/legit_start/verilog/software/legit_BSP/"/>
+<includePath path="C:/our_shit/ECE5760Projects/legit_start/verilog/software/legit_BSP/drivers/inc"/>
+<includePath path="c:\altera\11.0\quartus\bin\cygwin\lib\gcc\i686-pc-cygwin\3.4.4\include\c++"/>
+<includePath path="c:\altera\11.0\quartus\bin\cygwin\lib\gcc\i686-pc-cygwin\3.4.4\include\c++\i686-pc-cygwin"/>
+<includePath path="c:\altera\11.0\quartus\bin\cygwin\lib\gcc\i686-pc-cygwin\3.4.4\include\c++\backward"/>
+<includePath path="c:\altera\11.0\quartus\bin\cygwin\lib\gcc\i686-pc-cygwin\3.4.4\include"/>
+<includePath path="c:\altera\11.0\quartus\bin\cygwin\usr\include"/>
+<includePath path="c:\altera\11.0\quartus\bin\cygwin\usr\include\w32api"/>
 <includePath path="C:\altera\11.0\quartus\bin\cygwin\lib\gcc\i686-pc-cygwin\3.4.4\include\c++"/>
 <includePath path="C:\altera\11.0\quartus\bin\cygwin\lib\gcc\i686-pc-cygwin\3.4.4\include\c++\i686-pc-cygwin"/>
 <includePath path="C:\altera\11.0\quartus\bin\cygwin\lib\gcc\i686-pc-cygwin\3.4.4\include\c++\backward"/>
@@ -95,10 +104,20 @@
 <definedSymbol symbol="unix=1"/>
 <definedSymbol symbol="__unix__=1"/>
 <definedSymbol symbol="__unix=1"/>
+<definedSymbol symbol="SYSTEM_BUS_WIDTH=32"/>
+<definedSymbol symbol="__hal__=1"/>
+<definedSymbol symbol="ALT_NO_INSTRUCTION_EMULATION=1"/>
+<definedSymbol symbol="ALT_SINGLE_THREADED=1"/>
 </collector>
 </instance>
 <instance id="preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.1624212479;preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.1624212479.;cdt.managedbuild.tool.gnu.c.compiler.cygwin.base.1416994968;cdt.managedbuild.tool.gnu.c.compiler.input.cygwin.1042756107">
 <collector id="org.eclipse.cdt.make.core.PerProjectSICollector">
+<includePath path="C:/our_shit/ECE5760Projects/legit_start/verilog/software/legit_BSP/HAL/inc"/>
+<includePath path="C:/our_shit/ECE5760Projects/legit_start/verilog/software/legit_BSP/"/>
+<includePath path="C:/our_shit/ECE5760Projects/legit_start/verilog/software/legit_BSP/drivers/inc"/>
+<includePath path="c:\altera\11.0\quartus\bin\cygwin\lib\gcc\i686-pc-cygwin\3.4.4\include"/>
+<includePath path="c:\altera\11.0\quartus\bin\cygwin\usr\include"/>
+<includePath path="c:\altera\11.0\quartus\bin\cygwin\usr\include\w32api"/>
 <includePath path="C:\altera\11.0\quartus\bin\cygwin\lib\gcc\i686-pc-cygwin\3.4.4\include"/>
 <includePath path="C:\altera\11.0\quartus\bin\cygwin\usr\include"/>
 <includePath path="C:\altera\11.0\quartus\bin\cygwin\usr\include\w32api"/>
@@ -181,6 +200,10 @@
 <definedSymbol symbol="unix=1"/>
 <definedSymbol symbol="__unix__=1"/>
 <definedSymbol symbol="__unix=1"/>
+<definedSymbol symbol="SYSTEM_BUS_WIDTH=32"/>
+<definedSymbol symbol="__hal__=1"/>
+<definedSymbol symbol="ALT_NO_INSTRUCTION_EMULATION=1"/>
+<definedSymbol symbol="ALT_SINGLE_THREADED=1"/>
 </collector>
 </instance>
 </scannerInfo>

@@ -5,6 +5,18 @@ mSetup_ST.0000 0 0 0
 mSetup_ST.0001 1 0 1 
 mSetup_ST.0010 1 1 0 
 
+State Machine - |Example_4_Video_In|Video_System:Video_System_inst|Video_System_clock_3:the_Video_System_clock_3|Video_System_clock_3_master_FSM:master_FSM|master_state
+Name master_state.100 master_state.010 master_state.001 
+master_state.001 0 0 0 
+master_state.010 0 1 1 
+master_state.100 1 0 1 
+
+State Machine - |Example_4_Video_In|Video_System:Video_System_inst|Video_System_clock_3:the_Video_System_clock_3|Video_System_clock_3_slave_FSM:slave_FSM|slave_state
+Name slave_state.100 slave_state.010 slave_state.001 
+slave_state.001 0 0 0 
+slave_state.010 0 1 1 
+slave_state.100 1 0 1 
+
 State Machine - |Example_4_Video_In|Video_System:Video_System_inst|Video_System_clock_2:the_Video_System_clock_2|Video_System_clock_2_master_FSM:master_FSM|master_state
 Name master_state.100 master_state.010 master_state.001 
 master_state.001 0 0 0 

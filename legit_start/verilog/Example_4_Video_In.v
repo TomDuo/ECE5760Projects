@@ -43,6 +43,8 @@ module Example_4_Video_In (
 
 );
 
+wire [7:0] sound_out;
+
 /*****************************************************************************
  *                              Internal Modules                             *
  *****************************************************************************/
@@ -67,10 +69,13 @@ Video_System Video_System_inst
 	.VGA_VS_from_the_VGA_Controller       (VGA_VS),
 	.clk                                  (CLOCK_50),
 	.in_port_to_the_pio_0                 (KEY),
+	.out_port_from_the_sound              (sound_out),
 	.reset_n                              (1'b1),
 	.sys_clk                              (),
 	.vga_clk                              ()
  );
+ 
+ /* Audio hardware setup */
 
 wire	AUD_CTRL_CLK;
 wire	DLY_RST;
@@ -116,17 +121,20 @@ wire signed [15:0] sine_out;
 assign audio_outR = (lfsr_out<<1) + sine_out;
 assign audio_outL = (lfsr_out<<1) + sine_out; 
 
+
+/* Crashing sound generator.  Hooked up to pin 0 of sound parallel IO port*/
 LFSR_attack_decay crash(.clock(AUD_DACLRCK), 
-			.reset(KEY[2]),
+			.reset(~sound_out[0]),
 			.cutoff(3'd7), // cutoff from full freq to clock/(2^7)
 			.gain(3'd7), // gain = 3 bit shift factor = 1 to 2^7
 			.attack(4'd0), // fast rise
 			.decay(4'd6),  // fairly slow fall
 			.amp(16'h7FFF), // nearly full amp
 			.noise_out(lfsr_out));
-			
+
+/* Success sound generator (440hz).  Hooked up to pin 0 of sound parallel IO port*/
 DDS sine   (.clock(AUD_DACLRCK), 
-				.reset(KEY[3]),
+				.reset(~sound_out[1]),
 				.increment({18'd2507, 14'b0}), 
 				.phase(8'd0),
 				.sine_out(sine_out));

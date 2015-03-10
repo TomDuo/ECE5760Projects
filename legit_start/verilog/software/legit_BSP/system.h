@@ -4,7 +4,7 @@
  * Machine generated for CPU 'CPU' in SOPC Builder design 'Video_System'
  * SOPC Builder design path: ../../Video_System.sopcinfo
  *
- * Generated: Thu Feb 26 21:19:38 EST 2015
+ * Generated: Tue Mar 10 17:26:30 EDT 2015
  */
 
 /*

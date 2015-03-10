@@ -1422,3 +1422,16 @@ org.eclipse.ui.PartInitException: Could not create view: org.eclipse.cdt.debug.u
 
 !ENTRY com.altera.sbtgui.launch 1 0 2015-02-26 23:06:48.321
 !MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/our_shit/ECE5760Projects/legit_start/verilog/software/legit_app/legit_app.elf]
+!SESSION 2015-03-10 17:19:34.668 -----------------------------------------------
+eclipse.buildId=M20100909-0800
+java.version=1.6.0_23
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-10 17:27:43.339
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2015-03-10 17:27:46.331
+!MESSAGE Executing: [C:\Windows\system32\cmd.exe, /C, C:/altera/11.0/quartus\bin\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/ECE5760Projects/legit_start/verilog/software/legit_app/legit_app.elf]

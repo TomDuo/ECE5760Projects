@@ -1,0 +1,37 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\ECE5760Projects\drum\simulation\modelsim
+vdrum
+I5HO5Je<m>RK8:CRJ`M3iC1
+V^<mG6W;lc94Qe^Gh>Rc6h0
+Z1 dC:\ECE5760Projects\drum\simulation\modelsim
+w1426043538
+8drum_7_1200mv_85c_slow.vo
+Fdrum_7_1200mv_85c_slow.vo
+L0 31
+Z2 OV;L;6.6d;45
+r1
+31
+Z3 o-vlog01compat -work work -O0
+!s100 VHLSfG<2H7eCoem6bCdVT3
+!s85 0
+!s101 -O0
+!s92 -vlog01compat -work work +incdir+. -O0
+vtestbench
+!s100 l@TaR8QCAHLGjLJ=CF[Cb0
+IX@hU:RYNEgn]>N`OhV?Ve3
+VhGfW:390DM[oDMzegDH9`2
+R1
+w1426043325
+8C:/ECE5760Projects/drum/testbench.v
+FC:/ECE5760Projects/drum/testbench.v
+L0 3
+R2
+r1
+!s85 0
+31
+!s101 -O0
+R3
+!s92 -vlog01compat -work work +incdir+C:/ECE5760Projects/drum -O0

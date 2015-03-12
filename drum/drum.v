@@ -32,6 +32,11 @@ module drum(
 wire	AUD_CTRL_CLK;
 wire	DLY_RST;
 
+wire signed [17:0] u_out;
+
+// The data for the DACs
+wire signed [17:0] audio_outL, audio_outR ;
+
 assign	AUD_ADCLRCK	=	AUD_DACLRCK;
 assign	AUD_XCK		=	AUD_CTRL_CLK;
 
@@ -53,8 +58,8 @@ AUDIO_DAC_ADC 			u4	(	//	Audio Side
 							.oAUD_inL(audio_inL), // audio data from ADC 
 							.oAUD_inR(audio_inR), // audio data from ADC 
 							.iAUD_ADCDAT(AUD_ADCDAT),
-							.iAUD_extL(audio_outL[17:2]), // audio data to DAC
-							.iAUD_extR(audio_outR[17:2]), // audio data to DAC
+							.iAUD_extL({u_out[17],u_out[14:0]}), // audio data to DAC
+							.iAUD_extR(u_out[17:2]), // audio data to DAC
 							//	Control Signals
 				         .iCLK_18_4(AUD_CTRL_CLK),
 							.iRST_N(DLY_RST)
@@ -62,32 +67,264 @@ AUDIO_DAC_ADC 			u4	(	//	Audio Side
 
 
 
-// The data for the DACs
-wire signed [17:0] audio_outL, audio_outR ;
+defparam 
+			d1.eta = 5'd6,
+			d1.rho = 5'd4,
+			d1.max_row = 0;
 
-// output from DDS units and noise
-//wire signed [15:0] sine_out;
-
-// output two sine waves in quadrature
-//assign audio_outR = sine_out;
-//assign audio_outL = sine_out; 
-
-
-/* Success sound generator (440hz).  Hooked up to pin 0 of sound parallel IO port*/
-/*
-DDS sine   (.clock(AUD_DACLRCK), 
-				.reset(KEY[0]),
-				.increment({18'd2507, 14'b0}), 
-				.phase(8'd0),
-				.sine_out(sine_out));
-*/
-test_node t_n1(
-					.clock(CLOCK_50), 
+drum_node d1(
+					.clock(CLOCK_50),
 					.reset(KEY[0]),
-					.v1(audio_outL),
-					.v2(audio_outR));
+					.left_in(18'd0),
+					.right_in(18'd0),
+					.left_out(u_out),
+					.right_out());
 
 endmodule
 
+module drum_node(	
+						input  clock,
+						input  reset,
 
+						input signed [17:0] left_in,
+						input signed [17:0] right_in,
+						output reg signed [17:0] left_out,
+						output reg signed [17:0] right_out
+						);
+						
+reg [6:0] addr_1a;
+reg we_1a;
+reg signed [17:0] wr_data_1a;
+wire signed [17:0] rd_data_1a;
+
+reg [6:0] addr_1b;
+reg we_1b;
+reg signed [17:0] wr_data_1b;
+wire signed [17:0] rd_data_1b;
+
+reg [6:0] addr_2a;
+reg we_2a;
+reg signed [17:0] wr_data_2a;
+wire signed [17:0] rd_data_2a;
+
+reg [6:0] addr_2b;
+reg we_2b;
+reg signed [17:0] wr_data_2b;
+wire signed [17:0] rd_data_2b;			
+						
+m9kblock d_n_m9k_1(
+	.address_a(addr_1a),
+	.address_b(addr_1b),
+	.clock(clock),
+	.data_a(wr_data_1a),
+	.data_b(wr_data_1b),
+	.wren_a(we_1a),
+	.wren_b(we_1b),
+	.q_a(rd_data_1a),
+	.q_b(rd_data_1b));
+
+m9kblock d_n_m9k_2(
+	.address_a(addr_2a),
+	.address_b(addr_2b),
+	.clock(clock),
+	.data_a(wr_data_2a),
+	.data_b(wr_data_2b),
+	.wren_a(we_2a),
+	.wren_b(we_2b),
+	.q_a(rd_data_2a),
+	.q_b(rd_data_2b));
+
+	//eta = .0002
+	//rho = .05
+parameter signed [4:0] eta=0; //log2(1/eta)
+parameter signed [4:0] rho=0; //log2(1/rho)
+parameter max_row=0;
+reg [4:0] state;
+
+parameter step1=4'd1, step2=4'd2, step3=4'd3, reset1=4'd5, reset2=4'd6, reset3=4'd7,
+				init1=4'd8, init2=4'd9, init3=4'd10;
+
+reg signed [17:0] u_1;  // u_{i-1, j  }
+reg signed [17:0] u_2;  // u_{i+1, j  }
+reg signed [17:0] u_3;  // u_{i  , j-1}
+reg signed [17:0] u_4;  // u_{i  , j+1}
+reg signed [17:0] u;    // u_{i  , j  }
+
+reg signed [50:0] test1; // doesn't overflow
+reg signed [50:0] test2;
+reg signed [50:0] test3;
+reg signed [50:0] test4;
+
+reg signed [17:0] u_old;
+
+always @(posedge clock)
+begin
+	if (reset==0)
+	begin
+		state = reset1;
+		//make our shit look gaussian
+	end else
+	begin
+		case(state)
+			reset1:
+			begin
+				u_1<=0;
+				u_2<=0;
+				u_3<=0;
+				u_4<=0;
+				// This is the initial displacement
+				u<=-1081;
+			
+				// writing u and u_old to the m4k blocks as reset
+				// TODO: more nodes need to be initialized
+				we_1a<=1'b1;
+				we_2a<=1'b1;
+				addr_1a <= 0;
+				addr_2a <= 0;
+				wr_data_1a <= -1081;
+				wr_data_2a <= 0;
+				state<=init1;
+			end
+
+			init1:
+			begin
+				//TODO: also should read first node
+				//initialize read of u, u_4 and u_old
+				we_1a<=1'b0;
+				we_1b<=1'b0;
+				we_2a<=1'b0;
+				addr_1a <= 1'b0;
+				addr_1b <= 1;
+				addr_2a <= 0;
+				
+				state<=init2;
+			end
+			
+			init2:
+			begin
+				//wait for read to complete
+				state<=init3;
+			end
+			
+			init3:
+			begin
+				//get u at the beginning of the stripe
+				u <= rd_data_1a;
+				state<=step1;
+			end
+			
+			step1:
+			begin
+				//get data from neighbors (we know they're done because we're done too)
+				//u_1 <= left_in;
+				//u_2 <= right_in;
+				
+				if (addr_1a < max_row)
+				begin
+					addr_1a <= addr_1a+1;
+					u_4 <= rd_data_1b;
+				end
+				else
+				begin
+					addr_1a <= 1'b0;
+					u_4 <= 0;
+				end
+				
+				u_old <= rd_data_2a;
+				we_2a <= 1'b1;
+				wr_data_2a <= u;
+				
+				left_out <= u;
+				right_out <= u;
+				
+				state<=step2;
+				// at end of state:
+				// u_3: updated
+				// u  : updated
+				// u_4: updated
+				// u_old : updated, written thru
+			end
+			
+			step2:
+			begin
+				//prepare read for next step1 (reading u_4 and u_old for next node)
+				we_1b<=1'b0;
+				we_2a<=1'b0;
+				
+				if (addr_1a < max_row)
+				begin
+					addr_1b <= addr_1b+1; 
+					addr_2a <= addr_2a+1;
+					u_3 <= u;
+				end
+				else
+				begin
+					addr_1b <= 1;
+					addr_2a <= 0;
+					u_3 <= u_3;
+				end
+
+				//get data from neighbors (we know they're done because we're done too)
+				u_1 <= left_in;
+				u_2 <= right_in;
+				//calculation
+				//u <= ((u_1 + u_2 + u_3 + u_4 - u<<<2)>>>log2b + u<<<1 - (u_old)>>>log2b)>>>log2c;
+				//u <= ((u_1 + u_2 + u_3 + u_4 - u<<<2)<<<log2b + u<<<1 - (u_old)<<<log2c)<<<log2a;
+				//u <= ((u_1 + u_2 + u_3 + u_4 - 4*u)>>>4 + 2 * u - (u_old));
+				
+				//y = ((u_1 + u_2 + u_3 + u_4 - u<<<2) >>> rho);
+				//u = y - (y >>> (eta + 1)) + (u <<< 1) - (u >>> eta) - u_old + (u_old >>> eta);
+				u <= ((u_1 + u_2 + u_3 + u_4 - (u<<<2)) >>> rho) 
+				  - (((u_1 + u_2 + u_3 + u_4 - (u<<<2)) >>> rho) >>> (eta + 1)) 
+				  + (u <<< 1) - (u >>> eta) - u_old + (u_old >>> eta);
+				 test1 <= ((u_1 + u_2 + u_3 + u_4 - (u<<<2)) >>> rho);
+				 test2 <= (((u_1 + u_2 + u_3 + u_4 - (u<<<2)) >>> rho) >>> (eta + 1)) ;
+				 test3 <= (u <<< 1) - (u >>> eta);
+				 test4 <= (u <<< 1) - (u >>> eta) - u_old + (u_old >>> eta);
+				//NOTE REPLACE LEFT_IN AND RIGHT_IN
+				//u <= ((left_in + right_in + u_3 + u_4 - (u<<<2)) >>> rho) + (u<<<1) -u_old;
+				state<=step3;
+				// at end of state:
+				// u_3: updated
+				// u : updated NOT written thru
+				// u_4 NOT updated
+				// u_old :NOT updated NOT written thru
+			end
+			
+			step3:
+			begin
+				we_1a <= 1'b1;
+				wr_data_1a <= u;
+				
+				if (addr_1a < max_row)
+				begin
+					u<=u_4;
+					state <= step1;
+				end else
+				begin
+					u <= u; //stub
+					state <= init1;
+				end
+			end
+		endcase
+	end
+end
+/*
+reg signed [17:0] u_1;  // u_{i-1, j  }
+reg signed [17:0] u_2;  // u_{i+1, j  }
+reg signed [17:0] u_3;  // u_{i  , j-1}
+reg signed [17:0] u_4;  // u_{i  , j+1}
+reg signed [17:0] u;    // u_{i  , j  }
+*/
+// read u_* and u and u_old from neighboring m9k blocks and this block first.
+// do the following computation
+// u = a * (b * (u_1 + u_2 + u_3 + u_4 - 4*u) + 2 * u - c * (u_old));
+// write u to m9k block for this node
+
+endmodule
+/* TODO:
+ * basic parallel
+ * math fomulas / fixed point
+ * stripes in every unit module
+ */
 

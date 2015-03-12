@@ -1,0 +1,55 @@
+`timescale 1ns/1ps
+
+module testbench();
+	
+	reg clk_50, clk_25, reset, play;
+	
+	reg [31:0] index;
+	
+	//Initialize clocks and index
+	initial begin
+		clk_50 = 1'b0;
+		clk_25 = 1'b0;
+		index  = 32'd0;
+	end
+	
+	//Toggle the clocks
+	always begin
+		#10
+		clk_50  = !clk_50;
+	end
+	
+	always begin
+		#20
+		clk_25  = !clk_25;
+	end
+	
+	//Intialize and drive signals
+	initial begin
+		reset  = 1'b0;
+		#500 
+		reset  = 1'b1;
+		#20
+		reset  = 1'b0;
+		play   = 1'b1;
+		#10
+		play   = 1'b0;
+	end
+	
+	//Increment index
+	always @ (posedge clk_50) begin
+		index  <= index + 32'd1;
+	end
+
+	//Instantiation of Device Under Test
+	wire [15:0]  testbench_out;
+	example1 DUT(
+		.clk			(clk_50),
+		.clk2			(clk_25),
+		.reset		(reset),
+		.play_me		(play),
+		
+		.out			(testbench_out)
+	);
+	
+endmodule

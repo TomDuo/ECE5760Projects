@@ -1,5 +1,5 @@
 Analysis & Synthesis report for drum
-Tue Mar 10 19:04:49 2015
+Thu Mar 12 01:48:51 2015
 Quartus II 64-Bit Version 11.0 Build 157 04/27/2011 SJ Full Version
 
 
@@ -13,29 +13,33 @@ Quartus II 64-Bit Version 11.0 Build 157 04/27/2011 SJ Full Version
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. Analysis & Synthesis DSP Block Usage Summary
+  8. Analysis & Synthesis RAM Summary
   9. Analysis & Synthesis IP Cores Summary
- 10. State Machine - |drum|I2C_AV_Config:u3|mSetup_ST
- 11. Registers Removed During Synthesis
- 12. Removed Registers Triggering Further Register Optimizations
- 13. General Register Statistics
- 14. Inverted Register Statistics
- 15. Multiplexer Restructuring Statistics (Restructuring Performed)
- 16. Parameter Settings for User Entity Instance: Audio_PLL:p1|altpll:altpll_component
- 17. Parameter Settings for User Entity Instance: I2C_AV_Config:u3
- 18. Parameter Settings for User Entity Instance: AUDIO_DAC_ADC:u4
- 19. Parameter Settings for Inferred Entity Instance: test_node:t_n1|signed_mult:D_M|lpm_mult:Mult0
- 20. Parameter Settings for Inferred Entity Instance: test_node:t_n1|signed_mult:K_M|lpm_mult:Mult0
- 21. altpll Parameter Settings by Entity Instance
- 22. lpm_mult Parameter Settings by Entity Instance
- 23. Port Connectivity Checks: "test_node:t_n1|signed_mult:D_M"
- 24. Port Connectivity Checks: "test_node:t_n1|signed_mult:K_M"
- 25. Port Connectivity Checks: "test_node:t_n1"
- 26. Port Connectivity Checks: "AUDIO_DAC_ADC:u4"
- 27. Port Connectivity Checks: "I2C_AV_Config:u3|I2C_Controller:u0"
- 28. Port Connectivity Checks: "Audio_PLL:p1"
- 29. Elapsed Time Per Partition
- 30. Analysis & Synthesis Messages
+ 10. State Machine - |drum|drum_node:d1|state
+ 11. State Machine - |drum|I2C_AV_Config:u3|mSetup_ST
+ 12. Registers Removed During Synthesis
+ 13. Removed Registers Triggering Further Register Optimizations
+ 14. General Register Statistics
+ 15. Inverted Register Statistics
+ 16. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 17. Source assignments for drum_node:d1|m9kblock:d_n_m9k_1|altsyncram:altsyncram_component|altsyncram_aph2:auto_generated
+ 18. Source assignments for drum_node:d1|m9kblock:d_n_m9k_2|altsyncram:altsyncram_component|altsyncram_aph2:auto_generated
+ 19. Parameter Settings for User Entity Instance: Audio_PLL:p1|altpll:altpll_component
+ 20. Parameter Settings for User Entity Instance: I2C_AV_Config:u3
+ 21. Parameter Settings for User Entity Instance: AUDIO_DAC_ADC:u4
+ 22. Parameter Settings for User Entity Instance: drum_node:d1
+ 23. Parameter Settings for User Entity Instance: drum_node:d1|m9kblock:d_n_m9k_1|altsyncram:altsyncram_component
+ 24. Parameter Settings for User Entity Instance: drum_node:d1|m9kblock:d_n_m9k_2|altsyncram:altsyncram_component
+ 25. altpll Parameter Settings by Entity Instance
+ 26. altsyncram Parameter Settings by Entity Instance
+ 27. Port Connectivity Checks: "drum_node:d1|m9kblock:d_n_m9k_2"
+ 28. Port Connectivity Checks: "drum_node:d1"
+ 29. Port Connectivity Checks: "AUDIO_DAC_ADC:u4"
+ 30. Port Connectivity Checks: "I2C_AV_Config:u3|I2C_Controller:u0"
+ 31. Port Connectivity Checks: "Audio_PLL:p1"
+ 32. Elapsed Time Per Partition
+ 33. Analysis & Synthesis Messages
+ 34. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -61,19 +65,19 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                   ;
 +------------------------------------+-------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue Mar 10 19:04:49 2015     ;
+; Analysis & Synthesis Status        ; Successful - Thu Mar 12 01:48:51 2015     ;
 ; Quartus II 64-Bit Version          ; 11.0 Build 157 04/27/2011 SJ Full Version ;
 ; Revision Name                      ; drum                                      ;
 ; Top-level Entity Name              ; drum                                      ;
 ; Family                             ; Cyclone IV E                              ;
-; Total logic elements               ; 272                                       ;
-;     Total combinational functions  ; 228                                       ;
-;     Dedicated logic registers      ; 175                                       ;
-; Total registers                    ; 175                                       ;
+; Total logic elements               ; 395                                       ;
+;     Total combinational functions  ; 329                                       ;
+;     Dedicated logic registers      ; 219                                       ;
+; Total registers                    ; 219                                       ;
 ; Total pins                         ; 33                                        ;
 ; Total virtual pins                 ; 0                                         ;
-; Total memory bits                  ; 0                                         ;
-; Embedded Multiplier 9-bit elements ; 4                                         ;
+; Total memory bits                  ; 72                                        ;
+; Embedded Multiplier 9-bit elements ; 0                                         ;
 ; Total PLLs                         ; 1                                         ;
 +------------------------------------+-------------------------------------------+
 
@@ -179,32 +183,34 @@ applicable agreement for further details.
 +----------------------------+-------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                               ;
-+----------------------------------+-----------------+------------------------------+------------------------------------------------------------------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                     ;
-+----------------------------------+-----------------+------------------------------+------------------------------------------------------------------+
-; I2C_Controller.v                 ; yes             ; User Verilog HDL File        ; C:/ECE5760Projects/drum/I2C_Controller.v                         ;
-; I2C_AV_Config.v                  ; yes             ; User Verilog HDL File        ; C:/ECE5760Projects/drum/I2C_AV_Config.v                          ;
-; DDS.v                            ; yes             ; User Verilog HDL File        ; C:/ECE5760Projects/drum/DDS.v                                    ;
-; Audio_PLL.v                      ; yes             ; User Wizard-Generated File   ; C:/ECE5760Projects/drum/Audio_PLL.v                              ;
-; AUDIO_DAC_ADC.v                  ; yes             ; User Verilog HDL File        ; C:/ECE5760Projects/drum/AUDIO_DAC_ADC.v                          ;
-; drum.v                           ; yes             ; Auto-Found Verilog HDL File  ; C:/ECE5760Projects/drum/drum.v                                   ;
-; reset_delay.v                    ; yes             ; Auto-Found Verilog HDL File  ; C:/ECE5760Projects/drum/reset_delay.v                            ;
-; altpll.tdf                       ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/altpll.tdf        ;
-; aglobal110.inc                   ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/aglobal110.inc    ;
-; stratix_pll.inc                  ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/stratix_pll.inc   ;
-; stratixii_pll.inc                ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/stratixii_pll.inc ;
-; cycloneii_pll.inc                ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/cycloneii_pll.inc ;
-; db/audio_pll_altpll.v            ; yes             ; Auto-Generated Megafunction  ; C:/ECE5760Projects/drum/db/audio_pll_altpll.v                    ;
-; lpm_mult.tdf                     ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/lpm_mult.tdf      ;
-; lpm_add_sub.inc                  ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/lpm_add_sub.inc   ;
-; multcore.inc                     ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/multcore.inc      ;
-; bypassff.inc                     ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/bypassff.inc      ;
-; altshift.inc                     ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/altshift.inc      ;
-; db/mult_m9t.tdf                  ; yes             ; Auto-Generated Megafunction  ; C:/ECE5760Projects/drum/db/mult_m9t.tdf                          ;
-; db/mult_0at.tdf                  ; yes             ; Auto-Generated Megafunction  ; C:/ECE5760Projects/drum/db/mult_0at.tdf                          ;
-+----------------------------------+-----------------+------------------------------+------------------------------------------------------------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                   ;
++----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                         ;
++----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------+
+; drum.v                           ; yes             ; User Verilog HDL File        ; C:/ECE5760Projects/drum/drum.v                                       ;
+; I2C_Controller.v                 ; yes             ; User Verilog HDL File        ; C:/ECE5760Projects/drum/I2C_Controller.v                             ;
+; I2C_AV_Config.v                  ; yes             ; User Verilog HDL File        ; C:/ECE5760Projects/drum/I2C_AV_Config.v                              ;
+; Audio_PLL.v                      ; yes             ; User Wizard-Generated File   ; C:/ECE5760Projects/drum/Audio_PLL.v                                  ;
+; AUDIO_DAC_ADC.v                  ; yes             ; User Verilog HDL File        ; C:/ECE5760Projects/drum/AUDIO_DAC_ADC.v                              ;
+; m9kblock.v                       ; yes             ; User Wizard-Generated File   ; C:/ECE5760Projects/drum/m9kblock.v                                   ;
+; reset_delay.v                    ; yes             ; Auto-Found Verilog HDL File  ; C:/ECE5760Projects/drum/reset_delay.v                                ;
+; altpll.tdf                       ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/altpll.tdf            ;
+; aglobal110.inc                   ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/aglobal110.inc        ;
+; stratix_pll.inc                  ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/stratix_pll.inc       ;
+; stratixii_pll.inc                ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/stratixii_pll.inc     ;
+; cycloneii_pll.inc                ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/cycloneii_pll.inc     ;
+; db/audio_pll_altpll.v            ; yes             ; Auto-Generated Megafunction  ; C:/ECE5760Projects/drum/db/audio_pll_altpll.v                        ;
+; altsyncram.tdf                   ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/altsyncram.tdf        ;
+; stratix_ram_block.inc            ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/stratix_ram_block.inc ;
+; lpm_mux.inc                      ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/lpm_mux.inc           ;
+; lpm_decode.inc                   ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/lpm_decode.inc        ;
+; a_rdenreg.inc                    ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/a_rdenreg.inc         ;
+; altrom.inc                       ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/altrom.inc            ;
+; altram.inc                       ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/altram.inc            ;
+; altdpram.inc                     ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/altdpram.inc          ;
+; db/altsyncram_aph2.tdf           ; yes             ; Auto-Generated Megafunction  ; C:/ECE5760Projects/drum/db/altsyncram_aph2.tdf                       ;
++----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------+
 
 
 +--------------------------------------------------------------+
@@ -212,83 +218,92 @@ applicable agreement for further details.
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimated Total logic elements              ; 272            ;
+; Estimated Total logic elements              ; 395            ;
 ;                                             ;                ;
-; Total combinational functions               ; 228            ;
+; Total combinational functions               ; 329            ;
 ; Logic element usage by number of LUT inputs ;                ;
-;     -- 4 input functions                    ; 83             ;
-;     -- 3 input functions                    ; 77             ;
-;     -- <=2 input functions                  ; 68             ;
+;     -- 4 input functions                    ; 80             ;
+;     -- 3 input functions                    ; 106            ;
+;     -- <=2 input functions                  ; 143            ;
 ;                                             ;                ;
 ; Logic elements by mode                      ;                ;
-;     -- normal mode                          ; 124            ;
-;     -- arithmetic mode                      ; 104            ;
+;     -- normal mode                          ; 184            ;
+;     -- arithmetic mode                      ; 145            ;
 ;                                             ;                ;
-; Total registers                             ; 175            ;
-;     -- Dedicated logic registers            ; 175            ;
+; Total registers                             ; 219            ;
+;     -- Dedicated logic registers            ; 219            ;
 ;     -- I/O registers                        ; 0              ;
 ;                                             ;                ;
 ; I/O pins                                    ; 33             ;
-; Embedded Multiplier 9-bit elements          ; 4              ;
+; Total memory bits                           ; 72             ;
 ; Total PLLs                                  ; 1              ;
 ;     -- PLLs                                 ; 1              ;
 ;                                             ;                ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
-; Maximum fan-out                             ; 80             ;
-; Total fan-out                               ; 1351           ;
-; Average fan-out                             ; 2.83           ;
+; Maximum fan-out                             ; 174            ;
+; Total fan-out                               ; 1850           ;
+; Average fan-out                             ; 2.82           ;
 +---------------------------------------------+----------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                 ;
-+--------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------+--------------+
-; Compilation Hierarchy Node                 ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                         ; Library Name ;
-+--------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------+--------------+
-; |drum                                      ; 228 (1)           ; 175 (0)      ; 0           ; 4            ; 0       ; 2         ; 33   ; 0            ; |drum                                                                       ;              ;
-;    |AUDIO_DAC_ADC:u4|                      ; 42 (42)           ; 50 (50)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |drum|AUDIO_DAC_ADC:u4                                                      ;              ;
-;    |Audio_PLL:p1|                          ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |drum|Audio_PLL:p1                                                          ;              ;
-;       |altpll:altpll_component|            ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |drum|Audio_PLL:p1|altpll:altpll_component                                  ;              ;
-;          |Audio_PLL_altpll:auto_generated| ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |drum|Audio_PLL:p1|altpll:altpll_component|Audio_PLL_altpll:auto_generated  ;              ;
-;    |I2C_AV_Config:u3|                      ; 95 (50)           ; 63 (39)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |drum|I2C_AV_Config:u3                                                      ;              ;
-;       |I2C_Controller:u0|                  ; 45 (45)           ; 24 (24)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |drum|I2C_AV_Config:u3|I2C_Controller:u0                                    ;              ;
-;    |Reset_Delay:r0|                        ; 29 (29)           ; 21 (21)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |drum|Reset_Delay:r0                                                        ;              ;
-;    |test_node:t_n1|                        ; 61 (61)           ; 41 (41)      ; 0           ; 4            ; 0       ; 2         ; 0    ; 0            ; |drum|test_node:t_n1                                                        ;              ;
-;       |signed_mult:D_M|                    ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |drum|test_node:t_n1|signed_mult:D_M                                        ;              ;
-;          |lpm_mult:Mult0|                  ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |drum|test_node:t_n1|signed_mult:D_M|lpm_mult:Mult0                         ;              ;
-;             |mult_m9t:auto_generated|      ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |drum|test_node:t_n1|signed_mult:D_M|lpm_mult:Mult0|mult_m9t:auto_generated ;              ;
-;       |signed_mult:K_M|                    ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |drum|test_node:t_n1|signed_mult:K_M                                        ;              ;
-;          |lpm_mult:Mult0|                  ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |drum|test_node:t_n1|signed_mult:K_M|lpm_mult:Mult0                         ;              ;
-;             |mult_0at:auto_generated|      ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |drum|test_node:t_n1|signed_mult:K_M|lpm_mult:Mult0|mult_0at:auto_generated ;              ;
-+--------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------+--------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                            ;
++----------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node                   ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                  ; Library Name ;
++----------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------+--------------+
+; |drum                                        ; 329 (1)           ; 219 (0)      ; 72          ; 0            ; 0       ; 0         ; 33   ; 0            ; |drum                                                                                                ;              ;
+;    |AUDIO_DAC_ADC:u4|                        ; 38 (38)           ; 36 (36)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |drum|AUDIO_DAC_ADC:u4                                                                               ;              ;
+;    |Audio_PLL:p1|                            ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |drum|Audio_PLL:p1                                                                                   ;              ;
+;       |altpll:altpll_component|              ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |drum|Audio_PLL:p1|altpll:altpll_component                                                           ;              ;
+;          |Audio_PLL_altpll:auto_generated|   ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |drum|Audio_PLL:p1|altpll:altpll_component|Audio_PLL_altpll:auto_generated                           ;              ;
+;    |I2C_AV_Config:u3|                        ; 95 (50)           ; 63 (39)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |drum|I2C_AV_Config:u3                                                                               ;              ;
+;       |I2C_Controller:u0|                    ; 45 (45)           ; 24 (24)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |drum|I2C_AV_Config:u3|I2C_Controller:u0                                                             ;              ;
+;    |Reset_Delay:r0|                          ; 28 (28)           ; 21 (21)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |drum|Reset_Delay:r0                                                                                 ;              ;
+;    |drum_node:d1|                            ; 167 (167)         ; 99 (99)      ; 72          ; 0            ; 0       ; 0         ; 0    ; 0            ; |drum|drum_node:d1                                                                                   ;              ;
+;       |m9kblock:d_n_m9k_1|                   ; 0 (0)             ; 0 (0)        ; 36          ; 0            ; 0       ; 0         ; 0    ; 0            ; |drum|drum_node:d1|m9kblock:d_n_m9k_1                                                                ;              ;
+;          |altsyncram:altsyncram_component|   ; 0 (0)             ; 0 (0)        ; 36          ; 0            ; 0       ; 0         ; 0    ; 0            ; |drum|drum_node:d1|m9kblock:d_n_m9k_1|altsyncram:altsyncram_component                                ;              ;
+;             |altsyncram_aph2:auto_generated| ; 0 (0)             ; 0 (0)        ; 36          ; 0            ; 0       ; 0         ; 0    ; 0            ; |drum|drum_node:d1|m9kblock:d_n_m9k_1|altsyncram:altsyncram_component|altsyncram_aph2:auto_generated ;              ;
+;       |m9kblock:d_n_m9k_2|                   ; 0 (0)             ; 0 (0)        ; 36          ; 0            ; 0       ; 0         ; 0    ; 0            ; |drum|drum_node:d1|m9kblock:d_n_m9k_2                                                                ;              ;
+;          |altsyncram:altsyncram_component|   ; 0 (0)             ; 0 (0)        ; 36          ; 0            ; 0       ; 0         ; 0    ; 0            ; |drum|drum_node:d1|m9kblock:d_n_m9k_2|altsyncram:altsyncram_component                                ;              ;
+;             |altsyncram_aph2:auto_generated| ; 0 (0)             ; 0 (0)        ; 36          ; 0            ; 0       ; 0         ; 0    ; 0            ; |drum|drum_node:d1|m9kblock:d_n_m9k_2|altsyncram:altsyncram_component|altsyncram_aph2:auto_generated ;              ;
++----------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+-----------------------------------------------------+
-; Analysis & Synthesis DSP Block Usage Summary        ;
-+---------------------------------------+-------------+
-; Statistic                             ; Number Used ;
-+---------------------------------------+-------------+
-; Simple Multipliers (9-bit)            ; 0           ;
-; Simple Multipliers (18-bit)           ; 2           ;
-; Embedded Multiplier Blocks            ; --          ;
-; Embedded Multiplier 9-bit elements    ; 4           ;
-; Signed Embedded Multipliers           ; 2           ;
-; Unsigned Embedded Multipliers         ; 0           ;
-; Mixed Sign Embedded Multipliers       ; 0           ;
-; Variable Sign Embedded Multipliers    ; 0           ;
-; Dedicated Input Shift Register Chains ; 0           ;
-+---------------------------------------+-------------+
-Note: number of Embedded Multiplier Blocks used is only available after a successful fit.
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                            ;
++-----------------------------------------------------------------------------------------------------------+------+----------------+--------------+--------------+--------------+--------------+------+------+
+; Name                                                                                                      ; Type ; Mode           ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size ; MIF  ;
++-----------------------------------------------------------------------------------------------------------+------+----------------+--------------+--------------+--------------+--------------+------+------+
+; drum_node:d1|m9kblock:d_n_m9k_1|altsyncram:altsyncram_component|altsyncram_aph2:auto_generated|ALTSYNCRAM ; M9K  ; True Dual Port ; 100          ; 18           ; 100          ; 18           ; 1800 ; None ;
+; drum_node:d1|m9kblock:d_n_m9k_2|altsyncram:altsyncram_component|altsyncram_aph2:auto_generated|ALTSYNCRAM ; M9K  ; True Dual Port ; 100          ; 18           ; 100          ; 18           ; 1800 ; None ;
++-----------------------------------------------------------------------------------------------------------+------+----------------+--------------+--------------+--------------+--------------+------+------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis IP Cores Summary                                                                                    ;
-+--------+--------------+---------+--------------+--------------+--------------------+-------------------------------------+
-; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance    ; IP Include File                     ;
-+--------+--------------+---------+--------------+--------------+--------------------+-------------------------------------+
-; Altera ; ALTPLL       ; N/A     ; N/A          ; N/A          ; |drum|Audio_PLL:p1 ; C:/ECE5760Projects/drum/Audio_PLL.v ;
-+--------+--------------+---------+--------------+--------------+--------------------+-------------------------------------+
++---------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis IP Cores Summary                                                                                                       ;
++--------+--------------+---------+--------------+--------------+---------------------------------------+-------------------------------------+
+; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance                       ; IP Include File                     ;
++--------+--------------+---------+--------------+--------------+---------------------------------------+-------------------------------------+
+; Altera ; ALTPLL       ; N/A     ; N/A          ; N/A          ; |drum|Audio_PLL:p1                    ; C:/ECE5760Projects/drum/Audio_PLL.v ;
+; Altera ; RAM: 2-PORT  ; 11.0    ; N/A          ; N/A          ; |drum|drum_node:d1|m9kblock:d_n_m9k_1 ; C:/ECE5760Projects/drum/m9kblock.v  ;
++--------+--------------+---------+--------------+--------------+---------------------------------------+-------------------------------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------+
+; State Machine - |drum|drum_node:d1|state                                                                        ;
++--------------+-------------+-------------+-------------+-------------+-------------+-------------+--------------+
+; Name         ; state.init3 ; state.init2 ; state.init1 ; state.step3 ; state.step2 ; state.step1 ; state.reset1 ;
++--------------+-------------+-------------+-------------+-------------+-------------+-------------+--------------+
+; state.step1  ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0            ;
+; state.step2  ; 0           ; 0           ; 0           ; 0           ; 1           ; 1           ; 0            ;
+; state.step3  ; 0           ; 0           ; 0           ; 1           ; 0           ; 1           ; 0            ;
+; state.reset1 ; 0           ; 0           ; 0           ; 0           ; 0           ; 1           ; 1            ;
+; state.init1  ; 0           ; 0           ; 1           ; 0           ; 0           ; 1           ; 0            ;
+; state.init2  ; 0           ; 1           ; 0           ; 0           ; 0           ; 1           ; 0            ;
+; state.init3  ; 1           ; 0           ; 0           ; 0           ; 0           ; 1           ; 0            ;
++--------------+-------------+-------------+-------------+-------------+-------------+-------------+--------------+
 
 
 Encoding Type:  One-Hot
@@ -308,16 +323,44 @@ Encoding Type:  One-Hot
 +---------------------------------------------------------+-------------------------------------------------------+
 ; Register name                                           ; Reason for Removal                                    ;
 +---------------------------------------------------------+-------------------------------------------------------+
+; drum_node:d1|we_1b                                      ; Stuck at GND due to stuck port data_in                ;
 ; I2C_AV_Config:u3|mI2C_DATA[7,8,13..17,19,23]            ; Stuck at GND due to stuck port data_in                ;
 ; I2C_AV_Config:u3|I2C_Controller:u0|SD[7,8,13..17,19,23] ; Stuck at GND due to stuck port data_in                ;
+; drum_node:d1|u_1[1..17]                                 ; Merged with drum_node:d1|u_1[0]                       ;
+; drum_node:d1|u_2[0..17]                                 ; Merged with drum_node:d1|u_1[0]                       ;
+; AUDIO_DAC_ADC:u4|AUD_outR[15]                           ; Merged with AUDIO_DAC_ADC:u4|AUD_outL[15]             ;
+; AUDIO_DAC_ADC:u4|AUD_outR[12]                           ; Merged with AUDIO_DAC_ADC:u4|AUD_outL[14]             ;
+; AUDIO_DAC_ADC:u4|AUD_outR[11]                           ; Merged with AUDIO_DAC_ADC:u4|AUD_outL[13]             ;
+; AUDIO_DAC_ADC:u4|AUD_outR[10]                           ; Merged with AUDIO_DAC_ADC:u4|AUD_outL[12]             ;
+; AUDIO_DAC_ADC:u4|AUD_outR[9]                            ; Merged with AUDIO_DAC_ADC:u4|AUD_outL[11]             ;
+; AUDIO_DAC_ADC:u4|AUD_outR[8]                            ; Merged with AUDIO_DAC_ADC:u4|AUD_outL[10]             ;
+; AUDIO_DAC_ADC:u4|AUD_outR[7]                            ; Merged with AUDIO_DAC_ADC:u4|AUD_outL[9]              ;
+; AUDIO_DAC_ADC:u4|AUD_outR[6]                            ; Merged with AUDIO_DAC_ADC:u4|AUD_outL[8]              ;
+; AUDIO_DAC_ADC:u4|AUD_outR[5]                            ; Merged with AUDIO_DAC_ADC:u4|AUD_outL[7]              ;
+; AUDIO_DAC_ADC:u4|AUD_outR[4]                            ; Merged with AUDIO_DAC_ADC:u4|AUD_outL[6]              ;
+; AUDIO_DAC_ADC:u4|AUD_outR[3]                            ; Merged with AUDIO_DAC_ADC:u4|AUD_outL[5]              ;
+; AUDIO_DAC_ADC:u4|AUD_outR[2]                            ; Merged with AUDIO_DAC_ADC:u4|AUD_outL[4]              ;
+; AUDIO_DAC_ADC:u4|AUD_outR[1]                            ; Merged with AUDIO_DAC_ADC:u4|AUD_outL[3]              ;
+; AUDIO_DAC_ADC:u4|AUD_outR[0]                            ; Merged with AUDIO_DAC_ADC:u4|AUD_outL[2]              ;
 ; I2C_AV_Config:u3|mI2C_DATA[20,21]                       ; Merged with I2C_AV_Config:u3|mI2C_DATA[18]            ;
 ; I2C_AV_Config:u3|mI2C_DATA[6]                           ; Merged with I2C_AV_Config:u3|mI2C_DATA[5]             ;
 ; I2C_AV_Config:u3|I2C_Controller:u0|SD[20,21]            ; Merged with I2C_AV_Config:u3|I2C_Controller:u0|SD[18] ;
 ; I2C_AV_Config:u3|I2C_Controller:u0|SD[6]                ; Merged with I2C_AV_Config:u3|I2C_Controller:u0|SD[5]  ;
+; drum_node:d1|u_4[0..17]                                 ; Stuck at GND due to stuck port data_in                ;
+; drum_node:d1|addr_1a[0..6]                              ; Stuck at GND due to stuck port data_in                ;
+; drum_node:d1|addr_2a[0..6]                              ; Stuck at GND due to stuck port data_in                ;
+; drum_node:d1|addr_1b[1..6]                              ; Stuck at GND due to stuck port data_in                ;
+; drum_node:d1|addr_1b[0]                                 ; Stuck at VCC due to stuck port data_in                ;
+; drum_node:d1|u_1[0]                                     ; Stuck at GND due to stuck port data_in                ;
+; drum_node:d1|u_3[0..17]                                 ; Stuck at GND due to stuck port data_in                ;
+; drum_node:d1|state~2                                    ; Lost fanout                                           ;
+; drum_node:d1|state~3                                    ; Lost fanout                                           ;
+; drum_node:d1|state~5                                    ; Lost fanout                                           ;
+; drum_node:d1|state~6                                    ; Lost fanout                                           ;
 ; I2C_AV_Config:u3|mSetup_ST~9                            ; Lost fanout                                           ;
 ; I2C_AV_Config:u3|mSetup_ST~10                           ; Lost fanout                                           ;
 ; AUDIO_DAC_ADC:u4|BCK_DIV[3]                             ; Stuck at GND due to stuck port data_in                ;
-; Total Number of Removed Registers = 27                  ;                                                       ;
+; Total Number of Removed Registers = 139                 ;                                                       ;
 +---------------------------------------------------------+-------------------------------------------------------+
 
 
@@ -352,12 +395,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 175   ;
-; Number of registers using Synchronous Clear  ; 43    ;
-; Number of registers using Synchronous Load   ; 24    ;
+; Total registers                              ; 219   ;
+; Number of registers using Synchronous Clear  ; 25    ;
+; Number of registers using Synchronous Load   ; 46    ;
 ; Number of registers using Asynchronous Clear ; 57    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 88    ;
+; Number of registers using Clock Enable       ; 144   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -380,13 +423,32 @@ Encoding Type:  One-Hot
 +--------------------------------------------------+---------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                            ;
-+--------------------+-----------+---------------+----------------------+------------------------+-----------------------------+----------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered                  ; Example Multiplexer Output ;
-+--------------------+-----------+---------------+----------------------+------------------------+-----------------------------+----------------------------+
-; 3:1                ; 36 bits   ; 72 LEs        ; 36 LEs               ; 36 LEs                 ; |drum|test_node:t_n1|v1[11] ;                            ;
-+--------------------+-----------+---------------+----------------------+------------------------+-----------------------------+----------------------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                 ;
++--------------------+-----------+---------------+----------------------+------------------------+----------------------------------+----------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered                       ; Example Multiplexer Output ;
++--------------------+-----------+---------------+----------------------+------------------------+----------------------------------+----------------------------+
+; 3:1                ; 14 bits   ; 28 LEs        ; 14 LEs               ; 14 LEs                 ; |drum|drum_node:d1|wr_data_1a[0] ;                            ;
+; 5:1                ; 18 bits   ; 54 LEs        ; 36 LEs               ; 18 LEs                 ; |drum|drum_node:d1|u[2]          ;                            ;
++--------------------+-----------+---------------+----------------------+------------------------+----------------------------------+----------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------+
+; Source assignments for drum_node:d1|m9kblock:d_n_m9k_1|altsyncram:altsyncram_component|altsyncram_aph2:auto_generated ;
++---------------------------------+--------------------+------+---------------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                                      ;
++---------------------------------+--------------------+------+---------------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                       ;
++---------------------------------+--------------------+------+---------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------+
+; Source assignments for drum_node:d1|m9kblock:d_n_m9k_2|altsyncram:altsyncram_component|altsyncram_aph2:auto_generated ;
++---------------------------------+--------------------+------+---------------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                                      ;
++---------------------------------+--------------------+------+---------------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                       ;
++---------------------------------+--------------------+------+---------------------------------------------------------+
 
 
 +-----------------------------------------------------------------------------------+
@@ -800,73 +862,144 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+------------------------------------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: test_node:t_n1|signed_mult:D_M|lpm_mult:Mult0 ;
-+------------------------------------------------+--------------+--------------------------------+
-; Parameter Name                                 ; Value        ; Type                           ;
-+------------------------------------------------+--------------+--------------------------------+
-; AUTO_CARRY_CHAINS                              ; ON           ; AUTO_CARRY                     ;
-; IGNORE_CARRY_BUFFERS                           ; OFF          ; IGNORE_CARRY                   ;
-; AUTO_CASCADE_CHAINS                            ; ON           ; AUTO_CASCADE                   ;
-; IGNORE_CASCADE_BUFFERS                         ; OFF          ; IGNORE_CASCADE                 ;
-; LPM_WIDTHA                                     ; 18           ; Untyped                        ;
-; LPM_WIDTHB                                     ; 13           ; Untyped                        ;
-; LPM_WIDTHP                                     ; 31           ; Untyped                        ;
-; LPM_WIDTHR                                     ; 31           ; Untyped                        ;
-; LPM_WIDTHS                                     ; 1            ; Untyped                        ;
-; LPM_REPRESENTATION                             ; SIGNED       ; Untyped                        ;
-; LPM_PIPELINE                                   ; 0            ; Untyped                        ;
-; LATENCY                                        ; 0            ; Untyped                        ;
-; INPUT_A_IS_CONSTANT                            ; NO           ; Untyped                        ;
-; INPUT_B_IS_CONSTANT                            ; YES          ; Untyped                        ;
-; USE_EAB                                        ; OFF          ; Untyped                        ;
-; MAXIMIZE_SPEED                                 ; 6            ; Untyped                        ;
-; DEVICE_FAMILY                                  ; Cyclone IV E ; Untyped                        ;
-; CARRY_CHAIN                                    ; MANUAL       ; Untyped                        ;
-; APEX20K_TECHNOLOGY_MAPPER                      ; LUT          ; TECH_MAPPER_APEX20K            ;
-; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO         ; Untyped                        ;
-; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0            ; Untyped                        ;
-; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0            ; Untyped                        ;
-; CBXI_PARAMETER                                 ; mult_m9t     ; Untyped                        ;
-; INPUT_A_FIXED_VALUE                            ; Bx           ; Untyped                        ;
-; INPUT_B_FIXED_VALUE                            ; Bx           ; Untyped                        ;
-; USE_AHDL_IMPLEMENTATION                        ; OFF          ; Untyped                        ;
-+------------------------------------------------+--------------+--------------------------------+
++-----------------------------------------------------------+
+; Parameter Settings for User Entity Instance: drum_node:d1 ;
++----------------+-------+----------------------------------+
+; Parameter Name ; Value ; Type                             ;
++----------------+-------+----------------------------------+
+; eta            ; 00110 ; Unsigned Binary                  ;
+; rho            ; 00100 ; Unsigned Binary                  ;
+; max_row        ; 0     ; Signed Integer                   ;
+; step1          ; 0001  ; Unsigned Binary                  ;
+; step2          ; 0010  ; Unsigned Binary                  ;
+; step3          ; 0011  ; Unsigned Binary                  ;
+; reset1         ; 0101  ; Unsigned Binary                  ;
+; reset2         ; 0110  ; Unsigned Binary                  ;
+; reset3         ; 0111  ; Unsigned Binary                  ;
+; init1          ; 1000  ; Unsigned Binary                  ;
+; init2          ; 1001  ; Unsigned Binary                  ;
+; init3          ; 1010  ; Unsigned Binary                  ;
++----------------+-------+----------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+------------------------------------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: test_node:t_n1|signed_mult:K_M|lpm_mult:Mult0 ;
-+------------------------------------------------+--------------+--------------------------------+
-; Parameter Name                                 ; Value        ; Type                           ;
-+------------------------------------------------+--------------+--------------------------------+
-; AUTO_CARRY_CHAINS                              ; ON           ; AUTO_CARRY                     ;
-; IGNORE_CARRY_BUFFERS                           ; OFF          ; IGNORE_CARRY                   ;
-; AUTO_CASCADE_CHAINS                            ; ON           ; AUTO_CASCADE                   ;
-; IGNORE_CASCADE_BUFFERS                         ; OFF          ; IGNORE_CASCADE                 ;
-; LPM_WIDTHA                                     ; 18           ; Untyped                        ;
-; LPM_WIDTHB                                     ; 18           ; Untyped                        ;
-; LPM_WIDTHP                                     ; 36           ; Untyped                        ;
-; LPM_WIDTHR                                     ; 36           ; Untyped                        ;
-; LPM_WIDTHS                                     ; 1            ; Untyped                        ;
-; LPM_REPRESENTATION                             ; SIGNED       ; Untyped                        ;
-; LPM_PIPELINE                                   ; 0            ; Untyped                        ;
-; LATENCY                                        ; 0            ; Untyped                        ;
-; INPUT_A_IS_CONSTANT                            ; NO           ; Untyped                        ;
-; INPUT_B_IS_CONSTANT                            ; YES          ; Untyped                        ;
-; USE_EAB                                        ; OFF          ; Untyped                        ;
-; MAXIMIZE_SPEED                                 ; 6            ; Untyped                        ;
-; DEVICE_FAMILY                                  ; Cyclone IV E ; Untyped                        ;
-; CARRY_CHAIN                                    ; MANUAL       ; Untyped                        ;
-; APEX20K_TECHNOLOGY_MAPPER                      ; LUT          ; TECH_MAPPER_APEX20K            ;
-; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO         ; Untyped                        ;
-; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0            ; Untyped                        ;
-; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0            ; Untyped                        ;
-; CBXI_PARAMETER                                 ; mult_0at     ; Untyped                        ;
-; INPUT_A_FIXED_VALUE                            ; Bx           ; Untyped                        ;
-; INPUT_B_FIXED_VALUE                            ; Bx           ; Untyped                        ;
-; USE_AHDL_IMPLEMENTATION                        ; OFF          ; Untyped                        ;
-+------------------------------------------------+--------------+--------------------------------+
++--------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: drum_node:d1|m9kblock:d_n_m9k_1|altsyncram:altsyncram_component ;
++------------------------------------+----------------------+--------------------------------------------------+
+; Parameter Name                     ; Value                ; Type                                             ;
++------------------------------------+----------------------+--------------------------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                                          ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                                       ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                                     ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                                     ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                                   ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                                          ;
+; OPERATION_MODE                     ; BIDIR_DUAL_PORT      ; Untyped                                          ;
+; WIDTH_A                            ; 18                   ; Signed Integer                                   ;
+; WIDTHAD_A                          ; 7                    ; Signed Integer                                   ;
+; NUMWORDS_A                         ; 100                  ; Signed Integer                                   ;
+; OUTDATA_REG_A                      ; CLOCK0               ; Untyped                                          ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                                          ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                                          ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                                          ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                                          ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                                          ;
+; WIDTH_B                            ; 18                   ; Signed Integer                                   ;
+; WIDTHAD_B                          ; 7                    ; Signed Integer                                   ;
+; NUMWORDS_B                         ; 100                  ; Signed Integer                                   ;
+; INDATA_REG_B                       ; CLOCK0               ; Untyped                                          ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK0               ; Untyped                                          ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                                          ;
+; ADDRESS_REG_B                      ; CLOCK0               ; Untyped                                          ;
+; OUTDATA_REG_B                      ; CLOCK0               ; Untyped                                          ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                                          ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                                          ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                                          ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                                          ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                                          ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                                          ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                                          ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Signed Integer                                   ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Signed Integer                                   ;
+; RAM_BLOCK_TYPE                     ; M9K                  ; Untyped                                          ;
+; BYTE_SIZE                          ; 8                    ; Untyped                                          ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; OLD_DATA             ; Untyped                                          ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                                          ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                                          ;
+; INIT_FILE                          ; UNUSED               ; Untyped                                          ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                                          ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                                          ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                                          ;
+; CLOCK_ENABLE_INPUT_B               ; BYPASS               ; Untyped                                          ;
+; CLOCK_ENABLE_OUTPUT_A              ; BYPASS               ; Untyped                                          ;
+; CLOCK_ENABLE_OUTPUT_B              ; BYPASS               ; Untyped                                          ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                                          ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                                          ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                                          ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                                          ;
+; DEVICE_FAMILY                      ; Cyclone IV E         ; Untyped                                          ;
+; CBXI_PARAMETER                     ; altsyncram_aph2      ; Untyped                                          ;
++------------------------------------+----------------------+--------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: drum_node:d1|m9kblock:d_n_m9k_2|altsyncram:altsyncram_component ;
++------------------------------------+----------------------+--------------------------------------------------+
+; Parameter Name                     ; Value                ; Type                                             ;
++------------------------------------+----------------------+--------------------------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                                          ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                                       ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                                     ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                                     ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                                   ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                                          ;
+; OPERATION_MODE                     ; BIDIR_DUAL_PORT      ; Untyped                                          ;
+; WIDTH_A                            ; 18                   ; Signed Integer                                   ;
+; WIDTHAD_A                          ; 7                    ; Signed Integer                                   ;
+; NUMWORDS_A                         ; 100                  ; Signed Integer                                   ;
+; OUTDATA_REG_A                      ; CLOCK0               ; Untyped                                          ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                                          ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                                          ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                                          ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                                          ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                                          ;
+; WIDTH_B                            ; 18                   ; Signed Integer                                   ;
+; WIDTHAD_B                          ; 7                    ; Signed Integer                                   ;
+; NUMWORDS_B                         ; 100                  ; Signed Integer                                   ;
+; INDATA_REG_B                       ; CLOCK0               ; Untyped                                          ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK0               ; Untyped                                          ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                                          ;
+; ADDRESS_REG_B                      ; CLOCK0               ; Untyped                                          ;
+; OUTDATA_REG_B                      ; CLOCK0               ; Untyped                                          ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                                          ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                                          ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                                          ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                                          ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                                          ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                                          ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                                          ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Signed Integer                                   ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Signed Integer                                   ;
+; RAM_BLOCK_TYPE                     ; M9K                  ; Untyped                                          ;
+; BYTE_SIZE                          ; 8                    ; Untyped                                          ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; OLD_DATA             ; Untyped                                          ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                                          ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                                          ;
+; INIT_FILE                          ; UNUSED               ; Untyped                                          ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                                          ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                                          ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                                          ;
+; CLOCK_ENABLE_INPUT_B               ; BYPASS               ; Untyped                                          ;
+; CLOCK_ENABLE_OUTPUT_A              ; BYPASS               ; Untyped                                          ;
+; CLOCK_ENABLE_OUTPUT_B              ; BYPASS               ; Untyped                                          ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                                          ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                                          ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                                          ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                                          ;
+; DEVICE_FAMILY                      ; Cyclone IV E         ; Untyped                                          ;
+; CBXI_PARAMETER                     ; altsyncram_aph2      ; Untyped                                          ;
++------------------------------------+----------------------+--------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -887,67 +1020,55 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------+--------------------------------------+
 
 
-+---------------------------------------------------------------------------------------+
-; lpm_mult Parameter Settings by Entity Instance                                        ;
-+---------------------------------------+-----------------------------------------------+
-; Name                                  ; Value                                         ;
-+---------------------------------------+-----------------------------------------------+
-; Number of entity instances            ; 2                                             ;
-; Entity Instance                       ; test_node:t_n1|signed_mult:D_M|lpm_mult:Mult0 ;
-;     -- LPM_WIDTHA                     ; 18                                            ;
-;     -- LPM_WIDTHB                     ; 13                                            ;
-;     -- LPM_WIDTHP                     ; 31                                            ;
-;     -- LPM_REPRESENTATION             ; SIGNED                                        ;
-;     -- INPUT_A_IS_CONSTANT            ; NO                                            ;
-;     -- INPUT_B_IS_CONSTANT            ; YES                                           ;
-;     -- USE_EAB                        ; OFF                                           ;
-;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                          ;
-;     -- INPUT_A_FIXED_VALUE            ; Bx                                            ;
-;     -- INPUT_B_FIXED_VALUE            ; Bx                                            ;
-; Entity Instance                       ; test_node:t_n1|signed_mult:K_M|lpm_mult:Mult0 ;
-;     -- LPM_WIDTHA                     ; 18                                            ;
-;     -- LPM_WIDTHB                     ; 18                                            ;
-;     -- LPM_WIDTHP                     ; 36                                            ;
-;     -- LPM_REPRESENTATION             ; SIGNED                                        ;
-;     -- INPUT_A_IS_CONSTANT            ; NO                                            ;
-;     -- INPUT_B_IS_CONSTANT            ; YES                                           ;
-;     -- USE_EAB                        ; OFF                                           ;
-;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                          ;
-;     -- INPUT_A_FIXED_VALUE            ; Bx                                            ;
-;     -- INPUT_B_FIXED_VALUE            ; Bx                                            ;
-+---------------------------------------+-----------------------------------------------+
++-------------------------------------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                                                            ;
++-------------------------------------------+-----------------------------------------------------------------+
+; Name                                      ; Value                                                           ;
++-------------------------------------------+-----------------------------------------------------------------+
+; Number of entity instances                ; 2                                                               ;
+; Entity Instance                           ; drum_node:d1|m9kblock:d_n_m9k_1|altsyncram:altsyncram_component ;
+;     -- OPERATION_MODE                     ; BIDIR_DUAL_PORT                                                 ;
+;     -- WIDTH_A                            ; 18                                                              ;
+;     -- NUMWORDS_A                         ; 100                                                             ;
+;     -- OUTDATA_REG_A                      ; CLOCK0                                                          ;
+;     -- WIDTH_B                            ; 18                                                              ;
+;     -- NUMWORDS_B                         ; 100                                                             ;
+;     -- ADDRESS_REG_B                      ; CLOCK0                                                          ;
+;     -- OUTDATA_REG_B                      ; CLOCK0                                                          ;
+;     -- RAM_BLOCK_TYPE                     ; M9K                                                             ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; OLD_DATA                                                        ;
+; Entity Instance                           ; drum_node:d1|m9kblock:d_n_m9k_2|altsyncram:altsyncram_component ;
+;     -- OPERATION_MODE                     ; BIDIR_DUAL_PORT                                                 ;
+;     -- WIDTH_A                            ; 18                                                              ;
+;     -- NUMWORDS_A                         ; 100                                                             ;
+;     -- OUTDATA_REG_A                      ; CLOCK0                                                          ;
+;     -- WIDTH_B                            ; 18                                                              ;
+;     -- NUMWORDS_B                         ; 100                                                             ;
+;     -- ADDRESS_REG_B                      ; CLOCK0                                                          ;
+;     -- OUTDATA_REG_B                      ; CLOCK0                                                          ;
+;     -- RAM_BLOCK_TYPE                     ; M9K                                                             ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; OLD_DATA                                                        ;
++-------------------------------------------+-----------------------------------------------------------------+
 
 
-+------------------------------------------------------------+
-; Port Connectivity Checks: "test_node:t_n1|signed_mult:D_M" ;
-+-----------+-------+----------+-----------------------------+
-; Port      ; Type  ; Severity ; Details                     ;
-+-----------+-------+----------+-----------------------------+
-; b[17..12] ; Input ; Info     ; Stuck at GND                ;
-; b[10..0]  ; Input ; Info     ; Stuck at GND                ;
-; b[11]     ; Input ; Info     ; Stuck at VCC                ;
-+-----------+-------+----------+-----------------------------+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "drum_node:d1|m9kblock:d_n_m9k_2"                                                    ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; q_b  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
 
 
-+------------------------------------------------------------+
-; Port Connectivity Checks: "test_node:t_n1|signed_mult:K_M" ;
-+----------+-------+----------+------------------------------+
-; Port     ; Type  ; Severity ; Details                      ;
-+----------+-------+----------+------------------------------+
-; b[15..0] ; Input ; Info     ; Stuck at GND                 ;
-; b[17]    ; Input ; Info     ; Stuck at GND                 ;
-; b[16]    ; Input ; Info     ; Stuck at VCC                 ;
-+----------+-------+----------+------------------------------+
-
-
-+--------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "test_node:t_n1"                                                                         ;
-+----------+--------+----------+-------------------------------------------------------------------------------------+
-; Port     ; Type   ; Severity ; Details                                                                             ;
-+----------+--------+----------+-------------------------------------------------------------------------------------+
-; v1[1..0] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; v2[1..0] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+----------+--------+----------+-------------------------------------------------------------------------------------+
++--------------------------------------------------------+
+; Port Connectivity Checks: "drum_node:d1"               ;
++-----------+--------+----------+------------------------+
+; Port      ; Type   ; Severity ; Details                ;
++-----------+--------+----------+------------------------+
+; left_in   ; Input  ; Info     ; Stuck at GND           ;
+; right_in  ; Input  ; Info     ; Stuck at GND           ;
+; right_out ; Output ; Info     ; Explicitly unconnected ;
++-----------+--------+----------+------------------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -997,9 +1118,14 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 11.0 Build 157 04/27/2011 SJ Full Version
-    Info: Processing started: Tue Mar 10 19:04:46 2015
+    Info: Processing started: Thu Mar 12 01:48:46 2015
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off drum -c drum
 Info: Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info: Found 1 design units, including 1 entities, in source file testbench.v
+    Info: Found entity 1: testbench
+Info: Found 2 design units, including 2 entities, in source file drum.v
+    Info: Found entity 1: drum
+    Info: Found entity 2: drum_node
 Info: Found 1 design units, including 1 entities, in source file sync_rom.v
     Info: Found entity 1: sync_rom
 Info: Found 1 design units, including 1 entities, in source file i2c_controller.v
@@ -1016,10 +1142,12 @@ Info: Found 1 design units, including 1 entities, in source file audio_pll.v
     Info: Found entity 1: Audio_PLL
 Info: Found 1 design units, including 1 entities, in source file audio_dac_adc.v
     Info: Found entity 1: AUDIO_DAC_ADC
-Warning: Using design file drum.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
-    Info: Found entity 1: drum
-Warning (10236): Verilog HDL Implicit Net warning at drum.v(53): created implicit net for "audio_inL"
-Warning (10236): Verilog HDL Implicit Net warning at drum.v(54): created implicit net for "audio_inR"
+Info: Found 1 design units, including 1 entities, in source file /qw77_lab3/projects2/org_node.v
+    Info: Found entity 1: org_node
+Info: Found 1 design units, including 1 entities, in source file m9kblock.v
+    Info: Found entity 1: m9kblock
+Warning (10236): Verilog HDL Implicit Net warning at drum.v(58): created implicit net for "audio_inL"
+Warning (10236): Verilog HDL Implicit Net warning at drum.v(59): created implicit net for "audio_inR"
 Info: Elaborating entity "drum" for the top level hierarchy
 Warning (10665): Bidirectional port "AUD_DACLRCK" at drum.v(24) has a one-way connection to bidirectional port "AUD_ADCLRCK"
 Warning: Using design file reset_delay.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
@@ -1101,40 +1229,50 @@ Warning (10230): Verilog HDL assignment warning at AUDIO_DAC_ADC.v(105): truncat
 Warning (10230): Verilog HDL assignment warning at AUDIO_DAC_ADC.v(113): truncated value with size 32 to match size of target (8)
 Warning (10230): Verilog HDL assignment warning at AUDIO_DAC_ADC.v(121): truncated value with size 32 to match size of target (7)
 Warning (10230): Verilog HDL assignment warning at AUDIO_DAC_ADC.v(140): truncated value with size 32 to match size of target (4)
-Info: Elaborating entity "test_node" for hierarchy "test_node:t_n1"
-Warning (10230): Verilog HDL assignment warning at DDS.v(75): truncated value with size 32 to match size of target (5)
-Warning (10230): Verilog HDL assignment warning at DDS.v(78): truncated value with size 32 to match size of target (18)
-Warning (10230): Verilog HDL assignment warning at DDS.v(79): truncated value with size 32 to match size of target (18)
-Info: Elaborating entity "signed_mult" for hierarchy "test_node:t_n1|signed_mult:K_M"
-Info: Inferred 2 megafunctions from design logic
-    Info: Inferred multiplier megafunction ("lpm_mult") from the following logic: "test_node:t_n1|signed_mult:D_M|Mult0"
-    Info: Inferred multiplier megafunction ("lpm_mult") from the following logic: "test_node:t_n1|signed_mult:K_M|Mult0"
-Info: Elaborated megafunction instantiation "test_node:t_n1|signed_mult:D_M|lpm_mult:Mult0"
-Info: Instantiated megafunction "test_node:t_n1|signed_mult:D_M|lpm_mult:Mult0" with the following parameter:
-    Info: Parameter "LPM_WIDTHA" = "18"
-    Info: Parameter "LPM_WIDTHB" = "13"
-    Info: Parameter "LPM_WIDTHP" = "31"
-    Info: Parameter "LPM_WIDTHR" = "31"
-    Info: Parameter "LPM_WIDTHS" = "1"
-    Info: Parameter "LPM_REPRESENTATION" = "SIGNED"
-    Info: Parameter "INPUT_A_IS_CONSTANT" = "NO"
-    Info: Parameter "INPUT_B_IS_CONSTANT" = "YES"
-    Info: Parameter "MAXIMIZE_SPEED" = "6"
-Info: Found 1 design units, including 1 entities, in source file db/mult_m9t.tdf
-    Info: Found entity 1: mult_m9t
-Info: Elaborated megafunction instantiation "test_node:t_n1|signed_mult:K_M|lpm_mult:Mult0"
-Info: Instantiated megafunction "test_node:t_n1|signed_mult:K_M|lpm_mult:Mult0" with the following parameter:
-    Info: Parameter "LPM_WIDTHA" = "18"
-    Info: Parameter "LPM_WIDTHB" = "18"
-    Info: Parameter "LPM_WIDTHP" = "36"
-    Info: Parameter "LPM_WIDTHR" = "36"
-    Info: Parameter "LPM_WIDTHS" = "1"
-    Info: Parameter "LPM_REPRESENTATION" = "SIGNED"
-    Info: Parameter "INPUT_A_IS_CONSTANT" = "NO"
-    Info: Parameter "INPUT_B_IS_CONSTANT" = "YES"
-    Info: Parameter "MAXIMIZE_SPEED" = "6"
-Info: Found 1 design units, including 1 entities, in source file db/mult_0at.tdf
-    Info: Found entity 1: mult_0at
+Info: Elaborating entity "drum_node" for hierarchy "drum_node:d1"
+Warning (10036): Verilog HDL or VHDL warning at drum.v(153): object "test1" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at drum.v(154): object "test2" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at drum.v(155): object "test3" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at drum.v(156): object "test4" assigned a value but never read
+Warning (10230): Verilog HDL assignment warning at drum.v(176): truncated value with size 32 to match size of target (18)
+Warning (10230): Verilog HDL assignment warning at drum.v(184): truncated value with size 32 to match size of target (18)
+Warning (10230): Verilog HDL assignment warning at drum.v(224): truncated value with size 32 to match size of target (7)
+Warning (10230): Verilog HDL assignment warning at drum.v(256): truncated value with size 32 to match size of target (7)
+Warning (10230): Verilog HDL assignment warning at drum.v(257): truncated value with size 32 to match size of target (7)
+Info: Elaborating entity "m9kblock" for hierarchy "drum_node:d1|m9kblock:d_n_m9k_1"
+Info: Elaborating entity "altsyncram" for hierarchy "drum_node:d1|m9kblock:d_n_m9k_1|altsyncram:altsyncram_component"
+Info: Elaborated megafunction instantiation "drum_node:d1|m9kblock:d_n_m9k_1|altsyncram:altsyncram_component"
+Info: Instantiated megafunction "drum_node:d1|m9kblock:d_n_m9k_1|altsyncram:altsyncram_component" with the following parameter:
+    Info: Parameter "address_reg_b" = "CLOCK0"
+    Info: Parameter "clock_enable_input_a" = "BYPASS"
+    Info: Parameter "clock_enable_input_b" = "BYPASS"
+    Info: Parameter "clock_enable_output_a" = "BYPASS"
+    Info: Parameter "clock_enable_output_b" = "BYPASS"
+    Info: Parameter "indata_reg_b" = "CLOCK0"
+    Info: Parameter "intended_device_family" = "Cyclone IV E"
+    Info: Parameter "lpm_type" = "altsyncram"
+    Info: Parameter "numwords_a" = "100"
+    Info: Parameter "numwords_b" = "100"
+    Info: Parameter "operation_mode" = "BIDIR_DUAL_PORT"
+    Info: Parameter "outdata_aclr_a" = "NONE"
+    Info: Parameter "outdata_aclr_b" = "NONE"
+    Info: Parameter "outdata_reg_a" = "CLOCK0"
+    Info: Parameter "outdata_reg_b" = "CLOCK0"
+    Info: Parameter "power_up_uninitialized" = "FALSE"
+    Info: Parameter "ram_block_type" = "M9K"
+    Info: Parameter "read_during_write_mode_mixed_ports" = "OLD_DATA"
+    Info: Parameter "read_during_write_mode_port_a" = "NEW_DATA_NO_NBE_READ"
+    Info: Parameter "read_during_write_mode_port_b" = "NEW_DATA_NO_NBE_READ"
+    Info: Parameter "widthad_a" = "7"
+    Info: Parameter "widthad_b" = "7"
+    Info: Parameter "width_a" = "18"
+    Info: Parameter "width_b" = "18"
+    Info: Parameter "width_byteena_a" = "1"
+    Info: Parameter "width_byteena_b" = "1"
+    Info: Parameter "wrcontrol_wraddress_reg_b" = "CLOCK0"
+Info: Found 1 design units, including 1 entities, in source file db/altsyncram_aph2.tdf
+    Info: Found entity 1: altsyncram_aph2
+Info: Elaborating entity "altsyncram_aph2" for hierarchy "drum_node:d1|m9kblock:d_n_m9k_1|altsyncram:altsyncram_component|altsyncram_aph2:auto_generated"
 Warning: 3 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Warning: The following nodes have both tri-state and non-tri-state drivers
     Warning: Inserted always-enabled tri-state buffer between "AUD_BCLK" and its non-tri-state driver.
@@ -1148,9 +1286,16 @@ Warning: TRI or OPNDRN buffers permanently enabled
     Warning: Node "AUD_BCLK~synth"
     Warning: Node "AUD_DACLRCK~synth"
 Info: Timing-Driven Synthesis is running
-Info: 2 registers lost all their fanouts during netlist optimizations. The first 2 are displayed below.
+Info: 6 registers lost all their fanouts during netlist optimizations. The first 6 are displayed below.
+    Info: Register "drum_node:d1|state~2" lost all its fanouts during netlist optimizations.
+    Info: Register "drum_node:d1|state~3" lost all its fanouts during netlist optimizations.
+    Info: Register "drum_node:d1|state~5" lost all its fanouts during netlist optimizations.
+    Info: Register "drum_node:d1|state~6" lost all its fanouts during netlist optimizations.
     Info: Register "I2C_AV_Config:u3|mSetup_ST~9" lost all its fanouts during netlist optimizations.
     Info: Register "I2C_AV_Config:u3|mSetup_ST~10" lost all its fanouts during netlist optimizations.
+Info: Removed 6 MSB VCC or GND address nodes from RAM block "drum_node:d1|m9kblock:d_n_m9k_1|altsyncram:altsyncram_component|altsyncram_aph2:auto_generated|ALTSYNCRAM"
+Info: Removed 6 MSB VCC or GND address nodes from RAM block "drum_node:d1|m9kblock:d_n_m9k_2|altsyncram:altsyncram_component|altsyncram_aph2:auto_generated|ALTSYNCRAM"
+Info: Generated suppressed messages file C:/ECE5760Projects/drum/drum.map.smsg
 Info: Generating hard_block partition "hard_block:auto_generated_inst"
     Info: Adding node "Audio_PLL:p1|altpll:altpll_component|Audio_PLL_altpll:auto_generated|pll1"
 Warning: Design contains 24 input pin(s) that do not drive logic
@@ -1178,17 +1323,23 @@ Warning: Design contains 24 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SW[16]"
     Warning (15610): No output dependent on input pin "SW[17]"
     Warning (15610): No output dependent on input pin "AUD_ADCDAT"
-Info: Implemented 311 device resources after synthesis - the final resource count might be different
+Info: Implemented 468 device resources after synthesis - the final resource count might be different
     Info: Implemented 26 input pins
     Info: Implemented 3 output pins
     Info: Implemented 4 bidirectional pins
-    Info: Implemented 273 logic cells
+    Info: Implemented 398 logic cells
+    Info: Implemented 36 RAM segments
     Info: Implemented 1 PLLs
-    Info: Implemented 4 DSP elements
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 52 warnings
-    Info: Peak virtual memory: 358 megabytes
-    Info: Processing ended: Tue Mar 10 19:04:49 2015
-    Info: Elapsed time: 00:00:03
-    Info: Total CPU time (on all processors): 00:00:03
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 57 warnings
+    Info: Peak virtual memory: 366 megabytes
+    Info: Processing ended: Thu Mar 12 01:48:51 2015
+    Info: Elapsed time: 00:00:05
+    Info: Total CPU time (on all processors): 00:00:04
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in C:/ECE5760Projects/drum/drum.map.smsg.
 
 

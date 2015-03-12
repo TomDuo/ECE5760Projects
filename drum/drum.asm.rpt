@@ -1,5 +1,5 @@
 Assembler report for drum
-Tue Mar 10 19:05:18 2015
+Thu Mar 12 01:49:20 2015
 Quartus II 64-Bit Version 11.0 Build 157 04/27/2011 SJ Full Version
 
 
@@ -37,7 +37,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Tue Mar 10 19:05:18 2015 ;
+; Assembler Status      ; Successful - Thu Mar 12 01:49:20 2015 ;
 ; Revision Name         ; drum                                  ;
 ; Top-level Entity Name ; drum                                  ;
 ; Family                ; Cyclone IV E                          ;
@@ -93,7 +93,7 @@ applicable agreement for further details.
 +----------------+-------------------------------------------+
 ; Device         ; EP4CE115F29C7                             ;
 ; JTAG usercode  ; 0xFFFFFFFF                                ;
-; Checksum       ; 0x005888F2                                ;
+; Checksum       ; 0x005993EB                                ;
 +----------------+-------------------------------------------+
 
 
@@ -103,13 +103,13 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Assembler
     Info: Version 11.0 Build 157 04/27/2011 SJ Full Version
-    Info: Processing started: Tue Mar 10 19:05:10 2015
+    Info: Processing started: Thu Mar 12 01:49:12 2015
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off drum -c drum
 Info: Writing out detailed assembly data for power analysis
 Info: Assembler is generating device programming files
 Info: Quartus II 64-Bit Assembler was successful. 0 errors, 0 warnings
     Info: Peak virtual memory: 580 megabytes
-    Info: Processing ended: Tue Mar 10 19:05:18 2015
+    Info: Processing ended: Thu Mar 12 01:49:20 2015
     Info: Elapsed time: 00:00:08
     Info: Total CPU time (on all processors): 00:00:07
 

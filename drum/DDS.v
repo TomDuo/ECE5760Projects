@@ -58,15 +58,18 @@ sync_rom sineTable(clock, accumulator[31:24]+phase, sine_out);
 endmodule
 */
 
-module test_node(clock, reset, v1,v2);
+module test_node(clock, reset, in, out, v2, count);
+parameter i=0,j=0;
 //state variables
 input clock, reset;
-output reg signed [17:0] v1, v2 ;
+input signed [17:0] in;
+output reg signed [17:0] out;
+output reg signed [17:0] v2 ;
 wire signed [17:0] v1new, v2new ;
 //signed mult output
 wire signed [17:0] v1xK_M, v2xD_M ;
 // the clock divider
-reg [4:0] count;
+output reg [4:0] count;
 
 
 //Update state variables of simulation of spring- mass
@@ -75,22 +78,24 @@ reg [4:0] count;
 		count <= count + 1; 
 		if (reset==0) //reset
 		begin	
-			v1 <= 32'h10000 ; // 
-			v2 <= 32'h00000 ;
-			//count <= 0;
+			out <= 18'h10000;
+			v2  <= 18'h00000 ;
+			count <= 0;
 		end
 		else if (count==0)
 		begin 
-			v1 <= v1new ;
+			$display("v1 %d %d %d", i, j, in);
+			out <= v1new ;
 			v2 <= v2new ;
 		end
 	end
 	
+	
 	// Compute new F(t,v) with dt = 2>>9
 	// v1(n+1) = v1(n) + dt*v2(n)
-	assign v1new = v1 + (v2>>>9);
+	assign v1new = in + (v2>>>9);
 	// v2(n+1) = v2(n) + dt*(-k/m*v1(n) - d/m*v2(n))
-	signed_mult K_M(v1xK_M, v1, 18'h10000);
+	signed_mult K_M(v1xK_M, in, 18'h10000);
 	signed_mult D_M(v2xD_M, v2, 18'h00800);
 	assign v2new = v2 - ((v1xK_M + v2xD_M)>>>9);
 endmodule

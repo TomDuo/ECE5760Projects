@@ -1,4 +1,14 @@
 
+State Machine - |drum|drum_node:d1|state
+Name state.init3 state.init2 state.init1 state.step3 state.step2 state.step1 state.reset1 
+state.step1 0 0 0 0 0 0 0 
+state.step2 0 0 0 0 1 1 0 
+state.step3 0 0 0 1 0 1 0 
+state.reset1 0 0 0 0 0 1 1 
+state.init1 0 0 1 0 0 1 0 
+state.init2 0 1 0 0 0 1 0 
+state.init3 1 0 0 0 0 1 0 
+
 State Machine - |drum|I2C_AV_Config:u3|mSetup_ST
 Name mSetup_ST.0000 mSetup_ST.0010 mSetup_ST.0001 
 mSetup_ST.0000 0 0 0 

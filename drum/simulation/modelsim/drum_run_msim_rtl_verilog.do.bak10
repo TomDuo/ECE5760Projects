@@ -1,0 +1,25 @@
+transcript on
+if {[file exists rtl_work]} {
+	vdel -lib rtl_work -all
+}
+vlib rtl_work
+vmap work rtl_work
+
+vlog -vlog01compat -work work +incdir+C:/ECE5760Projects/drum {C:/ECE5760Projects/drum/drum.v}
+vlog -vlog01compat -work work +incdir+C:/ECE5760Projects/drum {C:/ECE5760Projects/drum/I2C_Controller.v}
+vlog -vlog01compat -work work +incdir+C:/ECE5760Projects/drum {C:/ECE5760Projects/drum/I2C_AV_Config.v}
+vlog -vlog01compat -work work +incdir+C:/ECE5760Projects/drum {C:/ECE5760Projects/drum/DDS.v}
+vlog -vlog01compat -work work +incdir+C:/ECE5760Projects/drum {C:/ECE5760Projects/drum/Audio_PLL.v}
+vlog -vlog01compat -work work +incdir+C:/ECE5760Projects/drum {C:/ECE5760Projects/drum/AUDIO_DAC_ADC.v}
+vlog -vlog01compat -work work +incdir+C:/qw77_lab3/projects2 {C:/qw77_lab3/projects2/org_node.v}
+vlog -vlog01compat -work work +incdir+C:/ECE5760Projects/drum {C:/ECE5760Projects/drum/reset_delay.v}
+vlog -vlog01compat -work work +incdir+C:/ECE5760Projects/drum/db {C:/ECE5760Projects/drum/db/audio_pll_altpll.v}
+
+vlog -vlog01compat -work work +incdir+C:/ECE5760Projects/drum {C:/ECE5760Projects/drum/testbench.v}
+
+vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneive_ver -L rtl_work -L work -voptargs="+acc" testbench
+
+add wave *
+view structure
+view signals
+run -all

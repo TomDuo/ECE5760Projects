@@ -1,0 +1,8 @@
+
+**** Build of configuration Nios II for project legit_app ****
+
+make all 
+Info: Building ../legit_BSP/
+make --no-print-directory -C ../legit_BSP/
+[BSP build complete]
+[legit_app build complete]

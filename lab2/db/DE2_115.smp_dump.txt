@@ -1,9 +1,0 @@
-
-State Machine - |DE2_115|nios2processor:u0|nios2processor_cpu:cpu|nios2processor_cpu_nios2_oci:the_nios2processor_cpu_nios2_oci|nios2processor_cpu_jtag_debug_module_wrapper:the_nios2processor_cpu_jtag_debug_module_wrapper|nios2processor_cpu_jtag_debug_module_tck:the_nios2processor_cpu_jtag_debug_module_tck|DRsize
-Name DRsize.101 DRsize.100 DRsize.011 DRsize.010 DRsize.001 DRsize.000 
-DRsize.000 0 0 0 0 0 0 
-DRsize.001 0 0 0 0 1 1 
-DRsize.010 0 0 0 1 0 1 
-DRsize.011 0 0 1 0 0 1 
-DRsize.100 0 1 0 0 0 1 
-DRsize.101 1 0 0 0 0 1 

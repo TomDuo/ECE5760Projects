@@ -1,8 +1,0 @@
-#Sat Feb 07 00:34:33 EST 2015
-newSoftwareExampleWizardPage.defaultLocation=C\:\\nios2project\\software\\nios2processor
-newSoftwareExampleWizardPage.sopcinfoFile=C\:\\nios2project\\nios2processor.sopcinfo
-newApplicationWizardPage.defaultLocation=C\:\\ECE5760Projects\\lab2\\software\\lcd_app
-eclipse.preferences.version=1
-newBspWizardPage.defaultLocation=C\:\\nios2project\\software\\nios2processor_bsp
-newBspWizardPage.sopcinfoFile=C\:\\nios2project\\nios2processor.sopcinfo
-newSoftwareExampleWizardPage2.newBspLocation=C\:\\nios2project\\software\\nios2processor_bsp

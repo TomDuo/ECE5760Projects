@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="Example_4_Video_In">
+		<CBX_INST_ENTRY INSTANCE_NAME="|Example_4_Video_In|LFSR_attack_decay:crash|lpm_mult:Mult1" CBX_FILE_NAME="mult_56t.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|Example_4_Video_In|Video_System:Video_System_inst|Dual_Clock_FIFO:the_Dual_Clock_FIFO|dcfifo:Data_FIFO" CBX_FILE_NAME="dcfifo_3uj1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|Example_4_Video_In|Audio_PLL:p1|altpll:altpll_component" CBX_FILE_NAME="Audio_PLL_altpll.v"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|Example_4_Video_In|Video_System:Video_System_inst|CPU:the_CPU|CPU_nios2_oci:the_CPU_nios2_oci|CPU_nios2_oci_im:the_CPU_nios2_oci_im|CPU_traceram_lpm_dram_bdp_component_module:CPU_traceram_lpm_dram_bdp_component|altsyncram:the_altsyncram" CBX_FILE_NAME="altsyncram_0a02.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|Example_4_Video_In|Video_System:Video_System_inst|CPU:the_CPU|CPU_nios2_oci:the_CPU_nios2_oci|CPU_nios2_ocimem:the_CPU_nios2_ocimem|CPU_ociram_lpm_dram_bdp_component_module:CPU_ociram_lpm_dram_bdp_component|altsyncram:the_altsyncram" CBX_FILE_NAME="altsyncram_f572.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|Example_4_Video_In|Video_System:Video_System_inst|CPU:the_CPU|CPU_register_bank_a_module:CPU_register_bank_a|altsyncram:the_altsyncram" CBX_FILE_NAME="altsyncram_2bf1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|Example_4_Video_In|Video_System:Video_System_inst|jtag_uart_0:the_jtag_uart_0|jtag_uart_0_scfifo_w:the_jtag_uart_0_scfifo_w|scfifo:wfifo" CBX_FILE_NAME="scfifo_jr21.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|Example_4_Video_In|Video_System:Video_System_inst|video_character_buffer_with_dma_0:the_video_character_buffer_with_dma_0|altera_up_video_128_character_rom:Character_Rom|altsyncram:character_data_rom" CBX_FILE_NAME="altsyncram_0ai1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|Example_4_Video_In|DDS:sine|sync_rom:sineTable|altsyncram:Ram0_rtl_0" CBX_FILE_NAME="altsyncram_d681.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|Example_4_Video_In|Video_System:Video_System_inst|Onchip_Memory:the_Onchip_Memory|altsyncram:the_altsyncram" CBX_FILE_NAME="altsyncram_r7c1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|Example_4_Video_In|Video_System:Video_System_inst|Pixel_Buffer_DMA:the_Pixel_Buffer_DMA|scfifo:Image_Buffer" CBX_FILE_NAME="scfifo_p4a1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|Example_4_Video_In|Video_System:Video_System_inst|jtag_uart_0:the_jtag_uart_0|jtag_uart_0_scfifo_r:the_jtag_uart_0_scfifo_r|scfifo:rfifo" CBX_FILE_NAME="scfifo_jr21.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|Example_4_Video_In|LFSR_attack_decay:crash|lpm_mult:Mult0" CBX_FILE_NAME="mult_5dt.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|Example_4_Video_In|Video_System:Video_System_inst|CPU:the_CPU|CPU_register_bank_b_module:CPU_register_bank_b|altsyncram:the_altsyncram" CBX_FILE_NAME="altsyncram_3bf1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|Example_4_Video_In|Video_System:Video_System_inst|Clock_Signals:the_Clock_Signals|altpll:DE_Clock_Generator_System" CBX_FILE_NAME="altpll_6rb2.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|Example_4_Video_In|Video_System:Video_System_inst|video_character_buffer_with_dma_0:the_video_character_buffer_with_dma_0|altsyncram:Char_Buffer_Memory" CBX_FILE_NAME="altsyncram_m672.tdf"/>
+	</PROJECT>
+</LOG_ROOT>
